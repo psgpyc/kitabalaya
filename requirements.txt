@@ -14,7 +14,9 @@ colorama==0.4.3
 coloredlogs==14.0
 configobj==5.0.6
 cytoolz==0.10.1
+dj-database-url==0.5.0
 Django==3.0.3
+django-heroku==0.3.1
 django-storages==1.9.1
 djangorestframework==3.11.0
 docutils==0.15.2
@@ -76,4 +78,5 @@ urllib3==1.25.8
 varint==1.0.2
 web3==5.6.0
 websockets==8.1
+whitenoise==5.0.1
 wrapt==1.11.2
