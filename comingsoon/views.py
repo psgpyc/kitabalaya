@@ -52,11 +52,11 @@ class ComingSoonIndexPage(views.View):
                     user_email.save()
 
                     return redirect('cta-home')
-                except smtplib.SMTPException:
+                except smtplib.SMTPException as e:
                     CallToActionModel.objects.get(email=form.cleaned_data['email']).delete()
                     messages.success(request, mark_safe('Something Went Wrong!! Please try again after few minutes.<br>'
                                                         'If the issue persists, '
-                                                        'Please contact us at contact@kitabalaya.com'))
+                                                        'Please contact us at contact@kitabalaya.com {}'.format(e)))
                     return render(request, template_name=self.template_name, context=ctx)
 
         else:
