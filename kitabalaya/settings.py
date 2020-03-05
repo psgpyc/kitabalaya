@@ -10,7 +10,7 @@ SECRET_KEY = '!)bgshq2@uo!9)m!h*t-osw7lud8g&+2h)di4v4+@epf!@zqn5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kitabalaya.herokuapp.com']
 
 # Application definition
 
