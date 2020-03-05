@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 .idea/
 migrations/
+devenv/
 
 # C extensions
 *.so

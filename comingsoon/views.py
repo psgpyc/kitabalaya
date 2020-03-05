@@ -12,6 +12,7 @@ import smtplib
 
 class ComingSoonIndexPage(views.View):
     template_name = 'comingsoon/index.html'
+    body = 'Congratulations on joining Kitabalaya. You have been successfully registered. '
 
     def get(self, request, *args, **kwargs):
 
@@ -36,8 +37,8 @@ class ComingSoonIndexPage(views.View):
 
                 try:
                     email = EmailMessage(
-                        subject='Hello',
-                        body='Body goes here',
+                        subject='Welcome to Kitabalaya.',
+                        body=self.body,
                         from_email='contact@kitabalaya.com',
                         to=[form.cleaned_data['email']],
                         reply_to=['contact@kitabalaya.com'],
@@ -45,7 +46,9 @@ class ComingSoonIndexPage(views.View):
                     )
                     email.send()
                     messages.success(request, mark_safe('Thank You!!! You are now successfully registered with us.<br>'
-                                                        'Please Check Your Email For Exciting Offers.'))
+                                                        'Please Check Your Email For Exciting Offers.<br>'
+                                                        'If you did not receive an email, please wait for a minute or two. <br>If the issue persists,'
+                                                        ' Please, email us at contact@kitabalaya.com'))
                     user_email.save()
 
                     return redirect('cta-home')

@@ -15,6 +15,24 @@ html, body {
 
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+button:focus, input:focus{
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     font-size: 16px;
     opacity: 1; /* Firefox */

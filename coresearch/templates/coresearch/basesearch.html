@@ -13,126 +13,68 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href={% static 'comingsoon/css/style.css' %}>
+    <link rel="stylesheet" type="text/css" href={% static 'coresearch/css/style.css' %}>
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="static/img/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="static/img/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="static/img/icons/favicon-16x16.png">
     <link rel="manifest" href="static/img/icons/site.webmanifest"> -->
 
 
-    
+
     <title>Kitabalaya:Book a book</title>
 </head>
 <body>
+ <div class="intro">
+ <header>
 
-    <header>
 
-        
         <nav>
-            <ul class="nav-links">
+            <ul class="nav-links" style="margin-top: 180px;">
                 <!-- <li><a class="nav-link" href="#">HOME</a></li> -->
                 <!-- <li><a class="nav-link" href="about.html">ABOUT</a></li> -->
-                
+
                 <li><img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book"></li>
                 <!-- <li><a class="nav-link" href="contact.html">CONTACT</a></li>   -->
                 <!-- <li> <a class="nav-link" href="blog.html">BLOG</a></li>    -->
-                
-                            
-            </ul>  
-            
+
+
+            </ul>
+
             <div class="logo-container">
                 <img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book">
-                
+
             </div>
-    
+
             <!-- <div class="burger">
                 <div class="item1"></div>
                 <div class="item2"></div>
                 <div class="item3"></div>
             </div> -->
-    
-            
-        </nav>            
+
+
+        </nav>
     </header>
-
-    <main>
-            
-        <!-- <h2 class="value-prop">“I have always imagined that Paradise will be a kind of library.”</h2> -->
-        <h2 class="value-prop">“Good friends, Good books and Kitabalaya”</h2>
-
-        <h2 class="value-prop-mobile1">Good friends,</h2>
-        <h2 class="value-prop-mobile2 h2">Good books &</h2>
-        <h2 class="value-prop-mobile3 h2">Kitabalaya.</h2>
-
-       
-        <p class="value-prop-main">― Mark Twain Inspired</p> 
-
-        <div class="presentation">
-
-            <!-- <div class="hero-shot">
-                <img src="static/img/hero-shot.png" alt="Kathalaya is coming soon!!!">
-            </div> -->
-
-            <div class="intro">               
-                <h2 class="value-defination1 ">KITABALAYA IS OPENING SOON !!!</h2>
-                <!-- <h2 class="value-defination1p1 ">SOON !!!</h2> -->
-
-                <h2 class="value-defination-mobile ">Kitabalaya is opening Soon !!!</h2>
-
-
-
-                <p class="value-defination2"></p> Get early access and special privilege when we launch. </p>
-                <p class="value-defination3">SUBSCRIBE NOW !!!</p>
-
-                <form method="POST">
+                <form method="POST" autocomplete="off">
                     {% csrf_token %}
+                    <div class="autocomplete">
                     {{ form }}
+                    </div>
                      <br>
 
-                    <button type="submit" class="cta-submit">Notify Me</button>
+
+                    <button type="submit" class="cta-submit">Search</button>
 
                 </form>
-                 {% if messages %}
-                        {% for message in messages %}
-                            {% if color %}
-                            <div style="margin-top: 20px; color: red;">
-
-                                    {{ message }}
-
-                            </div>
-                            {% else %}
-                                <div style="margin-top: 20px; color: green;">
-
-                                    {{ message }}
-
-                            </div>
-                            {% endif %}
-
-
-                        {% endfor %}
-                {% endif %}
-
-
-
-
-
                 <div class="link-icons">
                     <a target="_blank" href="https://www.instagram.com/kitabalaya"><i class="fab fa-instagram fa-2x link-icon"></i></a>
                     <a target="_blank" href="https://www.facebook.com/kitabalayabookabook"><i class="fab fa-facebook fa-2x link-icon"></i></a>
                     <a target="_blank" href="https://www.twitter.com/kitabalaya"><i class="fab fa-twitter fa-2x link-icon"></i></a>
-                </div>                
+                </div>
             </div>
-        </div>
-    </main>
 
 
 
-
-
-
-
-
-<script src="{% static 'comingsoon/js/main.js' %}"></script>
+<script src="{% static 'coresearch/js/main.js' %}"></script>
 
 
 </body>
