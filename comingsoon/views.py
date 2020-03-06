@@ -46,9 +46,7 @@ class ComingSoonIndexPage(views.View):
                     )
                     email.send()
                     messages.success(request, mark_safe('Thank You!!! You are now successfully registered with us.<br>'
-                                                        'Please Check Your Email For Exciting Offers.<br>'
-                                                        'If you did not receive an email, please wait for a minute or two. <br>If the issue persists,'
-                                                        ' Please, email us at contact@kitabalaya.com'))
+                                                        'Please Check Your Email For Exciting Offers.<br>'))
                     user_email.save()
 
                     return redirect('cta-home')

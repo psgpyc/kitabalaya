@@ -11,7 +11,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kitabalaya.herokuapp.com']
+ALLOWED_HOSTS = ['kitabalaya.herokuapp.com', 'www.kitabalaya.com', 'search.kitabalaya.com', 'kitabalaya.com']
 
 # Application definition
 
