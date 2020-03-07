@@ -39,9 +39,9 @@ class ComingSoonIndexPage(views.View):
                     email = EmailMessage(
                         subject='Welcome to Kitabalaya.',
                         body=self.body,
-                        from_email='contact@kitabalaya.com',
+                        from_email='contact@kitabalaya.info',
                         to=[form.cleaned_data['email']],
-                        reply_to=['contact@kitabalaya.com'],
+                        reply_to=['contact@kitabalaya.info'],
                         headers={'Content-Type': 'text/plain'},
                     )
                     email.send()
@@ -54,13 +54,13 @@ class ComingSoonIndexPage(views.View):
                     CallToActionModel.objects.get(email=form.cleaned_data['email']).delete()
                     messages.success(request, mark_safe('Something Went Wrong!! Please try again after few minutes.<br>'
                                                         'If the issue persists, '
-                                                        'Please contact us at contact@kitabalaya.com {}'.format(e)))
+                                                        'Please contact us at contact@kitabalaya.info'))
                     return render(request, template_name=self.template_name, context=ctx)
 
         else:
             messages.error(request, mark_safe('You email is already present in our database.<br>'
                                               ' If you think this is an error, '
-                                              '    please contact us at contact@kitabalaya.com'))
+                                              '    please contact us at contact@kitabalaya.info'))
             return render(request, template_name=self.template_name, context=ctx)
 
         return render(request, template_name=self.template_name, context=ctx)
