@@ -54,7 +54,7 @@ class ComingSoonIndexPage(views.View):
                     CallToActionModel.objects.get(email=form.cleaned_data['email']).delete()
                     messages.success(request, mark_safe('Something Went Wrong!! Please try again after few minutes.<br>'
                                                         'If the issue persists, '
-                                                        'Please contact us at contact@kitabalaya.info'))
+                                                        'Please contact us at contact@kitabalaya.info {}'.format(e)))
                     return render(request, template_name=self.template_name, context=ctx)
 
         else:
