@@ -39,9 +39,9 @@ class ComingSoonIndexPage(views.View):
                     email = EmailMessage(
                         subject='Welcome to Kitabalaya.',
                         body=self.body,
-                        from_email='contact@kitabalaya.info',
+                        from_email='paritosh.ghimire@kitabalaya.info',
                         to=[form.cleaned_data['email']],
-                        reply_to=['contact@kitabalaya.info'],
+                        reply_to=['paritosh.ghimire@kitabalaya.info'],
                         headers={'Content-Type': 'text/plain'},
                     )
                     email.send()
