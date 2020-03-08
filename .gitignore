@@ -6,7 +6,6 @@ __pycache__/
 migrations/
 devenv/
 kitabalaya/base_local_settings.py
-blog/
 
 # C extensions
 *.so
