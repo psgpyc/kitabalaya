@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{#    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">#}
+
+
+
+    <title>Blog:Kitabalaya</title>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <nav>
+            <div class="nav-links">
+            </div>
+        </nav>
+
+        <nav>
+            <a href="#"><img class="logo" src="{% static 'blog/img/kitabalaya-logo.png' %}" alt="Kitabalaya Logo"></a>
+        </nav>
+        <nav>
+            <ul class="nav-links">
+                <li><a class="nav-link" href="#">LOG IN</a></li>
+                <li><a class="nav-link" href="#">SIGNUP</a></li>
+            </ul>
+        </nav>
+
+        <br>
+    </header>
+
+    <div class="nav-categories">
+            <ul class="nav-links-secondary">
+                <li><a class="nav-link-secondary" href="#">Authors</a></li>
+                <li><a class="nav-link-secondary" href="#">Books</a></li>
+                <li><a class="nav-link-secondary" href="#">Kitabalaya Reviews</a></li>
+                <li><a class="nav-link-secondary" href="#">Stories</a></li>
+
+                <li><a class="nav-link-secondary" href="#">Poems</a></li>
+                <li><a class="nav-link-secondary" href="#">Quotes</a></li>
+                <li><a class="nav-link-secondary" href="#">Kitabalaya Podcasts</a></li>
+                <li><a class="nav-link-secondary" href="#">Events</a></li>
+                <li><a class="nav-link-secondary" href="#">Explore Kathmandu</a></li>
+            </ul>
+
+    </div>
+</div>
+
+
+    {% block content %}{% endblock %}
+
+</body>
+</html>
