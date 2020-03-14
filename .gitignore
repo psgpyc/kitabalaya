@@ -6,10 +6,13 @@ __pycache__/
 migrations/
 devenv/
 kitabalaya/base_local_settings.py
+<<<<<<< HEAD
 .DS_Store
 accounts/
 blog/
 
+=======
+>>>>>>> parent of 6659348... finalized landing page for blog
 
 # C extensions
 *.so
