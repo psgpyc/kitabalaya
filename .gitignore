@@ -6,6 +6,7 @@ __pycache__/
 migrations/
 devenv/
 .DS_Store
+
 kitabalaya/base_local_settings.py
 # C extensions
 *.so
