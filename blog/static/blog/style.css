@@ -101,6 +101,12 @@ nav {
     color: #0f0f0f;
 }
 
+.nav-link:hover {
+    font-size: 16px;
+    color: rgba(10, 103, 60, 0.8);
+ ;
+}
+
 .nav-link-end {
     justify-content: flex-end;
 }
@@ -168,6 +174,12 @@ nav {
     font-weight: 200;
     /*color: rgba(10, 103, 60, 0.8);*/
     color: #0f0f0f;
+}
+
+.nav-link-secondary:hover {
+    font-size: 16px;
+    color: rgba(10, 103, 60, 0.8);
+
 }
 
 
