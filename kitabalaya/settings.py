@@ -19,7 +19,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-    'blog.apps.BlogConfig',
 
     # Installed App
     'comingsoon.apps.ComingsoonConfig',
