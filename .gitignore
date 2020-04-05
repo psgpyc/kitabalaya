@@ -4,6 +4,8 @@ __pycache__/
 *$py.class
 .idea/
 devenv/
+blog/
+coresearch/
 .DS_Store
 
 kitabalaya/base_local_settings.py

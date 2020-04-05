@@ -3,6 +3,7 @@ from django_hosts import patterns, host
 
 host_patterns = patterns('',
     host(r'www', settings.ROOT_URLCONF, name='www'),
-    host(r'blog', 'blog.urls', name='blog-subdomain'),
-    host(r'search', 'coresearch.urls', name='search-subdomain'),
+    host(r'marathon', settings.ROOT_URLCONF, name='marathon')
+    # host(r'blog', 'blog.urls', name='blog-subdomain'),
+    # host(r'search', 'coresearch.urls', name='search-subdomain'),
 )

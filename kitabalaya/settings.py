@@ -23,8 +23,6 @@ INSTALLED_APPS = [
 
     # Installed App
     'comingsoon.apps.ComingsoonConfig',
-    'corebookmodels.apps.CorebookmodelsConfig',
-    'coresearch.apps.CoresearchConfig',
     'coreaccounts.apps.CoreaccountsConfig',
 
     # Third Party Applications
