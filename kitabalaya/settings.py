@@ -25,12 +25,16 @@ INSTALLED_APPS = [
     'comingsoon.apps.ComingsoonConfig',
     'corebookmodels.apps.CorebookmodelsConfig',
     'coresearch.apps.CoresearchConfig',
+    'coreaccounts.apps.CoreaccountsConfig',
 
     # Third Party Applications
     'django_hosts',
     'storages'
 
 ]
+
+AUTH_USER_MODEL = 'coreaccounts.User'
+
 
 MIDDLEWARE = [
     'django_hosts.middleware.HostsRequestMiddleware',
@@ -79,6 +83,10 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+    )
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,6 +113,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

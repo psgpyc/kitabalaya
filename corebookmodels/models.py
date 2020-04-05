@@ -112,7 +112,6 @@ class Book(models.Model):
         indexes = [GinIndex(fields=['search_vector'])]
 
 
-
 class Nationality(models.Model):
     """Model representing Country of an Author """
 
