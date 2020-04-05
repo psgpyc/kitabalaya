@@ -3,7 +3,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 .idea/
-migrations/
 devenv/
 .DS_Store
 
