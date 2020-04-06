@@ -2,12 +2,14 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 
 # postgres FullTextSearch Imports
 
 from django.contrib.postgres.search import SearchVectorField, SearchVector
 from django.contrib.postgres.indexes import GinIndex
 
+user = get_user_model()
 
 def upload_bookimage_path(self, filename):
     return 'book_images/{author_name}/{name}/{filename}'.format(
@@ -40,6 +42,7 @@ class Genre(models.Model):
 
 class Language(models.Model):
     """Model representing a Language (e.g. English, French, Japanese, etc.)"""
+
     name = models.CharField(max_length=200,
                             help_text="Enter the book's natural language (e.g. English, French, Japanese etc.)")
 
@@ -50,6 +53,8 @@ class Language(models.Model):
 
 class Book(models.Model):
     """Model representing a book (but not a specific copy of a book)."""
+    staff_user = models.ForeignKey(user, on_delete=models.DO_NOTHING)
+
     title = models.CharField(max_length=200,
                              verbose_name='Title of Book')
 
@@ -91,8 +96,6 @@ class Book(models.Model):
 
     slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=False,)
 
-    search_vector = SearchVectorField(null=True)
-
     def get_absolute_url(self):
         """Returns the url to access a particular book instance."""
         return reverse('book-detail', args=[str(self.id)])
@@ -100,16 +103,11 @@ class Book(models.Model):
     def save(self, *args, **kwargs):
         """Initialising the slug for the slug field"""
         self.slug = slugify(self.title)
-        self.search_vector = Book.objects.update(search_vector=SearchVector('title', 'summary'))
-
         super(Book, self).save(*args, **kwargs)
 
     def __str__(self):
         """String for representing the Model object."""
         return self.title
-
-    class Meta:
-        indexes = [GinIndex(fields=['search_vector'])]
 
 
 class Nationality(models.Model):
@@ -136,6 +134,8 @@ class Author(models.Model):
         Female = 'F', _('Female')
         NonBinary = 'NoB', _('Non Binary')
         Undefined = 'Undef', _('Undefined')
+
+    staff_user = models.ForeignKey(user, on_delete=models.DO_NOTHING)
 
     name = models.CharField(max_length=100, db_column='Author Name',
                             verbose_name='Author\'s name',
@@ -173,11 +173,6 @@ class Author(models.Model):
                                    related_name='genre_by_author'
 
                                    )
-    book = models.ManyToManyField(Book,
-                                  verbose_name='Author\'s Books',
-                                  help_text='Please all the books the author has written',
-                                  related_name='books_by_author'
-                                  )
 
     is_active = models.BooleanField(default=False,
                                     verbose_name='Ban Author?',
@@ -200,6 +195,8 @@ class Author(models.Model):
 
 
 class Publication(models.Model):
+    staff_user = models.ForeignKey(user, on_delete=models.DO_NOTHING)
+
     name = models.CharField(max_length=200,
                             verbose_name='Publication House Name',
                             )

@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 
-ALLOWED_HOSTS = ['www.kitabalaya.com', 'search.kitabalaya.com', 'kitabalaya.com']
+ALLOWED_HOSTS = ['www.kitabalaya.com', 'marathon.kitabalaya.com', 'kitabalaya.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 
     # Installed App
     'comingsoon.apps.ComingsoonConfig',
+    'corebookmodels.apps.CorebookmodelsConfig',
     'coreaccounts.apps.CoreaccountsConfig',
 
     # Third Party Applications
