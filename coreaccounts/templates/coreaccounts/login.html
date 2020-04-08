@@ -1,0 +1,84 @@
+{% extends 'coreaccounts/base-marathon.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <main>
+
+
+
+
+        <div class="presentation">
+
+
+            <div class="intro">
+
+
+                <div class="success-message">
+                  {% if messages %}
+                    {% for message in messages %}
+                        {% if color %}
+                            <div style="margin-top: 20px; color: red;">
+
+                                    {{ message }}
+
+                            </div>
+                        {% else %}
+                            <div style="margin-top: 20px; color: green;">
+
+                                {{ message }}
+
+                            </div>
+                        {% endif %}
+
+
+                    {% endfor %}
+
+                     {% endif %}
+                </div>
+                <div class="registration-flex">
+                    <div class="registration-value-prop">
+                        <h1 class="registration-heading">Kitabalaya's Reading Marathon</h1>
+
+                        <p>Amidst, the COVID-19 Peril, Kitabalaya has designed a reading marathon that will narrow our boundless energy in a fun and
+                            constructive way via the love of books.
+                            The marathon is a friendly competition among the bibliophiles that aims to motivate the participants to read
+                            a particular book in a specified amount of time. We are aiming to elevate reading culture as a “Must Do” item on
+                            the days of wearisome lockdown. <br>
+                            It’s fun and it’s meaningful.
+                        </p>
+
+
+
+
+                    </div>
+
+                    <div class="login-from">
+
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                             <br>
+
+                            <button type="submit" class="cta-submit">Login</button>
+
+                        </form>
+                        <div class="registration-login-link">
+                            <p><small>Need an account?  <a href="{% url 'user-register' %}">Register Here..</a></small> </p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+
+
+
+
+{% endblock %}

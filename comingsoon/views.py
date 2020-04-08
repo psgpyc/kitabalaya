@@ -11,7 +11,7 @@ import smtplib
 
 
 class ComingSoonIndexPage(views.View):
-    template_name = 'comingsoon/index.html'
+    template_name = 'coreaccounts/index.html'
     body = 'Congratulations on joining Kitabalaya. You have been successfully registered. '
 
     def get(self, request, *args, **kwargs):
