@@ -19,6 +19,9 @@ class RegistrationView(View):
     }
 
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('home')
+
         return render(request, template_name=self.template_name, context=self.ctx)
 
     def post(self, request, *args, **kwargs):

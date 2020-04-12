@@ -18,7 +18,7 @@ urlpatterns = [
 
     path('register/', RegistrationView.as_view(), name='user-register'),
 
-    path('login/', auth_views.LoginView.as_view(
+    path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True,
         template_name='coreaccounts/login.html',
         authentication_form=UserLoginForm), name='user-login'),
 
