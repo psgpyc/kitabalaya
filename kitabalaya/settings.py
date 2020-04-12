@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 
-ALLOWED_HOSTS = ['www.kitabalaya.com', 'marathon.kitabalaya.com', 'kitabalaya.com']
+ALLOWED_HOSTS = ['www.kitabalaya.com',  'kitabalaya.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -112,6 +112,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+DEFAULT_ACTIVATION_DAYS = 1
+
+LOGIN_URL = 'user-login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+BASE_URL = 'https://www.kitabalaya.com'
+
 
 
 STATIC_URL = '/static/'
@@ -122,6 +129,7 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+DEFAULT_FROM_EMAIL = 'contact@kitabalaya.info'
 EMAIL_HOST = 'smtp.zoho.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
@@ -129,7 +137,6 @@ EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-LOGIN_URL = 'user-login'
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')

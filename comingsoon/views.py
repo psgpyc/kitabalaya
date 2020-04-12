@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 from django import views
 from django.utils.safestring import mark_safe
 
@@ -7,11 +8,14 @@ from django.shortcuts import render,get_object_or_404, redirect
 from comingsoon.models import CallToActionModel
 from django.contrib import messages
 from django.core.mail import send_mail, EmailMessage
+from django.template.loader import get_template
 import smtplib
+
+DEFAULT_FROM_EMAIL = getattr(settings, 'DEFAULT_FROM_EMAIL', 'contact@kitabalaya.info')
 
 
 class ComingSoonIndexPage(views.View):
-    template_name = 'coreaccounts/index.html'
+    template_name = 'comingsoon/index.html'
     body = 'Congratulations on joining Kitabalaya. You have been successfully registered. '
 
     def get(self, request, *args, **kwargs):
@@ -36,15 +40,24 @@ class ComingSoonIndexPage(views.View):
                 user_email.user_agent = request.META['HTTP_USER_AGENT']
 
                 try:
-                    email = EmailMessage(
-                        subject='Welcome to Kitabalaya.',
-                        body=self.body,
-                        from_email='contact@kitabalaya.info',
-                        to=[form.cleaned_data['email']],
-                        reply_to=['contact@kitabalaya.info'],
-                        headers={'Content-Type': 'text/plain'},
+                    context = {
+                        'email': form.cleaned_data['email'],
+                        'path': 'https://www.kitabalaya.com/register/'
+                    }
+
+                    txt_ = get_template('comingsoon/verify.txt').render(context)
+                    html_ = get_template('comingsoon/verify.html').render(context)
+                    subject = "Welcome to Kitabalaya"
+                    from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'contact@kitabalaya.info')
+
+                    sent_email = send_mail(
+                        subject=subject,
+                        message=txt_,
+                        from_email=from_email,
+                        recipient_list=(context['email'],),
+                        html_message=html_,
+                        fail_silently=False,
                     )
-                    email.send()
                     messages.success(request, mark_safe('Thank You!!! You are now successfully registered with us.<br>'
                                                         'Please Check Your Email For Exciting Offers.<br>'))
                     user_email.save()
@@ -54,7 +67,7 @@ class ComingSoonIndexPage(views.View):
                     CallToActionModel.objects.get(email=form.cleaned_data['email']).delete()
                     messages.success(request, mark_safe('Something Went Wrong!! Please try again after few minutes.<br>'
                                                         'If the issue persists, '
-                                                        'Please contact us at contact@kitabalaya.info {}'.format(e)))
+                                                        'Please contact us at contact@kitabalaya.info'))
                     return render(request, template_name=self.template_name, context=ctx)
 
         else:

@@ -1,0 +1,20 @@
+Greeting from Kitabalaya,
+
+You're receiving this email because you have subscribed to Kitabalaya's Newsletter at www.kitabalaya.com
+
+You have subscribed using the following email: {{ email }}
+
+If you want to register with us. Please follow the link below:
+
+
+
+<a href='{{ path }}'> {{ path }} </a>
+<br>
+Once you have registered with us, you can login at www.kitabalaya.com
+
+Thank you for subscribing.
+
+Kitabalaya: Book a book
+Good Friends, Good Book and Kitabalaya.
+
+<h1>The Kitabalaya Team</h1>
