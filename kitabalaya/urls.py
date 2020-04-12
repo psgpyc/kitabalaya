@@ -19,11 +19,12 @@ urlpatterns = [
     path('register/', RegistrationView.as_view(), name='user-register'),
 
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True,
-        template_name='coreaccounts/login.html',
-        authentication_form=UserLoginForm), name='user-login'),
+         template_name='coreaccounts/login.html',
+         authentication_form=UserLoginForm), name='user-login'),
 
-    path('AfckRLHRPb1LxyTvbToURRAlfmwoJLOnxGLpNqHHO02d-3SKrmXZs8uKPhsCKeBGMSjo4IaQZPWnRceFQSfuy2klbfrFa3ZgRR_4rmF-P2bprQ&smuh=29404&lh=Ac9nA-DRXF0Rba0Q/',
-         login_required(UserLogoutView.as_view(template_name='coreaccounts/login.html', )),{'next_page': settings.LOGOUT_REDIRECT_URL}, name='user-logout'),
+    path('logout/',
+         login_required(UserLogoutView.as_view(template_name='coreaccounts/login.html', )),
+         {'next_page': settings.LOGOUT_REDIRECT_URL}, name='user-logout'),
 
     path('reset/',
          auth_views.PasswordResetView.as_view(

@@ -28,7 +28,7 @@ class RegistrationView(View):
         form = RegistrationForm(request.POST)
         name = request.POST.get('password1')
 
-        print(name,request.POST.get('password2'))
+        print(name, request.POST.get('password2'))
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('full_name')
