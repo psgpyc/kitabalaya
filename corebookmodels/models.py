@@ -154,11 +154,11 @@ class Author(models.Model):
     dateOfBirth = models.DateField(verbose_name='Author\'s Birth Day',
                                    help_text='Please enter the date when author was born')
 
-    nationality = models.OneToOneField(Nationality,
-                                       on_delete=models.CASCADE,
-                                       related_name='author_nationality',
-                                       verbose_name='Author\'s Nationality',
-                                       help_text='Please enter the nationality of the Author')
+    nationality = models.ForeignKey(Nationality,
+                                    on_delete=models.CASCADE,
+                                    related_name='author_nationality',
+                                    verbose_name='Author\'s Nationality',
+                                    help_text='Please enter the nationality of the Author')
 
     dateOfDeath = models.DateField(blank=True,
                                    null=True,

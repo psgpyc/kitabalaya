@@ -1,11 +1,265 @@
-{% extends 'coreaccounts/base-marathon.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, height=device-height"> -->
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-site-verification" content="WAba9Dz03oscuoNsl7n1a11bYbM86hbOHpnqQUN1nEk" />
+    <meta property="og:image" content="https://www.facebook.com/kitabalayabookabook/photos/p.107721337469224/107721337469224/?type=1&theater" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href={% static 'coreaccounts/css/test.css' %}>
+    <title>
+
+        {% block title %}
+            {{ title }}
+        {% endblock %}
+
+    </title>
+</head>
+<body>
+ <header>
 
 
-{% block title %}
-    {{ title }}
-{% endblock %}
+        <nav>
+            <ul class="nav-links">
+
+                <li><img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book"></li>
 
 
-{% block body %}
 
-{% endblock %}
+
+            </ul>
+
+            <div class="logo-container">
+                <img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book">
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+<div class="presentation">
+
+
+            <div class="intro">
+
+
+
+
+                <div class="main-content">
+            <div class="profile-image">
+                <img src="{% static 'coreaccounts/img/profile-image.jpg'   %}" alt="User Profile Image">
+            </div>
+{#                            <img src="{% static 'blog/img/gulabi umer.jpg'   %}" alt="User Profile Image">#}
+
+            <div class="main-content-details">
+                <h3 >Paritosh Sharma Ghimire</h3>
+                <p class="published-date-style" ><i>Dec 4, 2019 - 3 Min Read</i></p>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+
+
+                <p class="main-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias asperiores atque consequatur consequuntur debitis deleniti facilis laborum laudantium molestiae nemo numquam quaerat quisquam ratione rem, repellat rerum sint sit soluta unde vel voluptatum. Aliquam, at consequuntur cumque dignissimos earum ex hic, iure laborum nemo repudiandae sunt vero voluptas voluptate. A alias assumenda autem consectetur culpa, dolor enim </p>
+            </div>
+        </div>
+
+{#        <div class="w3-bar paginator-style">#}
+{#              <a href="#" class="w3-button">&laquo;</a>#}
+{#              <a href="#" class="w3-button">1</a>#}
+{#              <a href="#" class="w3-button">2</a>#}
+{#              <a href="#" class="w3-button">3</a>#}
+{#              <a href="#" class="w3-button">4</a>#}
+{#              <a href="#" class="w3-button">&raquo;</a>#}
+{#        </div>#}
+
+
+
+        <div class="featured">
+            <span class="article-text">WHAT'S NEW ON KITABALAYA</span>
+        </div>
+
+
+        <div class="all-articles">
+            <div class="article-card">
+                <div class="profile-image-cards">
+                     <img src="{% static 'coreaccounts/img/profile-image.jpg'   %}" alt="User Profile Image">
+                </div>
+                <div class="main-content-details-card">
+                    <h3 >Paritosh Sharma Ghimire</h3>
+                    <p ><i >Dec 4, 2019 - 3 Min Read</i></p>
+
+                </div>
+                <div class="main-content-details-card-2">
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias asperiores atque consequatur consequuntur debitis deleniti facilis laborum laudantium molestiae nemo numquam quaerat quisquam ratione rem, repellat rerum sint sit soluta unde vel voluptatum. Aliquam, at consequuntur cumque dignissimos earum ex hic, iure laborum nemo repudiandae sunt vero voluptas voluptate. </p>
+                </div>
+
+            </div>
+            <div class="article-card">
+                <div class="profile-image-cards">
+                     <img src="{% static 'coreaccounts/img/profile-image.jpg'   %}" alt="User Profile Image">
+                </div>
+                <div class="main-content-details-card">
+                    <h3 >Paritosh Sharma Ghimire</h3>
+                    <p style="margin-top: -13px;"><i >Dec 4, 2019 - 3 Min Read</i></p>
+
+                </div>
+                <div class="main-content-details-card-2">
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias asperiores atque consequatur consequuntur debitis deleniti facilis laborum laudantium molestiae nemo numquam quaerat quisquam ratione rem, repellat rerum sint sit soluta unde vel voluptatum. Aliquam, at consequuntur cumque dignissimos earum ex hic, iure laborum nemo repudiandae sunt vero voluptas voluptate. </p>
+                </div>
+
+            </div>
+            <div class="article-card">
+                <div class="profile-image-cards">
+                     <img src="{% static 'coreaccounts/img/profile-image.jpg'   %}" alt="User Profile Image">
+                </div>
+                <div class="main-content-details-card">
+                    <h3 >Paritosh Sharma Ghimire</h3>
+                    <p style="margin-top: -13px;"><i >Dec 4, 2019 - 3 Min Read</i></p>
+
+                </div>
+                <div class="main-content-details-card-2">
+                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias asperiores atque consequatur consequuntur debitis deleniti facilis laborum laudantium molestiae nemo numquam quaerat quisquam ratione rem, repellat rerum sint sit soluta unde vel voluptatum. Aliquam, at consequuntur cumque dignissimos earum ex hic, iure laborum nemo repudiandae sunt vero voluptas voluptate. </p>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="featured">
+                         <span class="article-text">Reviews</span>
+        </div>
+
+
+        <div class="main-content">
+            <div class="profile-image">
+                <img src="{% static 'coreaccounts/img/profile-image.jpg'   %}" alt="User Profile Image">
+            </div>
+{#                            <img src="{% static 'blog/img/gulabi umer.jpg'   %}" alt="User Profile Image">#}
+
+            <div class="main-content-details">
+                <h3 >Paritosh Sharma Ghimire</h3>
+                <p class="published-date-style" ><i>Dec 4, 2019 - 3 Min Read</i></p>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+
+
+                <p class="main-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias asperiores atque consequatur consequuntur debitis deleniti facilis laborum laudantium molestiae nemo numquam quaerat quisquam ratione rem, repellat rerum sint sit soluta unde vel voluptatum. Aliquam, at consequuntur cumque dignissimos earum ex hic, iure laborum nemo repudiandae sunt vero voluptas voluptate. A alias assumenda autem consectetur culpa, dolor enim </p>
+            </div>
+        </div>
+
+         <div class="main-content">
+            <div class="profile-image">
+                <img src="{% static 'coreaccounts/img/profile-image.jpg'   %}" alt="User Profile Image">
+            </div>
+{#                            <img src="{% static 'blog/img/gulabi umer.jpg'   %}" alt="User Profile Image">#}
+
+            <div class="main-content-details">
+                <h3 >Paritosh Sharma Ghimire</h3>
+                <p class="published-date-style" ><i>Dec 4, 2019 - 3 Min Read</i></p>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+
+
+                <p class="main-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias asperiores atque consequatur consequuntur debitis deleniti facilis laborum laudantium molestiae nemo numquam quaerat quisquam ratione rem, repellat rerum sint sit soluta unde vel voluptatum. Aliquam, at consequuntur cumque dignissimos earum ex hic, iure laborum nemo repudiandae sunt vero voluptas voluptate. A alias assumenda autem consectetur culpa, dolor enim </p>
+            </div>
+        </div>
+
+
+
+
+    </main>
+
+    <footer>
+
+{#        <div class="footer-links">#}
+{#            <ul>#}
+{#                <li><a href="https://www.kitabalaya.com">Kitabalaya</a></li>#}
+{#                <li><a href="#">About Us</a></li>#}
+{#                <li><a href="#">Contact Us</a></li>#}
+{##}
+{#            </ul>#}
+{#        </div>#}
+        <div class="footer-note">
+                    © 2020, Dataosphere Incorporated Pvt. Ltd. All rights reserved.
+
+
+
+        </div>
+
+{#        <div class="footer-links">#}
+{#            <ul>#}
+{#                <li><a href="#">Privacy Polices</a></li>#}
+{#                <li><a href="#">Terms and Conditions</a></li>#}
+{#                <li><a href="#">Report Plagiarism</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+
+
+
+
+
+    </footer>
+
+
+                <div class="link-icons">
+                    <a target="_blank" href="https://www.instagram.com/kitabalaya"><i class="fab fa-instagram fa-2x link-icon"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/kitabalayabookabook"><i class="fab fa-facebook fa-2x link-icon"></i></a>
+                    <a target="_blank" href="https://www.twitter.com/kitabalaya"><i class="fab fa-twitter fa-2x link-icon"></i></a>
+                </div>
+            </div>
+
+</div>
+
+
+
+
+<script src="{% static 'comingsoon/js/main.js' %}"></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
