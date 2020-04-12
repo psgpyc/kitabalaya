@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, height=device-height"> -->
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-site-verification" content="WAba9Dz03oscuoNsl7n1a11bYbM86hbOHpnqQUN1nEk" />
+    <meta property="og:image" content="https://www.facebook.com/kitabalayabookabook/photos/p.107721337469224/107721337469224/?type=1&theater" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href={% static 'coreaccounts/css/style.css' %}>
+    <title>
+
+        {% block title %}
+            {{ title }}
+        {% endblock %}
+
+    </title>
+</head>
+<body>
+ <header>
+
+
+        <nav>
+            <ul class="nav-links">
+
+                <li><img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book"></li>
+
+
+
+
+            </ul>
+
+            <div class="logo-container">
+                <img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book">
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+{% block body %}
+
+
+
+{% endblock %}
+
+
+<div class="presentation">
+
+
+            <div class="intro">
+                <div class="link-icons">
+                    <a target="_blank" href="https://www.instagram.com/kitabalaya"><i class="fab fa-instagram fa-2x link-icon"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/kitabalayabookabook"><i class="fab fa-facebook fa-2x link-icon"></i></a>
+                    <a target="_blank" href="https://www.twitter.com/kitabalaya"><i class="fab fa-twitter fa-2x link-icon"></i></a>
+                </div>
+            </div>
+
+</div>
+
+
+
+
+<script src="{% static 'comingsoon/js/main.js' %}"></script>
+
+
+</body>
+</html>
