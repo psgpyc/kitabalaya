@@ -1,12 +1,60 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from django.contrib.auth import views as auth_views
+
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
+
+from coreaccounts.forms import UserPasswordResetForm,UserPasswordResetConfirmForm,UserLoginForm
+from coreaccounts.views import RegistrationView, UserLogoutView
+
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # USER ACCOUNTS
+
+    path('register/', RegistrationView.as_view(), name='user-register'),
+
+    path('login/', auth_views.LoginView.as_view(
+        template_name='coreaccounts/login.html',
+        authentication_form=UserLoginForm), name='user-login'),
+
+    path('AfckRLHRPb1LxyTvbToURRAlfmwoJLOnxGLpNqHHO02d-3SKrmXZs8uKPhsCKeBGMSjo4IaQZPWnRceFQSfuy2klbfrFa3ZgRR_4rmF-P2bprQ&smuh=29404&lh=Ac9nA-DRXF0Rba0Q/',
+         login_required(UserLogoutView.as_view(template_name='coreaccounts/login.html', )),{'next_page': settings.LOGOUT_REDIRECT_URL}, name='user-logout'),
+
+    path('reset/',
+         auth_views.PasswordResetView.as_view(
+             template_name='coreaccounts/password_reset_form.html',
+             form_class=UserPasswordResetForm,
+         ),
+
+         name='password_reset'),
+    path('reset/done/',
+         auth_views.PasswordResetDoneView.as_view(
+             template_name='coreaccounts/password_reset_done.html'
+         ),
+         name='password_reset_done'),
+    path('reset/confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(
+             template_name='coreaccounts/password_reset_confirm.html',
+             form_class=UserPasswordResetConfirmForm,
+
+         ),
+         name='password_reset_confirm'),
+    path('reset/complete/',
+         auth_views.PasswordResetCompleteView.as_view(
+             template_name='coreaccounts/password_reset_complete.html'
+         ),
+         name='password_reset_complete'),
+
+    # END USER ACCOUNTS
+
     path('', include('comingsoon.urls'), name='base-coreaccounts'),
-    path('accounts/', include('coreaccounts.urls'), name='base-registration')
+    path('profile/', include('coreaccounts.urls'), name='base-registration'),
+
 ]
 
 

@@ -1,0 +1,19 @@
+Greeting from Kitabalaya,
+
+You're receiving this email because you have registered an account at www.kitabalaya.com
+
+Your are registered under the following email: {{ email }}
+
+Please go to the following page and activate your account:
+
+{{ path }}
+
+Once you activate your account, you can login.
+
+Thank you for joining.
+
+Kitabalaya: Book a book
+Good Friends, Good Book and Kitabalaya.
+
+The Kitabalaya Team
+Reach us at contact@kitabalaya.info

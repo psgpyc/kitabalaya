@@ -202,8 +202,85 @@ li> a:hover {
     margin-top: 5px;
 }
 
+.password-reset-from {
+    width: 90%;
+    margin: auto;
+    margin-top: 70px;
+}
 
-@media screen and (max-width: 700px) {
+/*    --------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+@media screen and (max-width: 1200px) {
+     .cta {
+        padding: 10px 10px;
+        width: 35vw;
+        /*margin-top: 30px;*/
+        border: 1px solid #427885;
+        border-radius: 8px;
+        font-size: 15px;
+        text-align: center;
+        color: #427885;
+    }
+
+    .cta-submit  {
+        width: 13vw;
+        height: 35px;
+        cursor: pointer;
+        border: 1px solid #427885;
+        color: #427885;
+        /*margin-top: 12px;*/
+        /* margin-left: 30%; */
+        border-radius: 8px;
+        font-size: 17px;
+    }
+
+    .registration-flex {
+        display: flex;
+    }
+
+    .registration-value-prop {
+        margin-top: 10px;
+        flex: 3;
+        margin-right: 30px;
+
+    }
+    .registration-from{
+        flex:2;
+    }
+
+    .register-heading {
+        /*margin-bottom: 20px;*/
+        margin-top: -15px;
+        color: #427885
+
+    }
+
+    .login-from{
+        flex: 2;
+        margin-top: 70px;
+    }
+
+    .registration-heading {
+        margin-top: 20px;
+        margin-bottom: 30px;
+        font-weight: 100;
+    }
+
+    .success-message{
+        margin-bottom: 70px;
+        margin-top: -70px;
+    }
+
+    .registration-login-link{
+        margin-top: 5px;
+    }
+
+
+/*    --------------------------------------------------------------------------------------------------------------------------------------------*/
+
+}
+@media screen and (max-width: 900px) {
 
     /* html, body {
         overflow-y: hidden;
@@ -253,102 +330,6 @@ li> a:hover {
     }
 
    
-    .value-prop-main {
-    text-align: right;
-    font-size: 14px;
-    font-style: italic;
-    font-family:'FontAwesome'!important;
-    margin-right: 8%;
-    letter-spacing: 1px;
-    margin-top: -5px;
-
-    }
-
-    .value-prop {
-        display: none;
-    }
-
-    .value-prop-mobile1 {
-        display: block;
-        margin-top: 25px;
-        font-size: 25px;
-        font-weight: 500;
-        letter-spacing: 3px;
-        
-        text-align: left;
-        margin-left: 40px;
-        color: rgb(2, 45, 11);
-    
-    }
-
-    .value-prop-mobile2 {
-        display: block;
-        font-size: 25px;
-        font-weight: 500;
-        letter-spacing: 3px;
-        
-        text-align: center;
-        color: rgb(2, 45, 11);
-        
-        /* background: linear-gradient(to right, #54656a, #427885);
-    
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent; */
-    }
-
-    .value-prop-mobile3 {
-        display: block;
-        font-size: 25px;
-        font-weight: 500;
-        letter-spacing: 3px;
-        
-        text-align: right;
-        margin-right: 40px;
-        color: rgb(2, 45, 11);
-
-    }
-
-    .value-defination-mobile {
-        display: block;
-        margin-top: -25px;
-    
-        font-size: 25px;
-        font-weight: 300;
-        letter-spacing: 2px;
-        background: linear-gradient(to right,rgb(48, 47, 47), rgb(62, 53, 53));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        
-
-        text-align: center;
-
-    }
-    .value-defination1 {
-        display: none;
-    }
-
-    .value-defination-blog {
-        display: none;
-    }
-
-    .value-defination2 {
-        margin-top: 40px;
-        font-weight: 300;
-        font-size: 13px;
-        color:black;
-        margin-left: 5%;
-
-    }
-
-    .value-defination3 {
-        margin-top: 40px;
-        font-weight: 300;
-        font-size: 17px;
-        color:black;
-        margin-left: 5%;
-        letter-spacing: 7px;
-
-    }
 
     .cta {
         padding: 10px 10px;
@@ -395,8 +376,8 @@ li> a:hover {
         flex: 3;
         font-size: 15px;
         margin-bottom: 13px;
-        text-align: justify;
-        text-justify: distribute;
+        text-align: center;
+        justify-content: center;
 
     }
     .registration-from{
@@ -405,7 +386,7 @@ li> a:hover {
 
     .login-from{
         flex: 2;
-        margin-top: 70px;
+        margin-top: -1px;
     }
 
     .registration-heading {

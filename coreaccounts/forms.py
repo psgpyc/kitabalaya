@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm
 
 
 
@@ -80,3 +80,41 @@ class UserLoginForm(AuthenticationForm):
                 'id': 'password',
             }))
 
+
+class UserPasswordResetForm(PasswordResetForm):
+    def __init__(self, *args, **kwargs):
+        super(UserPasswordResetForm, self).__init__(*args, **kwargs)
+
+    email = forms.EmailField(
+                                label='',
+                                widget=forms.TextInput(
+                                    attrs={
+                                        'class': 'cta',
+                                        'placeholder': 'Enter your Email',
+                                        'id': 'email',
+                                }))
+
+
+class UserPasswordResetConfirmForm(SetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(UserPasswordResetConfirmForm, self).__init__(*args, **kwargs)
+
+
+    new_password1 = forms.CharField(
+        label=(""),
+        widget=forms.PasswordInput(attrs={
+            'class': 'cta',
+            'placeholder': 'Enter your Password',
+            'id': 'password1',
+
+        }),
+    )
+    new_password2 = forms.CharField(
+        label=(""),
+        widget=forms.PasswordInput(attrs={
+            'class': 'cta',
+            'placeholder': 'Re-Enter your Password',
+            'id': 'password2',
+
+        }),
+    )
