@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.contrib.auth import views as auth_views
 
@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 
 from coreaccounts.forms import UserPasswordResetForm,UserPasswordResetConfirmForm,UserLoginForm
-from coreaccounts.views import RegistrationView, UserLogoutView
+from coreaccounts.views import RegistrationView, UserLogoutView, AccountEmailActivate
 
 from django.conf import settings
 
@@ -49,6 +49,10 @@ urlpatterns = [
              template_name='coreaccounts/password_reset_complete.html'
          ),
          name='password_reset_complete'),
+
+    re_path(r'^email/confirm/(?P<key>[0-9A-Za-z]+)/$',
+            AccountEmailActivate.as_view(),
+            name='email-activate'),
 
     # END USER ACCOUNTS
 

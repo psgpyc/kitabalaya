@@ -3,9 +3,12 @@ from django.shortcuts import render
 from django.views import View
 from django.contrib import messages
 from django.shortcuts import render,redirect
+from coreaccounts.models import ActivateEmail
 from coreaccounts.forms import RegistrationForm
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, LoginView
 from coreaccounts.forms import UserLoginForm
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 
 class RegistrationView(View):
@@ -54,5 +57,29 @@ class UserLogoutView(LogoutView):
         return context
 
 
+class AccountEmailActivate(View):
 
+    def get(self, request, key, *args, **kwargs):
+        qs = ActivateEmail.objects.filter(path_key__iexact=key)
+        qs_confirm = qs.confirmable()
+        if qs_confirm.count() == 1:
+            obj = qs.first()
+            obj.activate()
+            messages.success(request, 'Your Email has been confirmed. '
+                                      'You can now login to Kitabalaya using your email and password.')
+            return redirect('user-login')
+        else:
+            qs_activated = qs.filter(activated=True)
+            if qs_activated.exists():
+                reset_link = reverse('password_reset')
+                msg = """
+                    You have already confirmed your Email address. In case you forget,
+                    Do you want to <a href={}>reset your password?</a>
+                """.format(reset_link)
+                messages.success(request, mark_safe(msg))
+                return redirect('user-login')
 
+        return render(request, template_name='coreaccounts/registration-error.html', context={})
+
+    def post(self, request, *args, **kwargs):
+        pass
