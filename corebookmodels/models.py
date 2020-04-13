@@ -11,6 +11,7 @@ from django.contrib.postgres.indexes import GinIndex
 
 user = get_user_model()
 
+
 def upload_bookimage_path(self, filename):
     return 'book_images/{author_name}/{name}/{filename}'.format(
         author_name=self.author_name,
