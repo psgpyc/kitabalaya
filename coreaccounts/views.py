@@ -1,10 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
+from django.views.generic.edit import FormMixin
 from django.contrib import messages
 from django.shortcuts import render,redirect
 from coreaccounts.models import ActivateEmail
-from coreaccounts.forms import RegistrationForm
+from coreaccounts.forms import RegistrationForm, ReactivateEmailForm
 from django.contrib.auth.views import LogoutView, LoginView
 from coreaccounts.forms import UserLoginForm
 from django.urls import reverse
@@ -60,11 +61,14 @@ class UserLogoutView(LogoutView):
         return context
 
 
-class AccountEmailActivate(View):
+class AccountEmailActivate(FormMixin, View):
+    form_class = ReactivateEmailForm
+    success_url = '/reset/done/'
 
     def get(self, request, key, *args, **kwargs):
         qs = ActivateEmail.objects.filter(path_key__iexact=key)
         qs_confirm = qs.confirmable()
+        print(qs_confirm)
         if qs_confirm.count() == 1:
             obj = qs.first()
             obj.activate()
@@ -81,8 +85,25 @@ class AccountEmailActivate(View):
                 """.format(reset_link)
                 messages.success(request, mark_safe(msg))
                 return redirect('user-login')
-
-        return render(request, template_name='coreaccounts/registration-error.html', context={})
+        ctx = {'form':self.get_form()}
+        return render(request, template_name='coreaccounts/registration-error.html', context=ctx)
 
     def post(self, request, *args, **kwargs):
-        pass
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def form_valid(self, form):
+        email = form.cleaned_data.get('email')
+        obj = ActivateEmail.objects.email_exists(email).first()
+        if obj.regenerate():
+            obj.send_activation_email()
+        return super(AccountEmailActivate, self).form_valid(form)
+
+    def form_invalid(self, form):
+
+        ctx = {'form':self.get_form()}
+        return render(self.request, template_name='coreaccounts/registration-error.html', context=ctx)
+

@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin
 )
+from django.db.models import Q
 from datetime import timedelta
 from django.utils import timezone
 from django.conf import settings
@@ -145,12 +146,15 @@ class ActivateEmailManager(models.Manager):
     def get_queryset(self):
         return ActivateEmailQuerySet(self.model, using=self._db)
 
-    def confirmable(self):
-        return self.get_queryset().confirmable()
+    def email_exists(self, email):
+        return self.get_queryset().filter(Q(email=email) | Q(user__email=email)).filter(activated=False)
+
+    def email_doesnot_exists(self,email):
+        return self.get_queryset().filter(Q(email=email) | Q(user__email=email))
 
 
 class ActivateEmail(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField(max_length=255, unique=True)
     created_on = models.DateTimeField(auto_now_add=True, editable=False)
     updated_on = models.DateTimeField(auto_now=True, editable=False)

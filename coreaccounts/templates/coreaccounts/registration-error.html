@@ -16,13 +16,19 @@
 
              <div class="password-reset-from">
 
-                 <h3 class="register-heading">You have either already activated your account or an error has occurred !!!</h3>
+                 <h4 class="register-heading">You have either forgot to activate your account or an error has occurred !!!</h4>
                  <br>
-                 <h2 class="register-heading">If you think this is a mistake, please reach us at<h2>
-                     <br>
-                     <h2 class="register-heading">contact@kitabalaya.info</h2>
+                 <br>
+                <h5 class="register-heading">Do you want us to resend a verification Link?</h5>
+
+             <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
 
 
+                        <button type="submit" class="cta-submit">SUBMIT</button>
+
+                    </form>
              </div>
         </div>
     </div>
