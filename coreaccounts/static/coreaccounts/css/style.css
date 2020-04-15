@@ -72,7 +72,12 @@ nav{
 
     }
 
+.mobile-only{
+    display: None;
+}
+
 .logo{
+
     margin-top: -5px;
     height: 60px;
     width: 280px;
@@ -116,10 +121,6 @@ nav{
 
     color: rgb(2, 45, 11);
 
-    /* background: linear-gradient(to right, #54656a, #427885);
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
     }
 
 .value-prop-mobile1 {
@@ -339,6 +340,9 @@ li> a:hover {
 .tablet-view{
     display: None;
 }
+.logo-container-accounts{
+        display: None;
+    }
 
 
 
@@ -459,6 +463,10 @@ li> a:hover {
         display: None;
     }
 
+    .logo-container-accounts{
+        display: None;
+    }
+
 
 
 
@@ -480,16 +488,26 @@ li> a:hover {
 
     }
 
+
    .logo-container {
        display: block;
 
    }
 
-   .logo {
-         margin-top: -30px;
-         height: 7vh;
+   .logo-container-accounts{
+       display: flex;
+   }
+    .logo {
+         margin-top: -25px;
          width: 220px;
-        margin-left: 0;
+         margin-left: 0;
+
+   }
+
+   .logo-accounts{
+       margin-top: -25px;
+       width: 220px;
+       justify-content: center;
 
    }
 
@@ -673,5 +691,10 @@ li> a:hover {
     .mobile-view{
         display: None;
     }
+
+    .mobile-only{
+    display: block;
+}
+
 
 }
