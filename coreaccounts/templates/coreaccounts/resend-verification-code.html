@@ -1,0 +1,38 @@
+{% extends 'coreaccounts/base-marathon.html' %}
+
+{% block title %}
+    Resend Verification Code | Kitabalaya
+{% endblock %}
+
+{% block body %}
+    <div class="presentation">
+
+    <div class="intro">
+
+
+        <div class="registration-flex">
+
+             <div class="password-reset-from">
+
+
+                <h5 class="register-heading">Do you want us to resend a verification Link?</h5>
+
+             <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+
+                        <button type="submit" class="cta-submit">SUBMIT</button>
+
+                    </form>
+             </div>
+        </div>
+    </div>
+
+  </div>
+
+
+
+
+
+{% endblock %}

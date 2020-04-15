@@ -1,12 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import FormMixin, FormView
 from django.contrib import messages
 from django.shortcuts import render,redirect
 from coreaccounts.models import ActivateEmail
 from coreaccounts.forms import RegistrationForm, ReactivateEmailForm
-from django.contrib.auth.views import LogoutView, LoginView
+from django.contrib.auth.views import LogoutView
 from coreaccounts.forms import UserLoginForm
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -40,14 +40,7 @@ class RegistrationView(View):
             return redirect('user-register')
 
         return render(request, template_name=self.template_name,
-                      context={'form': form, 'title':'Registration| Kitabalaya'
-                     })
-
-
-class HomeView(LoginRequiredMixin,View):
-
-    def get(self, request, *args, **kwargs):
-        return render(request, template_name='coreaccounts/home.html')
+                      context={'form': form, 'title': 'Registration| Kitabalaya'})
 
 
 class UserLogoutView(LogoutView):
@@ -96,6 +89,10 @@ class AccountEmailActivate(FormMixin, View):
             return self.form_invalid(form)
 
     def form_valid(self, form):
+        msg = """
+        Activation link has been sent to you, Please check your Email.
+        """
+        messages.success(self.request, msg)
         email = form.cleaned_data.get('email')
         obj = ActivateEmail.objects.email_exists(email).first()
         if obj.regenerate():

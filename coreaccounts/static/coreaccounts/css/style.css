@@ -7,10 +7,14 @@
 body i {
     font-family:'FontAwesome' !important;
     font-style: normal;
+
     }
 
 html, body {
     font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+
+
     }
 
 textarea:focus, input:focus{
@@ -63,29 +67,32 @@ header nav ul {
     align-items: center;
     }
 
+nav{
+    flex: 1;
+
+    }
+
 .logo{
-    margin-top: 20px;
+    margin-top: -5px;
     height: 60px;
     width: 280px;
-    margin-left: 25px; 
-    margin-right: 25px;
+    margin-left: 35vw;
     }
 
 .logo-container {
     display: none;
 
     }
+.no-display-mobile{
+    display: block;
+}
 
-nav{
-    flex: 5;
-
-    }
 
 .nav-links {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     list-style: none;
-    margin-top: 35px;
+    margin-top: 17px;
     }
 
 .nav-link  {
@@ -98,11 +105,98 @@ nav{
     -webkit-text-fill-color: transparent;
 
     }
+.value-prop {
+    display: block;
+    margin-top: 45px;
+    font-size: 35px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-left: 2px;
+    text-align: center;
 
-li> a:hover {
-    background: linear-gradient( #494964,yellow );
+    color: rgb(2, 45, 11);
+
+    /* background: linear-gradient(to right, #54656a, #427885);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    }
+
+.value-prop-mobile1 {
+    display: none;
+    }
+
+.value-prop-mobile2 {
+    display: none;
+    }
+
+.value-prop-mobile3 {
+    display: none;
+    }
+
+.value-prop-main {
+    text-align: right;
+    font-style: italic;
+    font-family:'FontAwesome'!important;
+    margin-right: 24%;
+    letter-spacing: 2px;
+    margin-top: -8px;
+
+    }
+
+.value-defination-mobile {
+    display: none;
+    }
+
+
+.value-defination1 {
+    /* margin-bottom: 60px; */
+    margin-top: -30px;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    background: linear-gradient(to right,rgb(48, 47, 47), rgb(62, 53, 53));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+
+    text-align: center;
+    }
+
+.value-defination1p1{
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    background: linear-gradient(to right,rgb(48, 47, 47), rgb(62, 53, 53));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    }
+
+.value-defination2 {
+    margin-top: 25px;
+    font-weight: 300;
+    font-size: 100px;
+    color:black;
+    /* margin-left: 5%; */
+    }
+
+.value-defination3 {
+    margin-top: 25px;
+    font-weight: 300;
+    font-size: 25px;
+    color:black;
+    letter-spacing: 4px;
+    }
+
+
+
+
+li> a:hover {
+    background: linear-gradient( #494964,forestgreen );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 17px;
     }
 
 
@@ -208,6 +302,46 @@ li> a:hover {
     margin-top: 70px;
 }
 
+/*Marathon Home*/
+
+.presentation-card{
+    display: flex;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.team-card{
+    width: 30vw;
+    height: 66vh;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /*background-color: #f3f3f3;*/
+    border-radius: 10px;
+}
+
+.card-box{
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.team-book-image {
+    height: 350px;
+    width: 250px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.tablet-view{
+    display: None;
+}
+
+
+
 /*    --------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
@@ -222,6 +356,7 @@ li> a:hover {
         text-align: center;
         color: #427885;
     }
+
 
     .cta-submit  {
         width: 13vw;
@@ -256,6 +391,10 @@ li> a:hover {
 
     }
 
+    .nav-link{
+        margin-right: -20px;
+    }
+
     .login-from{
         flex: 2;
         margin-top: 70px;
@@ -276,6 +415,52 @@ li> a:hover {
         margin-top: 5px;
     }
 
+    /*Marathon Home*/
+
+    .presentation-card{
+        display: flex;
+        flex-direction: column;
+
+        width: 90%;
+        margin: auto;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .team-card{
+        width: 40vw;
+        height: 73vh;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        /*background-color: #f3f3f3;*/
+        border-radius: 10px;
+    }
+
+    .card-box{
+        text-align: center;
+        margin-top: 10px;
+
+    }
+
+    .team-book-image {
+        height: 400px;
+        width: 300px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+    }
+
+    .tablet-view{
+        display: flex;
+    }
+
+    .desktop-view{
+        display: None;
+    }
+
+
+
 
 /*    --------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -292,44 +477,86 @@ li> a:hover {
         margin: auto;
         text-align: center;
         align-items: center;
-        
+
     }
 
-    .presentation {
-        display: flex;
-        width: 90%;
-        margin: auto;
-        align-items: center;
-    }
-
-    
    .logo-container {
        display: block;
-       /* float: left; */
-       
+
    }
 
    .logo {
-         margin-top: -12px;
+         margin-top: -30px;
          height: 7vh;
-         width: 250px;
+         width: 220px;
+        margin-left: 0;
 
-   }    
+   }
 
-    
+    .no-display-mobile{
+       display: None;
+   }
+
+    .nav-link{
+        margin-top: 10px;
+        margin-right: -20px;
+    }
+
 
     .nav-links li img {
         display: none;
     }
+    .value-prop {
+        display: none;
+    }
 
-    
+    .value-prop-mobile1 {
+        display: block;
+        margin-top: 25px;
+        font-size: 25px;
+        font-weight: 500;
+        letter-spacing: 3px;
+
+        text-align: left;
+        margin-left: 40px;
+        color: rgb(2, 45, 11);
+
+    }
+
+    .value-prop-mobile2 {
+        display: block;
+        font-size: 25px;
+        font-weight: 500;
+        letter-spacing: 3px;
+
+        text-align: center;
+        color: rgb(2, 45, 11);
+
+        /* background: linear-gradient(to right, #54656a, #427885);
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; */
+    }
+
+    .value-prop-mobile3 {
+        display: block;
+        font-size: 25px;
+        font-weight: 500;
+        letter-spacing: 3px;
+
+        text-align: right;
+        margin-right: 40px;
+        color: rgb(2, 45, 11);
+
+    }
+
     .presentation {
         flex-direction: column;
         /* align-items: center;
         margin: auto; */
     }
 
-   
+
 
     .cta {
         padding: 10px 10px;
@@ -339,9 +566,9 @@ li> a:hover {
         border-radius: 8px;
         font-size: 15px;
         text-align: center;
-        color: #427885;    
+        color: #427885;
     }
-    
+
     .cta-submit  {
         width: 35vw;
         height: 35px;
@@ -357,13 +584,13 @@ li> a:hover {
     .link-icons {
         margin-top: 20px;
     }
-    
-    
-    
+
+
+
     .link-icons > a  {
         text-decoration: none;
         color: #427885;
-    
+
     }
 
     .registration-flex {
@@ -409,6 +636,42 @@ li> a:hover {
         margin-top: 5px;
         color: #427885
 
-}
+    }
+    .presentation-card{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: auto;
+        align-items: center;
+        margin-top: 5px;
+    }
+
+    .team-card{
+        display: block;
+        width: 80vw;
+        height: 66vh;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 10px;
+    }
+
+    .card-box{
+        text-align: center;
+        margin-top: 10px;
+
+    }
+
+    .team-book-image {
+        height: 350px;
+        width: 290px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+    }
+
+    .mobile-view{
+        display: None;
+    }
 
 }

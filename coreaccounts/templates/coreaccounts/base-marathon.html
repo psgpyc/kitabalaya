@@ -27,27 +27,28 @@
     </title>
 </head>
 <body>
- <header>
+
+     <header>
+
+        {% block nav-link %}
+
+            <nav>
+                <ul class="nav-links">
+
+                    <li><img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book"></li>
+
+                </ul>
+                <div class="logo-container">
+                    <img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book">
+                </div>
+
+            </nav>
 
 
-        <nav>
-            <ul class="nav-links">
-
-                <li><img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book"></li>
+        {% endblock %}
 
 
-
-
-            </ul>
-
-            <div class="logo-container">
-                <img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book">
-
-            </div>
-
-        </nav>
-
-    </header>
+     </header>
 
 
 {% block body %}

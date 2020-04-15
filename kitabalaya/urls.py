@@ -58,7 +58,7 @@ urlpatterns = [
     # END USER ACCOUNTS
 
     path('', include('comingsoon.urls'), name='base-coreaccounts'),
-    path('profile/', include('coreaccounts.urls'), name='base-registration'),
+    path('home/', include('marathon.urls'), name='base-registration'),
 
 ]
 
