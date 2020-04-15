@@ -27,10 +27,11 @@
     </title>
 </head>
 <body>
+ {% block nav-link %}
 
      <header>
 
-        {% block nav-link %}
+
             <nav class="mobile-only">
 
 
@@ -52,12 +53,12 @@
             <nav>
 
             </nav>
-
+</header>
 
         {% endblock %}
 
 
-     </header>
+
 
 
 {% block body %}

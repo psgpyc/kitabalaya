@@ -344,6 +344,11 @@ li> a:hover {
         display: None;
     }
 
+ .nav-links-secondary{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
 
 
 /*    --------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -490,7 +495,7 @@ li> a:hover {
 
 
    .logo-container {
-       display: block;
+       display: flex;
 
    }
 
@@ -499,7 +504,7 @@ li> a:hover {
    }
     .logo {
          margin-top: -25px;
-         width: 200px;
+         width: 220px;
          margin-left: 0;
 
    }
@@ -695,7 +700,12 @@ li> a:hover {
 
     .mobile-only{
     display: block;
-}
+    }
+
+    .nav-links-secondary{
+        display: flex;
+        justify-content: space-around;
+    }
 
 
 }

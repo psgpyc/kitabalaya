@@ -6,36 +6,46 @@
 {% endblock %}
 
 {% block nav-link %}
-    <nav>
-        <ul class="nav-links">
+    <header>
 
-            <li><img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book"></li>
-
-        </ul>
-        <div class="logo-container">
-            <img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book">
-        </div>
-
-
+    <nav class="mobile-only">
 
 
     </nav>
 
+        <nav>
+            <ul class="nav-links">
+                <li><img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book"></li>
+            </ul>
+
+            <div class="logo-container">
+                <img class="logo" src="{% static 'comingsoon/img/kitabalaya-logo.png' %}" alt="Kitabalaya:Book a book">
+            </div>
+        </nav>
+
+        <nav>
+
+
+
+        </nav>
+
+
+
+
+
+    </header>
+
     <nav>
-         <ul class="nav-links">
-                <li class="nav-link"><a href=""> RULES</a></li>
-                <li class="nav-link"><a href="{% url 'user-logout' %}"> LOGOUT</a></li>
+             <ul class="nav-links-secondary">
+                 
+                    <li class="nav-link"><a href=""> ABOUT</a></li>
+                    <li class="nav-link"><a href=""> LEADERBOARD</a></li>
 
-
-         </ul>
+                    <li class="nav-link"><a href=""> RULES</a></li>
+                    <li class="nav-link"><a href="{% url 'user-logout' %}"> LOGOUT</a></li>
+             </ul>
 
     </nav>
-
-
-
-
-
-
 
 
 
