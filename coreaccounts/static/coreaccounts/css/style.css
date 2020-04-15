@@ -346,6 +346,8 @@ li> a:hover {
 
  .nav-links-secondary{
         display: flex;
+        width: 60%;
+        margin: auto;
         justify-content: space-evenly;
     }
 
