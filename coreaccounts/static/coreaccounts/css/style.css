@@ -706,7 +706,15 @@ li> a:hover {
 
     .nav-links-secondary{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
+    }
+
+    .nav-links-secondary > .nav-link {
+        margin-right: -5px;
+    }
+
+    .secondary-wrapper{
+        margin-right: 15px;
     }
 
 
