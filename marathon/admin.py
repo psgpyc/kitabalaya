@@ -1,3 +1,4 @@
 from django.contrib import admin
+from marathon.models import SubscribedBook
 
-# Register your models here.
+admin.site.register(SubscribedBook)

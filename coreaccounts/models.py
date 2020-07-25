@@ -177,6 +177,7 @@ class ActivateEmail(models.Model):
         if self.can_activate():
             user = self.user
             user.is_active = True
+            user.is_confirmed = True
             user.save()
             self.activated = True
             self.save()

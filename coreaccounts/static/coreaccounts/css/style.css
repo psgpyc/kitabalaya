@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    /*overflow: hidden;*/
 }
 
 body i {
@@ -174,6 +175,8 @@ nav{
     text-align: center;
     }
 
+
+
 .value-defination2 {
     margin-top: 25px;
     font-weight: 300;
@@ -215,6 +218,19 @@ li> a:hover {
     margin-top: 50px;
 
     }
+
+.intro-team{
+    flex: 1;
+    text-align: center;
+    margin-top: 30px;
+    word-spacing: 20px;
+    letter-spacing: 10px;
+
+}
+
+.tablet-view{
+    display: None;
+}
 
 .cta {
     padding: 10px 10px;
@@ -320,7 +336,6 @@ li> a:hover {
     margin-right: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-    /*background-color: #f3f3f3;*/
     border-radius: 10px;
 }
 
@@ -340,17 +355,41 @@ li> a:hover {
 .tablet-view{
     display: None;
 }
+
+
 .logo-container-accounts{
         display: None;
     }
 
- .nav-links-secondary{
+.nav-links-secondary{
         display: flex;
         width: 50%;
         margin: auto;
         justify-content: space-evenly;
     }
 
+/*marathon team-profile*/
+.book-details{
+    width: 50%;
+    margin-top: 15px;
+    align-items: center;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 20px;
+}
+
+.finished-button{
+        /*align-items: center;*/
+
+    margin-left: 160px;
+    margin-top: 30px;
+}
+.small-text{
+    font-size: 10px;
+    margin-left: 60px;
+}
 
 
 /*    --------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -470,13 +509,10 @@ li> a:hover {
         display: None;
     }
 
-    .logo-container-accounts{
+
+    .logo-container-accounts {
         display: None;
     }
-
-
-
-
 /*    --------------------------------------------------------------------------------------------------------------------------------------------*/
 
 }

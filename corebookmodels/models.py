@@ -59,6 +59,8 @@ class Book(models.Model):
     title = models.CharField(max_length=200,
                              verbose_name='Title of Book')
 
+    team_name = models.CharField(max_length=50, unique=False, default='BOOK')
+
     book_image = models.ImageField(upload_to=upload_bookimage_path,
                                    verbose_name='Book Image',
                                    help_text='Upload Book image',
@@ -96,6 +98,10 @@ class Book(models.Model):
     number_of_pages = models.PositiveIntegerField(verbose_name='Number of pages')
 
     slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=False,)
+
+    has_contest = models.BooleanField(default=False)
+
+    is_featured = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         """Returns the url to access a particular book instance."""

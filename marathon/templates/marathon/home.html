@@ -1,6 +1,7 @@
 {% extends 'coreaccounts/base-marathon.html' %}
 {% load static %}
 
+
 {% block title %}
     Home| Kitabalaya
 {% endblock %}
@@ -54,6 +55,13 @@
 {% endblock %}
 {% block body %}
     <main>
+    {% if messages %}
+                        {% for message in messages %}
+                               <p style="text-align: center; color: lightcoral; margin-top: 20px"> {{ message}}</p>
+
+
+                        {% endfor %}
+                {% endif %}
 
         <h2 class="value-prop">“Good friends, Good books and Kitabalaya”</h2>
 
@@ -63,21 +71,25 @@
 
 
 
-        <div class="presentation">
-
-
-            <div class="intro">
-                <h2 class="value-defination1 ">KITABALAYA'S READING MARATHON</h2>
-
-                <h2 class="value-defination-mobile ">KITABALAYA'S READING MARATHON</h2>
-
-
-
-                <p class="value-defination2"></p> Get a chance to win six month free premium membership, Kitabalaya's Merchandise and a book of your choice. </p>
-                <p class="value-defination3">JOIN A TEAM NOW</p>
-            </div>
-
-        </div>
+{#        <div class="presentation">#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#            <div class="intro">#}
+{##}
+{#                <h2 class="value-defination1 ">KITABALAYA'S READING MARATHON</h2>#}
+{##}
+{#                <h2 class="value-defination-mobile ">KITABALAYA'S READING MARATHON</h2>#}
+{##}
+{##}
+{##}
+{#                <p class="value-defination2"></p> Get a chance to win six month free premium membership, Kitabalaya's Merchandise and a book of your choice. </p>#}
+{#                <p class="value-defination3">JOIN A TEAM NOW</p>#}
+{#            </div>#}
+{##}
+{#        </div>#}
 
 
     </main>
@@ -86,105 +98,28 @@
 <div class="presentation-card">
 
 
-        <div class="team-card desktop-view">
-            <div class="card-box">
-                <h4>TEAM KAFKA</h4>
-                <img class="team-book-image" src="{% static 'marathon/img/kafkaonshore.jpeg' %}" alt="Kafka on the shore">
-                <form method="POST">
-                    <button CLASS="cta-submit" type="submit">JOIN TEAM</button>
-                </form>
-            </div>
-        </div>
-        <div class="team-card desktop-view">
-            <div class="card-box">
-                <h4>TEAM ORIGIN</h4>
-                <img class="team-book-image" src="{% static 'marathon/img/origin.jpeg' %}" alt="Kafka on the shore">
-               <form method="POST">
-                    <button CLASS="cta-submit" type="submit">JOIN TEAM</button>
-                </form>
-            </div>
-        </div>
 
 
-        <div class="team-card desktop-view">
-            <div class="card-box">
-                <h4>TEAM CITY OF JOY</h4>
-                <img class="team-book-image" src="{% static 'marathon/img/cityofjoy.jpg' %}" alt="Kafka on the shore">
-                <form method="POST">
-                    <button CLASS="cta-submit" type="submit">JOIN TEAM</button>
-                </form>
-
-            </div>
-        </div>
-        <div class="team-card desktop-view">
-            <div class="card-box">
-                <h4>TEAM OUTSIDER</h4>
-                <img class="team-book-image" src="{% static 'marathon/img/outsider.jpg' %}" alt="Kafka on the shore">
-                <form method="POST">
-                    <button CLASS="cta-submit" type="submit">JOIN TEAM</button>
-                </form>
-            </div>
-        </div>
-
-
-
-
-
-
-
-    <div class="tablet-view mobile-view">
+    {% for book in books %}
         <div class="team-card">
             <div class="card-box">
-                <h4>TEAM KAFKA</h4>
-                <img class="team-book-image" src="{% static 'marathon/img/kafkaonshore.jpeg' %}" alt="Kafka on the shore">
+                <h4>TEAM {{ book.team_name }}</h4>
+
+                <img class="team-book-image" src="{{ book.book_image.url}}" alt="Kafka on the shore">
                 <form method="POST">
+                    {% csrf_token %}
+                                        <input type="hidden" value="{{ book }}" name="book_obj">
+
+
                     <button CLASS="cta-submit" type="submit">JOIN TEAM</button>
                 </form>
             </div>
         </div>
-        <div class="team-card">
-            <div class="card-box">
-                <h4>TEAM ORIGIN</h4>
-                <img class="team-book-image" src="{% static 'marathon/img/origin.jpeg' %}" alt="Kafka on the shore">
-               <form method="POST">
-                    <button CLASS="cta-submit" type="submit">JOIN TEAM</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="tablet-view mobile-view">
-        <div class="team-card">
-            <div class="card-box">
-                <h4>TEAM CITY OF JOY</h4>
-                <img class="team-book-image" src="{% static 'marathon/img/cityofjoy.jpg' %}" alt="Kafka on the shore">
-                <form method="POST">
-                    <button CLASS="cta-submit" type="submit">JOIN TEAM</button>
-                </form>
-
-            </div>
-        </div>
-        <div class="team-card">
-            <div class="card-box">
-                <h4>TEAM OUTSIDER</h4>
-                <img class="team-book-image" src="{% static 'marathon/img/outsider.jpg' %}" alt="Kafka on the shore">
-                <form method="POST">
-                    <button CLASS="cta-submit" type="submit">JOIN TEAM</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
+    {% endfor %}
 
 </div>
+
+
 
 
 {% endblock %}
