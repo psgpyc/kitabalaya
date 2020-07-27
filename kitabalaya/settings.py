@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'comingsoon.apps.ComingsoonConfig',
     'corebookmodels.apps.CorebookmodelsConfig',
     'coreaccounts.apps.CoreaccountsConfig',
-    'marathon.apps.MarathonConfig',
+    # 'marathon.apps.MarathonConfig',
 
     # Third Party Applications
     'django_hosts',
