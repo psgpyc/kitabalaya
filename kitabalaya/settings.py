@@ -117,7 +117,7 @@ DEFAULT_ACTIVATION_DAYS = 1
 
 LOGIN_URL = 'user-login'
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'base-coreaccounts'
 BASE_URL = 'https://www.kitabalaya.com'
 
 
