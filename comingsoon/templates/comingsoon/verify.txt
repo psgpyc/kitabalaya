@@ -4,15 +4,9 @@ You're receiving this email because you have subscribed to Kitabalaya's Newslett
 
 You have subscribed using the following email: {{ email }}
 
-If you want to register with us. Please follow the link below:
-
-
-
-<a href='{{ path }}'> {{ path }} </a>
-<br>
-Once you have registered with us, you can login at www.kitabalaya.com
-
 Thank you for subscribing.
+
+We are launching soon.
 
 Kitabalaya: Book a book
 Good Friends, Good Book and Kitabalaya.
