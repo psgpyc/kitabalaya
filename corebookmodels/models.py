@@ -93,9 +93,6 @@ class RentalCategory(TimeStampModel):
         return str(int(self.cost_of_rental))
 
 
-
-
-
 class Book(TimeStampModel):
     """Model representing a book (but not a specific copy of a book)."""
 
@@ -153,7 +150,6 @@ class Book(TimeStampModel):
                                       help_text='Enter the date when the book was published')
 
     number_of_pages = models.PositiveIntegerField(verbose_name='Number of pages')
-
 
     quality_rating = models.FloatField(default=5.0)
 
