@@ -413,13 +413,13 @@ nav .right-menu .shopping-cart img:hover{
 }
 
 .best-sellers .the-books-wrapper{
-    margin: 25px 30px;
+    margin: 25px 0;
     display: flex;
 }
 
 
 .best-sellers .the-book{
-    margin: 25px 25px;
+    margin: 25px 30px;
     height: 300px;
     width: 200px;
     background-color: white;
