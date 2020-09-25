@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm, SetPasswordForm
 from django.db.models import Q
 from django.urls import reverse
@@ -19,12 +19,6 @@ class RegistrationForm(UserCreationForm):
             'class': 'cta',
             'placeholder': 'Enter your Email Address',
             'id': 'user-email',
-        })
-        self.fields['phone_number'].widget.attrs.update({
-
-            'class': 'cta',
-            'placeholder': 'Enter your Phone Number',
-            'id': 'user-phone',
         })
 
         self.fields['full_name'].widget.attrs.update({
@@ -50,7 +44,6 @@ class RegistrationForm(UserCreationForm):
         })
 
         self.fields['email'].label = ''
-        self.fields['phone_number'].label = ''
         self.fields['full_name'].label = ''
         self.fields['password1'].label = ''
         self.fields['password2'].label = ''
@@ -59,29 +52,38 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['full_name','email', 'phone_number', 'password1', 'password2']
+        fields = ['full_name','email', 'password1', 'password2']
 
 
 class UserLoginForm(AuthenticationForm):
+
     def __init__(self, *args, **kwargs):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
     username = forms.EmailField(
-                                label='',
-                                widget=forms.TextInput(
-                                    attrs={
-                                        'class': 'cta',
-                                        'placeholder': 'Enter your Email',
-                                        'id': 'email',
+        label=(''),
+        widget=forms.EmailInput(attrs={
+                                    'autofocus': True,
+                                    'class': 'cta',
+                                    'placeholder': 'Enter your Email',
+                                    'id': 'email',
+
+
+
                                 }))
     password = forms.CharField(
         label=(''),
-        widget=forms.PasswordInput(
-            attrs={
-                'class': 'cta',
-                'placeholder': 'Enter your Password',
-                'id': 'password',
-            }))
+        strip=False,
+        widget=forms.PasswordInput(attrs={
+                                        'autocomplete': 'current-password',
+                                        'class': 'cta',
+                                        'placeholder': 'Enter your Password',
+                                        'id': 'password',
+
+
+
+
+        }),)
 
 
 class UserPasswordResetForm(PasswordResetForm):

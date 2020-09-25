@@ -1,0 +1,369 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        {% block title %}
+             | Kitabalaya:Book a book
+        {% endblock %}
+    </title>
+    <script src="https://kit.fontawesome.com/a8a0644a78.js" crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'core/img/apple-touch-icon.png'  %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'core/img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'core/img/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'core/img/site.webmanifest' %}">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+
+</head>
+
+<body>
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if 'email_confirmed' in message.extra_tags %}
+                <div class="message-wrapper" id="message-wrapper-id">
+                     <div class="close-side-bar" id="close-message-pop-id">
+                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
+                     </div>
+                     <p class="success-message-display">{{ message }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+    <nav class="desktop-view">
+        <div class="left-menu">
+            <div class="hamburger" id="hamburger-id">
+                <img alt="Kitabalaya hamburger menu" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
+
+            </div>
+
+            <div class="search">
+                <img id="search-img" alt="kitabalaya search icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuODA5IDIxLjY0NmwtNi4yMDUtNi4yMDVjMS4xNjctMS42MDUgMS44NTctMy41NzkgMS44NTctNS43MTEgMC01LjM2NS00LjM2NS05LjczLTkuNzMxLTkuNzMtNS4zNjUgMC05LjczIDQuMzY1LTkuNzMgOS43MyAwIDUuMzY2IDQuMzY1IDkuNzMgOS43MyA5LjczIDIuMDM0IDAgMy45MjMtLjYyNyA1LjQ4Ny0xLjY5OGw2LjIzOCA2LjIzOCAyLjM1NC0yLjM1NHptLTIwLjk1NS0xMS45MTZjMC0zLjc5MiAzLjA4NS02Ljg3NyA2Ljg3Ny02Ljg3N3M2Ljg3NyAzLjA4NSA2Ljg3NyA2Ljg3Ny0zLjA4NSA2Ljg3Ny02Ljg3NyA2Ljg3N2MtMy43OTMgMC02Ljg3Ny0zLjA4NS02Ljg3Ny02Ljg3N3oiLz48L3N2Zz4=">
+            </div>
+        </div>
+
+        <div class="logo">
+            <img src="{% static 'core/img/kitabalaya-logo.png' %}" alt="Kitabalaya - Rent books from Nepalese and Foreign Authors in Nepal">
+        </div>
+
+        <div class="right-menu">
+            <div class="wishlist">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNi4yOCAzYzMuMjM2LjAwMSA0Ljk3MyAzLjQ5MSA1LjcyIDUuMDMxLjc1LTEuNTQ3IDIuNDY5LTUuMDIxIDUuNzI2LTUuMDIxIDIuMDU4IDAgNC4yNzQgMS4zMDkgNC4yNzQgNC4xODIgMCAzLjQ0Mi00Ljc0NCA3Ljg1MS0xMCAxMy01LjI1OC01LjE1MS0xMC05LjU1OS0xMC0xMyAwLTIuNjc2IDEuOTY1LTQuMTkzIDQuMjgtNC4xOTJ6bS4wMDEtMmMtMy4xODMgMC02LjI4MSAyLjE4Ny02LjI4MSA2LjE5MiAwIDQuNjYxIDUuNTcgOS40MjcgMTIgMTUuODA4IDYuNDMtNi4zODEgMTItMTEuMTQ3IDEyLTE1LjgwOCAwLTQuMDExLTMuMDk3LTYuMTgyLTYuMjc0LTYuMTgyLTIuMjA0IDAtNC40NDYgMS4wNDItNS43MjYgMy4yMzgtMS4yODUtMi4yMDYtMy41MjItMy4yNDgtNS43MTktMy4yNDh6Ii8+PC9zdmc+">
+            </div>
+            <div class="shopping-cart" id="cart-id">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgM2wtLjc0MyAyaC0xLjkyOWwtMy40NzQgMTJoLTEzLjIzOWwtNC42MTUtMTFoMTYuODEybC0uNTY0IDJoLTEzLjI0bDIuOTM3IDdoMTAuNDI4bDMuNDMyLTEyaDQuMTk1em0tMTUuNSAxNWMtLjgyOCAwLTEuNS42NzItMS41IDEuNSAwIC44MjkuNjcyIDEuNSAxLjUgMS41czEuNS0uNjcxIDEuNS0xLjVjMC0uODI4LS42NzItMS41LTEuNS0xLjV6bTYuOS03LTEuOSA3Yy0uODI4IDAtMS41LjY3MS0xLjUgMS41cy42NzIgMS41IDEuNSAxLjUgMS41LS42NzEgMS41LTEuNWMwLS44MjgtLjY3Mi0xLjUtMS41LTEuNXoiLz48L3N2Zz4=">
+            </div>
+            <div class="accounts" id="accounts-id">
+                <img alt='kitabalaya user login' src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmMyLjc1NyAwIDUgMi4yNDMgNSA1LjAwMSAwIDIuNzU2LTIuMjQzIDUtNSA1cy01LTIuMjQ0LTUtNWMwLTIuNzU4IDIuMjQzLTUuMDAxIDUtNS4wMDF6bTAtMmMtMy44NjYgMC03IDMuMTM0LTcgNy4wMDEgMCAzLjg2NSAzLjEzNCA3IDcgN3M3LTMuMTM1IDctN2MwLTMuODY3LTMuMTM0LTcuMDAxLTctNy4wMDF6bTYuMzY5IDEzLjM1M2MtLjQ5Ny40OTgtMS4wNTcuOTMxLTEuNjU4IDEuMzAyIDIuODcyIDEuODc0IDQuMzc4IDUuMDgzIDQuOTcyIDcuMzQ2aC0xOS4zODdjLjU3Mi0yLjI5IDIuMDU4LTUuNTAzIDQuOTczLTcuMzU4LS42MDMtLjM3NC0xLjE2Mi0uODExLTEuNjU4LTEuMzEyLTQuMjU4IDMuMDcyLTUuNjExIDguNTA2LTUuNjExIDEwLjY2OWgyNGMwLTIuMTQyLTEuNDQtNy41NTctNS42MzEtMTAuNjQ3eiIvPjwvc3ZnPg==">
+            </div>
+        </div>
+    </nav>
+{#    #}
+    <div class="secondary-nav">
+
+        <ul class="book-list-category" id="book-list-category-id">
+            <li>BEST SELLER</li>
+            <li>WE RECOMMEND</li>
+            <li>BIBLIOPHILES FAVOURITE</li>
+            <li>SPECIAL VALUE</li>
+            <li>NEW RELEASES</li>
+            <li>COMING SOON</li>
+            <li>BOOKMARKS</li>
+        </ul>
+    </div>
+
+    <div class="side-bar no-view" id="side-bar-id">
+        <div class="side-bar-header">
+            <h2>Categories</h2>
+            <div class="close-side-bar no-view" id="close-side-bar-id">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
+            </div>
+        </div>
+
+        <div class="side-bar-category-wrapper">
+            {% for category in categories %}
+                <div class="side-bar-category-wrapper-main">
+                    <div class="side-bar-category" id="side-bar-category-id">
+                        <a class="side-bar-category-link" href="#">{{ category }}</a>
+                        <svg class="arrow-svg no-view" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>
+
+                    </div>
+                    <div class="side-bar-category-details-wrapper no-view">
+                        {% for related_category in category.main_category.all %}
+                            {% if related_category %}
+                                <div class="side-bar-category-details">
+                                    <a class="side-bar-category-each" href="#">{{ related_category }}</a>
+                                    <div class="under-line"></div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+
+    <div class="user-profile-wrapper no-view" id="user-profile-wrapper-id">
+        {% if user.is_authenticated %}
+
+            <h1>welcome </h1>
+
+        {% else %}
+
+
+        <div class="sign-in-wrapper" id="user-sign-in-wrapper-id">
+            <h3>SIGN IN</h3>
+            <form id="login-form-id" class="user-profile-form" action="{% url 'user-login' %}" method="post">
+                {% csrf_token %}
+                {{ login_form }}
+                <div class="reset-forget-wrapper">
+                    <a href="#" id="user-register">Register?</a>
+                    <a href="#">Forget Password</a>
+
+                </div>
+                <button class="user-profile-submit-button" id="user-profile-submit-button-id" type="submit">Sign In</button>
+            </form>
+
+            <p>Or sign in with</p>
+
+            <div class="social-login">
+                <button type="button">Sign in with Google</button>
+                <button type="button">Sign in with Facebook</button>
+                <small>Click “Sign In” above to accept Kitabalaya's Terms of Service & Privacy Policy.</small>
+            </div>
+
+        </div>
+
+
+
+        <div class="sign-up-wrapper no-view" id="user-sign-up-wrapper-id">
+             <h3>SIGN UP</h3>
+            <form class="user-profile-form" id="register-form" action="{% url 'user-register' %}" method="post">
+                {% csrf_token %}
+                {{ registration_form }}
+                <div class="reset-forget-wrapper">
+                    <a href="#" id="user-login">Have an account? Login here.</a>
+
+                </div>
+
+                <button class="user-profile-submit-button" id="user-profile-submit-button-id-signup" type="submit">Sign Up</button>
+                <button class="buttonload no-view" id="submit-button-load-id"><i class="fa fa-spinner fa-spin loading-icon"></i>Creating Your Account...</button>
+            </form>
+
+            <p>Or sign Up with</p>
+
+            <div class="social-login">
+                <button type="button">Sign Up with Google</button>
+                <button type="button">Sign Up with Facebook</button>
+                <small>Click “Sign Up” above to accept Kitabalaya's Terms of Service & Privacy Policy.</small>
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+
+
+{#    SIGN UP      #}
+
+
+
+    <div class="user-cart-wrapper no-view" id="user-cart-wrapper-id">
+
+
+
+    </div>
+
+
+    <!-- Arrow -->
+    <div class="arrow up no-view" id="arrow-id">
+        
+
+
+
+
+    </div>
+
+    <!-- End Arrow -->
+
+
+    <!-- ARROW CART -->
+    <div class="arrow-cart up no-view" id="arrow-cart-id">
+        
+
+
+
+
+    </div>
+
+
+
+    <!-- END ARROW CART -->
+
+
+
+
+
+
+
+
+
+    <div class="body-wrapper">
+        {% block body %}
+
+
+
+        {% endblock %}
+    </div>
+
+
+
+    <div class="newsletter">
+        <div class="newsletter-text">
+
+            <img src="{% static 'core/img/be-a-kitabalaya-insider.png' %}" alt="Kitabalaya book a book newsletter">
+        </div>
+         <form method="post">
+            {% csrf_token %}
+                <label class="search-box-wrapper">
+                    <input class='search-box' id="newsletter-id" type="email" placeholder="allittakesisabook@kitabalaya.info">
+                </label>
+
+        </form>
+
+
+
+
+
+
+    </div>
+
+    <div class="message-wrapper no-view" id="user-registered-success-modal-id">
+        <div class="close-side-bar" id="close-user-registered-message-pop-id">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
+        </div>
+
+
+        <p class="success-message-display" id="success-message-display-id">Hey {{ user }}! Your account has been Registered. Please check your email to activate your account.</p>
+
+
+
+    </div>
+
+
+
+    <div class='footer-wrapper'>
+        <div class="kitabalaya-info">
+            <h3>Kitabalaya</h3>
+            <p>
+                Kitabalaya is the nation’s most trusted  book rental platform. We are here to help you make a choice. A choice to read more. A choice to save more. A choice to go Green. Go Green, Go Kitabalaya!!
+            </p>
+
+            <p>
+                Kitabalaya aims to offer diversity in readership and financial freedom in purchases to our readers.
+            </p>
+
+        </div>
+
+       <div class="useful-links">
+           <h3>Useful Links</h3>
+           <ul>
+               <li><a href="#">About Us</a></li>
+               <li><a href="#">Contact Us</a></li>
+               <li><a href="#">Blog</a></li>
+               <li><a href="#">FAQs</a></li>
+
+
+
+
+
+           </ul>
+
+
+
+       </div>
+
+       <div class="contact">
+            <h3>Contact Us</h3>
+
+            <p>Kitabalaya:Book a book</p>   
+            <p>Kathmandu, Nepal</p>
+            <p>contact@kitabalaya.info</p>
+            <p>+977-9802051714, +977-9813795934</p>
+
+            
+
+
+
+       </div>
+
+
+       <div class="information">
+           <h3>Information</h3>
+           <ul>
+               <li><a href="#">Privacy Policy</a></li>
+               <li><a href="#">Terms of Use</a></li>
+               <li><a href="#">Return and Refund Policy</a></li>
+               <li><a href="#">Kitabalaya User Agreement</a></li>
+
+
+
+
+           </ul>
+
+
+       </div>      
+
+    </div>
+
+
+    <div class="footer-links">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMGMtNi42MjcgMC0xMiA1LjM3My0xMiAxMnM1LjM3MyAxMiAxMiAxMiAxMi01LjM3MyAxMi0xMi01LjM3My0xMi0xMi0xMnptMyA4aC0xLjM1Yy0uNTM4IDAtLjY1LjIyMS0uNjUuNzc4djEuMjIyaDJsLS4yMDkgMmgtMS43OTF2N2gtM3YtN2gtMnYtMmgydi0yLjMwOGMwLTEuNzY5LjkzMS0yLjY5MiAzLjAyOS0yLjY5MmgxLjk3MXYzeiIvPjwvc3ZnPg==">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMi4xNjNjMy4yMDQgMCAzLjU4NC4wMTIgNC44NS4wNyAzLjI1Mi4xNDggNC43NzEgMS42OTEgNC45MTkgNC45MTkuMDU4IDEuMjY1LjA2OSAxLjY0NS4wNjkgNC44NDkgMCAzLjIwNS0uMDEyIDMuNTg0LS4wNjkgNC44NDktLjE0OSAzLjIyNS0xLjY2NCA0Ljc3MS00LjkxOSA0LjkxOS0xLjI2Ni4wNTgtMS42NDQuMDctNC44NS4wNy0zLjIwNCAwLTMuNTg0LS4wMTItNC44NDktLjA3LTMuMjYtLjE0OS00Ljc3MS0xLjY5OS00LjkxOS00LjkyLS4wNTgtMS4yNjUtLjA3LTEuNjQ0LS4wNy00Ljg0OSAwLTMuMjA0LjAxMy0zLjU4My4wNy00Ljg0OS4xNDktMy4yMjcgMS42NjQtNC43NzEgNC45MTktNC45MTkgMS4yNjYtLjA1NyAxLjY0NS0uMDY5IDQuODQ5LS4wNjl6bTAtMi4xNjNjLTMuMjU5IDAtMy42NjcuMDE0LTQuOTQ3LjA3Mi00LjM1OC4yLTYuNzggMi42MTgtNi45OCA2Ljk4LS4wNTkgMS4yODEtLjA3MyAxLjY4OS0uMDczIDQuOTQ4IDAgMy4yNTkuMDE0IDMuNjY4LjA3MiA0Ljk0OC4yIDQuMzU4IDIuNjE4IDYuNzggNi45OCA2Ljk4IDEuMjgxLjA1OCAxLjY4OS4wNzIgNC45NDguMDcyIDMuMjU5IDAgMy42NjgtLjAxNCA0Ljk0OC0uMDcyIDQuMzU0LS4yIDYuNzgyLTIuNjE4IDYuOTc5LTYuOTguMDU5LTEuMjguMDczLTEuNjg5LjA3My00Ljk0OCAwLTMuMjU5LS4wMTQtMy42NjctLjA3Mi00Ljk0Ny0uMTk2LTQuMzU0LTIuNjE3LTYuNzgtNi45NzktNi45OC0xLjI4MS0uMDU5LTEuNjktLjA3My00Ljk0OS0uMDczem0wIDUuODM4Yy0zLjQwMyAwLTYuMTYyIDIuNzU5LTYuMTYyIDYuMTYyczIuNzU5IDYuMTYzIDYuMTYyIDYuMTYzIDYuMTYyLTIuNzU5IDYuMTYyLTYuMTYzYzAtMy40MDMtMi43NTktNi4xNjItNi4xNjItNi4xNjJ6bTAgMTAuMTYyYy0yLjIwOSAwLTQtMS43OS00LTQgMC0yLjIwOSAxLjc5MS00IDQtNHM0IDEuNzkxIDQgNGMwIDIuMjEtMS43OTEgNC00IDR6bTYuNDA2LTExLjg0NWMtLjc5NiAwLTEuNDQxLjY0NS0xLjQ0MSAxLjQ0cy42NDUgMS40NCAxLjQ0MSAxLjQ0Yy43OTUgMCAxLjQzOS0uNjQ1IDEuNDM5LTEuNDRzLS42NDQtMS40NC0xLjQzOS0xLjQ0eiIvPjwvc3ZnPg==">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNC41NTdjLS44ODMuMzkyLTEuODMyLjY1Ni0yLjgyOC43NzUgMS4wMTctLjYwOSAxLjc5OC0xLjU3NCAyLjE2NS0yLjcyNC0uOTUxLjU2NC0yLjAwNS45NzQtMy4xMjcgMS4xOTUtLjg5Ny0uOTU3LTIuMTc4LTEuNTU1LTMuNTk0LTEuNTU1LTMuMTc5IDAtNS41MTUgMi45NjYtNC43OTcgNi4wNDUtNC4wOTEtLjIwNS03LjcxOS0yLjE2NS0xMC4xNDgtNS4xNDQtMS4yOSAyLjIxMy0uNjY5IDUuMTA4IDEuNTIzIDYuNTc0LS44MDYtLjAyNi0xLjU2Ni0uMjQ3LTIuMjI5LS42MTYtLjA1NCAyLjI4MSAxLjU4MSA0LjQxNSAzLjk0OSA0Ljg5LS42OTMuMTg4LTEuNDUyLjIzMi0yLjIyNC4wODQuNjI2IDEuOTU2IDIuNDQ0IDMuMzc5IDQuNiAzLjQxOS0yLjA3IDEuNjIzLTQuNjc4IDIuMzQ4LTcuMjkgMi4wNCAyLjE3OSAxLjM5NyA0Ljc2OCAyLjIxMiA3LjU0OCAyLjIxMiA5LjE0MiAwIDE0LjMwNy03LjcyMSAxMy45OTUtMTQuNjQ2Ljk2Mi0uNjk1IDEuNzk3LTEuNTYyIDIuNDU3LTIuNTQ5eiIvPjwvc3ZnPg==">
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'core/js/base.js' %}"></script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

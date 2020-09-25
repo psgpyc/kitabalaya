@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.db import models
+from corebookmodels.abstractmodels import TimeStampModel
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from django.urls import reverse
@@ -26,14 +28,20 @@ def upload_authorimage_path(self, filename):
         filename=filename)
 
 
-class Genre(models.Model):
+def get_sentinel_book_category():
+    return BookMainCategory.objects.get_or_create(name='deleted')[0]
+
+
+def get_sentinel_user():
+    return user.objects.get_or_create(name='anonymous')[0]
+
+
+class Genre(TimeStampModel):
     """Model representing a genre (e.g. Fiction, Non-Fiction, etc.)"""
     name = models.CharField(max_length=100,
+                            unique=True,
                             verbose_name='Name of the Genre',
                             help_text='Enter a book genre')
-
-    is_active = models.BooleanField(default=True,
-                                    help_text="Genre to be displayed to the user")
 
     def __str__(self):
         """String for representing the Model object (in Admin site etc.)"""
@@ -41,7 +49,7 @@ class Genre(models.Model):
         return self.name
 
 
-class Language(models.Model):
+class Language(TimeStampModel):
     """Model representing a Language (e.g. English, French, Japanese, etc.)"""
 
     name = models.CharField(max_length=200,
@@ -52,20 +60,69 @@ class Language(models.Model):
         return self.name
 
 
-class Book(models.Model):
+class BookMainCategory(TimeStampModel):
+    name = models.CharField(max_length=200, help_text='Enter the Main Category for the books')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Book Main Categories'
+        verbose_name = 'Book Main Category'
+
+
+class BookCategory(TimeStampModel):
+    name = models.CharField(max_length=200, help_text='Enter the Main Category for the books')
+    belongs_to = models.ForeignKey(BookMainCategory, related_name='main_category', default=11, on_delete=models.SET(get_sentinel_book_category))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Book Categories'
+        verbose_name = 'Book Category'
+
+
+class RentalCategory(TimeStampModel):
+    """Model containing the rental price category of books"""
+    cost_of_rental = models.DecimalField(max_digits=5, decimal_places=2, default=5.00)
+
+    def __str__(self):
+        return str(int(self.cost_of_rental))
+
+
+
+
+
+class Book(TimeStampModel):
     """Model representing a book (but not a specific copy of a book)."""
-    staff_user = models.ForeignKey(user, on_delete=models.DO_NOTHING)
+
+    class BookQualityRating(models.TextChoices):
+        BrandNew = 'BN', _('Brand New')
+        Fine = 'F', _('Fine/As New')
+        NearFine = 'NF', _('Near Fine')
+        VeryGood = 'VG', _('Very Good')
+        Good = 'G', _('Good')
 
     title = models.CharField(max_length=200,
                              verbose_name='Title of Book')
-
-    team_name = models.CharField(max_length=50, unique=False, default='BOOK')
 
     book_image = models.ImageField(upload_to=upload_bookimage_path,
                                    verbose_name='Book Image',
                                    help_text='Upload Book image',
                                    null=True,
                                    blank=True)
+    mrp_price = models.DecimalField(max_digits=10, decimal_places=2, default=100.00)
+
+    rental_price = models.DecimalField(max_digits=5, decimal_places=2, default=5.00)
+
+    rental_category = models.ForeignKey(RentalCategory, related_name='rentalcategory', on_delete=models.DO_NOTHING, null=True, blank=True)
+
+    book_condition = models.CharField(max_length=2,
+                                      choices=BookQualityRating.choices,
+                                      default=BookQualityRating.BrandNew)
 
     author_name = models.ForeignKey('Author',
                                     related_name='name_of_author',
@@ -97,15 +154,19 @@ class Book(models.Model):
 
     number_of_pages = models.PositiveIntegerField(verbose_name='Number of pages')
 
-    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=False,)
 
-    has_contest = models.BooleanField(default=False)
+    quality_rating = models.FloatField(default=5.0)
+
+    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=False,)
 
     is_featured = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         """Returns the url to access a particular book instance."""
-        return reverse('book-detail', args=[str(self.id)])
+        return reverse('book-detail', args=[str(self.slug)])
+
+    def get_rental_price(self):
+        return int(self.rental_price)
 
     def save(self, *args, **kwargs):
         """Initialising the slug for the slug field"""
@@ -117,7 +178,19 @@ class Book(models.Model):
         return self.title
 
 
-class Nationality(models.Model):
+class BookRatingModel(TimeStampModel):
+    rating = models.DecimalField(max_digits=2, decimal_places=1)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Book Rating'
+        verbose_name_plural = 'Book Ratings'
+
+    def __str__(self):
+        return '{}-{}/{}'.format(self.book, self.created_by,self.rating)
+
+
+class Nationality(TimeStampModel):
     """Model representing Country of an Author """
 
     name = models.CharField(max_length=100,
@@ -133,7 +206,7 @@ class Nationality(models.Model):
         verbose_name_plural = 'Nationality'
 
 
-class Author(models.Model):
+class Author(TimeStampModel):
     """Model representing details of an Author """
 
     class GenderOfAuthor(models.TextChoices):
@@ -141,8 +214,6 @@ class Author(models.Model):
         Female = 'F', _('Female')
         NonBinary = 'NoB', _('Non Binary')
         Undefined = 'Undef', _('Undefined')
-
-    staff_user = models.ForeignKey(user, on_delete=models.DO_NOTHING)
 
     name = models.CharField(max_length=100, db_column='Author Name',
                             verbose_name='Author\'s name',
@@ -181,10 +252,6 @@ class Author(models.Model):
 
                                    )
 
-    is_active = models.BooleanField(default=False,
-                                    verbose_name='Ban Author?',
-                                    help_text="TO BAN THIS AUTHOR SELECT HERE")
-
     def __str__(self):
         """String for representing the Model object."""
 
@@ -201,9 +268,7 @@ class Author(models.Model):
         verbose_name = 'Author'
 
 
-class Publication(models.Model):
-    staff_user = models.ForeignKey(user, on_delete=models.DO_NOTHING)
-
+class Publication(TimeStampModel):
     name = models.CharField(max_length=200,
                             verbose_name='Publication House Name',
                             )

@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 
 from coreaccounts.forms import UserPasswordResetForm,UserPasswordResetConfirmForm,UserLoginForm
-from coreaccounts.views import RegistrationView, UserLogoutView, AccountEmailActivate
+from coreaccounts.views import RegistrationView, UserLogoutView, AccountEmailActivate, UserLoginView
 
 from django.conf import settings
 
@@ -18,9 +18,11 @@ urlpatterns = [
 
     path('register/', RegistrationView.as_view(), name='user-register'),
 
-    path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True,
-         template_name='coreaccounts/login.html',
-         authentication_form=UserLoginForm), name='user-login'),
+    # path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True,
+    #      template_name='coreaccounts/login.html',
+    #      authentication_form=UserLoginForm), name='user-login'),
+
+    path('login/', UserLoginView.as_view(), name='user-login'),
 
     path('logout/',
          login_required(UserLogoutView.as_view(template_name='coreaccounts/login.html', )),
@@ -58,7 +60,7 @@ urlpatterns = [
     # END USER ACCOUNTS
 
     path('', include('comingsoon.urls'), name='base-coreaccounts'),
-    # path('home/', include('marathon.urls'), name='base-registration'),
+    path('home/', include('core.urls'), name='base-home'),
 
 ]
 
@@ -66,3 +68,9 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+    import debug_toolbar
+
+    urlpatterns = [
+                      path('__debug__/', include(debug_toolbar.urls)),
+                  ] + urlpatterns

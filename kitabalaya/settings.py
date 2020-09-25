@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'comingsoon.apps.ComingsoonConfig',
     'corebookmodels.apps.CorebookmodelsConfig',
     'coreaccounts.apps.CoreaccountsConfig',
-    # 'marathon.apps.MarathonConfig',
+    'core.apps.CoreConfig',
 
     # Third Party Applications
     'django_hosts',
@@ -47,6 +47,8 @@ MIDDLEWARE = [
     'django_hosts.middleware.HostsResponseMiddleware',
 
 ]
+
+
 
 ROOT_URLCONF = 'kitabalaya.urls'
 ROOT_HOSTCONF = 'kitabalaya.hosts'

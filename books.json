@@ -1,0 +1,1476 @@
+[
+{
+  "model": "corebookmodels.genre",
+  "pk": 2,
+  "fields": {
+    "name": "Fiction",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 3,
+  "fields": {
+    "name": "Self help",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 4,
+  "fields": {
+    "name": "Biography and Memoirs",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 5,
+  "fields": {
+    "name": "Non-fiction",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 6,
+  "fields": {
+    "name": "Science fiction",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 8,
+  "fields": {
+    "name": "Historical Fiction",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 9,
+  "fields": {
+    "name": "Suspense and Thriller",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 10,
+  "fields": {
+    "name": "Fantasy",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 11,
+  "fields": {
+    "name": "Romance",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 12,
+  "fields": {
+    "name": "Classic",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 13,
+  "fields": {
+    "name": "Short stories",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 14,
+  "fields": {
+    "name": "Young adult fiction",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 15,
+  "fields": {
+    "name": "Magical Realism",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 16,
+  "fields": {
+    "name": "Action and Adventure",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 17,
+  "fields": {
+    "name": "Detective and Mystery",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 18,
+  "fields": {
+    "name": "Horror",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 19,
+  "fields": {
+    "name": "Literary Fiction",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 21,
+  "fields": {
+    "name": "History",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 22,
+  "fields": {
+    "name": "Poetry",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 23,
+  "fields": {
+    "name": "True Crime",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 24,
+  "fields": {
+    "name": "Dystopian",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 25,
+  "fields": {
+    "name": "Business and Money",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 26,
+  "fields": {
+    "name": "Politics and Social Sciences",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 27,
+  "fields": {
+    "name": "Art",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 28,
+  "fields": {
+    "name": "Contemporary",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 29,
+  "fields": {
+    "name": "Crime",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 30,
+  "fields": {
+    "name": "Graphic Novels",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 31,
+  "fields": {
+    "name": "Humor and Comedy",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 32,
+  "fields": {
+    "name": "Philosophy",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 33,
+  "fields": {
+    "name": "Psychology",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 34,
+  "fields": {
+    "name": "Religion and Sprituality",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 35,
+  "fields": {
+    "name": "Sports",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 36,
+  "fields": {
+    "name": "Travel",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 37,
+  "fields": {
+    "name": "Mythology",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 38,
+  "fields": {
+    "name": "Fairy Tale",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 39,
+  "fields": {
+    "name": "Science",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 40,
+  "fields": {
+    "name": "Health",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 41,
+  "fields": {
+    "name": "Literature",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 42,
+  "fields": {
+    "name": "Realistic Fiction",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 43,
+  "fields": {
+    "name": "Literary Criticism",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 44,
+  "fields": {
+    "name": "Novel",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 45,
+  "fields": {
+    "name": "Legal fiction",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.genre",
+  "pk": 46,
+  "fields": {
+    "name": "Coming of age story",
+    "is_active": true
+  }
+},
+{
+  "model": "corebookmodels.language",
+  "pk": 1,
+  "fields": {
+    "name": "English"
+  }
+},
+{
+  "model": "corebookmodels.language",
+  "pk": 2,
+  "fields": {
+    "name": "Nepali"
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 7,
+  "fields": {
+    "title": "Kafka On The Shore",
+    "book_image": "book_images/Haruki Murakami/Kafka On The Shore/9780099458326_11.jpg",
+    "mrp_price": "1000.00",
+    "rental_price": "15.00",
+    "book_condition": "F",
+    "author_name": 2,
+    "summary": "Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami. Its 2005 English translation was among \"The 10 Best Books of 2005\" from The New York Times and received the World Fantasy Award for 2006.",
+    "isbn": "9876543212345",
+    "language": 1,
+    "published_date": "2002-09-08",
+    "number_of_pages": 505,
+    "quality_rating": 5.0,
+    "slug": "kafka-on-the-shore",
+    "is_featured": false,
+    "book_genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 8,
+  "fields": {
+    "title": "The catcher in the rye",
+    "book_image": "book_images/J.D. Salinger/The catcher in the rye/the_catcher_in_the_rye.jpg",
+    "mrp_price": "600.00",
+    "rental_price": "15.00",
+    "book_condition": "F",
+    "author_name": 5,
+    "summary": "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945\u20131946 and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely.",
+    "isbn": "9780525563693",
+    "language": 1,
+    "published_date": "2020-09-08",
+    "number_of_pages": 289,
+    "quality_rating": 5.0,
+    "slug": "the-catcher-in-the-rye",
+    "is_featured": false,
+    "book_genre": []
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 9,
+  "fields": {
+    "title": "The Bell Jar",
+    "book_image": "book_images/Sylvia Plath/The Bell Jar/thebelljar.jpg",
+    "mrp_price": "900.00",
+    "rental_price": "15.00",
+    "book_condition": "BN",
+    "author_name": 6,
+    "summary": "The Bell Jar is the only novel written by the American writer and poet Sylvia Plath. Originally published under the pseudonym \"Victoria Lucas\" in 1963, the novel is semi-autobiographical, with the names of places and people changed.",
+    "isbn": "9876543212345",
+    "language": 1,
+    "published_date": "2020-09-08",
+    "number_of_pages": 300,
+    "quality_rating": 5.0,
+    "slug": "the-bell-jar",
+    "is_featured": false,
+    "book_genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 10,
+  "fields": {
+    "title": "The Godfather",
+    "book_image": "book_images/Mario Puzo/The Godfather/thegodfather.jpeg",
+    "mrp_price": "700.00",
+    "rental_price": "15.00",
+    "book_condition": "BN",
+    "author_name": 7,
+    "summary": "The Godfather is a crime novel by American author Mario Puzo. Originally published in 1969 by G. P. Putnam's Sons, the novel details the story of a fictional Mafia family in New York City, headed by Vito Corleone. Puzo's dedication for The Godfather is \"For Anthony Cleri\".",
+    "isbn": "9876543212345",
+    "language": 1,
+    "published_date": "2020-09-08",
+    "number_of_pages": 700,
+    "quality_rating": 5.0,
+    "slug": "the-godfather",
+    "is_featured": false,
+    "book_genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 11,
+  "fields": {
+    "title": "Women in love",
+    "book_image": "book_images/D.H. Lawrence/Women in love/womeninlove.jpg",
+    "mrp_price": "100.00",
+    "rental_price": "15.00",
+    "book_condition": "F",
+    "author_name": 8,
+    "summary": "Women in Love is a novel by British author D. H. Lawrence. It is a sequel to his earlier novel The Rainbow, and follows the continuing loves and lives of the Brangwen sisters, Gudrun and Ursula. Gudrun Brangwen, an artist, pursues a destructive relationship with Gerald Crich, an industrialist.",
+    "isbn": "9780525563693",
+    "language": 1,
+    "published_date": "2020-09-08",
+    "number_of_pages": 122,
+    "quality_rating": 5.0,
+    "slug": "women-in-love",
+    "is_featured": false,
+    "book_genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 12,
+  "fields": {
+    "title": "Inferno",
+    "book_image": "",
+    "mrp_price": "650.00",
+    "rental_price": "20.00",
+    "book_condition": "BN",
+    "author_name": 35,
+    "summary": "Florence: Harvard symbologist Robert Langdon awakes in a hospital bed with no recollection of where he is or how he got there. Nor can he explain the origin of the macabre object found hidden in his belongings.\r\n\r\nA threat to his life will propel him and a young doctor, Sienna Brooks, into a breakneck chase across the city. Only Langdon's knowledge of the hidden passageways and ancient secret that lie behind its historic fa ade can save them from the clutches of their unknown pursuers.\r\n\r\nWith only a few lines from Dante's Inferno to guide them, they must decipher a sequence of codes buried deep within some of the Renaissance's most celebrated artworks to find the answers to a puzzle which may, or may not, help them save the world from a terrifying threat.",
+    "isbn": "9781400079155",
+    "language": 1,
+    "published_date": "2013-05-14",
+    "number_of_pages": 609,
+    "quality_rating": 5.0,
+    "slug": "inferno",
+    "is_featured": false,
+    "book_genre": [
+      2,
+      16,
+      17,
+      9
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 13,
+  "fields": {
+    "title": "1Q84",
+    "book_image": "book_images/Haruki Murakami/1Q84/1Q84.jpg",
+    "mrp_price": "1118.00",
+    "rental_price": "20.00",
+    "book_condition": "F",
+    "author_name": 2,
+    "summary": "The year is 1Q84. This is the real world, there is no doubt about that. But in this world, there are two moons in the sky. In this world, the fates of two people, Tengo and Aomame, are closely intertwined. They are each, in their own way, doing something very dangerous. And in this world, there seems no way to save them both. Something extraordinary is starting.",
+    "isbn": "9780307476463",
+    "language": 1,
+    "published_date": "2009-05-29",
+    "number_of_pages": 928,
+    "quality_rating": 5.0,
+    "slug": "1q84",
+    "is_featured": false,
+    "book_genre": [
+      2,
+      24
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 14,
+  "fields": {
+    "title": "The Fellowship of the Rings",
+    "book_image": "",
+    "mrp_price": "1000.00",
+    "rental_price": "20.00",
+    "book_condition": "BN",
+    "author_name": 34,
+    "summary": "A young hobbit, Frodo, who has found the One Ring that belongs to the Dark Lord Sauron, begins his journey with eight companions to Mount Doom, the only place where it can be destroyed.",
+    "isbn": "9780618002221",
+    "language": 1,
+    "published_date": "1954-07-29",
+    "number_of_pages": 423,
+    "quality_rating": 5.0,
+    "slug": "the-fellowship-of-the-rings",
+    "is_featured": false,
+    "book_genre": [
+      2,
+      10
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 15,
+  "fields": {
+    "title": "The Two Towers",
+    "book_image": "book_images/John Ronald Reuel Tolkien/The Two Towers/LOTR_2.jpg",
+    "mrp_price": "638.00",
+    "rental_price": "20.00",
+    "book_condition": "BN",
+    "author_name": 34,
+    "summary": "The Two Towers opens with the disintegration of the Fellowship, as Merry and Pippin are taken captive by Orcs after the death of Boromir in battle. The Orcs, having heard a prophecy that a Hobbit will bear a Ring that gives universal power to its owner, wrongly think that Merry and Pippin are the Ring-bearers.",
+    "isbn": "9780007203550",
+    "language": 1,
+    "published_date": "1954-11-11",
+    "number_of_pages": 352,
+    "quality_rating": 5.0,
+    "slug": "the-two-towers",
+    "is_featured": false,
+    "book_genre": [
+      2,
+      10
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 16,
+  "fields": {
+    "title": "The Return of the King",
+    "book_image": "",
+    "mrp_price": "638.00",
+    "rental_price": "20.00",
+    "book_condition": "BN",
+    "author_name": 34,
+    "summary": "The former Fellowship members prepare for the final battle. While Frodo and Sam approach Mount Doom to destroy the One Ring, they follow Gollum, unaware of the path he is leading them to.",
+    "isbn": "9780358380252",
+    "language": 1,
+    "published_date": "1955-10-20",
+    "number_of_pages": 416,
+    "quality_rating": 5.0,
+    "slug": "the-return-of-the-king",
+    "is_featured": false,
+    "book_genre": [
+      2,
+      10
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 17,
+  "fields": {
+    "title": "Hard boiled wonderland and the end of the World",
+    "book_image": "",
+    "mrp_price": "1085.00",
+    "rental_price": "17.00",
+    "book_condition": "F",
+    "author_name": 2,
+    "summary": "Hard-Boiled Wonderland and the End of the World is a fantasy, sci-fi novel by Haruki Murakami that explores the realm of conscious thought and identity through the parallel narrative of Calcutec and a newcomer from The End of the World.",
+    "isbn": "9780679743460",
+    "language": 1,
+    "published_date": "1985-06-15",
+    "number_of_pages": 400,
+    "quality_rating": 5.0,
+    "slug": "hard-boiled-wonderland-and-the-end-of-the-world",
+    "is_featured": false,
+    "book_genre": [
+      2,
+      6,
+      10
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 18,
+  "fields": {
+    "title": "Intelligent Investor",
+    "book_image": "book_images/Benjamin Graham/Intelligent Investor/intelligent_investor.jpg",
+    "mrp_price": "1118.00",
+    "rental_price": "5.00",
+    "book_condition": "BN",
+    "author_name": 31,
+    "summary": "The greatest investment advisor of the twentieth century, Benjamin Graham taught and inspired people worldwide. Graham's philosophy of \"value investing\" -- which shields investors from substantial error and teaches them to develop long-term strategies -- has made The Intelligent Investor the stock market bible ever since its original publication in 1949. Over the years, market developments have proven the wisdom of Graham's strategies. While preserving the integrity of Graham's original text, this revised edition includes updated commentary by noted financial journalist Jason Zweig, whose perspective incorporates the realities of today's market, draws parallels between Graham's examples and today's financial headlines, and gives readers a more thorough understanding of how to apply Graham's principles. Vital and indispensable, this HarperBusiness Essentials edition of The Intelligent Investor is the most important book you will ever read on how to reach your financial goals.",
+    "isbn": "9780060555665",
+    "language": 1,
+    "published_date": "1949-01-01",
+    "number_of_pages": 640,
+    "quality_rating": 5.0,
+    "slug": "intelligent-investor",
+    "is_featured": false,
+    "book_genre": [
+      5,
+      25
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 19,
+  "fields": {
+    "title": "To Kill a Mocking Bird",
+    "book_image": "book_images/Harper Lee/To Kill a Mocking Bird/tokilla_mocking_bird.jpg",
+    "mrp_price": "640.00",
+    "rental_price": "17.00",
+    "book_condition": "NF",
+    "author_name": 33,
+    "summary": "A lawyer's advice to his children as he defends the real mockingbird of Harper Lee's classic novel - a black man charged with the rape of a white girl. Through the young eyes of Scout and Jem Finch, Harper Lee explores with exuberant humour the irrationality of adult attitudes to race and class in the Deep South of the 1930s. The conscience of a town steeped in prejudice, violence and hypocrisy is pricked by the stamina of one man's struggle for justice. But the weight of history will only tolerate so much.\r\n\r\nTo Kill a Mockingbird is a coming-of-age story, an anti-racist novel, a historical drama of the Great Depression and a sublime example of the Southern writing tradition.",
+    "isbn": "9780099549482",
+    "language": 1,
+    "published_date": "1960-06-11",
+    "number_of_pages": 320,
+    "quality_rating": 3.0,
+    "slug": "to-kill-a-mocking-bird",
+    "is_featured": false,
+    "book_genre": [
+      2,
+      12,
+      44,
+      45,
+      46
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 20,
+  "fields": {
+    "title": "Karnali Blues",
+    "book_image": "book_images/Buddhisagar/Karnali Blues/karnaliblues.jpeg",
+    "mrp_price": "400.00",
+    "rental_price": "17.00",
+    "book_condition": "BN",
+    "author_name": 25,
+    "summary": "Karnali Blues is an epic story about a young boy who travels to different phases of his life; with his parents. The story's main plot focuses on the character's father who develops in our own spirits",
+    "isbn": "9789937827935",
+    "language": 2,
+    "published_date": "2010-01-01",
+    "number_of_pages": 300,
+    "quality_rating": 5.0,
+    "slug": "karnali-blues",
+    "is_featured": false,
+    "book_genre": [
+      2,
+      44
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 21,
+  "fields": {
+    "title": "The Hobbit",
+    "book_image": "book_images/John Ronald Reuel Tolkien/The Hobbit/hobbit.jpg",
+    "mrp_price": "640.00",
+    "rental_price": "17.00",
+    "book_condition": "BN",
+    "author_name": 34,
+    "summary": "Bilbo Baggins is a hobbit who enjoys a comfortable, unambitious life, rarely travelling further than the pantry of his hobbit-hole in bag end but his contentment is disturbed when the wizard, Gandalf and a company of thirteen dwarves arrive on his doorstep one day to whisk him away on an unexpected journey there and back again they have the plot to raid the treasure hoard of Smaug, the Magnificent, a large and very dangerous dragon the prelude to the lord of the rings, the hobbit has sold many millions of copies since its publication in 1937, establishing itself as one of the most beloved and influential books of the twentieth century",
+    "isbn": "9780008118044",
+    "language": 1,
+    "published_date": "1937-09-21",
+    "number_of_pages": 310,
+    "quality_rating": 5.0,
+    "slug": "the-hobbit",
+    "is_featured": false,
+    "book_genre": [
+      12,
+      16,
+      38
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 22,
+  "fields": {
+    "title": "How to win friends and influence people",
+    "book_image": "book_images/Dale Carnegie/How to win friends and influence people/howtowinfriends.jpg",
+    "mrp_price": "350.00",
+    "rental_price": "7.00",
+    "book_condition": "BN",
+    "author_name": 9,
+    "summary": "How to Win Friends and Influence People is a self-help book written by Dale Carnegie, published in 1936. Over 30 million copies have been sold worldwide, making it one of the best-selling books of all time. In 2011, it was number 19 on Time Magazine's list of the 100 most influential books.",
+    "isbn": "1439167346",
+    "language": 1,
+    "published_date": "1936-10-01",
+    "number_of_pages": 291,
+    "quality_rating": 5.0,
+    "slug": "how-to-win-friends-and-influence-people",
+    "is_featured": false,
+    "book_genre": [
+      3,
+      12
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 23,
+  "fields": {
+    "title": "The Power of Positive Thinking",
+    "book_image": "book_images/Norman Vincent Peale/The Power of Positive Thinking/powerofpositivethinking.jpg",
+    "mrp_price": "300.00",
+    "rental_price": "7.00",
+    "book_condition": "BN",
+    "author_name": 12,
+    "summary": "The Power of Positive Thinking: A Practical Guide to Mastering the Problems of Everyday Living is a 1952 self-help book by Norman Vincent Peale.",
+    "isbn": "9780743507806",
+    "language": 1,
+    "published_date": "1952-01-01",
+    "number_of_pages": 200,
+    "quality_rating": 5.0,
+    "slug": "the-power-of-positive-thinking",
+    "is_featured": false,
+    "book_genre": [
+      3,
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 24,
+  "fields": {
+    "title": "The Story of My Life",
+    "book_image": "book_images/Helen Keller/The Story of My Life/storyofmylife_A20HmXK.jpg",
+    "mrp_price": "300.00",
+    "rental_price": "7.00",
+    "book_condition": "BN",
+    "author_name": 10,
+    "summary": "The Story of My Life, first published in 1903, is Helen Keller's autobiography detailing her early life, especially her experiences with Anne Sullivan. Portions of it were adapted by William Gibson for a 1957 Playhouse 90 production, a 1959 Broadway play, a 1962 Hollywood feature film, and the Indian film Black.",
+    "isbn": "9780786193233",
+    "language": 1,
+    "published_date": "1933-01-01",
+    "number_of_pages": 200,
+    "quality_rating": 5.0,
+    "slug": "the-story-of-my-life",
+    "is_featured": false,
+    "book_genre": [
+      3,
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 25,
+  "fields": {
+    "title": "How to Stop Worrying and Start Living",
+    "book_image": "book_images/Dale Carnegie/How to Stop Worrying and Start Living/howtostopworryingandstar_04Efkt3.jpg",
+    "mrp_price": "100.00",
+    "rental_price": "7.00",
+    "book_condition": "BN",
+    "author_name": 9,
+    "summary": "How to Stop Worrying and Start Living is a self-help book by Dale Carnegie. It was first printed in Great Britain in 1948 by Richard Clay, Ltd., Bungay Suffolk. It is currently published as a Mass Market Paperback of 352 pages by Pocket",
+    "isbn": "9780671574581",
+    "language": 1,
+    "published_date": "1948-09-14",
+    "number_of_pages": 339,
+    "quality_rating": 5.0,
+    "slug": "how-to-stop-worrying-and-start-living",
+    "is_featured": false,
+    "book_genre": [
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 26,
+  "fields": {
+    "title": "The Power of your subconscious mind",
+    "book_image": "book_images/Joseph Murphy/The Power of your subconscious mind/powerofsubsconsciousmind.jpg",
+    "mrp_price": "100.00",
+    "rental_price": "7.00",
+    "book_condition": "BN",
+    "author_name": 11,
+    "summary": "Here is the complete, original text of the million-selling self- help guide that reveals your invisible power to attain any goal-paired with a compelling bonus work, How to Attract Money.",
+    "isbn": "9780735204317",
+    "language": 1,
+    "published_date": "1963-09-14",
+    "number_of_pages": 303,
+    "quality_rating": 5.0,
+    "slug": "the-power-of-your-subconscious-mind",
+    "is_featured": false,
+    "book_genre": [
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 27,
+  "fields": {
+    "title": "Steve Jobs",
+    "book_image": "book_images/Walter Isaacson/Steve Jobs/steviejobs.jpg",
+    "mrp_price": "960.00",
+    "rental_price": "10.00",
+    "book_condition": "BN",
+    "author_name": 13,
+    "summary": "Steve Jobs is the authorized self-titled biography of Steve Jobs. The book was written at the request of Jobs by Walter Isaacson, a former executive at CNN and TIME who has written best-selling biographies of Benjamin Franklin and Albert Einstein.",
+    "isbn": "9781442346277",
+    "language": 1,
+    "published_date": "2011-10-24",
+    "number_of_pages": 656,
+    "quality_rating": 5.0,
+    "slug": "steve-jobs",
+    "is_featured": false,
+    "book_genre": [
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.book",
+  "pk": 28,
+  "fields": {
+    "title": "Singha Durbar",
+    "book_image": "",
+    "mrp_price": "800.00",
+    "rental_price": "10.00",
+    "book_condition": "BN",
+    "author_name": 36,
+    "summary": "The Ranas of Nepal were de facto rulers of the kingdom for slightly over a century, reigning as prime ministers of the state, with the king as a figurehead. Their rule, while bringing stability to a fraught empire, has also been criticized for economic and religious excesses, and for tyranny. Now, for the first time, a descendant of the Rana clan opens up about his family, setting right certain historical misconceptions, and offering an honest critique of what was one of the most vital periods in the history of Nepal which drew to a close in 1951. Frank, forthright and utterly balanced, Singha Durbar: Rise and Fall of the Rana Regime of Nepal is one of the most important historical accounts to have been published on the Himalayan kingdom in recent years.",
+    "isbn": "9788129145611",
+    "language": 2,
+    "published_date": "2017-09-14",
+    "number_of_pages": 408,
+    "quality_rating": 5.0,
+    "slug": "singha-durbar",
+    "is_featured": false,
+    "book_genre": [
+      21,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.nationality",
+  "pk": 1,
+  "fields": {
+    "name": "United States of America"
+  }
+},
+{
+  "model": "corebookmodels.nationality",
+  "pk": 2,
+  "fields": {
+    "name": "Nepal"
+  }
+},
+{
+  "model": "corebookmodels.nationality",
+  "pk": 3,
+  "fields": {
+    "name": "Canada"
+  }
+},
+{
+  "model": "corebookmodels.nationality",
+  "pk": 4,
+  "fields": {
+    "name": "Brazil"
+  }
+},
+{
+  "model": "corebookmodels.nationality",
+  "pk": 5,
+  "fields": {
+    "name": "Afghanistan"
+  }
+},
+{
+  "model": "corebookmodels.nationality",
+  "pk": 6,
+  "fields": {
+    "name": "Australia"
+  }
+},
+{
+  "model": "corebookmodels.nationality",
+  "pk": 7,
+  "fields": {
+    "name": "Columbia"
+  }
+},
+{
+  "model": "corebookmodels.nationality",
+  "pk": 8,
+  "fields": {
+    "name": "United Kingdom"
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 2,
+  "fields": {
+    "name": "Haruki Murakami",
+    "gender": "M",
+    "author_image": "Author_images/Haruki Murakami/kafkaonshore.jpeg",
+    "dateOfBirth": "2020-04-15",
+    "nationality": 1,
+    "dateOfDeath": "2020-04-15",
+    "slug": "haruki-murakami",
+    "is_active": false,
+    "genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 5,
+  "fields": {
+    "name": "J.D. Salinger",
+    "gender": "M",
+    "author_image": "",
+    "dateOfBirth": "1994-09-08",
+    "nationality": 1,
+    "dateOfDeath": "2020-04-12",
+    "slug": "jd-salinger",
+    "is_active": false,
+    "genre": []
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 6,
+  "fields": {
+    "name": "Sylvia Plath",
+    "gender": "F",
+    "author_image": "",
+    "dateOfBirth": "1994-09-08",
+    "nationality": 1,
+    "dateOfDeath": "2020-09-08",
+    "slug": "sylvia-plath",
+    "is_active": false,
+    "genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 7,
+  "fields": {
+    "name": "Mario Puzo",
+    "gender": "M",
+    "author_image": "",
+    "dateOfBirth": "1976-09-08",
+    "nationality": 1,
+    "dateOfDeath": "2020-09-08",
+    "slug": "mario-puzo",
+    "is_active": false,
+    "genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 8,
+  "fields": {
+    "name": "D.H. Lawrence",
+    "gender": "M",
+    "author_image": "",
+    "dateOfBirth": "1906-09-08",
+    "nationality": 1,
+    "dateOfDeath": "2020-09-08",
+    "slug": "dh-lawrence",
+    "is_active": false,
+    "genre": [
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 9,
+  "fields": {
+    "name": "Dale Carnegie",
+    "gender": "M",
+    "author_image": "Author_images/Dale Carnegie/dale.jpeg",
+    "dateOfBirth": "1888-11-24",
+    "nationality": 1,
+    "dateOfDeath": "1955-11-01",
+    "slug": "dale-carnegie",
+    "is_active": false,
+    "genre": [
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 10,
+  "fields": {
+    "name": "Helen Keller",
+    "gender": "F",
+    "author_image": "Author_images/Helen Keller/KellerHelen2.jpg",
+    "dateOfBirth": "1880-06-27",
+    "nationality": 1,
+    "dateOfDeath": "1968-06-01",
+    "slug": "helen-keller",
+    "is_active": false,
+    "genre": [
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 11,
+  "fields": {
+    "name": "Joseph Murphy",
+    "gender": "M",
+    "author_image": "",
+    "dateOfBirth": "1898-05-20",
+    "nationality": 1,
+    "dateOfDeath": "1981-12-16",
+    "slug": "joseph-murphy",
+    "is_active": false,
+    "genre": [
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 12,
+  "fields": {
+    "name": "Norman Vincent Peale",
+    "gender": "M",
+    "author_image": "Author_images/Norman Vincent Peale/Norman_V_P.jpg",
+    "dateOfBirth": "1898-05-31",
+    "nationality": 1,
+    "dateOfDeath": "1993-12-24",
+    "slug": "norman-vincent-peale",
+    "is_active": false,
+    "genre": [
+      3,
+      5,
+      34
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 13,
+  "fields": {
+    "name": "Walter Isaacson",
+    "gender": "M",
+    "author_image": "Author_images/Walter Isaacson/Walter_isaacson.jpg",
+    "dateOfBirth": "1952-05-20",
+    "nationality": 1,
+    "dateOfDeath": null,
+    "slug": "walter-isaacson",
+    "is_active": false,
+    "genre": [
+      4,
+      5,
+      21,
+      39
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 14,
+  "fields": {
+    "name": "Samrat Upadhyay",
+    "gender": "M",
+    "author_image": "Author_images/Samrat Upadhyay/Samrat_U.jpg",
+    "dateOfBirth": "1974-01-01",
+    "nationality": 2,
+    "dateOfDeath": null,
+    "slug": "samrat-upadhyay",
+    "is_active": false,
+    "genre": [
+      2,
+      13
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 15,
+  "fields": {
+    "name": "Manjushree Thapa",
+    "gender": "F",
+    "author_image": "Author_images/Manjushree Thapa/manjushree_t.jpg",
+    "dateOfBirth": "1968-01-01",
+    "nationality": 3,
+    "dateOfDeath": null,
+    "slug": "manjushree-thapa",
+    "is_active": false,
+    "genre": [
+      2,
+      13
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 20,
+  "fields": {
+    "name": "Paulo",
+    "gender": "Undef",
+    "author_image": "Author_images/Paulo/paulo_c.jpg",
+    "dateOfBirth": "1947-08-24",
+    "nationality": 4,
+    "dateOfDeath": null,
+    "slug": "paulo",
+    "is_active": false,
+    "genre": [
+      2,
+      4,
+      5,
+      11,
+      32
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 21,
+  "fields": {
+    "name": "Mark Manson",
+    "gender": "M",
+    "author_image": "Author_images/Mark Manson/markmanson.jpg",
+    "dateOfBirth": "1984-03-09",
+    "nationality": 1,
+    "dateOfDeath": null,
+    "slug": "mark-manson",
+    "is_active": false,
+    "genre": [
+      3
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 22,
+  "fields": {
+    "name": "Khaled Hosseini",
+    "gender": "M",
+    "author_image": "Author_images/Khaleed/khaleed_h.jpg",
+    "dateOfBirth": "1965-03-04",
+    "nationality": 5,
+    "dateOfDeath": null,
+    "slug": "khaled-hosseini",
+    "is_active": false,
+    "genre": [
+      2,
+      41
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 23,
+  "fields": {
+    "name": "Robin Sharma",
+    "gender": "M",
+    "author_image": "",
+    "dateOfBirth": "1964-06-16",
+    "nationality": 3,
+    "dateOfDeath": null,
+    "slug": "robin-sharma",
+    "is_active": false,
+    "genre": [
+      3,
+      33
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 24,
+  "fields": {
+    "name": "Rhonda Byrne",
+    "gender": "F",
+    "author_image": "",
+    "dateOfBirth": "1945-01-03",
+    "nationality": 6,
+    "dateOfDeath": null,
+    "slug": "rhonda-byrne",
+    "is_active": false,
+    "genre": [
+      3
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 25,
+  "fields": {
+    "name": "Buddhisagar",
+    "gender": "M",
+    "author_image": "Author_images/Buddhisagar/Buddhisagar-Chapai.jpg",
+    "dateOfBirth": "1981-06-02",
+    "nationality": 2,
+    "dateOfDeath": null,
+    "slug": "buddhisagar",
+    "is_active": false,
+    "genre": [
+      2,
+      5,
+      42
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 26,
+  "fields": {
+    "name": "Robert Kiyosaki",
+    "gender": "M",
+    "author_image": "Author_images/Robert Kiyosaki/Robert_k.jpeg",
+    "dateOfBirth": "1947-04-08",
+    "nationality": 1,
+    "dateOfDeath": null,
+    "slug": "robert-kiyosaki",
+    "is_active": false,
+    "genre": [
+      5,
+      25
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 27,
+  "fields": {
+    "name": "John Green",
+    "gender": "M",
+    "author_image": "Author_images/John Green/john_g.jpg",
+    "dateOfBirth": "1977-08-24",
+    "nationality": 1,
+    "dateOfDeath": null,
+    "slug": "john-green",
+    "is_active": false,
+    "genre": [
+      2,
+      11,
+      14,
+      41
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 28,
+  "fields": {
+    "name": "Mitch Albom",
+    "gender": "M",
+    "author_image": "Author_images/Mitch Albom/Mitch_A.jpg",
+    "dateOfBirth": "1958-05-23",
+    "nationality": 1,
+    "dateOfDeath": null,
+    "slug": "mitch-albom",
+    "is_active": false,
+    "genre": [
+      2,
+      4,
+      35,
+      41
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 29,
+  "fields": {
+    "name": "Gabriel Garcia Marquez",
+    "gender": "M",
+    "author_image": "Author_images/Gabriel Garcia Marquez/Gabriel_G_M.jpg",
+    "dateOfBirth": "1972-03-06",
+    "nationality": 7,
+    "dateOfDeath": "2014-04-17",
+    "slug": "gabriel-garcia-marquez",
+    "is_active": false,
+    "genre": [
+      41,
+      2,
+      13
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 30,
+  "fields": {
+    "name": "Arthur Golden",
+    "gender": "M",
+    "author_image": "Author_images/Arthur Golden/Arthaur_G.jpeg",
+    "dateOfBirth": "1956-12-06",
+    "nationality": 1,
+    "dateOfDeath": null,
+    "slug": "arthur-golden",
+    "is_active": false,
+    "genre": [
+      8,
+      41,
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 31,
+  "fields": {
+    "name": "Benjamin Graham",
+    "gender": "M",
+    "author_image": "Author_images/Benjamin Graham/Benjamin-Grahamjpg.jpg",
+    "dateOfBirth": "1894-05-09",
+    "nationality": 1,
+    "dateOfDeath": "1976-09-21",
+    "slug": "benjamin-graham",
+    "is_active": false,
+    "genre": [
+      25,
+      5
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 32,
+  "fields": {
+    "name": "Judy Blume",
+    "gender": "F",
+    "author_image": "Author_images/Judy Blume/judy_b.jpg",
+    "dateOfBirth": "1938-02-12",
+    "nationality": 1,
+    "dateOfDeath": null,
+    "slug": "judy-blume",
+    "is_active": false,
+    "genre": [
+      2,
+      14
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 33,
+  "fields": {
+    "name": "Harper Lee",
+    "gender": "F",
+    "author_image": "Author_images/Harper Lee/Harper_lee.jpg",
+    "dateOfBirth": "1926-04-28",
+    "nationality": 1,
+    "dateOfDeath": "2016-02-19",
+    "slug": "harper-lee",
+    "is_active": false,
+    "genre": [
+      41,
+      2
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 34,
+  "fields": {
+    "name": "John Ronald Reuel Tolkien",
+    "gender": "M",
+    "author_image": "Author_images/John Ronald Reuel Tolkien/JRR_Tolkien.jpg",
+    "dateOfBirth": "1892-01-03",
+    "nationality": 8,
+    "dateOfDeath": "1973-09-02",
+    "slug": "john-ronald-reuel-tolkien",
+    "is_active": false,
+    "genre": [
+      2,
+      10,
+      43
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 35,
+  "fields": {
+    "name": "Dan Brown",
+    "gender": "M",
+    "author_image": "Author_images/Dan Brown/dan.jpg",
+    "dateOfBirth": "1964-06-22",
+    "nationality": 1,
+    "dateOfDeath": null,
+    "slug": "dan-brown",
+    "is_active": false,
+    "genre": [
+      17,
+      2,
+      9
+    ]
+  }
+},
+{
+  "model": "corebookmodels.author",
+  "pk": 36,
+  "fields": {
+    "name": "Sagar SJB Rana",
+    "gender": "M",
+    "author_image": "",
+    "dateOfBirth": "2020-09-14",
+    "nationality": 2,
+    "dateOfDeath": null,
+    "slug": "sagar-sjb-rana",
+    "is_active": false,
+    "genre": [
+      8,
+      2,
+      4,
+      5
+    ]
+  }
+}
+]
