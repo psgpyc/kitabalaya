@@ -273,7 +273,7 @@ $(document).ready(function(){
             mode: 'same-origin',
             success: function(successData){
                  if(successData.logged_in === 'true'){
-                    window.location.href = 'http://kitabalaya.com:8000/home/'
+                    window.location.href = 'https://kitabalaya.com/home/'
 
                 }
                  else{
@@ -391,7 +391,7 @@ login_btn.addEventListener('click', ()=>{
 
 
 
-
+if(user_cart_button){
 user_cart_button.addEventListener('click', ()=>{
     user_cart.classList.toggle('no-view');
     user_cart_id.classList.toggle('no-view');
@@ -407,7 +407,7 @@ user_cart_button.addEventListener('click', ()=>{
 
    
 
-})
+})}
 
 
 
