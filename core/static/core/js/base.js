@@ -273,7 +273,7 @@ $(document).ready(function(){
             mode: 'same-origin',
             success: function(successData){
                  if(successData.logged_in === 'true'){
-                    window.location.href = 'https://kitabalaya.com/home/'
+                    window.location.href = 'http://kitabalaya.com:8000/home/'
 
                 }
                  else{

@@ -361,7 +361,7 @@ nav .right-menu .shopping-cart img:hover{
     z-index: 300;
     height: auto;
     width: auto;
-    left: 240px;
+    left: 16.5%;
     margin-top: -45px;
     background-color: white;
 
@@ -404,7 +404,8 @@ nav .right-menu .shopping-cart img:hover{
 }
 
 .best-sellers{
-    margin: 90px 0;
+    width: 95%;
+    margin: 100px auto;
 }
 
 .best-sellers h2{
@@ -415,11 +416,12 @@ nav .right-menu .shopping-cart img:hover{
 .best-sellers .the-books-wrapper{
     margin: 25px 0;
     display: flex;
+    justify-content: space-around;
 }
 
 
 .best-sellers .the-book{
-    margin: 25px 30px;
+    /*margin: 25px 30px;*/
     height: 300px;
     width: 200px;
     background-color: white;
@@ -428,6 +430,9 @@ nav .right-menu .shopping-cart img:hover{
     /*border-top: 1px solid #cbe4f1;*/
     cursor: pointer;
     position: relative;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+    border-bottom: 1px solid #cbe4f1;
+    border-top: 1px solid #cbe4f1;
 }
 
 .best-sellers .the-book:hover{
@@ -441,7 +446,7 @@ nav .right-menu .shopping-cart img:hover{
 .best-sellers .the-books-wrapper .the-book img{
     height: 300px;
     width: 200px;
-    padding: 5px;
+    padding: 4px;
     /*border-radius: 15px;*/
 }
 
@@ -505,9 +510,10 @@ nav .right-menu .shopping-cart img:hover{
 .user-profile-wrapper{
     position: fixed;
     top: 57px;
-    left: 73%;
+    left: 75.8%;
     height: 90%;
-    width: 26%;
+    overflow: auto;
+    width: 23%;
     text-align: center;
     background-color: white;
     box-shadow: 6px 6px 6px 6px rgba(32,33,36,.28);
@@ -584,9 +590,9 @@ nav .right-menu .shopping-cart img:hover{
 .user-cart-wrapper{
     position: fixed;
     top: 57px;
-    left: 69%;
-    height: 90%;
-    width: 26%;
+    left: 72%;
+    height: 80%;
+    width: 23%;
     background-color: white;
     box-shadow: 6px 6px 6px 6px rgba(32,33,36,.28);
     border-top: 1px solid #cbe4f1;
@@ -595,6 +601,33 @@ nav .right-menu .shopping-cart img:hover{
     border-right: 1px solid #cbe4f1;
     z-index: 300;
 
+}
+
+
+.user-cart-wrapper img{
+    height: 370px;
+    width: 250px;
+    margin-top: 15%;
+    margin-left: 11%;
+}
+
+.user-cart-wrapper .search-button-wrapper .search-button{
+    margin-top: -8%;
+    height: 38px;
+    width: 50%;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+    border: 1px solid #cbe4f1;
+    font-size: 14px;
+
+    /*border-radius: 10px;*/
+    background-color: white;
+
+    cursor: pointer;
+
+}
+
+.user-cart-wrapper .search-button-wrapper .search-button:hover{
+    font-size: 16px;
 }
 
 

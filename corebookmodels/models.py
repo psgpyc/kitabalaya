@@ -5,6 +5,9 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from PIL import Image
+from django.core.files.storage import default_storage as storage
+
 
 # postgres FullTextSearch Imports
 
