@@ -421,13 +421,10 @@ nav .right-menu .shopping-cart img:hover{
 
 
 .best-sellers .the-book{
-    /*margin: 25px 30px;*/
-    height: 300px;
-    width: 200px;
+    height: 270px;
+    width: 170px;
     background-color: white;
-    /*box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);*/
-    /*border-bottom: 1px solid #cbe4f1;*/
-    /*border-top: 1px solid #cbe4f1;*/
+
     cursor: pointer;
     position: relative;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
@@ -444,19 +441,19 @@ nav .right-menu .shopping-cart img:hover{
 
 
 .best-sellers .the-books-wrapper .the-book img{
-    height: 300px;
-    width: 200px;
+    height: 270px;
+    width: 170px;
     padding: 4px;
     /*border-radius: 15px;*/
 }
 
 
 .rent-button-the-book{
-    height: 30px;
-    width: 130px;
+    height: 25px;
+    width: 100px;
     position: absolute;
     top: 85%;
-    left: 18%;
+    left: 22%;
     cursor: pointer;
     display: none;
 
