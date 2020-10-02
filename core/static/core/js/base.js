@@ -136,17 +136,16 @@ $(document).ready(function(){
                    beforeSend: function() {
                            $("#the-book-modal-id").fadeIn();
 
-                           $("#book-title-id").text()
-                           $("#book-author-id").text()
-                           // $("#book-img-id").attr('src', data.book.image)
-                           $("#book-summary").text()
-                           $("#book-condition-span-id").text()
-                           $("#book-quality-rating-span-id").text()
-                           $("#book-slug").text()
-                           $("#published-date-id").text()
-                           $("#page-count-id").text()
-                           $('#book-genre-span-id').text()
-                           $('#book-rating-id').text()
+                           $("#book-title-id").text(" ")
+                           $("#book-author-id").text(" ")
+                           $("#book-summary").text(" ")
+                           $("#book-condition-span-id").text(" ")
+                           $("#book-quality-rating-span-id").text(" ")
+                           $("#book-slug").text(" ")
+                           $("#published-date-id").text(" ")
+                           $("#page-count-id").text(" ")
+                           $('#book-genre-span-id').text(" ")
+                           $('#book-rating-id').text(" ")
 
                    },
 
