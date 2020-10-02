@@ -41,104 +41,90 @@
                        {% if each_book.book_image %}
                           <img src="{{ each_book.book_image.url }}" alt="">
                        {% endif %}
-                       <a class="rent-link" href="{% url 'book-details' each_book.slug %}"><button class="rent-button-the-book" type="button">RENT</button></a>
 
-                   </div>
+                        <div class="book-modal no-view" id="the-book-modal-id">
+                            <div class="close-side-bar" id="close-book-modal-id">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
+                            </div>
 
-              {% endfor %}
+                             <div class="modal-book-display">
+                                 <div class="modal-book">
+                                     <img decoding="async" id="book-img-id" src="" alt="Kitabalaya Book a book">
+                                    <div class="book-wishlist-btn">
+                                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402m5.726-20.583c-2.203 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248-3.183 0-6.281 2.187-6.281 6.191 0 4.661 5.571 9.429 12 15.809 6.43-6.38 12-11.148 12-15.809 0-4.011-3.095-6.181-6.274-6.181"/></svg>
+                                        <p>Add to Wishlist</p>
+                                    </div>
 
 
-            </div>
-        </div>
+                             </div>
+
+                            <div class="modal-book-details">
+                                <h1 id="book-title-id">Catcher in the rye</h1>
+                                <p>by <a id="book-author-id" href="#">J.D. Salinger</a></p>
+                                <form action="" method="post">
+                                     {% csrf_token %}
+                                    <div class="rating-wrapper">
+                                        <button type="button" class="fa fa-star each-fa "></button>
+                                        <button type="button" class="fa fa-star each-fa"></button>
+                                        <button type="button" class="fa fa-star each-fa"></button>
+                                        <button type="button" class="fa fa-star each-fa"></button>
+                                        <button type="button" class="fa fa-star each-fa"></button>
+                                        <div class="rating-count">
+                                            <p id="book-rating-id">4.7</p>
+                                            <p>/5</p>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
+
+                                <div class="book-summary">
+                                    <p id="book-summary">
+                                        The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946
+                                        and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for
+                                        its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely.
+                                    </p>
+                                    <p class="no-view" id="book-slug">slug-filed</p>
+
+                                </div>
+
+                                <div class="authors-genre">
+
+                                    <h3>Originally Published: <span id="published-date-id">July 16, 1951</span></h3>
+                                    <h3>Page Count: <span id="page-count-id">300</span></h3>
+                                    <h3>Genre: <span id="book-genre-span-id">Novel, Bildungsroman, Coming-of-age story</span>    </h3>
+
+                {#                    <div class="quality-rating">#}
+
+                                        <h3>Book Condition: <span id="book-condition-span-id">Brand New</span></h3>
+                                        <h3>Quality Rating: <span id="book-quality-rating-span-id">5/5</span></h3>
+                {#                    </div>#}
+
+
+                                </div>
+
+
+
+
+
+                            </div>
+
+                        </div>
+
+                                            <div class="rent-cart-btn">
+                            <button type="button">Add to Cart</button>
+                            <button type="button">RENT @ 10/DAY</button>
+                        </div>
+                                        </div>
+                                       <a class="rent-link" href="{% url 'book-details' each_book.slug %}"><button class="rent-button-the-book" type="button">RENT</button></a>
+                                   </div>
+                              {% endfor %}
+
+
+                            </div>
+                        </div>
     {% endfor %}
 
 
-    <div class="book-modal no-view" id="the-book-modal-id">
-        <div class="close-side-bar" id="close-book-modal-id">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
-        </div>
-
-        <div class="modal-book-display">
-            <div class="modal-book">
-                <img decoding="async" id="book-img-id" src="" alt="Kitabalaya Book a book">
-                <div class="book-wishlist-btn">
-                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402m5.726-20.583c-2.203 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248-3.183 0-6.281 2.187-6.281 6.191 0 4.661 5.571 9.429 12 15.809 6.43-6.38 12-11.148 12-15.809 0-4.011-3.095-6.181-6.274-6.181"/></svg>
-                    <p>Add to Wishlist</p>
-                </div>
-
-
-            </div>
-
-            <div class="modal-book-details">
-                <h1 id="book-title-id">Catcher in the rye</h1>
-                <p>by <a id="book-author-id" href="#">J.D. Salinger</a></p>
-                <form action="" method="post">
-                     {% csrf_token %}
-                    <div class="rating-wrapper">
-                        <button type="button" class="fa fa-star each-fa "></button>
-                        <button type="button" class="fa fa-star each-fa"></button>
-                        <button type="button" class="fa fa-star each-fa"></button>
-                        <button type="button" class="fa fa-star each-fa"></button>
-                        <button type="button" class="fa fa-star each-fa"></button>
-                        <div class="rating-count">
-                            <p id="book-rating-id">4.7</p>
-                            <p>/5</p>
-                        </div>
-                    </div>
-                </form>
-                <hr>
-
-                <div class="book-summary">
-                    <p id="book-summary">
-                        The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946
-                        and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for
-                        its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely.
-                    </p>
-                    <p class="no-view" id="book-slug">slug-filed</p>
-
-                </div>
-
-                <div class="authors-genre">
-
-                    <h3>Originally Published: <span id="published-date-id">July 16, 1951</span></h3>
-                    <h3>Page Count: <span id="page-count-id">300</span></h3>
-                    <h3>Genre: <span id="book-genre-span-id">Novel, Bildungsroman, Coming-of-age story</span>    </h3>
-
-{#                    <div class="quality-rating">#}
-
-                        <h3>Book Condition: <span id="book-condition-span-id">Brand New</span></h3>
-                        <h3>Quality Rating: <span id="book-quality-rating-span-id">5/5</span></h3>
-{#                    </div>#}
-
-
-                </div>
-
-
-
-
-
-            </div>
-
-        </div>
-
-        <div class="rent-cart-btn">
-            <button type="button">Add to Cart</button>
-            <button type="button">RENT @ 10/DAY</button>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
 
 
 

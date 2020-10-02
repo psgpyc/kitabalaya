@@ -853,6 +853,13 @@ nav .right-menu .shopping-cart img:hover{
     line-height: 25px;
 }
 
+.best-sellers .the-books-wrapper .the-book .book-modal .close-side-bar img{
+    position: fixed;
+    left: 73.2%;
+    height: 30px;
+
+}
+
 
 
 /* book-modal-display*/

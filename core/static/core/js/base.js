@@ -139,7 +139,7 @@ $(document).ready(function(){
 
                            $("#book-title-id").text(data.book.title)
                            $("#book-author-id").text(data.book.author)
-                           $("#book-img-id").attr('src', data.book.image)
+                           // $("#book-img-id").attr('src', data.book.image)
                            $("#book-summary").text(data.book.summary)
                            $("#book-condition-span-id").text(data.book.book_condition)
                            $("#book-quality-rating-span-id").text(data.book.quality_rating)
