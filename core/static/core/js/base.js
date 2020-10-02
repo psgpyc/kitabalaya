@@ -138,6 +138,7 @@ $(document).ready(function(){
 
                            $("#book-title-id").text("Loading...")
                            $("#book-author-id").text("Loading...")
+                           $("#book-img-id").hide()
                            $("#book-summary").text("Loading...")
                            $("#book-condition-span-id").text("Loading...")
                            $("#book-quality-rating-span-id").text("Loading...")
@@ -151,10 +152,11 @@ $(document).ready(function(){
 
                    success: function(data) {
                        if(data.book){
-                           // $("#the-book-modal-id").fadeIn();
+                           $("#the-book-modal-id").fadeIn();
 
                            $("#book-title-id").text(data.book.title)
                            $("#book-author-id").text(data.book.author)
+                           $(".loading-div").hide()
                            $("#book-img-id").attr('src', data.book.image).show()
                            $("#book-summary").text(data.book.summary)
                            $("#book-condition-span-id").text(data.book.book_condition)

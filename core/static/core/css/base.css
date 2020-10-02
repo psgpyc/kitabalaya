@@ -902,6 +902,18 @@ nav .right-menu .shopping-cart img:hover{
 
 }
 
+.loading-div{
+    height: 300px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+    border-bottom: 1px solid #cbe4f1;
+    border-top: 1px solid #cbe4f1;
+    flex: 2;
+
+
+}
+
 .modal-book > img{
     height: 100%;
     width: 100%;
@@ -1025,7 +1037,7 @@ nav .right-menu .shopping-cart img:hover{
 
 
 .rent-cart-btn button{
-    margin: 0 30px;
+    margin: 0 10px;
     height: 38px;
     width: 15%;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
