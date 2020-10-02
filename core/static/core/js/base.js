@@ -136,16 +136,16 @@ $(document).ready(function(){
                    beforeSend: function() {
                            $("#the-book-modal-id").fadeIn();
 
-                           $("#book-title-id").text(" ")
-                           $("#book-author-id").text(" ")
-                           $("#book-summary").text(" ")
-                           $("#book-condition-span-id").text(" ")
-                           $("#book-quality-rating-span-id").text(" ")
-                           $("#book-slug").text(" ")
-                           $("#published-date-id").text(" ")
-                           $("#page-count-id").text(" ")
-                           $('#book-genre-span-id').text(" ")
-                           $('#book-rating-id').text(" ")
+                           $("#book-title-id").text("Loading...")
+                           $("#book-author-id").text("Loading...")
+                           $("#book-summary").text("Loading...")
+                           $("#book-condition-span-id").text("Loading...")
+                           $("#book-quality-rating-span-id").text("Loading...")
+                           $("#book-slug").text("Loading...")
+                           $("#published-date-id").text("Loading...")
+                           $("#page-count-id").text("Loading...")
+                           $('#book-genre-span-id').text("Loading...")
+                           $('#book-rating-id').text("Loading...")
 
                    },
 
