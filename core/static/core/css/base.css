@@ -502,6 +502,26 @@ nav .right-menu .shopping-cart img:hover{
     z-index: 300;
 }
 
+
+.book-modal-ajax-initial{
+    height: 80%;
+    width: 70%;
+    background-color: white;
+    position: fixed;
+    overflow: auto;
+    top: 10%;
+    left: 15%;
+    padding: 20px;
+
+    box-shadow: 16px 16px 16px 16px rgba(32,33,36,.28);
+    border-top: 1px solid #cbe4f1;
+    border-bottom: 1px solid #cbe4f1;
+    border-left: 1px solid #cbe4f1;
+    border-right: 1px solid #cbe4f1;
+    border-radius: 10px;
+    z-index: 300;
+
+}
 /* USER PROFILE NAVIGATE */
 
 .user-profile-wrapper{

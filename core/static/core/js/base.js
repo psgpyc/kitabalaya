@@ -11,6 +11,8 @@ $(document).ready(function(){
 
     let successModal = $('#user-registered-success-modal-id')
 
+    $('.book-modal-ajax-initial').hide()
+
     //hamburger button
 
     $("#hamburger-id").click(function (e) {
@@ -131,15 +133,30 @@ $(document).ready(function(){
 
                $.ajax({
                    url: endPoint,
-
-                   success: function(data){
-                       console.log(data.book)
-                       if(data.book){
+                   beforeSend: function() {
                            $("#the-book-modal-id").fadeIn();
+
+                           $("#book-title-id").text()
+                           $("#book-author-id").text()
+                           // $("#book-img-id").attr('src', data.book.image)
+                           $("#book-summary").text()
+                           $("#book-condition-span-id").text()
+                           $("#book-quality-rating-span-id").text()
+                           $("#book-slug").text()
+                           $("#published-date-id").text()
+                           $("#page-count-id").text()
+                           $('#book-genre-span-id').text()
+                           $('#book-rating-id').text()
+
+                   },
+
+                   success: function(data) {
+                       if(data.book){
+                           // $("#the-book-modal-id").fadeIn();
 
                            $("#book-title-id").text(data.book.title)
                            $("#book-author-id").text(data.book.author)
-                           // $("#book-img-id").attr('src', data.book.image)
+                           $("#book-img-id").attr('src', data.book.image)
                            $("#book-summary").text(data.book.summary)
                            $("#book-condition-span-id").text(data.book.book_condition)
                            $("#book-quality-rating-span-id").text(data.book.quality_rating)
@@ -257,6 +274,7 @@ $(document).ready(function(){
             }
         })
     })
+
 
 
     loginForm.submit(function(event){
