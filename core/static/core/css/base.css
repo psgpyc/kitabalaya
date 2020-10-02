@@ -1016,6 +1016,10 @@ nav .right-menu .shopping-cart img:hover{
 
 
 .rent-cart-btn{
+    position: fixed;
+    height: auto;
+    width: 68%;
+    top: 80%;
     text-align: right;
 }
 
