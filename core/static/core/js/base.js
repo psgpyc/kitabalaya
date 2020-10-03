@@ -135,6 +135,7 @@ $(document).ready(function(){
                    url: endPoint,
                    beforeSend: function() {
                            $("#the-book-modal-id").fadeIn();
+                           $(".loading-div").show()
 
                            $("#book-title-id").text("Loading...")
                            $("#book-author-id").text("Loading...")
