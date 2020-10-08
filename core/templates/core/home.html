@@ -11,7 +11,7 @@
 {% block body %}
     <div class="banner-wrapper" id="banner-img-id">
         {{ user }}
-        <img decoding="async" src="{% static 'core/img/Screen Shot 2020-08-21 at 21.55.25.png' %}" alt="">
+        <img decoding="async" src="{% static 'core/img/banner1.png' %}" alt="">
         <div class="navigation-banner-button-wrapper">
             <button role="button"></button>
             <button role="button"></button>
@@ -37,7 +37,7 @@
         <div class="best-sellers">
             <h2>Book a Book at {{ rental_category }}/<small>DAY</small></h2>
             <div class="the-books-wrapper">
-                {% for each_book in rental_category.rentalcategory.all|slice:":5" %}
+                {% for each_book in rental_category.rentalcategory.all %}
                     <div class="the-book">
                         {% if each_book.book_image %}
                             <img src="{{ each_book.book_image.url }}" alt="">

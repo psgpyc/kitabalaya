@@ -416,7 +416,8 @@ nav .right-menu .shopping-cart img:hover{
 .best-sellers .the-books-wrapper{
     margin: 25px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    overflow-x: scroll;
 }
 
 
@@ -424,6 +425,7 @@ nav .right-menu .shopping-cart img:hover{
     height: 270px;
     width: 170px;
     background-color: white;
+    margin: 0 20px;
 
     cursor: pointer;
     position: relative;
