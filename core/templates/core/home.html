@@ -37,7 +37,7 @@
         <div class="best-sellers">
             <h2>Book a Book at {{ rental_category }}/<small>DAY</small></h2>
             <div class="the-books-wrapper">
-                {% for each_book in rental_category.rentalcategory.all %}
+                {% for each_book in rental_category.rentalcategory.all|slice:":5" %}
                     <div class="the-book">
                         {% if each_book.book_image %}
                             <img src="{{ each_book.book_image.url }}" alt="">
@@ -128,6 +128,14 @@
 
 
             </div>
+
+            <form action="">
+                <div class="search-button-wrapper">
+                    <button class="search-button" type="button">VIEW ALL</button>
+                </div>
+            </form>
+
+
         </div>
     {% endfor %}
 

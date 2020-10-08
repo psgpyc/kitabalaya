@@ -121,6 +121,16 @@ nav .left-menu .hamburger img:hover{
     justify-content: center;
 }
 
+.best-sellers .search-button-wrapper .search-button{
+    margin: 10px 0;
+    width: 12%;
+}
+
+.best-sellers .search-button-wrapper .search-button:hover{
+    font-size: 15px;
+}
+
+
 .search-button-wrapper .search-button{
     margin: -12px 0 10px 10px;
     height: 38px;
@@ -405,7 +415,7 @@ nav .right-menu .shopping-cart img:hover{
 
 .best-sellers{
     width: 95%;
-    margin: 100px auto;
+    margin: 50px auto;
 }
 
 .best-sellers h2{
@@ -417,7 +427,6 @@ nav .right-menu .shopping-cart img:hover{
     margin: 25px 0;
     display: flex;
     justify-content: space-between;
-    overflow-x: scroll;
 }
 
 
