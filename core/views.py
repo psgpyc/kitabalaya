@@ -18,7 +18,7 @@ class Home(View):
     def get(self, request, *args, **kwargs):
         books_rental_category = RentalCategory.objects.prefetch_related('rentalcategory').all()
         ctx = {
-            'title': 'Kitabalaya - Rent books from Nepalese and Foreign Authors in Nepal',
+            'title': 'Kitabalaya - Rent books in Nepal',
             'login_form': UserLoginForm(),
             'registration_form': RegistrationForm(),
             'books_rental_category': books_rental_category,
