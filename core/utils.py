@@ -13,8 +13,6 @@ def get_obj_str(obj):
 
 def get_book_rating(obj):
     rating = BookRatingModel.objects.filter(book=obj).aggregate(Avg('rating'))['rating__avg']
-    rating_count = BookRatingModel.objects.filter(book=obj).count()
-    print('Book rating:{}'.format(rating_count))
 
     if rating is None:
         rating = 0
@@ -35,5 +33,4 @@ def get_my_rating(book, user):
 def get_date_formatted(obj):
     df = DateFormat(obj.published_date)
     df.format(get_format('DATE_FORMAT'))
-    print(df.format(get_format('DATE_FORMAT')))
     return df.format(get_format('DATE_FORMAT'))

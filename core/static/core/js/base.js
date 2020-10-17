@@ -54,53 +54,53 @@ $(document).ready(function(){
 
     //Rating
 
-    $('.fa').each(function(){
-        $(this).mouseenter(function (e) {
-            $(this).addClass('checked')
-            $(this).prevAll('.fa').addClass('checked')
-
-
-        })
-
-        $(this).mouseleave(function (e) {
-            $(this).removeClass('checked')
-            $(this).prevAll('.fa').removeClass('checked')
-
-
-        })
-
-        $(this).click(function (e) {
-            e.preventDefault();
-            $(this).addClass('clicked-checked')
-            $(this).prevAll('.fa').addClass('clicked-checked')
-            $(this).nextAll('.fa').removeClass('clicked-checked')
-            let ratingCount = (($(this).prevAll('.fa')).length)+1;
-            let endPoint= '/home/rating/'+$("#book-slug").text()+'/'
-             console.log(ratingCount)
-
-
-            $.ajax({
-                headers: { "X-CSRFToken": $.cookie("csrftoken") },
-                url: endPoint,
-                method: 'post',
-                success: function (data) {
-                    console.log(data.slug_name)
-
-                },
-                data: {
-                    'rating_count': ratingCount,
-                }
-
-
-
-
-                }
-
-            )
-
-        })
-
-    })
+    // $('.fa').each(function(){
+    //     $(this).mouseenter(function (e) {
+    //         $(this).addClass('checked')
+    //         $(this).prevAll('.fa').addClass('checked')
+    //
+    //
+    //     })
+    //
+    //     $(this).mouseleave(function (e) {
+    //         $(this).removeClass('checked')
+    //         $(this).prevAll('.fa').removeClass('checked')
+    //
+    //
+    //     })
+    //
+    //     $(this).click(function (e) {
+    //         e.preventDefault();
+    //         $(this).addClass('clicked-checked')
+    //         $(this).prevAll('.fa').addClass('clicked-checked')
+    //         $(this).nextAll('.fa').removeClass('clicked-checked')
+    //         let ratingCount = (($(this).prevAll('.fa')).length)+1;
+    //         let endPoint= '/home/rating/'+$("#book-slug").text()+'/'
+    //          console.log(ratingCount)
+    //
+    //
+    //         $.ajax({
+    //             headers: { "X-CSRFToken": $.cookie("csrftoken") },
+    //             url: endPoint,
+    //             method: 'post',
+    //             success: function (data) {
+    //                 console.log(data.slug_name)
+    //
+    //             },
+    //             data: {
+    //                 'rating_count': ratingCount,
+    //             }
+    //
+    //
+    //
+    //
+    //             }
+    //
+    //         )
+    //
+    //     })
+    //
+    // })
 
 
 
@@ -167,10 +167,10 @@ $(document).ready(function(){
                            $("#page-count-id").text(data.book.page_count)
                            $('#book-genre-span-id').text(data.book.book_genre)
                            $('#book-rating-id').text(data.book.book_rating)
-                           let count = 1
+                           let count = 0
                            $(".fa").each(function (e) {
 
-                               if(count <= data.book.my_rating){
+                               if(count <= data.book.book_rating){
                                    $(this).addClass('clicked-checked')
                                    count++;
 
