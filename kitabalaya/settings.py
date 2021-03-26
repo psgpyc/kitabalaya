@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'corebookmodels.apps.CorebookmodelsConfig',
     'coreaccounts.apps.CoreaccountsConfig',
     'core.apps.CoreConfig',
+    'cart.apps.CartConfig',
 
     # Third Party Applications
     'django_hosts',

@@ -65,9 +65,15 @@ class Language(TimeStampModel):
 
 class BookMainCategory(TimeStampModel):
     name = models.CharField(max_length=200, help_text='Enter the Main Category for the books')
+    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=True, )
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        """Initialising the slug for the slug field"""
+        self.slug = slugify(self.name)
+        super(BookMainCategory, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['name']
@@ -77,10 +83,19 @@ class BookMainCategory(TimeStampModel):
 
 class BookCategory(TimeStampModel):
     name = models.CharField(max_length=200, help_text='Enter the Main Category for the books')
-    belongs_to = models.ForeignKey(BookMainCategory, related_name='main_category', default=11, on_delete=models.SET(get_sentinel_book_category))
+    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=True, )
+    belongs_to = models.ForeignKey(BookMainCategory,
+                                   related_name='main_category',
+                                   blank=True, null=True,
+                                   on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        """Initialising the slug for the slug field"""
+        self.slug = slugify(self.name)
+        super(BookCategory, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['name']
@@ -94,6 +109,26 @@ class RentalCategory(TimeStampModel):
 
     def __str__(self):
         return str(int(self.cost_of_rental))
+
+
+class BookBelongsTo(TimeStampModel):
+    """
+        HomePage Book Category, Book Belongs to either BestSeller, Nepali Author,
+    """
+    homepage_category = models.CharField(max_length=120, verbose_name='HomePage Category')
+    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=True,)
+
+    def __str__(self):
+        return self.homepage_category
+
+    def save(self, *args, **kwargs):
+        """Initialising the slug for the slug field"""
+        self.slug = slugify(self.homepage_category)
+        super(BookBelongsTo, self).save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'HomePage Category'
+        verbose_name_plural = 'HomePage Categories'
 
 
 class Book(TimeStampModel):
@@ -119,6 +154,12 @@ class Book(TimeStampModel):
     rental_price = models.DecimalField(max_digits=5, decimal_places=2, default=5.00)
 
     rental_category = models.ForeignKey(RentalCategory, related_name='rentalcategory', on_delete=models.DO_NOTHING, null=True, blank=True)
+
+    in_stock_rent = models.IntegerField(default=0)
+
+    in_stock_buy = models.IntegerField(default=0)
+
+    homepage_category = models.ForeignKey(BookBelongsTo, related_name='homepagecategory', on_delete=models.DO_NOTHING, null=True, blank=True)
 
     book_condition = models.CharField(max_length=2,
                                       choices=BookQualityRating.choices,
@@ -289,6 +330,23 @@ class Publication(TimeStampModel):
         return self.name
 
 
+def banner_img_path(instance, filename):
+    return 'banner_images/{created_on}/{filename}'.format(
+        created_on=instance.created_on,
+        filename=filename,
+       )
 
+
+class Banner(TimeStampModel):
+    name = models.CharField(max_length=100)
+    banner_img = models.ImageField(upload_to=banner_img_path)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = 'Banners'
+        verbose_name = 'Banner'
 
 

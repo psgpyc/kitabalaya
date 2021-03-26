@@ -540,7 +540,8 @@ li> a:hover {
    .logo-container-accounts{
        display: flex;
    }
-    .logo {
+
+    .logo{
          margin-top: -25px;
          width: 220px;
          margin-left: 0;

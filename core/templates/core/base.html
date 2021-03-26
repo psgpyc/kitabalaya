@@ -15,7 +15,7 @@
 
     <meta name="description" content="Kitabalaya is the nation’s only digital library and books rental platform. We offer diversity in readership and financial freedom in purchase to our readers.
                 We are not here to merely sell you books like any other storefront. Kitabalaya is here to help you make a choice. A choice to read more. A choice to save more. A choice to go GREEN!">
-
+    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;600&display=swap" rel="stylesheet">
@@ -57,18 +57,21 @@
         </div>
 
         <div class="logo">
-            <img src="{% static 'core/img/kitabalaya-logo.png' %}" alt="Kitabalaya - Rent books from Nepalese and Foreign Authors in Nepal">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'core/img/logo-kitabalaya.png' %}" alt="Kitabalaya - Rent books from Nepalese and Foreign Authors in Nepal">
+            </a>
         </div>
 
         <div class="right-menu">
-            <div class="wishlist">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNi4yOCAzYzMuMjM2LjAwMSA0Ljk3MyAzLjQ5MSA1LjcyIDUuMDMxLjc1LTEuNTQ3IDIuNDY5LTUuMDIxIDUuNzI2LTUuMDIxIDIuMDU4IDAgNC4yNzQgMS4zMDkgNC4yNzQgNC4xODIgMCAzLjQ0Mi00Ljc0NCA3Ljg1MS0xMCAxMy01LjI1OC01LjE1MS0xMC05LjU1OS0xMC0xMyAwLTIuNjc2IDEuOTY1LTQuMTkzIDQuMjgtNC4xOTJ6bS4wMDEtMmMtMy4xODMgMC02LjI4MSAyLjE4Ny02LjI4MSA2LjE5MiAwIDQuNjYxIDUuNTcgOS40MjcgMTIgMTUuODA4IDYuNDMtNi4zODEgMTItMTEuMTQ3IDEyLTE1LjgwOCAwLTQuMDExLTMuMDk3LTYuMTgyLTYuMjc0LTYuMTgyLTIuMjA0IDAtNC40NDYgMS4wNDItNS43MjYgMy4yMzgtMS4yODUtMi4yMDYtMy41MjItMy4yNDgtNS43MTktMy4yNDh6Ii8+PC9zdmc+">
-            </div>
+{#            <div class="wishlist">#}
+{#                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNi4yOCAzYzMuMjM2LjAwMSA0Ljk3MyAzLjQ5MSA1LjcyIDUuMDMxLjc1LTEuNTQ3IDIuNDY5LTUuMDIxIDUuNzI2LTUuMDIxIDIuMDU4IDAgNC4yNzQgMS4zMDkgNC4yNzQgNC4xODIgMCAzLjQ0Mi00Ljc0NCA3Ljg1MS0xMCAxMy01LjI1OC01LjE1MS0xMC05LjU1OS0xMC0xMyAwLTIuNjc2IDEuOTY1LTQuMTkzIDQuMjgtNC4xOTJ6bS4wMDEtMmMtMy4xODMgMC02LjI4MSAyLjE4Ny02LjI4MSA2LjE5MiAwIDQuNjYxIDUuNTcgOS40MjcgMTIgMTUuODA4IDYuNDMtNi4zODEgMTItMTEuMTQ3IDEyLTE1LjgwOCAwLTQuMDExLTMuMDk3LTYuMTgyLTYuMjc0LTYuMTgyLTIuMjA0IDAtNC40NDYgMS4wNDItNS43MjYgMy4yMzgtMS4yODUtMi4yMDYtMy41MjItMy4yNDgtNS43MTktMy4yNDh6Ii8+PC9zdmc+">#}
+{#            </div>#}
             <div class="shopping-cart" id="cart-id">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgM2wtLjc0MyAyaC0xLjkyOWwtMy40NzQgMTJoLTEzLjIzOWwtNC42MTUtMTFoMTYuODEybC0uNTY0IDJoLTEzLjI0bDIuOTM3IDdoMTAuNDI4bDMuNDMyLTEyaDQuMTk1em0tMTUuNSAxNWMtLjgyOCAwLTEuNS42NzItMS41IDEuNSAwIC44MjkuNjcyIDEuNSAxLjUgMS41czEuNS0uNjcxIDEuNS0xLjVjMC0uODI4LS42NzItMS41LTEuNS0xLjV6bTYuOS03LTEuOSA3Yy0uODI4IDAtMS41LjY3MS0xLjUgMS41cy42NzIgMS41IDEuNSAxLjUgMS41LS42NzEgMS41LTEuNWMwLS44MjgtLjY3Mi0xLjUtMS41LTEuNXoiLz48L3N2Zz4=">
+{#                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgM2wtLjc0MyAyaC0xLjkyOWwtMy40NzQgMTJoLTEzLjIzOWwtNC42MTUtMTFoMTYuODEybC0uNTY0IDJoLTEzLjI0bDIuOTM3IDdoMTAuNDI4bDMuNDMyLTEyaDQuMTk1em0tMTUuNSAxNWMtLjgyOCAwLTEuNS42NzItMS41IDEuNSAwIC44MjkuNjcyIDEuNSAxLjUgMS41czEuNS0uNjcxIDEuNS0xLjVjMC0uODI4LS42NzItMS41LTEuNS0xLjV6bTYuOS03LTEuOSA3Yy0uODI4IDAtMS41LjY3MS0xLjUgMS41cy42NzIgMS41IDEuNSAxLjUgMS41LS42NzEgMS41LTEuNWMwLS44MjgtLjY3Mi0xLjUtMS41LTEuNXoiLz48L3N2Zz4=">#}
+                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjAgN2gtNHYtM2MwLTIuMjA5LTEuNzkxLTQtNC00cy00IDEuNzkxLTQgNHYzaC00bC0yIDE3aDIwbC0yLTE3em0tMTEtM2MwLTEuNjU0IDEuMzQ2LTMgMy0zczMgMS4zNDYgMyAzdjNoLTZ2LTN6bS00Ljc1MSAxOGwxLjUyOS0xM2gyLjIyMnYxLjVjMCAuMjc2LjIyNC41LjUuNXMuNS0uMjI0LjUtLjV2LTEuNWg2djEuNWMwIC4yNzYuMjI0LjUuNS41cy41LS4yMjQuNS0uNXYtMS41aDIuMjIybDEuNTI5IDEzaC0xNS41MDJ6Ii8+PC9zdmc+">
             </div>
             <div class="accounts" id="accounts-id">
-                <img alt='kitabalaya user login' src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmMyLjc1NyAwIDUgMi4yNDMgNSA1LjAwMSAwIDIuNzU2LTIuMjQzIDUtNSA1cy01LTIuMjQ0LTUtNWMwLTIuNzU4IDIuMjQzLTUuMDAxIDUtNS4wMDF6bTAtMmMtMy44NjYgMC03IDMuMTM0LTcgNy4wMDEgMCAzLjg2NSAzLjEzNCA3IDcgN3M3LTMuMTM1IDctN2MwLTMuODY3LTMuMTM0LTcuMDAxLTctNy4wMDF6bTYuMzY5IDEzLjM1M2MtLjQ5Ny40OTgtMS4wNTcuOTMxLTEuNjU4IDEuMzAyIDIuODcyIDEuODc0IDQuMzc4IDUuMDgzIDQuOTcyIDcuMzQ2aC0xOS4zODdjLjU3Mi0yLjI5IDIuMDU4LTUuNTAzIDQuOTczLTcuMzU4LS42MDMtLjM3NC0xLjE2Mi0uODExLTEuNjU4LTEuMzEyLTQuMjU4IDMuMDcyLTUuNjExIDguNTA2LTUuNjExIDEwLjY2OWgyNGMwLTIuMTQyLTEuNDQtNy41NTctNS42MzEtMTAuNjQ3eiIvPjwvc3ZnPg==">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmMyLjc1NyAwIDUgMi4yNDMgNSA1LjAwMSAwIDIuNzU2LTIuMjQzIDUtNSA1cy01LTIuMjQ0LTUtNWMwLTIuNzU4IDIuMjQzLTUuMDAxIDUtNS4wMDF6bTAtMmMtMy44NjYgMC03IDMuMTM0LTcgNy4wMDEgMCAzLjg2NSAzLjEzNCA3IDcgN3M3LTMuMTM1IDctN2MwLTMuODY3LTMuMTM0LTcuMDAxLTctNy4wMDF6bTYuMzY5IDEzLjM1M2MtLjQ5Ny40OTgtMS4wNTcuOTMxLTEuNjU4IDEuMzAyIDIuODcyIDEuODc0IDQuMzc4IDUuMDgzIDQuOTcyIDcuMzQ2aC0xOS4zODdjLjU3Mi0yLjI5IDIuMDU4LTUuNTAzIDQuOTczLTcuMzU4LS42MDMtLjM3NC0xLjE2Mi0uODExLTEuNjU4LTEuMzEyLTQuMjU4IDMuMDcyLTUuNjExIDguNTA2LTUuNjExIDEwLjY2OWgyNGMwLTIuMTQyLTEuNDQtNy41NTctNS42MzEtMTAuNjQ3eiIvPjwvc3ZnPg==">
             </div>
         </div>
     </nav>
@@ -76,12 +79,12 @@
     <div class="secondary-nav">
 
         <ul class="book-list-category" id="book-list-category-id">
-            <li>BEST SELLER</li>
-            <li>WE RECOMMEND</li>
+            <li>RENT BOOKS</li>
+            <li>MEMBERSHIP</li>
             <li>BIBLIOPHILES FAVOURITE</li>
-            <li>SPECIAL VALUE</li>
-            <li>NEW RELEASES</li>
-            <li>COMING SOON</li>
+            <li>MERCH</li>
+            <li>STATIONARY AND GIFTS</li>
+            <li>BEST SELLERS</li>
             <li>BOOKMARKS</li>
         </ul>
     </div>
@@ -98,7 +101,7 @@
             {% for category in categories %}
                 <div class="side-bar-category-wrapper-main">
                     <div class="side-bar-category" id="side-bar-category-id">
-                        <a class="side-bar-category-link" href="#">{{ category }}</a>
+                        <a class="side-bar-category-link" href="{% url 'categories-main' category.slug %}">{{ category }}</a>
                         <svg class="arrow-svg no-view" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>
 
                     </div>
@@ -124,59 +127,123 @@
 
     <div class="user-profile-wrapper no-view" id="user-profile-wrapper-id">
         {% if user.is_authenticated %}
+            <div class="user-details-wrapper">
+                <div class="user-img">
+                    <img src="{% static 'core/img/psgimg.jpeg'%}" alt="User Profile Picture">
+                    <div class="update-profile-img">
+                        <button type="button">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNSA0aC0zdi0xaDN2MXptOCA2Yy0xLjY1NCAwLTMgMS4zNDYtMyAzczEuMzQ2IDMgMyAzIDMtMS4zNDYgMy0zLTEuMzQ2LTMtMy0zem0xMS01djE3aC0yNHYtMTdoNS45M2MuNjY5IDAgMS4yOTMtLjMzNCAxLjY2NC0uODkxbDEuNDA2LTIuMTA5aDhsMS40MDYgMi4xMDljLjM3MS41NTcuOTk1Ljg5MSAxLjY2NC44OTFoMy45M3ptLTE5IDRjMC0uNTUyLS40NDctMS0xLTFzLTEgLjQ0OC0xIDEgLjQ0NyAxIDEgMSAxLS40NDggMS0xem0xMyA0YzAtMi43NjEtMi4yMzktNS01LTVzLTUgMi4yMzktNSA1IDIuMjM5IDUgNSA1IDUtMi4yMzkgNS01eiIvPjwvc3ZnPg==">
 
-            <h1>welcome </h1>
+
+
+                        </button>
+
+
+
+                    </div>
+                </div>
+                <div class="user-name">
+                    Paritosh Sharma Ghimire
+                </div>
+                <div class="user-email">
+                    paritosh.ghimire666@gmail.com
+                </div>
+                <div class="user-account-manage">
+                    Manage your Kitabalaya Account
+                </div>
+            </div>
+
+            <div class="account-details-wrapper">
+
+                <div class="account-detail">
+                    <p>Membership & Loyalty</p>
+                </div>
+
+
+
+                 <div class="account-detail">
+
+                     <p>My Library</p>
+
+                </div>
+
+
+
+                <div class="account-detail">
+                    <p>Orders</p>
+
+                </div>
+
+                <div class="account-detail">
+                    <p>Returns & Cancellation</p>
+
+                </div>
+
+                <div class="account-detail">
+                    <p>Logout</p>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+            </div>
 
         {% else %}
+           <div class="sign-in-wrapper" id="user-sign-in-wrapper-id">
+                <h3>SIGN IN</h3>
+                <form id="login-form-id" class="user-profile-form" action="{% url 'user-login' %}" method="post">
+                    {% csrf_token %}
+                    {{ login_form }}
+                    <div class="reset-forget-wrapper">
+                        <a href="#" id="user-register">Register?</a>
+                        <a href="#">Forget Password</a>
 
+                    </div>
+                    <button class="user-profile-submit-button" id="user-profile-submit-button-id" type="submit">Sign In</button>
+                </form>
 
-        <div class="sign-in-wrapper" id="user-sign-in-wrapper-id">
-            <h3>SIGN IN</h3>
-            <form id="login-form-id" class="user-profile-form" action="{% url 'user-login' %}" method="post">
-                {% csrf_token %}
-                {{ login_form }}
-                <div class="reset-forget-wrapper">
-                    <a href="#" id="user-register">Register?</a>
-                    <a href="#">Forget Password</a>
+                <p>Or sign in with</p>
 
-                </div>
-                <button class="user-profile-submit-button" id="user-profile-submit-button-id" type="submit">Sign In</button>
-            </form>
-
-            <p>Or sign in with</p>
-
-            <div class="social-login">
-                <button type="button">Sign in with Google</button>
-                <button type="button">Sign in with Facebook</button>
-                <small>Click “Sign In” above to accept Kitabalaya's Terms of Service & Privacy Policy.</small>
-            </div>
-
-        </div>
-
-
-
-        <div class="sign-up-wrapper no-view" id="user-sign-up-wrapper-id">
-             <h3>SIGN UP</h3>
-            <form class="user-profile-form" id="register-form" action="{% url 'user-register' %}" method="post">
-                {% csrf_token %}
-                {{ registration_form }}
-                <div class="reset-forget-wrapper">
-                    <a href="#" id="user-login">Have an account? Login here.</a>
-
+                <div class="social-login">
+                    <button type="button">Sign in with Google</button>
+                    <button type="button">Sign in with Facebook</button>
+                    <small>Click “Sign In” above to accept Kitabalaya's Terms of Service & Privacy Policy.</small>
                 </div>
 
-                <button class="user-profile-submit-button" id="user-profile-submit-button-id-signup" type="submit">Sign Up</button>
-                <button class="buttonload no-view" id="submit-button-load-id"><i class="fa fa-spinner fa-spin loading-icon"></i>Creating Your Account...</button>
-            </form>
+           </div>
 
-            <p>Or sign Up with</p>
 
-            <div class="social-login">
-                <button type="button">Sign Up with Google</button>
-                <button type="button">Sign Up with Facebook</button>
-                <small>Click “Sign Up” above to accept Kitabalaya's Terms of Service & Privacy Policy.</small>
-            </div>
-        </div>
+
+            <div class="sign-up-wrapper no-view" id="user-sign-up-wrapper-id">
+                 <h3>SIGN UP</h3>
+                <form class="user-profile-form" id="register-form" action="{% url 'user-register' %}" method="post">
+                    {% csrf_token %}
+                    {{ registration_form }}
+                    <div class="reset-forget-wrapper">
+                        <a href="#" id="user-login">Have an account? Login here.</a>
+
+                    </div>
+
+                    <button class="user-profile-submit-button" id="user-profile-submit-button-id-signup" type="submit">Sign Up</button>
+                    <button class="buttonload no-view" id="submit-button-load-id"><i class="fa fa-spinner fa-spin loading-icon"></i>Creating Your Account...</button>
+                </form>
+
+                <p>Or sign Up with</p>
+
+                <div class="social-login">
+                    <button type="button">Sign Up with Google</button>
+                    <button type="button">Sign Up with Facebook</button>
+                    <small>Click “Sign Up” above to accept Kitabalaya's Terms of Service & Privacy Policy.</small>
+                </div>
+            </div>`
 
         {% endif %}
     </div>
@@ -187,11 +254,113 @@
 
 
     <div class="user-cart-wrapper no-view" id="user-cart-wrapper-id">
-        <img src="{% static 'core/img/emptyCart.png' %}" alt="">
+        <div class="cart-product-wrapper">
+            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
 
-         <div class="search-button-wrapper">
-                <button class="search-button" type="submit">Browse</button>
+
+            <div class="cart-product-details">
+
+                <h3>Kafka on the Shore</h3>
+                <h5>By Haruki Murakami</h5>
+
+                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
+                <h5 >Refundable Deposit: Rs.800</h5>
+
+
+{#                <a href="#">Remove?</a>#}
+
             </div>
+            <div class="cart-item-remove">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
+            </div>
+        </div>
+
+        <div class="cart-product-wrapper">
+            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
+
+
+            <div class="cart-product-details">
+
+                <h3>Kafka on the Shore</h3>
+                <h5>By Haruki Murakami</h5>
+
+                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
+                <h5 >Refundable Deposit: Rs.800</h5>
+
+
+{#                <a href="#">Remove?</a>#}
+
+            </div>
+            <div class="cart-item-remove">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
+            </div>
+        </div>
+
+        <div class="cart-product-wrapper">
+            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
+
+
+            <div class="cart-product-details">
+
+                <h3>Kafka on the Shore</h3>
+                <h5>By Haruki Murakami</h5>
+
+                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
+                <h5 >Refundable Deposit: Rs.800</h5>
+
+
+{#                <a href="#">Remove?</a>#}
+
+            </div>
+            <div class="cart-item-remove">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
+            </div>
+        </div>
+
+        <div class="cart-product-wrapper">
+            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
+
+
+            <div class="cart-product-details">
+
+                <h3>Kafka on the Shore</h3>
+                <h5>By Haruki Murakami</h5>
+
+                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
+                <h5 >Refundable Deposit: Rs.800</h5>
+
+
+{#                <a href="#">Remove?</a>#}
+
+            </div>
+            <div class="cart-item-remove">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
+            </div>
+        </div>
+
+
+
+
+        <div class="cart-submit-button">
+            <button type="button">VIEW CART</button>
+            <button type="button">CHECKOUT</button>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+{#        <img src="{% static 'core/img/emptyCart.png' %}" alt="">#}
+{##}
+{#         <div class="search-button-wrapper">#}
+{#                <button class="search-button" type="submit">Browse</button>#}
+{#         </div>#}
 
 
 
@@ -240,26 +409,27 @@
     </div>
 
 
+    {% block newsletter %}
+        <div class="newsletter">
+            <div class="newsletter-text">
 
-    <div class="newsletter">
-        <div class="newsletter-text">
+                <img src="{% static 'core/img/be-a-kitabalaya-insider.png' %}" alt="Kitabalaya book a book newsletter">
+            </div>
+             <form method="post">
+                {% csrf_token %}
+                    <label class="search-box-wrapper">
+                        <input class='search-box' id="newsletter-id" type="email" placeholder="allittakesisabook@kitabalaya.info">
+                    </label>
 
-            <img src="{% static 'core/img/be-a-kitabalaya-insider.png' %}" alt="Kitabalaya book a book newsletter">
+            </form>
+
+
+
+
+
+
         </div>
-         <form method="post">
-            {% csrf_token %}
-                <label class="search-box-wrapper">
-                    <input class='search-box' id="newsletter-id" type="email" placeholder="allittakesisabook@kitabalaya.info">
-                </label>
-
-        </form>
-
-
-
-
-
-
-    </div>
+    {% endblock %}
 
     <div class="message-wrapper no-view" id="user-registered-success-modal-id">
         <div class="close-side-bar" id="close-user-registered-message-pop-id">

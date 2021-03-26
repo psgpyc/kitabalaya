@@ -6,6 +6,7 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 
+from core.views import Categories
 from coreaccounts.forms import UserPasswordResetForm,UserPasswordResetConfirmForm,UserLoginForm
 from coreaccounts.views import RegistrationView, UserLogoutView, AccountEmailActivate, UserLoginView
 
@@ -61,6 +62,7 @@ urlpatterns = [
 
     path('', include('comingsoon.urls'), name='base-coreaccounts'),
     path('home/', include('core.urls'), name='base-home'),
+    path('categories/<slug:slug>/', Categories.as_view(), name='categories-main'),
 
 ]
 

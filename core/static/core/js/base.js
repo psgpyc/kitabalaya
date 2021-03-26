@@ -13,40 +13,193 @@ $(document).ready(function(){
 
     $('.book-modal-ajax-initial').hide()
 
+
+
+    $('.featured-category-each').each(function (index, value) {
+        if(index > 2){
+            $(this).addClass('no-view')
+        }
+
+    })
+
+    // Search Scroll Top
+
+    $('#search-img').click(function (e) {
+        $('html,body').animate({scrollTop:320}, 'slow')
+        $('#searchbox').focus().keydown(function() {
+          $('.search-result').show()
+
+
+        });
+    })
+
+    $(document).on( 'scroll', function(e){
+
+        if(scrollY > 500){
+            $('.search').show()
+            $('.search-result').hide()
+            $('#searchbox').val('')
+
+
+        }
+        else {
+            $('.search').hide()
+        }
+
+
+
+    });
+
+
     //hamburger button
 
     $("#hamburger-id").click(function (e) {
-        $("#side-bar-id").fadeIn(100)
-        $("#close-side-bar-id").fadeIn(100)
+        $("#side-bar-id").removeClass('no-view')
+        $("#close-side-bar-id").removeClass('no-view')
         $('body').css('overflow', 'hidden');
-
-
-
-
-
     })
 
     $("#close-side-bar-id").click(function (e) {
-        $("#side-bar-id").fadeOut()
-        $("#close-side-bar-id").fadeOut()
+        $("#side-bar-id").addClass('no-view')
+        $("#close-side-bar-id").addClass('no-view')
         $('body').css('overflow', 'auto');
+    })
 
+  // Start of Banner button click event
+
+  $('.bannerbtn').each(function(btnIndex){
+
+       $(this).click(function(){
+           $(this).nextAll().removeClass('hover-style')
+           $(this).prevAll().removeClass('hover-style')
+           $(this).addClass('hover-style')
+
+           $('.each-banner .banner').each(function (bnnrIndex) {
+            if(btnIndex === bnnrIndex) {
+                $('.each-banner').find('.banner-active').removeClass('banner-active').addClass('banner-off')
+                $(this).addClass('banner-active').removeClass('banner-off')
+            }
+        })
+       })
+   })
+
+    //end of banner button click event
+
+    //Automatic transition of banner
+
+    function getBannerClick(){
+        let current = $('.each-banner img.banner-active')
+        let currentBtn = $('.navigation-banner-button-wrapper button.hover-style')
+
+        if(current.next().length !== 0){
+            if(current.length === 0){
+                $('.each-banner img:first-child').removeClass('banner-off').addClass('banner-active')
+                $('#bb0').addClass('hover-style')
+            }
+            else {
+                current.removeClass('banner-active').addClass('banner-off').next().addClass('banner-active').removeClass('banner-off')
+                currentBtn.removeClass('hover-style').next().addClass('hover-style')
+
+            }
+        }
+        else{
+            $('.each-banner img:last-child').addClass('banner-off').removeClass('banner-active')
+            $('.each-banner img:first-child').removeClass('banner-off').addClass('banner-active')
+            $('.navigation-banner-button-wrapper button:last-child').removeClass('hover-style')
+            $('.navigation-banner-button-wrapper button:first-child').addClass('hover-style')
+
+
+        }
+    }
+
+    setInterval(getBannerClick, 20000)
+
+    //end of automatic transition of the banner
+
+
+      // Start Scroll on keypress : Search Form
+      $( "#search-box-id" ).mousedown(function() {
+          $('html,body').animate({scrollTop:320}, 'slow')
+          searchResultBox = $('.search-result')
+          $(this).keyup(function (e) {
+              searchResultBox.show()
+              // $(".search-button-wrapper").hide()
+              let query = $(this).val()
+              $.ajax({
+                  headers: { "X-CSRFToken": $.cookie("csrftoken") },
+                  url: '/home/ajax/search/',
+                  method: 'POST',
+                  mode: 'same-origin',
+                  data: {
+                    'query': query,
+                  },
+
+                  success: function (data) {
+                    $('.search-result').children(".search-result-each").remove()
+                      $('.search-result').children("p").remove()
+                      if((data.data).length === 0){
+                          $("<p>").addClass('search-result-each').html('Opps! Your choice is better than ours!!!!').insertBefore('.drop-result-button')
+                      }
+                    $.each(data.data, function (index,value) {
+                        var searchPara = $("<p>")
+                        searchPara.addClass('search-result-each').html(value).appendTo($(".search-result")).insertBefore(".drop-result-button")
+                    })
+
+                },
+
+
+              })
+
+
+              if($(this).val().length === 0){
+                 searchResultBox.hide()
+                  // $(".search-button-wrapper").show()
+              }
+
+
+
+          })
+
+
+
+        });
+
+    // Search Form Clear
+
+    $("#clear-drop-result-button").click(function (e) {
+        $("#search-box-id").val('')
 
     })
+
+    //END
+
+    $(document).click(function (e) {
+        let container = $('.search-result')
+        if(!container.is(e.target) && !$('#searchbox').is(e.target)){
+           container.hide()
+        }
+
+    })
+
+
+    // BOOK PRICE DETAIL BUTTONS
+
+
+
 
     // Book Category
 
     $(".side-bar-category-wrapper-main").each(function () {
         $(this).mouseenter(function (e) {
-                $(this).children('.side-bar-category-details-wrapper').show()
-                $(this).children('.side-bar-category').children('.arrow-svg').show()
+                $(this).children('.side-bar-category-details-wrapper').removeClass('no-view')
+                $(this).children('.side-bar-category').children('.arrow-svg').removeClass('no-view')
 
         })
 
         $(this).mouseleave(function (e) {
 
-            $(this).children('.side-bar-category-details-wrapper').hide()
-            $(this).children('.side-bar-category').children('.arrow-svg').hide()
+            $(this).children('.side-bar-category-details-wrapper').addClass('no-view')
+            $(this).children('.side-bar-category').children('.arrow-svg').addClass('no-view')
 
         })
     })
@@ -123,101 +276,305 @@ $(document).ready(function(){
 
     })
 
+    // BOOK BUY/RENT BUTTON DISPLAY
 
-      $(".rent-link").each(function(){
-          $(this).click(function(e){
-              e.preventDefault();
-
-              let endPoint = $(this).attr('href')
-              console.log(endPoint)
-
-               $.ajax({
-                   url: endPoint,
-                   beforeSend: function() {
-                           $("#the-book-modal-id").fadeIn();
-                           $(".loading-div").show()
-
-                           $("#book-title-id").text("Loading...")
-                           $("#book-author-id").text("Loading...")
-                           $("#book-img-id").hide()
-                           $("#book-summary").text("Loading...")
-                           $("#book-condition-span-id").text("Loading...")
-                           $("#book-quality-rating-span-id").text("Loading...")
-                           $("#book-slug").text("Loading...")
-                           $("#published-date-id").text("Loading...")
-                           $("#page-count-id").text("Loading...")
-                           $('#book-genre-span-id').text("Loading...")
-                           $('#book-rating-id').text("Loading...")
-
-                   },
-
-                   success: function(data) {
-                       if(data.book){
-                           $("#the-book-modal-id").fadeIn();
-
-                           $("#book-title-id").text(data.book.title)
-                           $("#book-author-id").text(data.book.author)
-                           $(".loading-div").hide()
-                           $("#book-img-id").attr('src', data.book.image).show()
-                           $("#book-summary").text(data.book.summary)
-                           $("#book-condition-span-id").text(data.book.book_condition)
-                           $("#book-quality-rating-span-id").text(data.book.quality_rating)
-                           $("#book-slug").text(data.book.slug)
-                           $("#published-date-id").text(data.book.published_date)
-                           $("#page-count-id").text(data.book.page_count)
-                           $('#book-genre-span-id').text(data.book.book_genre)
-                           $('#book-rating-id').text(data.book.book_rating)
-                           let count = 0
-                           $(".fa").each(function (e) {
-
-                               if(count <= data.book.book_rating){
-                                   $(this).addClass('clicked-checked')
-                                   count++;
-
-                               }
+    // $('.dropdown').each(function(){
+    //
+    //     $(this).hover(function(e){
+    //         $(this).children('.buy-rent-dropdown').removeClass('no-view')
+    //
+    //
+    //
+    //         },
+    //         function (e) {
+    //         $(this).children('.buy-rent-dropdown').addClass('no-view')
+    //
+    //
+    //         })
+    //
+    //
+    //
+    // })
 
 
-                           })
+    // DROP DOWN BOOK CARD
 
+        $('.dropdown').each(function(){
+            $(this).click(function(){
+                let rent_buy_drop = $(this).children('.buy-rent-dropdown').toggleClass('no-view')
 
-                           $('body').css('overflow', 'hidden');
-
-                           
-
-
-
-
-                       }
-
-
-                   }
-
-               }
-
-
-
-
-
-
-               )
-
-          });
-    });
-
-    $("#close-book-modal-id").click(function(e){
-
-        $('#the-book-modal-id').hide();
-        $('#book-img-id').attr('src','')
-        $('.fa').each(function (){
-            $(this).prevAll('.fa').removeClass('clicked-checked')
-            $(this).removeClass('clicked-checked')
-            $(this).nextAll('.fa').removeClass('clicked-checked')
+            })
         })
-        $('body').css('overflow', 'auto');
 
 
+        $('.rent-buy-card').each(function () {
+            $(this).click(function () {
+                let changePriceList = $(this).parent().parent().parent().prev('.cat-style')
+
+                let rentType = $(this).attr("name")
+                let bookSlug = $(this).attr("value")
+                let endPoint = 'ajax/get-book-price/'
+                let method = 'GET'
+
+                console.log(rentType)
+
+                $.ajax({
+                    url: endPoint,
+                    type: method,
+                    data: {
+                        'bookSlug': bookSlug,
+                        'rent-type': rentType,
+                    },
+
+                    success: function (res){
+                        if(rentType === "buy-new"){
+                            if(typeof res.rental_cost === 'undefined'){
+                                changePriceList.text("OUT OF STOCK").css('color','red')
+
+
+                            }
+
+                            else if(res.in_stock_buy === 0){
+                                changePriceList.text("OUT OF STOCK").css('color','red')
+
+
+                            }
+
+
+                            else{
+                                changePriceList.text('NPR: ' + res.price).css('color','#3a3a3a')
+                            }
+
+
+
+                        }else{
+                              if(typeof res.rental_cost === 'undefined' ){
+                                changePriceList.text("OUT OF STOCK").css('color','red')
+
+
+                            }else{
+                            changePriceList.text('NPR: ' + res.rental_cost + '/day').css('color','#3a3a3a')
+                        }}
+                    }
+                })
+
+
+                $(this).insertBefore($(this).parent().prev('img'))
+                ($(this).prev().insertBefore($(this).nextAll('.buy-rent-dropdown').children()))
+
+
+
+
+
+
+
+
+
+
+
+            })
+
+
+        })
+
+
+
+
+
+
+    // PAGINATOR NEXT BUTON
+
+    $('.arrow-right-next').each(function () {
+
+        $(this).click(function () {
+
+            let each_book = $('.featured-category-each')
+            let scroll_range = each_book.length
+
+            console.log(scroll_range)
+            let view_start = each_book.not('.no-view').last().index()
+            let no_view_start = view_start - 3
+
+            if(view_start !== scroll_range) {
+                each_book.eq(view_start).fadeIn(200, function () {
+                    $(this).removeClass('no-view').css('display','flex')
+
+                })
+                each_book.eq(view_start+1).fadeIn(200, function () {
+                    $(this).removeClass('no-view').css('display','flex')
+
+                })
+                each_book.eq(view_start+2).fadeIn(200, function () {
+                    $(this).removeClass('no-view').css('display','flex')
+
+
+                })
+
+
+                each_book.eq(no_view_start).fadeOut(200, function () {
+                    $(this).addClass('no-view')
+
+                })
+                each_book.eq(no_view_start+1).fadeOut(200, function () {
+                    $(this).addClass('no-view')
+
+                })
+                each_book.eq(no_view_start+2).fadeOut(200, function () {
+                    $(this).addClass('no-view')
+                })
+            }
+
+        })
 
     })
+
+
+    $('.arrow-left-next').each(function(){
+
+        $(this).click(function(){
+            let each_book = $('.featured-category-each')
+            let view_start_index = (each_book.not('.no-view').first().index()-1)
+            if(view_start_index === 0){
+                let view_start = 0
+                let view_end = 0
+            }
+            else{
+                let view_end = view_start_index
+
+                 each_book.eq(view_start_index-1).fadeIn(200, function () {
+                    $(this).removeClass('no-view').css('display','flex')
+
+
+                })
+
+                 each_book.eq(view_start_index-2).fadeIn(200, function () {
+                    $(this).removeClass('no-view').css('display','flex')
+
+
+                })
+
+                 each_book.eq(view_start_index-3).fadeIn(200, function () {
+                    $(this).removeClass('no-view').css('display','flex')
+
+
+                })
+
+
+                each_book.eq(view_end).fadeOut(200, function () {
+                    $(this).addClass('no-view')
+
+                })
+                 each_book.eq(view_end+1).fadeOut(200, function () {
+                    $(this).addClass('no-view')
+
+                })
+                 each_book.eq(view_end+2).fadeOut(200, function () {
+                    $(this).addClass('no-view')
+
+                })
+
+            }
+        })
+    })
+
+
+
+
+
+    //   $(".rent-link").each(function(){
+    //       $(this).click(function(e){
+    //           e.preventDefault();
+    //
+    //           let endPoint = $(this).attr('href')
+    //           console.log(endPoint)
+    //
+    //            $.ajax({
+    //                url: endPoint,
+    //                beforeSend: function() {
+    //                        $("#the-book-modal-id").fadeIn();
+    //                        $(".loading-div").show()
+    //
+    //                        $("#book-title-id").text("Loading...")
+    //                        $("#book-author-id").text("Loading...")
+    //                        $("#book-img-id").hide()
+    //                        $("#book-summary").text("Loading...")
+    //                        $("#book-condition-span-id").text("Loading...")
+    //                        $("#book-quality-rating-span-id").text("Loading...")
+    //                        $("#book-slug").text("Loading...")
+    //                        $("#published-date-id").text("Loading...")
+    //                        $("#page-count-id").text("Loading...")
+    //                        $('#book-genre-span-id').text("Loading...")
+    //                        $('#book-rating-id').text("Loading...")
+    //
+    //                },
+    //
+    //                success: function(data) {
+    //                    if(data.book){
+    //                        $("#the-book-modal-id").fadeIn();
+    //
+    //                        $("#book-title-id").text(data.book.title)
+    //                        $("#book-author-id").text(data.book.author)
+    //                        $(".loading-div").hide()
+    //                        $("#book-img-id").attr('src', data.book.image).show()
+    //                        $("#book-summary").text(data.book.summary)
+    //                        $("#book-condition-span-id").text(data.book.book_condition)
+    //                        $("#book-quality-rating-span-id").text(data.book.quality_rating)
+    //                        $("#book-slug").text(data.book.slug)
+    //                        $("#published-date-id").text(data.book.published_date)
+    //                        $("#page-count-id").text(data.book.page_count)
+    //                        $('#book-genre-span-id').text(data.book.book_genre)
+    //                        $('#book-rating-id').text(data.book.book_rating)
+    //                        let count = 0
+    //                        $(".fa").each(function (e) {
+    //
+    //                            if(count <= data.book.book_rating){
+    //                                $(this).addClass('clicked-checked')
+    //                                count++;
+    //
+    //                            }
+    //
+    //
+    //                        })
+    //
+    //
+    //                        $('body').css('overflow', 'hidden');
+    //
+    //
+    //
+    //
+    //
+    //
+    //                    }
+    //
+    //
+    //                }
+    //
+    //            }
+    //
+    //
+    //
+    //
+    //
+    //
+    //            )
+    //
+    //       });
+    // });
+    //
+    // $("#close-book-modal-id").click(function(e){
+    //
+    //     $('#the-book-modal-id').hide();
+    //     $('#book-img-id').attr('src','')
+    //     $('.fa').each(function (){
+    //         $(this).prevAll('.fa').removeClass('clicked-checked')
+    //         $(this).removeClass('clicked-checked')
+    //         $(this).nextAll('.fa').removeClass('clicked-checked')
+    //     })
+    //     $('body').css('overflow', 'auto');
+    //
+    //
+    //
+    // })
 
 
 

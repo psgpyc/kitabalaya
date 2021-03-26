@@ -1,0 +1,375 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{ title }}  {{ block.super }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="category-wrapper">
+
+{#        <div class="breadcrumb-wrapper">#}
+{#            <ul>#}
+{#                <li>Home</li>#}
+{#                <li>Categories</li>#}
+{#                <li>Fiction & Literature</li>#}
+{#            </ul>#}
+{#        </div>#}
+        <div class="featured-category">
+
+            <div class="arrow-select arrow-transform">
+
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0yIDEybC00LjUgNC41IDEuNTI3IDEuNSA1Ljk3My02LTUuOTczLTYtMS41MjcgMS41IDQuNSA0LjV6Ii8+PC9zdmc+">
+
+
+            </div>
+
+
+
+
+            <div class="featured-category-each banner-category">
+                <div class="featured-title-img">
+                    <img src="{% static 'core/img/thegodfather.jpeg'  %}" alt="">
+
+                </div>
+
+
+
+                <div class="featured-title-details">
+                    <h2 class="cat-style">BIG MAGIC: CREATIVE</h2>
+                    <small class="cat-style">by <span class="author-name">Elizabeth Gilbert</span></small>
+
+                     <div class="rating-wrapper">
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+
+                     </div>
+
+
+                    <p class="featured-genre-details cat-style">
+                        Readers of all ages and walks of life have drawn inspiration and empowerment from Elizabeth Gilbert’s books for years. Gilbert offers insights into the mysterious nature of inspiration. She asks us to embrace our curiosity and let go of needless suffering.
+                    </p>
+
+                     <div class="purchase-details">
+                            <h2 class="cat-style">NPR.100</h2>
+
+
+
+
+
+                            <div class="purchase-button ">
+                                <button type="button">ADD TO CART</button>
+                                <button type="button">BUY<small style="color: var(--default-color)">(Brand New)</small></button>
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+">
+
+
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+                </div>
+
+            </div>
+
+             <div class="banner-category featured-category-each">
+                <div class="featured-title-img">
+                    <img src="{% static 'core/img/thegodfather.jpeg'  %}" alt="">
+
+                </div>
+
+
+
+                <div class="featured-title-details">
+                    <h2 class="cat-style">BIG MAGIC: CREATIVE</h2>
+                    <small class="cat-style">by <span class="author-name">Elizabeth Gilbert</span></small>
+
+                     <div class="rating-wrapper">
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fas fa-star-half checked"></button>
+{#                         <i class=""></i>#}
+
+                        <button type="button" class="fa fa-star each-fa"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+
+                     </div>
+
+
+                    <p class="featured-genre-details cat-style">
+                        Readers of all ages and walks of life have drawn inspiration and empowerment from Elizabeth Gilbert’s books for years. Gilbert offers insights into the mysterious nature of inspiration. She asks us to embrace our curiosity and let go of needless suffering.
+                    </p>
+
+
+
+
+
+                </div>
+
+            </div>
+            
+
+
+
+
+            <div class="arrow-select">
+
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0yIDEybC00LjUgNC41IDEuNTI3IDEuNSA1Ljk3My02LTUuOTczLTYtMS41MjcgMS41IDQuNSA0LjV6Ii8+PC9zdmc+">
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+       <div class="category-descendent">
+
+
+           <div class="descendents">
+               <h2 class="title-header-category">Books in Fiction & Literature</h2>
+
+               <ul>
+                   <li class="title-header-category selected-category">All</li>
+                   <li class="title-header-category ">Action & Adventure </li>
+                   <li class="title-header-category"> Classic </li>
+                   <li class="title-header-category">Fantasy </li>
+                   <li class="title-header-category">Horror </li>
+
+
+
+
+
+
+
+               </ul>
+
+
+
+
+
+           </div>
+       </div>
+
+{#        <div class="book-display-category">#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/thegodfather.jpeg' %}" alt="">#}
+{#            </div>#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/nietsche book.jpg'%}" alt="">#}
+{#            </div>#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/thebelljar.jpg' %}" alt="">#}
+{#            </div>#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/thegodfather.jpeg' %}" alt="">#}
+{#            </div>#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/nietsche book.jpg'%}" alt="">#}
+{#            </div>#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/thebelljar.jpg' %}" alt="">#}
+{#            </div>#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/thegodfather.jpeg' %}" alt="">#}
+{#            </div>#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/nietsche book.jpg'%}" alt="">#}
+{#            </div>#}
+{#            <div class="book-each">#}
+{#                <img src="{% static 'core/img/thebelljar.jpg' %}" alt="">#}
+{#            </div>#}
+{##}
+{#             <div class="book-each">#}
+{#                <img src="{% static 'core/img/thebelljar.jpg' %}" alt="">#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{##}
+
+        <div class="book-display-category">
+            <div class="featured-category-each">
+                <div class="featured-title-img">
+                    <img src="{% static 'core/img/thegodfather.jpeg'  %}" alt="">
+
+                </div>
+
+
+
+                <div class="featured-title-details">
+                    <h2 class="cat-style">BIG MAGIC: CREATIVE</h2>
+                    <small class="cat-style">by <span class="author-name">Elizabeth Gilbert</span></small>
+
+                     <div class="rating-wrapper">
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+
+                     </div>
+
+
+                    <p class="featured-genre-details cat-style">
+                        Readers of all ages and walks of life have drawn inspiration and empowerment from Elizabeth Gilbert’s books for years.
+                    </p>
+
+
+
+
+                </div>
+
+            </div>
+
+
+             <div class="featured-category-each">
+                <div class="featured-title-img">
+                    <img src="{% static 'core/img/thegodfather.jpeg'  %}" alt="">
+
+                </div>
+
+
+
+                <div class="featured-title-details">
+                    <h2 class="cat-style">BIG MAGIC: CREATIVE</h2>
+                    <small class="cat-style">by <span class="author-name">Elizabeth Gilbert</span></small>
+
+                     <div class="rating-wrapper">
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+
+                     </div>
+
+
+                    <p class="featured-genre-details cat-style">
+                        Readers of all ages and walks of life have drawn inspiration and empowerment from Elizabeth Gilbert’s books for years.
+                    </p>
+
+
+
+
+                </div>
+
+            </div>
+
+
+             <div class="featured-category-each">
+                <div class="featured-title-img">
+                    <img src="{% static 'core/img/thegodfather.jpeg'  %}" alt="">
+
+                </div>
+
+
+
+                <div class="featured-title-details">
+                    <h2 class="cat-style">BIG MAGIC: CREATIVE</h2>
+                    <small class="cat-style">by <span class="author-name">Elizabeth Gilbert</span></small>
+
+                     <div class="rating-wrapper">
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+
+                     </div>
+
+
+                    <p class="featured-genre-details cat-style">
+                        Readers of all ages and walks of life have drawn inspiration and empowerment from Elizabeth Gilbert’s books for years.
+                    </p>
+
+
+
+
+                </div>
+
+            </div>
+
+             <div class="featured-category-each">
+                <div class="featured-title-img">
+                    <img src="{% static 'core/img/thegodfather.jpeg'  %}" alt="">
+
+                </div>
+
+
+
+                <div class="featured-title-details">
+                    <h2 class="cat-style">BIG MAGIC: CREATIVE</h2>
+                    <small class="cat-style">by <span class="author-name">Elizabeth Gilbert</span></small>
+
+                     <div class="rating-wrapper">
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa checked"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+                        <button type="button" class="fa fa-star each-fa"></button>
+
+                     </div>
+
+
+                    <p class="featured-genre-details cat-style">
+                        Readers of all ages and walks of life have drawn inspiration and empowerment from Elizabeth Gilbert’s books for years.
+                    </p>
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
