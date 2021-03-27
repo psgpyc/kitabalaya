@@ -1422,16 +1422,18 @@ nav .right-menu .shopping-cart img:hover{
     border: 1px solid #cbe4f1;
 }
 
-.purchase-button select{
-    margin-left: 10px;
-    width: 10vw;
-    height: 33px;
-    background-color: white;
-    cursor: pointer;
-    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
-    border: 1px solid #cbe4f1;
 
 
+
+.purchase-details .restocked-button{
+    width: 14vw;
+    transform: translateX(25%);
+}
+
+
+button:hover{
+    color: var(--default-color);
+    font-size: 14px;
 }
 
 .purchase-button .dropdown img{

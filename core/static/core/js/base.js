@@ -135,8 +135,9 @@ $(document).ready(function(){
                   },
 
                   success: function (data) {
-                    $('.search-result').children(".search-result-each").remove()
-                      $('.search-result').children("p").remove()
+                      let searchResult = $('.search-result')
+                     searchResult.children(".search-result-each").remove()
+                     searchResult.children("p").remove()
                       if((data.data).length === 0){
                           $("<p>").addClass('search-result-each').html('Opps! Your choice is better than ours!!!!').insertBefore('.drop-result-button')
                       }
@@ -295,6 +296,12 @@ $(document).ready(function(){
     //
     //
     // })
+
+
+    // Restocked alert
+
+
+
 
 
     // DROP DOWN BOOK CARD

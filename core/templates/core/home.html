@@ -90,6 +90,10 @@
                             <div class="purchase-details">
                                 {% if book.in_stock_buy == 0 and book.in_stock_rent == 0 %}
                                     <h2 class="out-of-stock">OUT OF STOCK</h2>
+                                    <div class="purchase-button">
+                                        <button type="button" class="restocked-button">GET RESTOCKED ALERT</button>
+
+                                    </div>
 
                                 {% elif book.in_stock_buy == 0 %}
                                     <h2 class="cat-style">NPR.{{ book.rental_price }}/day</h2>
