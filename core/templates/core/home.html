@@ -73,7 +73,9 @@
 
                         </div>
                         <div class="featured-title-details">
-                            <h2 class="cat-style">{{ book.title | truncatewords:4 }}</h2>
+                            <h2 class="cat-style">{{ book.title| truncatechars:20 }}</h2>
+
+
                             <small class="cat-style">by <span class="author-name">{{ book.author_name.name }}</span></small>
 
                              <div class="rating-wrapper">
@@ -85,8 +87,11 @@
                              </div>
 
                             <p class="featured-genre-details">
-                                {{ book.summary| truncatewords:19 }}
+                                {{ book.summary| truncatechars:100 }}
                             </p>
+
+
+
                             <div class="purchase-details">
                                 {% if book.in_stock_buy == 0 and book.in_stock_rent == 0 %}
                                     <h2 class="out-of-stock">OUT OF STOCK</h2>
@@ -96,7 +101,7 @@
                                     </div>
 
                                 {% elif book.in_stock_buy == 0 %}
-                                    <h2 class="cat-style">NPR.{{ book.rental_price }}/day</h2>
+                                    <h2 class="cat-style">RS. {{ book.rental_price }}/day</h2>
 
                                     <div class="purchase-button ">
                                         <button type="button">ADD TO CART</button>
@@ -114,7 +119,7 @@
 
 
                                 {% elif book.in_stock_rent == 0 %}
-                                    <h2 class="cat-style">NPR.{{ book.mrp_price }}</h2>
+                                    <h2 class="cat-style">RS. {{ book.mrp_price }}</h2>
 
                                      <div class="purchase-button ">
                                         <button type="button">ADD TO CART</button>

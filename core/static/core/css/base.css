@@ -1354,8 +1354,8 @@ nav .right-menu .shopping-cart img:hover{
 
 
 .featured-title-img img{
-    height: 200px;
-    width: 120px;
+    height: 170px;
+    width: 110px;
     margin: 10%;
     border-bottom: 1px solid #cbe4f1;
     border-top: 1px solid #cbe4f1;
@@ -1401,7 +1401,7 @@ nav .right-menu .shopping-cart img:hover{
 }
 
 .purchase-details h2 {
-    margin-top: -5px;
+    /*margin-top: 5px;*/
 }
 
 
@@ -1433,6 +1433,7 @@ nav .right-menu .shopping-cart img:hover{
 
 button:hover{
     color: var(--default-color);
+    background-color: #f6f6f6;
     font-size: 14px;
 }
 
