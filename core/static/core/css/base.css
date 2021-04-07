@@ -62,6 +62,7 @@ body{
 
 .out-of-stock{
     color: red;
+    margin-top: 25px;
 }
                                                                             /*          NAVIGATION MENU DESKTOP VIEW        */
 
@@ -457,19 +458,19 @@ nav .right-menu .shopping-cart img:hover{
 
 .side-bar-header h2{
     padding: 17px 10px;
-    font-weight: 200;
+    font-weight: 500;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     /*font-size: 15px;*/
 }
 
 .side-bar-category-wrapper{
     padding-left: 10px;
-    padding-top: 17px;
     padding-bottom: 17px;
 
 }
 
 .side-bar-category{
-    margin: 15px 0;
+    height: 45px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -485,17 +486,24 @@ nav .right-menu .shopping-cart img:hover{
 
 
 .side-bar-category a{
-    text-align: center;
-    color: black;
-    font-family: "Baloo Paaji 2", cursive;!important;
-    font-size: 15px;
+    /*margin: 10px 15px;*/
+    font-size: 14px;
+    font-family: "Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;!important;
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 20px;
+    color: #162d3d;
 }
 
-.side-bar-category a:hover{
+/*.side-bar-category a:hover{*/
+/*    color: var(--default-color);*/
+/*}*/
+
+.side-bar-category-wrapper-main:hover .side-bar-category a{
     color: var(--default-color);
+    margin-left: 2px;
+
 }
-
-
 
 .side-bar-category svg{
     height: 10px;
@@ -525,15 +533,18 @@ nav .right-menu .shopping-cart img:hover{
 
 .side-bar-category-details{
 
-    /*margin: 5px 2px;*/
-    /*padding-left: 30px;*/
+    margin: 5px 2px;
 }
 
 .side-bar-category-details a{
-    font-family: "Baloo Paaji 2", cursive;
-    color: black;
+    margin: 20px 0;
     text-transform: uppercase;
     font-size: 14px;
+    font-family: "Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 20px;
+    color: #162d3d;
 
 }
 
@@ -962,9 +973,11 @@ nav .right-menu .shopping-cart img:hover{
 }
 
 .footer-wrapper h3{
-    color: #03989e;
-     font-family: "Baloo Paaji 2", cursive;
-    
+        /* color: #9e9ea7; */
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: #3a3a3a;
 
 }
 
@@ -1316,21 +1329,21 @@ nav .right-menu .shopping-cart img:hover{
 /* CATEGORY STYLE*/
 
 .category-wrapper{
-    margin-top: 100px;
+    margin-top: 150px;
     width: auto;
     height: auto;
 
 }
 
 .featured-category{
-    width: 93%;
+    /*width: 93%;*/
     margin: auto;
     display: flex;
     flex: 1;
 }
 
 .featured-category .banner-category{
-    width: 50%;
+    width: 45%;
     margin: 25px;
 }
 
@@ -1350,11 +1363,25 @@ nav .right-menu .shopping-cart img:hover{
 
 }
 
+.featured-category-each-cat{
+    width: 30%;
+    margin: 20px;
+    display: flex;
+    height: 300px;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+    border-bottom: 1px solid #cbe4f1;
+    border-top: 1px solid #cbe4f1;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    /*background-color: #92D4E2;*/
 
+}
 
 
 .featured-title-img img{
-    height: 170px;
+    height: 185px;
     width: 110px;
     margin: 10%;
     border-bottom: 1px solid #cbe4f1;
@@ -1370,6 +1397,10 @@ nav .right-menu .shopping-cart img:hover{
 
 }
 
+.featured-category-each .default-height-featured-details{
+   height: auto;
+}
+
 .cat-style{
     /*color: #9e9ea7;*/
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1377,10 +1408,11 @@ nav .right-menu .shopping-cart img:hover{
 }
 
 .featured-genre-details{
-    margin-top: 3%;
-    height: 11vh;
+    margin-top: 20px;
+    height: 6vh;
     overflow: hidden;
     font-size: 14px;
+
 }
 
 .featured-title-details h2{
@@ -1395,26 +1427,42 @@ nav .right-menu .shopping-cart img:hover{
 
 
 .purchase-details{
-    top: 0;
+
     display: flex;
-    margin-top: 2vh;
+
 }
 
-.purchase-details h2 {
-    /*margin-top: 5px;*/
+
+
+
+.price-display{
+    /*margin-top: 10px;*/
 }
+
+.mt-one{
+    margin-top: 25px;
+}
+
+
+.price-display p{
+    font-weight: 600;
+    /*color: var(--default-color);*/
+}
+
+
+
 
 
 .purchase-details .purchase-button{
     position: absolute;
     display: flex;
-    top: 82%;
-    left: 10%;
+    top: 80%;
+    left: 13%;
 }
 
 .purchase-details  button{
     margin-left: 10px;
-    width: 10vw;
+    width: 9vw;
     height: 33px;
     background-color: white;
     cursor: pointer;
@@ -1437,21 +1485,21 @@ button:hover{
     font-size: 14px;
 }
 
-.purchase-button .dropdown img{
-    height: 13px;
-    width: 13px;
-    position: absolute;
-    left: 93%;
-    top: 28%;
-}
+/*.purchase-button .dropdown img{*/
+/*    height: 13px;*/
+/*    width: 13px;*/
+/*    position: absolute;*/
+/*    left: 93%;*/
+/*    top: 28%;*/
+/*}*/
 
 
-.buy-rent-dropdown{
-    position: absolute;
-    font-size: 13px;
-    left: 50%;
+/*.buy-rent-dropdown{*/
+/*    position: absolute;*/
+/*    font-size: 13px;*/
+/*    left: 50%;*/
 
-}
+/*}*/
 
 .buy-rent-dropdown button p{
     text-align: center;
@@ -1527,8 +1575,8 @@ button:hover{
 
 .category-descendent{
 
-    margin: 60px 60px 20px 60px;
-
+    margin: 60px 0;
+    width: 100%;
 }
 
 
@@ -1538,11 +1586,25 @@ button:hover{
     font-weight: 500;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #3a3a3a;
+
 }
 
-.selected-category{
-    /*color: var(--default-color);*/
+.title-header-category:after{
+    display: block;
+    content: '';
     border-bottom: 3px solid var(--default-color);
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+
+
+.selected-category{
+        border-bottom: 3px solid var(--default-color);
+        transform: scaleX(1);
+        transition: transform 250ms ease-in-out;
+
+
 
 }
 
@@ -1576,7 +1638,7 @@ button:hover{
     display: flex;
     width: 100%;
     justify-content: center;
-    overflow: hidden;
+    /*overflow: hidden;*/
     flex-wrap: wrap;
     /*width: 90%;*/
     margin: auto;

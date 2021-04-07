@@ -183,6 +183,8 @@ class Book(TimeStampModel):
                                         related_name='genre_of_book',
                                         help_text="Select a genre for this book")
 
+    book_main_category = models.ForeignKey(BookMainCategory, on_delete=models.CASCADE, null=True, blank=True)
+
     language = models.ForeignKey(
                                 'Language',
                                 related_name='language_of_book',

@@ -34,3 +34,10 @@ def get_date_formatted(obj):
     df = DateFormat(obj.published_date)
     df.format(get_format('DATE_FORMAT'))
     return df.format(get_format('DATE_FORMAT'))
+
+
+def get_curr_url(a):
+
+    b = a.split('/')
+
+    return b

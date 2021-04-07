@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load tagLibrary %}
 {% load static %}
 
 
@@ -87,62 +88,88 @@
                              </div>
 
                             <p class="featured-genre-details">
-                                {{ book.summary| truncatechars:100 }}
+                                {{ book.summary| truncatechars:70 }}
                             </p>
 
-
-
-                            <div class="purchase-details">
-                                {% if book.in_stock_buy == 0 and book.in_stock_rent == 0 %}
+                            {%  if book.in_stock_buy == 0 and book.in_stock_rent == 0 %}
+                                <div class="purchase-details">
                                     <h2 class="out-of-stock">OUT OF STOCK</h2>
                                     <div class="purchase-button">
                                         <button type="button" class="restocked-button">GET RESTOCKED ALERT</button>
 
                                     </div>
 
-                                {% elif book.in_stock_buy == 0 %}
-                                    <h2 class="cat-style">RS. {{ book.rental_price }}/day</h2>
-
-                                    <div class="purchase-button ">
-                                        <button type="button">ADD TO CART</button>
-                                            <div class="dropdown">
-                                                <button value={{ book.slug }} name="rent-button" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Used)</small></button>
-
-                                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+">
-
-                                                <div class="buy-rent-dropdown no-view">
-                                                    <button  value={{ book.slug }} class="rent-buy-card" name="buy-new"  type="button">BUY<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                    <button value={{ book.slug }} name="rent-new" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                </div>
-                                            </div>
-                                        </div>
 
 
-                                {% elif book.in_stock_rent == 0 %}
-                                    <h2 class="cat-style">RS. {{ book.mrp_price }}</h2>
+                                </div>
 
-                                     <div class="purchase-button ">
-                                        <button type="button">ADD TO CART</button>
-                                        <div class="dropdown">
+                            {% elif book.in_stock_buy == 0 and book.in_stock_rent != 0 %}
+{#                                 rent   #}
+                                 <div class="purchase-details">
 
-                                            <button  value={{ book.slug }} class="rent-buy-card" name="buy-new"  type="button">BUY<small style="color: var(--default-color)">(Brand New)</small></button>
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+">
+                                    <div class="price-display">
 
-                                            <div class="buy-rent-dropdown no-view">
-                                                <button value={{ book.slug }} name="rent-new" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                <button value={{ book.slug }} name="rent-button" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Used)</small></button>
-                                            </div>
-                                        </div>
-                                     </div>
+                                        <p style="margin-top: 10px;">Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int  }}/day</p>
 
 
+                                    </div>
+
+                                    <div class="purchase-button">
+
+                                        <button style="margin-left: 0;" class="restocked-button"> RENT THE BOOK </button>
+
+                                    </div>
+
+                                </div>
+
+
+                            {% elif book.in_stock_buy != 0 and book.in_stock_rent == 0 %}
+
+                                 <div class="purchase-details">
+
+                                    <div class="price-display">
+
+                                        <p style="margin-top: 10px;">Buy &nbsp:&nbsp रु. {{ book.mrp_price|to_int  }}</p>
+
+
+                                    </div>
+
+                                    <div class="purchase-button">
+
+                                        <button style="margin-left: 0;" class="restocked-button"> BUY THE BOOK </button>
+
+                                    </div>
+
+                                </div>
 
 
 
-                                {% endif %}
 
 
-                            </div>
+                            {% else %}
+
+                                <div class="purchase-details">
+
+                                    <div class="price-display">
+
+                                        <p>Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int  }}/day</p>
+                                        <p>Buy  &nbsp&nbsp:&nbsp रु. {{ book.mrp_price|to_int  }}</p>
+
+
+                                    </div>
+
+                                    <div class="purchase-button">
+                                        <button> RENT </button>
+                                        <button> BUY </button>
+
+                                    </div>
+
+                                </div>
+
+
+                            {% endif %}
+
+
                         </div>
                     </div>
 

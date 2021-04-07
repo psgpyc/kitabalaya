@@ -4,9 +4,10 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView, View, DetailView
 from coreaccounts.forms import UserLoginForm, RegistrationForm
-from corebookmodels.models import Book, Author, RentalCategory, BookRatingModel, Banner, BookBelongsTo
+from corebookmodels.models import Book, Author, RentalCategory, BookRatingModel, Banner, BookBelongsTo, \
+    BookMainCategory, BookCategory
 from django.db import connection
-from core.utils import get_obj_str, get_book_rating, get_date_formatted, get_my_rating
+from core.utils import get_obj_str, get_book_rating, get_date_formatted, get_my_rating, get_curr_url
 import json
 from django.core.paginator import Paginator
 from django.core import serializers
@@ -108,9 +109,20 @@ class Categories(View):
     template_name = 'core/categories.html'
 
     def get(self, request, *args, **kwargs):
-        print('fuck')
 
-        return render(request, template_name=self.template_name, context={'title':'Categories'})
+        qs = BookMainCategory.objects.get(slug='biography-memoir').book_set.all().select_related('author_name')
+        featured_category = qs.filter(is_featured=True)
+        genre_in = BookCategory.objects.filter(belongs_to__slug='biography-memoir')
+
+        ctx = {
+            'title': 'Categories',
+            'banner_books': featured_category,
+            'all_books': qs,
+            'genre_in': genre_in,
+
+        }
+
+        return render(request, template_name=self.template_name, context=ctx)
 
 
 class GetPriceEachBook(View):
@@ -120,14 +132,15 @@ class GetPriceEachBook(View):
         button_type = request.GET.get('rent-type',None)
 
         if request.is_ajax:
+
             if button_type == 'rent-button':
                 get_book = Book.objects.filter(slug=book_slug).values_list('rental_price')
                 print(get_book[0][0])
-                return JsonResponse({'rental_cost': get_book[0][0]}, status=200)
+                return JsonResponse({'price': get_book[0][0]}, status=200)
             if button_type == 'buy-new':
                 get_book = Book.objects.filter(slug=book_slug).values_list('mrp_price','in_stock_buy')
                 print(get_book)
-                return JsonResponse({'price': get_book[0][0]}, status=200)
+                return JsonResponse({'price': get_book[0][0], 'in_stock_buy':1}, status=200)
 
         return render(request, template_name='core/test.html', context={})
 

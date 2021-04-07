@@ -70,6 +70,7 @@ $(document).ready(function(){
   $('.bannerbtn').each(function(btnIndex){
 
        $(this).click(function(){
+          
            $(this).nextAll().removeClass('hover-style')
            $(this).prevAll().removeClass('hover-style')
            $(this).addClass('hover-style')
@@ -112,7 +113,7 @@ $(document).ready(function(){
         }
     }
 
-    setInterval(getBannerClick, 20000)
+    setInterval(getBannerClick, 2000)
 
     //end of automatic transition of the banner
 
@@ -320,22 +321,28 @@ $(document).ready(function(){
 
                 let rentType = $(this).attr("name")
                 let bookSlug = $(this).attr("value")
+
+                console.log(rentType)
                 let endPoint = 'ajax/get-book-price/'
                 let method = 'GET'
 
-                console.log(rentType)
 
                 $.ajax({
-                    url: endPoint,
+                    url: '/home/ajax/get-book-price',
                     type: method,
                     data: {
                         'bookSlug': bookSlug,
                         'rent-type': rentType,
                     },
 
+                    error: function (error){
+                        console.log(error)
+                    },
+
+
                     success: function (res){
                         if(rentType === "buy-new"){
-                            if(typeof res.rental_cost === 'undefined'){
+                            if(typeof res.price === 'undefined'){
                                 changePriceList.text("OUT OF STOCK").css('color','red')
 
 
@@ -355,12 +362,12 @@ $(document).ready(function(){
 
 
                         }else{
-                              if(typeof res.rental_cost === 'undefined' ){
+                              if(typeof res.price === 'undefined' ){
                                 changePriceList.text("OUT OF STOCK").css('color','red')
 
 
                             }else{
-                            changePriceList.text('NPR: ' + res.rental_cost + '/day').css('color','#3a3a3a')
+                            changePriceList.text('NPR: ' + res.price + '/day').css('color','#3a3a3a')
                         }}
                     }
                 })
@@ -368,20 +375,7 @@ $(document).ready(function(){
 
                 $(this).insertBefore($(this).parent().prev('img'))
                 ($(this).prev().insertBefore($(this).nextAll('.buy-rent-dropdown').children()))
-
-
-
-
-
-
-
-
-
-
-
             })
-
-
         })
 
 
@@ -484,7 +478,17 @@ $(document).ready(function(){
         })
     })
 
+    $('.descendents > ul > li').each(function () {
+        $(this).click(function () {
+            $(this).prevAll('.title-header-category').removeClass('selected-category')
+            $(this).nextAll('.title-header-category').removeClass('selected-category')
+            $(this).addClass('selected-category')
 
+
+        })
+
+
+    })
 
 
 
