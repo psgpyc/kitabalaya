@@ -50,12 +50,21 @@ $(document).ready(function(){
 
     });
 
+    //User-cart button
+
+    $('#close-user-cart-btn').click(function (e) {
+        $('.user-cart-wrapper').addClass('no-view')
+
+    })
+
 
     //hamburger button
 
     $("#hamburger-id").click(function (e) {
         $("#side-bar-id").removeClass('no-view')
         $("#close-side-bar-id").removeClass('no-view')
+        alert(e.target())
+
         $('body').css('overflow', 'hidden');
     })
 
@@ -64,6 +73,9 @@ $(document).ready(function(){
         $("#close-side-bar-id").addClass('no-view')
         $('body').css('overflow', 'auto');
     })
+
+
+
 
   // Start of Banner button click event
 
@@ -300,6 +312,87 @@ $(document).ready(function(){
 
 
     // Restocked alert
+
+
+
+    // BOOK CArd Rental Button
+
+
+    $('.rental-button').each(function(){
+        $(this).click(function (e) {
+            $('.rental-popup-wrapper').removeClass('no-view')
+            $('body').css('overflow', 'hidden');
+            $('.main-content-wrapper').addClass('toggle-display-body')
+            $('.newsletter').addClass('toggle-display-body')
+            $('.banner-wrapper').addClass('toggle-display-body')
+
+
+            let slugBook = $(this).attr('name')
+
+            let title = slugBook.split('?')[0]
+            let rental = slugBook.split('?')[1].split('.')[0]
+            let deposit = slugBook.split('?')[2].split('.')[0]
+
+            $('#title-id').text(title)
+            $('#rental').text('Rental Charge:   रु.' + deposit+'/day')
+            $('#depo').text('Refundable Security Deposit:  रु.' + rental )
+
+
+
+
+
+
+
+
+        })
+    })
+
+
+
+    //Close Rent Pop Up
+
+    $('.close-btn > img').click(function(){
+        $('.rental-popup-wrapper').toggleClass('no-view')
+            $('body').css('overflow', 'auto');
+            $('.main-content-wrapper').removeClass('toggle-display-body')
+            $('.newsletter').removeClass('toggle-display-body')
+            $('.banner-wrapper').removeClass('toggle-display-body')
+
+
+    })
+
+
+    $('.faqbtn').each(function () {
+        $(this).click(function () {
+            $('.faqsp').toggleClass('no-view')
+
+
+        })
+
+    })
+
+    $('.faqbtnone').each(function () {
+        $(this).click(function () {
+            $('.faqspone').toggleClass('no-view')
+
+
+        })
+
+    })
+
+
+
+
+
+    // $(document).click(function(e){
+    //     let container = $('.rental-popup-wrapper')
+    //
+    //      if(!container.is(e.target) && container.has(e.target).length === 0){
+    //          container.hide();
+    //      }
+    //
+    //
+    // })
 
 
 
@@ -784,6 +877,8 @@ if(user_cart_button){
 user_cart_button.addEventListener('click', ()=>{
     user_cart.classList.toggle('no-view');
     user_cart_id.classList.toggle('no-view');
+
+
 
 
     if(user_profile.classList.contains('no-view')){

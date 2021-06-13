@@ -581,6 +581,83 @@ nav .right-menu .shopping-cart img:hover{
 }
 
 
+.rental-popup-wrapper{
+    height: auto;
+
+    width: 500px;
+    position: fixed;
+
+    top: 30%;
+    left: 32%;
+    background-color: white;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+    border-bottom: 1px solid #cbe4f1;
+    border-top: 1px solid #cbe4f1;
+    border-radius: 10px;
+    z-index: 300;
+
+    /*cursor: pointer;*/
+    /* background-color: #92D4E2; */
+
+}
+
+.faqsp{
+    font-size: 12px;
+    margin-top: -18px;
+}
+
+.faqspone{
+    font-size: 12px;
+    margin-top: -18px;
+
+}
+
+
+
+.toggle-display-body{
+    opacity: 0.1;
+}
+
+
+.close-btn{
+    position: absolute;
+    left: 92%;
+    top: 6%;
+}
+
+
+.close-btn img{
+    height: 15px;
+    cursor: pointer;
+}
+
+
+.content-wrapper-rental-popup{
+    padding: 20px;
+
+}
+
+.content-wrapper-rental-popup > h4{
+    margin: 25px;
+    text-align: left;
+}
+
+
+.dpflex{
+    display: flex;
+    margin: 25px;
+
+}
+
+.dpflex img{
+    height: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    transform: translateY(20%);
+    }
+
+
+
 
 .wish-list-book{
     position: absolute;
@@ -802,46 +879,58 @@ nav .right-menu .shopping-cart img:hover{
     position: fixed;
     top: 57px;
     left: 75.5%;
-    height: auto;
+    height: 67%;
+    overflow: scroll;
     width: 20%;
+    text-align: center;
     background-color: white;
     box-shadow: 6px 6px 6px 6px rgba(32,33,36,.28);
     border-top: 1px solid #cbe4f1;
     border-bottom: 1px solid #cbe4f1;
     border-left: 1px solid #cbe4f1;
     border-right: 1px solid #cbe4f1;
-    border-radius: 10px;
     z-index: 300;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    border-radius: 10px;
 
 
 }
 
-.user-cart-wrapper .cart-header{
-    margin: 2px 15px;
+.user-cart-wrapper .close-side-bar{
+   height: 40px;
+    margin: 0 10px;
+
 }
 
+.user-cart-wrapper .close-side-bar img{
+    height: 17px;
+}
 
 .user-cart-wrapper .cart-product-wrapper{
-    margin: 20px 20px;
+    margin: 20px 15px;
     display: flex;
     justify-content: flex-start;
 }
 
 .user-cart-wrapper .cart-product-wrapper img{
-    height: 70px;
-    width: 50px;
+    height: 80px;
+    width: 60px;
 }
 
 .user-cart-wrapper .cart-product-wrapper .cart-product-details{
-    margin: 5px 15px;
+    width: 65%;
+    margin: auto 10px;
 
+}
+
+.user-cart-wrapper .cart-product-wrapper .cart-product-details h3, h5{
+    font-family: "Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .user-cart-wrapper .cart-product-wrapper .cart-product-details h5{
     font-size: 10px;
     color: #5f6368;
+    text-align: left;
+
 }
 
 .user-cart-wrapper .cart-product-wrapper .cart-product-details h3{
@@ -856,6 +945,7 @@ nav .right-menu .shopping-cart img:hover{
 
 .user-cart-wrapper .cart-product-wrapper .cart-item-remove{
     margin: auto;
+    float: right;
     cursor: pointer;
 
 }
@@ -873,6 +963,7 @@ nav .right-menu .shopping-cart img:hover{
 
 
 .user-cart-wrapper .cart-submit-button{
+
     display: flex;
     justify-content: center;
 }
@@ -930,7 +1021,7 @@ nav .right-menu .shopping-cart img:hover{
 .arrow-cart{
     position: fixed;
     top: 50px;
-    left: 93.3%;
+    left: 93.7%;
     border: solid #cbe4f1;
     background-color: white;
     border-width: 0 1px 1px 0;
@@ -1412,6 +1503,7 @@ nav .right-menu .shopping-cart img:hover{
     height: 6vh;
     overflow: hidden;
     font-size: 14px;
+    text-align: left;
 
 }
 
@@ -1446,7 +1538,7 @@ nav .right-menu .shopping-cart img:hover{
 
 .price-display p{
     font-weight: 600;
-    /*color: var(--default-color);*/
+    /*color: #2a9d8f;*/
 }
 
 
@@ -1470,7 +1562,18 @@ nav .right-menu .shopping-cart img:hover{
     border: 1px solid #cbe4f1;
 }
 
+.addtocart{
+    width: 12vw;
+    height: 33px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
+    border: 1px solid #cbe4f1;
+    position: absolute;
+    left: 33%;
+    top: 93.5%;
 
+}
 
 
 .purchase-details .restocked-button{
@@ -1553,6 +1656,7 @@ button:hover{
 
 .author-name{
     color: #1b6d85;
+    text-align: center;
 }
 
 .breadcrumb-wrapper ul{

@@ -29,6 +29,7 @@ class Home(View):
             'registration_form': RegistrationForm(),
             'home_books_category': p,
             'banners': bannerImg,
+            # 'session_id': request.session.get('card_id', None)
         }
 
         return render(request, template_name=self.template_name, context=ctx)

@@ -9,4 +9,5 @@ urlpatterns = (
     path('ajax/get-book-price/', GetPriceEachBook.as_view(), name="get-book-price"),
     # path('rating/<slug:slug>/', UpdateBookRating.as_view(), name='update-book-rating')
 
+
 )
