@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script data-ad-client="ca-pub-2321020705104304" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>
@@ -10,16 +9,14 @@
              | Kitabalaya:Book a book
         {% endblock %}
     </title>
-    <script src="https://kit.fontawesome.com/a8a0644a78.js" crossorigin=""></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
 
     <meta name="description" content="Kitabalaya is the nation’s only digital library and books rental platform. We offer diversity in readership and financial freedom in purchase to our readers.
                 We are not here to merely sell you books like any other storefront. Kitabalaya is here to help you make a choice. A choice to read more. A choice to save more. A choice to go GREEN!">
     
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'core/img/apple-touch-icon.png'  %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'core/img/favicon-32x32.png' %}">
@@ -46,55 +43,58 @@
 
 
     <nav class="desktop-view">
-        <div class="left-menu">
-            <div class="hamburger" id="hamburger-id">
-                <img alt="Kitabalaya hamburger menu" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNmgtMjR2LTRoMjR2NHptMCA0aC0yNHY0aDI0di00em0wIDhoLTI0djRoMjR2LTR6Ii8+PC9zdmc+">
+        <div class="nav-desktop-view">
+            <div class="left-menu">
+                <div class="hamburger" id="hamburger-id">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="#3A3A3A"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+
+                </div>
+
+                <div class="search">
+                    <svg id="search-svg" xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="#3A3A3A"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+            </div>
+
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'core/img/logo-kitabalaya.png' %}" alt="Kitabalaya - Rent books from Nepalese and Foreign Authors in Nepal">
+                </a>
 
             </div>
 
-            <div class="search">
-                <img id="search-img" alt="kitabalaya search icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuODA5IDIxLjY0NmwtNi4yMDUtNi4yMDVjMS4xNjctMS42MDUgMS44NTctMy41NzkgMS44NTctNS43MTEgMC01LjM2NS00LjM2NS05LjczLTkuNzMxLTkuNzMtNS4zNjUgMC05LjczIDQuMzY1LTkuNzMgOS43MyAwIDUuMzY2IDQuMzY1IDkuNzMgOS43MyA5LjczIDIuMDM0IDAgMy45MjMtLjYyNyA1LjQ4Ny0xLjY5OGw2LjIzOCA2LjIzOCAyLjM1NC0yLjM1NHptLTIwLjk1NS0xMS45MTZjMC0zLjc5MiAzLjA4NS02Ljg3NyA2Ljg3Ny02Ljg3N3M2Ljg3NyAzLjA4NSA2Ljg3NyA2Ljg3Ny0zLjA4NSA2Ljg3Ny02Ljg3NyA2Ljg3N2MtMy43OTMgMC02Ljg3Ny0zLjA4NS02Ljg3Ny02Ljg3N3oiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'core/img/logo-kitabalaya.png' %}" alt="Kitabalaya - Rent books from Nepalese and Foreign Authors in Nepal">
-            </a>
-        </div>
-
-        <div class="right-menu">
-{#            <div class="wishlist">#}
-{#                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNi4yOCAzYzMuMjM2LjAwMSA0Ljk3MyAzLjQ5MSA1LjcyIDUuMDMxLjc1LTEuNTQ3IDIuNDY5LTUuMDIxIDUuNzI2LTUuMDIxIDIuMDU4IDAgNC4yNzQgMS4zMDkgNC4yNzQgNC4xODIgMCAzLjQ0Mi00Ljc0NCA3Ljg1MS0xMCAxMy01LjI1OC01LjE1MS0xMC05LjU1OS0xMC0xMyAwLTIuNjc2IDEuOTY1LTQuMTkzIDQuMjgtNC4xOTJ6bS4wMDEtMmMtMy4xODMgMC02LjI4MSAyLjE4Ny02LjI4MSA2LjE5MiAwIDQuNjYxIDUuNTcgOS40MjcgMTIgMTUuODA4IDYuNDMtNi4zODEgMTItMTEuMTQ3IDEyLTE1LjgwOCAwLTQuMDExLTMuMDk3LTYuMTgyLTYuMjc0LTYuMTgyLTIuMjA0IDAtNC40NDYgMS4wNDItNS43MjYgMy4yMzgtMS4yODUtMi4yMDYtMy41MjItMy4yNDgtNS43MTktMy4yNDh6Ii8+PC9zdmc+">#}
-{#            </div>#}
-            <div class="shopping-cart" id="cart-id">
-{#                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgM2wtLjc0MyAyaC0xLjkyOWwtMy40NzQgMTJoLTEzLjIzOWwtNC42MTUtMTFoMTYuODEybC0uNTY0IDJoLTEzLjI0bDIuOTM3IDdoMTAuNDI4bDMuNDMyLTEyaDQuMTk1em0tMTUuNSAxNWMtLjgyOCAwLTEuNS42NzItMS41IDEuNSAwIC44MjkuNjcyIDEuNSAxLjUgMS41czEuNS0uNjcxIDEuNS0xLjVjMC0uODI4LS42NzItMS41LTEuNS0xLjV6bTYuOS03LTEuOSA3Yy0uODI4IDAtMS41LjY3MS0xLjUgMS41cy42NzIgMS41IDEuNSAxLjUgMS41LS42NzEgMS41LTEuNWMwLS44MjgtLjY3Mi0xLjUtMS41LTEuNXoiLz48L3N2Zz4=">#}
-                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjAgN2gtNHYtM2MwLTIuMjA5LTEuNzkxLTQtNC00cy00IDEuNzkxLTQgNHYzaC00bC0yIDE3aDIwbC0yLTE3em0tMTEtM2MwLTEuNjU0IDEuMzQ2LTMgMy0zczMgMS4zNDYgMyAzdjNoLTZ2LTN6bS00Ljc1MSAxOGwxLjUyOS0xM2gyLjIyMnYxLjVjMCAuMjc2LjIyNC41LjUuNXMuNS0uMjI0LjUtLjV2LTEuNWg2djEuNWMwIC4yNzYuMjI0LjUuNS41cy41LS4yMjQuNS0uNXYtMS41aDIuMjIybDEuNTI5IDEzaC0xNS41MDJ6Ii8+PC9zdmc+">
-            </div>
-            <div class="accounts" id="accounts-id">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmMyLjc1NyAwIDUgMi4yNDMgNSA1LjAwMSAwIDIuNzU2LTIuMjQzIDUtNSA1cy01LTIuMjQ0LTUtNWMwLTIuNzU4IDIuMjQzLTUuMDAxIDUtNS4wMDF6bTAtMmMtMy44NjYgMC03IDMuMTM0LTcgNy4wMDEgMCAzLjg2NSAzLjEzNCA3IDcgN3M3LTMuMTM1IDctN2MwLTMuODY3LTMuMTM0LTcuMDAxLTctNy4wMDF6bTYuMzY5IDEzLjM1M2MtLjQ5Ny40OTgtMS4wNTcuOTMxLTEuNjU4IDEuMzAyIDIuODcyIDEuODc0IDQuMzc4IDUuMDgzIDQuOTcyIDcuMzQ2aC0xOS4zODdjLjU3Mi0yLjI5IDIuMDU4LTUuNTAzIDQuOTczLTcuMzU4LS42MDMtLjM3NC0xLjE2Mi0uODExLTEuNjU4LTEuMzEyLTQuMjU4IDMuMDcyLTUuNjExIDguNTA2LTUuNjExIDEwLjY2OWgyNGMwLTIuMTQyLTEuNDQtNy41NTctNS42MzEtMTAuNjQ3eiIvPjwvc3ZnPg==">
+            <div class="right-menu">
+    {#            <div class="wishlist">#}
+    {#                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNi4yOCAzYzMuMjM2LjAwMSA0Ljk3MyAzLjQ5MSA1LjcyIDUuMDMxLjc1LTEuNTQ3IDIuNDY5LTUuMDIxIDUuNzI2LTUuMDIxIDIuMDU4IDAgNC4yNzQgMS4zMDkgNC4yNzQgNC4xODIgMCAzLjQ0Mi00Ljc0NCA3Ljg1MS0xMCAxMy01LjI1OC01LjE1MS0xMC05LjU1OS0xMC0xMyAwLTIuNjc2IDEuOTY1LTQuMTkzIDQuMjgtNC4xOTJ6bS4wMDEtMmMtMy4xODMgMC02LjI4MSAyLjE4Ny02LjI4MSA2LjE5MiAwIDQuNjYxIDUuNTcgOS40MjcgMTIgMTUuODA4IDYuNDMtNi4zODEgMTItMTEuMTQ3IDEyLTE1LjgwOCAwLTQuMDExLTMuMDk3LTYuMTgyLTYuMjc0LTYuMTgyLTIuMjA0IDAtNC40NDYgMS4wNDItNS43MjYgMy4yMzgtMS4yODUtMi4yMDYtMy41MjItMy4yNDgtNS43MTktMy4yNDh6Ii8+PC9zdmc+">#}
+    {#            </div>#}
+                <div class="shopping-cart" id="cart-id">
+    {#                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgM2wtLjc0MyAyaC0xLjkyOWwtMy40NzQgMTJoLTEzLjIzOWwtNC42MTUtMTFoMTYuODEybC0uNTY0IDJoLTEzLjI0bDIuOTM3IDdoMTAuNDI4bDMuNDMyLTEyaDQuMTk1em0tMTUuNSAxNWMtLjgyOCAwLTEuNS42NzItMS41IDEuNSAwIC44MjkuNjcyIDEuNSAxLjUgMS41czEuNS0uNjcxIDEuNS0xLjVjMC0uODI4LS42NzItMS41LTEuNS0xLjV6bTYuOS03LTEuOSA3Yy0uODI4IDAtMS41LjY3MS0xLjUgMS41cy42NzIgMS41IDEuNSAxLjUgMS41LS42NzEgMS41LTEuNWMwLS44MjgtLjY3Mi0xLjUtMS41LTEuNXoiLz48L3N2Zz4=">#}
+                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="28px" viewBox="0 0 24 24" width="28px" fill="#3A3A3A"><g><rect fill="none" height="24" width="24"/><path d="M18,6h-2c0-2.21-1.79-4-4-4S8,3.79,8,6H6C4.9,6,4,6.9,4,8v12c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2V8C20,6.9,19.1,6,18,6z M12,4c1.1,0,2,0.9,2,2h-4C10,4.9,10.9,4,12,4z M18,20H6V8h2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V8h4v2c0,0.55,0.45,1,1,1s1-0.45,1-1V8 h2V20z"/></g></svg>
+                </div>
+                <div class="accounts" id="accounts-id">
+                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="28px" viewBox="0 0 24 24" width="28px" fill="#3A3A3A"><g><rect fill="none" height="24" width="24"/></g><g><path d="M11,7L9.6,8.4l2.6,2.6H2v2h10.2l-2.6,2.6L11,17l5-5L11,7z M20,19h-8v2h8c1.1,0,2-0.9,2-2V5c0-1.1-0.9-2-2-2h-8v2h8V19z"/></g></svg>
+                </div>
             </div>
         </div>
     </nav>
 {#    #}
-    <div class="secondary-nav">
-
-        <ul class="book-list-category" id="book-list-category-id">
-            <li>RENT BOOKS</li>
-            <li>MEMBERSHIP</li>
-            <li>BIBLIOPHILES FAVOURITE</li>
-            <li>MERCH</li>
-            <li>STATIONARY AND GIFTS</li>
-            <li>BEST SELLERS</li>
-            <li>BOOKMARKS</li>
-        </ul>
-    </div>
+{#    <div class="secondary-nav">#}
+{##}
+{#        <ul class="book-list-category" id="book-list-category-id">#}
+{#            <li>RENT BOOKS</li>#}
+{#            <li>MEMBERSHIP</li>#}
+{#            <li>BIBLIOPHILES FAVOURITE</li>#}
+{#            <li>MERCH</li>#}
+{#            <li>STATIONARY AND GIFTS</li>#}
+{#            <li>BEST SELLERS</li>#}
+{#            <li>BOOKMARKS</li>#}
+{#        </ul>#}
+{#    </div>#}
 
     <div class="side-bar no-view" id="side-bar-id">
         <div class="side-bar-header">
             <h2>Categories</h2>
             <div class="close-side-bar no-view" id="close-side-bar-id">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
+                <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 24 24" width="28px" fill="#3A3A3A"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
             </div>
         </div>
 
@@ -134,13 +134,7 @@
                     <div class="update-profile-img">
                         <button type="button">
                             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNSA0aC0zdi0xaDN2MXptOCA2Yy0xLjY1NCAwLTMgMS4zNDYtMyAzczEuMzQ2IDMgMyAzIDMtMS4zNDYgMy0zLTEuMzQ2LTMtMy0zem0xMS01djE3aC0yNHYtMTdoNS45M2MuNjY5IDAgMS4yOTMtLjMzNCAxLjY2NC0uODkxbDEuNDA2LTIuMTA5aDhsMS40MDYgMi4xMDljLjM3MS41NTcuOTk1Ljg5MSAxLjY2NC44OTFoMy45M3ptLTE5IDRjMC0uNTUyLS40NDctMS0xLTFzLTEgLjQ0OC0xIDEgLjQ0NyAxIDEgMSAxLS40NDggMS0xem0xMyA0YzAtMi43NjEtMi4yMzktNS01LTVzLTUgMi4yMzktNSA1IDIuMjM5IDUgNSA1IDUtMi4yMzkgNS01eiIvPjwvc3ZnPg==">
-
-
-
                         </button>
-
-
-
                     </div>
                 </div>
                 <div class="user-name">
@@ -211,11 +205,11 @@
                     <button class="user-profile-submit-button" id="user-profile-submit-button-id" type="submit">Sign In</button>
                 </form>
 
-                <p>Or sign in with</p>
+{#                <p>Or sign in with</p>#}
 
                 <div class="social-login">
-                    <button type="button">Sign in with Google</button>
-                    <button type="button">Sign in with Facebook</button>
+{#                    <button type="button">Sign in with Google</button>#}
+{#                    <button type="button">Sign in with Facebook</button>#}
                     <small>Click “Sign In” above to accept Kitabalaya's Terms of Service & Privacy Policy.</small>
                 </div>
 
@@ -237,11 +231,11 @@
                     <button class="buttonload no-view" id="submit-button-load-id"><i class="fa fa-spinner fa-spin loading-icon"></i>Creating Your Account...</button>
                 </form>
 
-                <p>Or sign Up with</p>
+{#                <p>Or sign Up with</p>#}
 
                 <div class="social-login">
-                    <button type="button">Sign Up with Google</button>
-                    <button type="button">Sign Up with Facebook</button>
+{#                    <button type="button">Sign Up with Google</button>#}
+{#                    <button type="button">Sign Up with Facebook</button>#}
                     <small>Click “Sign Up” above to accept Kitabalaya's Terms of Service & Privacy Policy.</small>
                 </div>
             </div>`
@@ -255,231 +249,24 @@
 
 
     <div class="user-cart-wrapper no-view" id="user-cart-wrapper-id">
-
-        <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
+        <div class="empty-cart no-view">
+            <img class="no-cart-content-img" src="{% static 'core/img/emptyCart.png' %}" alt="">
         </div>
 
-        <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
+        <div class="top-cart-display no-view">
+            {% include 'core/snippets/cart-content.html' %}
 
 
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
 
 
-{#                <a href="#">Remove?</a>#}
 
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
         </div>
 
-        <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-         <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-
-         <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-
-         <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-
-         <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-         <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-
-         <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-        <div class="cart-product-wrapper">
-            <img src="{% static 'core/img/9780099458326_11.jpg' %}" alt="">
-
-
-            <div class="cart-product-details">
-
-                <h3>Kafka on the Shore</h3>
-                <h5>By Haruki Murakami</h5>
-
-                <h3 class="cart-cost-display">Rent: Rs.15/Day</h3>
-                <h5 >Refundable Deposit: Rs.800</h5>
-
-
-{#                <a href="#">Remove?</a>#}
-
-            </div>
-            <div class="cart-item-remove">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem02IDE2LjUzOGwtNC41OTItNC41NDggNC41NDYtNC41ODctMS40MTYtMS40MDMtNC41NDUgNC41ODktNC41ODgtNC41NDMtMS40MDUgMS40MDUgNC41OTMgNC41NTItNC41NDcgNC41OTIgMS40MDUgMS40MDUgNC41NTUtNC41OTYgNC41OTEgNC41NSAxLjQwMy0xLjQxNnoiLz48L3N2Zz4=">
-            </div>
-        </div>
-
-
-
-
-        <div class="cart-submit-button">
+         <div class="cart-submit-button no-view">
             <button type="button">VIEW CART</button>
             <button type="button">CHECKOUT</button>
 
-
-        </div>
-
+         </div>
 
 
 
@@ -488,11 +275,8 @@
 
 
 
-{#        <img src="{% static 'core/img/emptyCart.png' %}" alt="">#}
-{##}
-{#         <div class="search-button-wrapper">#}
-{#                <button class="search-button" type="submit">Browse</button>#}
-{#         </div>#}
+
+
 
 
 
@@ -611,10 +395,20 @@
        <div class="contact">
             <h3>Contact Us</h3>
 
-            <p>Kitabalaya:Book a book</p>   
+            <p>Kitabalaya:Book a book</p>
+
             <p>Kathmandu, Nepal</p>
             <p>contact@kitabalaya.info</p>
             <p>+977-9802051714, +977-9813795934</p>
+           <br>
+
+            <p>Birtamode, Jhapa</p>
+            <p>contact.btm@kitabalaya.info</p>
+            <p>+977-9842629301, +977-9842654540</p>
+
+
+
+
 
             
 
@@ -642,13 +436,13 @@
     </div>
 
 
-    <div class="footer-links">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMGMtNi42MjcgMC0xMiA1LjM3My0xMiAxMnM1LjM3MyAxMiAxMiAxMiAxMi01LjM3MyAxMi0xMi01LjM3My0xMi0xMi0xMnptMyA4aC0xLjM1Yy0uNTM4IDAtLjY1LjIyMS0uNjUuNzc4djEuMjIyaDJsLS4yMDkgMmgtMS43OTF2N2gtM3YtN2gtMnYtMmgydi0yLjMwOGMwLTEuNzY5LjkzMS0yLjY5MiAzLjAyOS0yLjY5MmgxLjk3MXYzeiIvPjwvc3ZnPg==">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMi4xNjNjMy4yMDQgMCAzLjU4NC4wMTIgNC44NS4wNyAzLjI1Mi4xNDggNC43NzEgMS42OTEgNC45MTkgNC45MTkuMDU4IDEuMjY1LjA2OSAxLjY0NS4wNjkgNC44NDkgMCAzLjIwNS0uMDEyIDMuNTg0LS4wNjkgNC44NDktLjE0OSAzLjIyNS0xLjY2NCA0Ljc3MS00LjkxOSA0LjkxOS0xLjI2Ni4wNTgtMS42NDQuMDctNC44NS4wNy0zLjIwNCAwLTMuNTg0LS4wMTItNC44NDktLjA3LTMuMjYtLjE0OS00Ljc3MS0xLjY5OS00LjkxOS00LjkyLS4wNTgtMS4yNjUtLjA3LTEuNjQ0LS4wNy00Ljg0OSAwLTMuMjA0LjAxMy0zLjU4My4wNy00Ljg0OS4xNDktMy4yMjcgMS42NjQtNC43NzEgNC45MTktNC45MTkgMS4yNjYtLjA1NyAxLjY0NS0uMDY5IDQuODQ5LS4wNjl6bTAtMi4xNjNjLTMuMjU5IDAtMy42NjcuMDE0LTQuOTQ3LjA3Mi00LjM1OC4yLTYuNzggMi42MTgtNi45OCA2Ljk4LS4wNTkgMS4yODEtLjA3MyAxLjY4OS0uMDczIDQuOTQ4IDAgMy4yNTkuMDE0IDMuNjY4LjA3MiA0Ljk0OC4yIDQuMzU4IDIuNjE4IDYuNzggNi45OCA2Ljk4IDEuMjgxLjA1OCAxLjY4OS4wNzIgNC45NDguMDcyIDMuMjU5IDAgMy42NjgtLjAxNCA0Ljk0OC0uMDcyIDQuMzU0LS4yIDYuNzgyLTIuNjE4IDYuOTc5LTYuOTguMDU5LTEuMjguMDczLTEuNjg5LjA3My00Ljk0OCAwLTMuMjU5LS4wMTQtMy42NjctLjA3Mi00Ljk0Ny0uMTk2LTQuMzU0LTIuNjE3LTYuNzgtNi45NzktNi45OC0xLjI4MS0uMDU5LTEuNjktLjA3My00Ljk0OS0uMDczem0wIDUuODM4Yy0zLjQwMyAwLTYuMTYyIDIuNzU5LTYuMTYyIDYuMTYyczIuNzU5IDYuMTYzIDYuMTYyIDYuMTYzIDYuMTYyLTIuNzU5IDYuMTYyLTYuMTYzYzAtMy40MDMtMi43NTktNi4xNjItNi4xNjItNi4xNjJ6bTAgMTAuMTYyYy0yLjIwOSAwLTQtMS43OS00LTQgMC0yLjIwOSAxLjc5MS00IDQtNHM0IDEuNzkxIDQgNGMwIDIuMjEtMS43OTEgNC00IDR6bTYuNDA2LTExLjg0NWMtLjc5NiAwLTEuNDQxLjY0NS0xLjQ0MSAxLjQ0cy42NDUgMS40NCAxLjQ0MSAxLjQ0Yy43OTUgMCAxLjQzOS0uNjQ1IDEuNDM5LTEuNDRzLS42NDQtMS40NC0xLjQzOS0xLjQ0eiIvPjwvc3ZnPg==">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNC41NTdjLS44ODMuMzkyLTEuODMyLjY1Ni0yLjgyOC43NzUgMS4wMTctLjYwOSAxLjc5OC0xLjU3NCAyLjE2NS0yLjcyNC0uOTUxLjU2NC0yLjAwNS45NzQtMy4xMjcgMS4xOTUtLjg5Ny0uOTU3LTIuMTc4LTEuNTU1LTMuNTk0LTEuNTU1LTMuMTc5IDAtNS41MTUgMi45NjYtNC43OTcgNi4wNDUtNC4wOTEtLjIwNS03LjcxOS0yLjE2NS0xMC4xNDgtNS4xNDQtMS4yOSAyLjIxMy0uNjY5IDUuMTA4IDEuNTIzIDYuNTc0LS44MDYtLjAyNi0xLjU2Ni0uMjQ3LTIuMjI5LS42MTYtLjA1NCAyLjI4MSAxLjU4MSA0LjQxNSAzLjk0OSA0Ljg5LS42OTMuMTg4LTEuNDUyLjIzMi0yLjIyNC4wODQuNjI2IDEuOTU2IDIuNDQ0IDMuMzc5IDQuNiAzLjQxOS0yLjA3IDEuNjIzLTQuNjc4IDIuMzQ4LTcuMjkgMi4wNCAyLjE3OSAxLjM5NyA0Ljc2OCAyLjIxMiA3LjU0OCAyLjIxMiA5LjE0MiAwIDE0LjMwNy03LjcyMSAxMy45OTUtMTQuNjQ2Ljk2Mi0uNjk1IDEuNzk3LTEuNTYyIDIuNDU3LTIuNTQ5eiIvPjwvc3ZnPg==">
-
-
-    </div>
+{#    <div class="footer-links">#}
+{#        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMGMtNi42MjcgMC0xMiA1LjM3My0xMiAxMnM1LjM3MyAxMiAxMiAxMiAxMi01LjM3MyAxMi0xMi01LjM3My0xMi0xMi0xMnptMyA4aC0xLjM1Yy0uNTM4IDAtLjY1LjIyMS0uNjUuNzc4djEuMjIyaDJsLS4yMDkgMmgtMS43OTF2N2gtM3YtN2gtMnYtMmgydi0yLjMwOGMwLTEuNzY5LjkzMS0yLjY5MiAzLjAyOS0yLjY5MmgxLjk3MXYzeiIvPjwvc3ZnPg==">#}
+{#        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMi4xNjNjMy4yMDQgMCAzLjU4NC4wMTIgNC44NS4wNyAzLjI1Mi4xNDggNC43NzEgMS42OTEgNC45MTkgNC45MTkuMDU4IDEuMjY1LjA2OSAxLjY0NS4wNjkgNC44NDkgMCAzLjIwNS0uMDEyIDMuNTg0LS4wNjkgNC44NDktLjE0OSAzLjIyNS0xLjY2NCA0Ljc3MS00LjkxOSA0LjkxOS0xLjI2Ni4wNTgtMS42NDQuMDctNC44NS4wNy0zLjIwNCAwLTMuNTg0LS4wMTItNC44NDktLjA3LTMuMjYtLjE0OS00Ljc3MS0xLjY5OS00LjkxOS00LjkyLS4wNTgtMS4yNjUtLjA3LTEuNjQ0LS4wNy00Ljg0OSAwLTMuMjA0LjAxMy0zLjU4My4wNy00Ljg0OS4xNDktMy4yMjcgMS42NjQtNC43NzEgNC45MTktNC45MTkgMS4yNjYtLjA1NyAxLjY0NS0uMDY5IDQuODQ5LS4wNjl6bTAtMi4xNjNjLTMuMjU5IDAtMy42NjcuMDE0LTQuOTQ3LjA3Mi00LjM1OC4yLTYuNzggMi42MTgtNi45OCA2Ljk4LS4wNTkgMS4yODEtLjA3MyAxLjY4OS0uMDczIDQuOTQ4IDAgMy4yNTkuMDE0IDMuNjY4LjA3MiA0Ljk0OC4yIDQuMzU4IDIuNjE4IDYuNzggNi45OCA2Ljk4IDEuMjgxLjA1OCAxLjY4OS4wNzIgNC45NDguMDcyIDMuMjU5IDAgMy42NjgtLjAxNCA0Ljk0OC0uMDcyIDQuMzU0LS4yIDYuNzgyLTIuNjE4IDYuOTc5LTYuOTguMDU5LTEuMjguMDczLTEuNjg5LjA3My00Ljk0OCAwLTMuMjU5LS4wMTQtMy42NjctLjA3Mi00Ljk0Ny0uMTk2LTQuMzU0LTIuNjE3LTYuNzgtNi45NzktNi45OC0xLjI4MS0uMDU5LTEuNjktLjA3My00Ljk0OS0uMDczem0wIDUuODM4Yy0zLjQwMyAwLTYuMTYyIDIuNzU5LTYuMTYyIDYuMTYyczIuNzU5IDYuMTYzIDYuMTYyIDYuMTYzIDYuMTYyLTIuNzU5IDYuMTYyLTYuMTYzYzAtMy40MDMtMi43NTktNi4xNjItNi4xNjItNi4xNjJ6bTAgMTAuMTYyYy0yLjIwOSAwLTQtMS43OS00LTQgMC0yLjIwOSAxLjc5MS00IDQtNHM0IDEuNzkxIDQgNGMwIDIuMjEtMS43OTEgNC00IDR6bTYuNDA2LTExLjg0NWMtLjc5NiAwLTEuNDQxLjY0NS0xLjQ0MSAxLjQ0cy42NDUgMS40NCAxLjQ0MSAxLjQ0Yy43OTUgMCAxLjQzOS0uNjQ1IDEuNDM5LTEuNDRzLS42NDQtMS40NC0xLjQzOS0xLjQ0eiIvPjwvc3ZnPg==">#}
+{#        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgNC41NTdjLS44ODMuMzkyLTEuODMyLjY1Ni0yLjgyOC43NzUgMS4wMTctLjYwOSAxLjc5OC0xLjU3NCAyLjE2NS0yLjcyNC0uOTUxLjU2NC0yLjAwNS45NzQtMy4xMjcgMS4xOTUtLjg5Ny0uOTU3LTIuMTc4LTEuNTU1LTMuNTk0LTEuNTU1LTMuMTc5IDAtNS41MTUgMi45NjYtNC43OTcgNi4wNDUtNC4wOTEtLjIwNS03LjcxOS0yLjE2NS0xMC4xNDgtNS4xNDQtMS4yOSAyLjIxMy0uNjY5IDUuMTA4IDEuNTIzIDYuNTc0LS44MDYtLjAyNi0xLjU2Ni0uMjQ3LTIuMjI5LS42MTYtLjA1NCAyLjI4MSAxLjU4MSA0LjQxNSAzLjk0OSA0Ljg5LS42OTMuMTg4LTEuNDUyLjIzMi0yLjIyNC4wODQuNjI2IDEuOTU2IDIuNDQ0IDMuMzc5IDQuNiAzLjQxOS0yLjA3IDEuNjIzLTQuNjc4IDIuMzQ4LTcuMjkgMi4wNCAyLjE3OSAxLjM5NyA0Ljc2OCAyLjIxMiA3LjU0OCAyLjIxMiA5LjE0MiAwIDE0LjMwNy03LjcyMSAxMy45OTUtMTQuNjQ2Ljk2Mi0uNjk1IDEuNzk3LTEuNTYyIDIuNDU3LTIuNTQ5eiIvPjwvc3ZnPg==">#}
+{##}
+{##}
+{#    </div>#}
 
 
 

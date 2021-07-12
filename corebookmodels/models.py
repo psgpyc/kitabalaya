@@ -131,6 +131,12 @@ class BookBelongsTo(TimeStampModel):
         verbose_name_plural = 'HomePage Categories'
 
 
+class BookManager(models.Manager):
+
+    def get_book(self, slug):
+        return self.filter(slug=slug).select_related('author_name')
+
+
 class Book(TimeStampModel):
     """Model representing a book (but not a specific copy of a book)."""
 
@@ -202,6 +208,8 @@ class Book(TimeStampModel):
     slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=False,)
 
     is_featured = models.BooleanField(default=False)
+
+    objects = BookManager()
 
     def get_absolute_url(self):
         """Returns the url to access a particular book instance."""

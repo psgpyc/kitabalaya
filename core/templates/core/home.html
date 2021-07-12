@@ -10,50 +10,60 @@
 
 
 {% block body %}
-    <div class="banner-wrapper" id="banner-img-id">
-    {{ session_id }}
 
-        <div class="each-banner">
+
+    <div class="banner-wrapper">
+
+        <svg id="prev-banner-btn" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#3A3A3A"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
+
+        <div class="banner-collection">
             {% for banner in banners %}
-               {% if forloop.first %}
-                    <img class="banner banner-active" src="{{ banner.banner_img.url }}" alt="">
-               {% else %}
-                   <img class="banner banner-off"  src="{{ banner.banner_img.url }}" alt="">
+                {% if forloop.counter == 1 %}
+                    <img class="banner-active each-banner" src="{{ banner.banner_img.url  }}" alt="">
+                {% else %}
+                    <img class="each-banner" src="{{ banner.banner_img.url  }}" alt="">
+                {% endif %}
 
-
-               {% endif %}
             {% endfor %}
+
+
+
+
+
         </div>
-        <div class="navigation-banner-button-wrapper">
-            <button class="bannerbtn hover-style" id="bb0" role="button"></button>
-            <button class="bannerbtn" id="bb1" role="button"></button>
-            <button class="bannerbtn" id="bb2" role="button"></button>
-            <button class="bannerbtn" id="bb3" role="button"></button>
-        </div>
-        <form method="post">
-            {% csrf_token %}
-            <label class="search-box-wrapper">
-                <input class='search-box' id="search-box-id" type="search" autocomplete="off"
-                       placeholder="Your favourite book is one search away!">
-                {#                    <img alt='kitabalaya search end' class="no-view" id="search-end" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">#}
-            </label>
-            <div class="search-button-wrapper">
-                <button class="search-button" type="submit">SEARCH</button>
-                <button class="search-button" type="reset">CLEAR</button>
-            </div>
-        </form>
+        <svg id="next-banner-btn" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#3A3A3A"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><polygon points="6.23,20.23 8,22 18,12 8,2 6.23,3.77 14.46,12"/></g></svg>
+
+
+
     </div>
 
-    <div class="search-result-wrapper">
-
-        <div class="search-result">
 
 
-            <div class="search-button-wrapper drop-result-button">
-                <button class="search-button" type="submit">VIEW ALL</button>
-                <button id="clear-drop-result-button" class="search-button" type="reset">CLEAR</button>
+    <div class="search-home-wrap">
+        <form method="post">
+                {% csrf_token %}
+                <label class="search-box-wrapper">
+                    <input class='search-box' id="search-box-id" type="search" autocomplete="off"
+                           placeholder="Your favourite book is one search away!">
+                    {#                    <img alt='kitabalaya search end' class="no-view" id="search-end" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">#}
+                </label>
+                <div class="search-button-wrapper">
+                    <button class="search-button" type="submit">SEARCH</button>
+                    <button class="search-button" type="reset">CLEAR</button>
+                </div>
+            </form>
+
+        <div class="search-result-wrapper">
+            <div class="search-result">
+
+
+                <div class="search-button-wrapper drop-result-button">
+                    <button class="search-button" type="submit">VIEW ALL</button>
+                    <button id="clear-drop-result-button" class="search-button" type="reset">CLEAR</button>
+                </div>
             </div>
         </div>
+
     </div>
 
     <div class="rental-popup-wrapper no-view">
@@ -107,9 +117,9 @@
         <div class="best-sellers">
             <h2> BEST SELLERS</h2>
             <div class="the-books-wrapper">
-                 <div class="arrow-select arrow-transform arrow-left-next">
+                 <div class="arrow-select  arrow-left-next">
 
-                     <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0yIDEybC00LjUgNC41IDEuNTI3IDEuNSA1Ljk3My02LTUuOTczLTYtMS41MjcgMS41IDQuNSA0LjV6Ii8+PC9zdmc+">
+                     <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#3A3A3A"><path d="M0 0h24v24H0V0z" fill="none" opacity=".87"/><path d="M17.51 3.87L15.73 2.1 5.84 12l9.9 9.9 1.77-1.77L9.38 12l8.13-8.13z"/></svg>
                  </div>
 
                 {% for book in home_books_category %}
@@ -134,79 +144,7 @@
                             <p class="featured-genre-details">
                                 {{ book.summary| truncatechars:70 }}
                             </p>
-                            {%  if book.in_stock_buy == 0 and book.in_stock_rent == 0 %}
-                                <div class="purchase-details">
-                                    <h2 class="out-of-stock">OUT OF STOCK</h2>
-                                    <div class="purchase-button">
-                                        <button type="button" class="restocked-button">GET RESTOCKED ALERT</button>
-                                    </div>
-                                </div>
-                            {% elif book.in_stock_buy == 0 and book.in_stock_rent != 0 %}
-{#                                 rent   #}
-                                 <div class="purchase-details">
-
-                                    <div class="price-display">
-
-                                        <p style="margin-top: 10px;">Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int  }}/day</p>
-
-
-                                    </div>
-
-                                    <div class="purchase-button">
-
-                                        <button style="margin-left: 0;" name="{{ book.slug }}" class="rental-button restocked-button"> RENT THE BOOK </button>
-
-                                    </div>
-
-                                </div>
-
-
-                            {% elif book.in_stock_buy != 0 and book.in_stock_rent == 0 %}
-
-                                 <div class="purchase-details">
-
-                                    <div class="price-display">
-
-                                        <p style="margin-top: 10px;">Buy &nbsp:&nbsp रु. {{ book.mrp_price|to_int  }}</p>
-
-
-                                    </div>
-
-                                    <div class="purchase-button">
-
-                                        <button style="margin-left: 0;" name="{{ book.slug }}" class="restocked-button"> BUY THE BOOK </button>
-
-                                    </div>
-
-                                </div>
-
-
-
-
-
-                            {% else %}
-
-                                <div class="purchase-details">
-
-                                    <div class="price-display">
-
-                                        <p>Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int  }}/day</p>
-                                        <p>Buy  &nbsp&nbsp:&nbsp रु. {{ book.mrp_price|to_int  }}</p>
-
-
-                                    </div>
-
-                                    <div class="purchase-button">
-                                        <button name="{{ book.title }}?{{ book.mrp_price }}?{{ book.rental_price }}" class="rental-button"> RENT </button>
-                                        <button name="{{ book.slug }}">  BUY </button>
-
-                                    </div>
-
-                                </div>
-
-
-                            {% endif %}
-
+                          {% include 'core/snippets/cart-btn.html' %}
 
                         </div>
                     </div>
@@ -219,13 +157,15 @@
 
                  <div class="arrow-select arrow-right-next">
 
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0yIDEybC00LjUgNC41IDEuNTI3IDEuNSA1Ljk3My02LTUuOTczLTYtMS41MjcgMS41IDQuNSA0LjV6Ii8+PC9zdmc+">
+                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="#3A3A3A"><g><path d="M0,0h24v24H0V0z" fill="none"/></g><g><polygon points="6.23,20.23 8,22 18,12 8,2 6.23,3.77 14.46,12"/></g></svg>
 
 
                  </div>
 
             </div>
         </div>
+
+
     </div>
 
 

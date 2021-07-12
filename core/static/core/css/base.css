@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap');
+
 :root{
     --default-color: #03989e
 }
 
 *{
-    /*font-family: 'Baloo Paaji 2', cursive;*/
-    font-family: Roboto,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    font-family: Raleway,Roboto,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,7 +15,7 @@
 }
 
 a{
-    color: #007dc3
+    color: #0C999E;
 }
 
 a:hover{
@@ -60,6 +62,10 @@ body{
     display: none;
 }
 
+.no-view{
+    display: none;
+}
+
 .out-of-stock{
     color: red;
     margin-top: 25px;
@@ -71,8 +77,10 @@ nav{
     overflow: hidden;
     top: 0;
     left: 0;
+    right: 0;
     align-items: center;
-    width: 100%;
+    width: 97%;
+    margin: 0 auto;
     height: 60px;
     background: white;
     z-index: 300;
@@ -103,6 +111,17 @@ nav .left-menu .hamburger img:hover{
 
 
 
+
+/* SEARCH*/
+
+.search-home-wrap{
+
+
+
+
+}
+
+
 .search-box-wrapper{
     display: flex;
     justify-content: center;
@@ -112,11 +131,12 @@ nav .left-menu .hamburger img:hover{
     margin: 35px  auto;
     width: 70%;
     height: 45px;
-    font-size: 18px;
+    font-size: 15px;
     padding: 10px;
-    font-family: 'Baloo Paaji 2', cursive;
+    font-family: Raleway, "Roboto", "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
-    border: 1px solid #cbe4f1;
+    /*border: 1px solid #cbe4f1;*/
+    border: none;
 
     /*border-radius: 10px;*/
 
@@ -156,8 +176,9 @@ nav .left-menu .hamburger img:hover{
     height: 38px;
     width: 15%;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
-    border: 1px solid #cbe4f1;
+    border: none;
 
+    border-radius: 5px;
     /*border-radius: 10px;*/
     background-color: white;
 
@@ -171,9 +192,7 @@ nav .left-menu .hamburger img:hover{
     cursor: pointer;
 }
 
-/*nav .left-menu .search{*/
-/*    margin-left: 0;*/
-/*}*/
+
 
 
 /* Search result*/
@@ -187,7 +206,7 @@ nav .left-menu .hamburger img:hover{
     width: 50%;
 
     position: absolute;
-    top: 70%;
+    top: 74%;
     left: 25%;
     z-index: 200;
     display: none;
@@ -222,7 +241,8 @@ nav .left-menu .hamburger img:hover{
     align-items: center;
     font-size: 15px;
     color: black;
-    font-family: Roboto,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Raleway,Roboto,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+    /*font-weight: 00;*/
 
 }
 
@@ -242,10 +262,10 @@ nav .left-menu .hamburger img:hover{
 }
 
 .logo img{
-    height: 160px;
+    height: 140px;
     width: auto;
-    margin-left: 8px;
-    margin-top: 8px;
+    margin-left: 12px;
+    margin-top: 12px;
     cursor: pointer;
 
     transform: rotate(-0.6deg);
@@ -283,22 +303,20 @@ nav .right-menu .accounts img:hover{
 
 nav .right-menu .shopping-cart{
     margin: 0 13px;
-}
-
-nav .right-menu .shopping-cart img{
-    height: 30px;
+    cursor: pointer;
 }
 
 
-
-nav .right-menu .shopping-cart img:hover{
-    height: 32px;
-    width: 32px;
-
+#cart-icon{
+    border: none;
+    background: white;
 }
 
-.desktop-view{
+
+
+.nav-desktop-view{
     display: flex;
+
 }
 
 
@@ -325,7 +343,7 @@ nav .right-menu .shopping-cart img:hover{
 .book-list-category li{
     margin: 10px 15px;
     font-size: 14px;
-    font-family: "Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Halvetica Nue","Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 500;
     cursor: pointer;
     line-height: 20px;
@@ -351,84 +369,49 @@ nav .right-menu .shopping-cart img:hover{
 
 .body-wrapper{
     width: 93%;
-    margin: auto;
+    margin: 70px auto;
     height: auto;
 
 }
 
-.body-wrapper .banner-wrapper{
-    margin-top: 140px;
-    width: auto;
-    /*box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);*/
-    /*border-bottom: 1px solid #cbe4f1;*/
-    /*border-top: 1px solid #cbe4f1;*/
+/* Banner*/
 
-
-
+.banner-wrapper{
+    height: 400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
-.each-banner{
+.banner-collection{
+    width: auto;
+    height: 400px;
     display: flex;
-    /*overflow: hidden;*/
+    overflow: hidden;
+    flex: 4;
+}
+
+.banner-wrapper svg{
+    flex: 0.1;
+}
+
+
+
+.each-banner{
+    width: 0;
+        transition: width 0.3s ease-in-out;
+
+
 }
 
 .banner-active{
-    display: block;
-}
-
-.banner-off{
-    display: none;
-    transition: 1s;
-}
-
-
-
-
-.body-wrapper .banner-wrapper img{
-    height: 290px;
     width: 100%;
-    object-fit: cover;
-
-    /*margin: auto;*/
-}
-
-.navigation-banner-button-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
 
 }
 
-.navigation-banner-button-wrapper > button{
-    /*width: 10px;*/
-    /*height: 10px;*/
-    /*border-color: #1b6d85;*/
-    /*margin: 10px;*/
-    /*cursor: pointer;*/
-
-    /*border-radius: 10px;*/
-    background: grey;
-    border: 0;
-    padding: 5px;
-    border-radius: 10px;
-    margin: 0 10px;
-    cursor: pointer;
-}
-
-
-.navigation-banner-button-wrapper .hover-style{
-    background: #03989e;
-    border: 0;
-    padding: 5px;
-    border-radius: 10px;
-    margin: 0 10px;
+#next-banner-btn, #prev-banner-btn{
     cursor: pointer;
 
-}
-
-
-.toggle-height-body-wrapper{
-    margin-top: 190px;
 }
 
 
@@ -443,7 +426,7 @@ nav .right-menu .shopping-cart img:hover{
     height: 100%;
     width: 17%;
     z-index: 300;
-    font-family: "Baloo Paaji 2", cursive;
+    font-family: Raleway, "Roboto", "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     border-bottom: 1px solid #cbe4f1;
     border-top: 1px solid #cbe4f1;
     box-shadow: 6px 6px 6px 6px rgb(32 33 36 / 28%);
@@ -458,8 +441,8 @@ nav .right-menu .shopping-cart img:hover{
 
 .side-bar-header h2{
     padding: 17px 10px;
-    font-weight: 500;
-    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-family: Raleway, "Roboto", "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif
     /*font-size: 15px;*/
 }
 
@@ -488,8 +471,8 @@ nav .right-menu .shopping-cart img:hover{
 .side-bar-category a{
     /*margin: 10px 15px;*/
     font-size: 14px;
-    font-family: "Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;!important;
-    font-weight: 500;
+    font-family: Raleway, "Roboto", "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-weight: 500;*/
     cursor: pointer;
     line-height: 20px;
     color: #162d3d;
@@ -540,8 +523,8 @@ nav .right-menu .shopping-cart img:hover{
     margin: 20px 0;
     text-transform: uppercase;
     font-size: 14px;
-    font-family: "Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 500;
+    font-family: Raleway, "Roboto", "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-weight: 500;*/
     cursor: pointer;
     line-height: 20px;
     color: #162d3d;
@@ -555,9 +538,9 @@ nav .right-menu .shopping-cart img:hover{
 }
 
 
-.close-side-bar img{
-    height: 20px;
-    width: 20px;
+.close-side-bar svg{
+    /*height: 20px;*/
+    /*width: 20px;*/
     cursor: pointer;
     float: right;
     margin: 20px;
@@ -674,13 +657,14 @@ nav .right-menu .shopping-cart img:hover{
 .user-profile-wrapper{
     position: fixed;
     top: 57px;
-    left: 79%;
+    left: 78%;
     height: auto;
     overflow: auto;
     width: 20%;
     text-align: center;
     background-color: white;
     box-shadow: 6px 6px 6px 6px rgba(32,33,36,.28);
+    font-family: Raleway, "Roboto", "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     border-top: 1px solid #cbe4f1;
     border-bottom: 1px solid #cbe4f1;
     border-left: 1px solid #cbe4f1;
@@ -735,8 +719,9 @@ nav .right-menu .shopping-cart img:hover{
 
 .user-profile-wrapper .user-details-wrapper .user-name{
     color: black;
-    font-family: Roboto,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Raleway,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 15px;
+    font-weight: 500;
     /*letter-spacing: .29px;*/
     margin: 10px 0 0;
     text-align: center;
@@ -746,7 +731,7 @@ nav .right-menu .shopping-cart img:hover{
 
 .user-profile-wrapper .user-details-wrapper .user-email{
     color: #5f6368;
-    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 400 14px/19px Raleway,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
     letter-spacing: normal;
     text-align: center;
     text-overflow: ellipsis;
@@ -759,9 +744,9 @@ nav .right-menu .shopping-cart img:hover{
     border: 1px solid #dadce0;
     -webkit-border-radius: 100px;
     border-radius: 100px;
-    color: #3c4043;
+    color: #3a3a3aw;
     display: inline-block;
-    font: 500 14px/16px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    font: 500 14px/16px Raleway,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
     letter-spacing: .25px;
     margin: 16px 0 0;
     max-width: 254px;
@@ -799,7 +784,7 @@ nav .right-menu .shopping-cart img:hover{
 .user-profile-wrapper .account-details-wrapper .account-detail p{
     transform: translateY(55%);
     font-size: 15px;
-    font-family: Roboto,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Raleway,Roboto,HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
 
 }
 
@@ -868,9 +853,11 @@ nav .right-menu .shopping-cart img:hover{
     width: 80%;
     height: 30px;
     margin: 30px auto;
-    box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
-    border: 1px solid #007dc3;
-    border-radius: 3px;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    border: none;
+    border-radius: 5px;
+    /* border-radius: 10px; */
+    background-color: white;
     cursor: pointer;
 }
 
@@ -878,12 +865,13 @@ nav .right-menu .shopping-cart img:hover{
 .user-cart-wrapper{
     position: fixed;
     top: 57px;
-    left: 75.5%;
-    height: 67%;
-    overflow: scroll;
-    width: 20%;
+    left: 70%;
+    height: 500px;
+    overflow: hidden;
+    width: 25%;
     text-align: center;
     background-color: white;
+    font-family: Raleway, "Roboto", "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
     box-shadow: 6px 6px 6px 6px rgba(32,33,36,.28);
     border-top: 1px solid #cbe4f1;
     border-bottom: 1px solid #cbe4f1;
@@ -893,6 +881,19 @@ nav .right-menu .shopping-cart img:hover{
     border-radius: 10px;
 
 
+}
+
+.top-cart-display{
+    height: 88%;
+    overflow: scroll;
+
+}
+
+
+.empty-cart .no-cart-content-img{
+    height: 400px;
+    width: 250px;
+    margin: 50px 0;
 }
 
 .user-cart-wrapper .close-side-bar{
@@ -923,7 +924,7 @@ nav .right-menu .shopping-cart img:hover{
 }
 
 .user-cart-wrapper .cart-product-wrapper .cart-product-details h3, h5{
-    font-family: "Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Raleway,"Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .user-cart-wrapper .cart-product-wrapper .cart-product-details h5{
@@ -965,12 +966,16 @@ nav .right-menu .shopping-cart img:hover{
 .user-cart-wrapper .cart-submit-button{
 
     display: flex;
+    position: absolute;
+    top: 87%;
     justify-content: center;
+    width: 100%;
 }
 .user-cart-wrapper .cart-submit-button button{
 
     margin: 20px 10px;
-    width: 35%;
+
+    width: 40%;
 
     font-size: 13px;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
@@ -1009,7 +1014,7 @@ nav .right-menu .shopping-cart img:hover{
 .arrow{
     position: fixed;
     top: 50px;
-    left: 97.3%;
+    left: 96.3%;
     border: solid #cbe4f1;
     background-color: white;
     border-width: 0 1px 1px 0;
@@ -1021,7 +1026,7 @@ nav .right-menu .shopping-cart img:hover{
 .arrow-cart{
     position: fixed;
     top: 50px;
-    left: 93.7%;
+    left: 92.4%;
     border: solid #cbe4f1;
     background-color: white;
     border-width: 0 1px 1px 0;
@@ -1046,14 +1051,13 @@ nav .right-menu .shopping-cart img:hover{
 /*                     Footer           */  
 
 .footer-wrapper{
-    height: 200px;
+    height: auto;
     width: 80%;
-    margin: auto;
+    margin: 50px auto;
     font-size: 15px;
     /* text-align: center; */
     background-color: white;
     display: flex;
-     font-family: 'Baloo Paaji 2', cursive;
 
 
 }
@@ -1163,7 +1167,8 @@ nav .right-menu .shopping-cart img:hover{
 .cta{
     border: none;
     margin: 20px auto;
-    border-bottom: 1px solid #007dc3;
+    border-bottom: 1px solid #0E999D;
+    padding: 10px;
     width: 80%;
     height: 20px;
 }
@@ -1420,7 +1425,7 @@ nav .right-menu .shopping-cart img:hover{
 /* CATEGORY STYLE*/
 
 .category-wrapper{
-    margin-top: 150px;
+    margin-top: 100px;
     width: auto;
     height: auto;
 
@@ -1430,7 +1435,19 @@ nav .right-menu .shopping-cart img:hover{
     /*width: 93%;*/
     margin: auto;
     display: flex;
-    flex: 1;
+    align-items: center;
+
+
+}
+
+.featured-category svg{
+    flex: 0.1;
+}
+
+
+.featured-category .content-banner-wrap{
+    display: flex;
+    flex: 4;
 }
 
 .featured-category .banner-category{
@@ -1444,8 +1461,7 @@ nav .right-menu .shopping-cart img:hover{
     display: flex;
     height: 300px;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
-    border-bottom: 1px solid #cbe4f1;
-    border-top: 1px solid #cbe4f1;
+    border: none;
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;
@@ -1559,7 +1575,8 @@ nav .right-menu .shopping-cart img:hover{
     background-color: white;
     cursor: pointer;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
-    border: 1px solid #cbe4f1;
+    border: none;
+    border-radius: 5px;
 }
 
 .addtocart{

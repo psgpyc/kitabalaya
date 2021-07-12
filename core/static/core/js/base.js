@@ -1,4 +1,10 @@
+
 $(document).ready(function(){
+
+
+
+
+    $('body').show()
     let profileWrapper = $('#user-profile-wrapper-id');
     let profileArrowId = $('#arrow-id');
     let loginForm = $('#login-form-id');
@@ -24,9 +30,9 @@ $(document).ready(function(){
 
     // Search Scroll Top
 
-    $('#search-img').click(function (e) {
+    $('#search-svg').click(function (e) {
         $('html,body').animate({scrollTop:320}, 'slow')
-        $('#searchbox').focus().keydown(function() {
+        $('#search-box-id').focus().keydown(function() {
           $('.search-result').show()
 
 
@@ -74,65 +80,174 @@ $(document).ready(function(){
         $('body').css('overflow', 'auto');
     })
 
+  //  Banner Auto
+  //   var currentSlide = 1
+
+  //   var delayVal = 1000
+  //   var finalTimeOut = 3000
+  //
+  //
+  //
+  //
+
+  //
+  //
+  //   var interval
+  //
+  //   function startSlider(){
+  //       interval = setInterval(function() {
+  //       bannerWrap.animate({
+  //           marginLeft : '-=100%',
+  //       }, 1000, function () {
+  //           currentSlide++;
+  //           console.log('auto' + currentSlide)
+  //           if( currentSlide === slideCount){
+  //               currentSlide = 1
+  //               $(this).css('margin-left', '0%');
+  //           }
+  //       } );
+  //   }, finalTimeOut)
+  //   }
+  //
+  //   function pauseSlider(){
+  //       clearInterval(interval)
+  //
+  //   }
+  //
+  //   $('.banner').on('mouseenter', pauseSlider).on('mouseleave', startSlider)
+  //   startSlider()
 
 
+    // Banner slide btn
+    // var slideScore = 1
+    // var currentSlide = 1
+    // var bannerWrap = $('.each-banner')
+    //     slideCount = bannerWrap.children().length
+    //     widthLength = slideCount*100 + '%'
+    //
+    //
+    // bannerWrap.css('width', widthLength)
 
-  // Start of Banner button click event
+    var active_banner
+    var next_banner
 
-  $('.bannerbtn').each(function(btnIndex){
+    var prev_banner
+    var bannerWrapper =  $('.banner-collection')
 
-       $(this).click(function(){
-          
-           $(this).nextAll().removeClass('hover-style')
-           $(this).prevAll().removeClass('hover-style')
-           $(this).addClass('hover-style')
+    var bannerChildLength = bannerWrapper.children().length
+    activeBannerCount = 1
 
-           $('.each-banner .banner').each(function (bnnrIndex) {
-            if(btnIndex === bnnrIndex) {
-                $('.each-banner').find('.banner-active').removeClass('banner-active').addClass('banner-off')
-                $(this).addClass('banner-active').removeClass('banner-off')
-            }
-        })
-       })
-   })
-
-    //end of banner button click event
-
-    //Automatic transition of banner
-
-    function getBannerClick(){
-        let current = $('.each-banner img.banner-active')
-        let currentBtn = $('.navigation-banner-button-wrapper button.hover-style')
-
-        if(current.next().length !== 0){
-            if(current.length === 0){
-                $('.each-banner img:first-child').removeClass('banner-off').addClass('banner-active')
-                $('#bb0').addClass('hover-style')
-            }
-            else {
-                current.removeClass('banner-active').addClass('banner-off').next().addClass('banner-active').removeClass('banner-off')
-                currentBtn.removeClass('hover-style').next().addClass('hover-style')
+    function get_active_banner(){
+        if(activeBannerCount < bannerChildLength){
+            current_banner = bannerWrapper.find('.banner-active')
+            if (current_banner.length === 1){
+                return current_banner
 
             }
         }
         else{
-            $('.each-banner img:last-child').addClass('banner-off').removeClass('banner-active')
-            $('.each-banner img:first-child').removeClass('banner-off').addClass('banner-active')
-            $('.navigation-banner-button-wrapper button:last-child').removeClass('hover-style')
-            $('.navigation-banner-button-wrapper button:first-child').addClass('hover-style')
-
-
+            return 0
         }
     }
 
-    setInterval(getBannerClick, 2000)
 
-    //end of automatic transition of the banner
+    $("#next-banner-btn").on('click', function(){
+        active_banner = get_active_banner()
+        if( active_banner !== 0){
+
+            next_banner = active_banner.next()
+            active_banner.removeClass('banner-active')
+            next_banner.addClass('banner-active')
+            activeBannerCount++
 
 
-      // Start Scroll on keypress : Search Form
-      $( "#search-box-id" ).mousedown(function() {
-          $('html,body').animate({scrollTop:320}, 'slow')
+
+
+
+        }
+        if(active_banner === 0){
+            bannerWrapper.find('.banner-active').removeClass('banner-active')
+            bannerWrapper.children().first().addClass('banner-active')
+            activeBannerCount = 1
+
+        }
+    })
+
+
+    $("#prev-banner-btn").on('click', function () {
+        if(activeBannerCount === 1){
+            bannerWrapper.find('.banner-active').removeClass('banner-active')
+            bannerWrapper.children().last().addClass('banner-active')
+            activeBannerCount = bannerChildLength
+
+
+        }
+        else{
+            activeBannerCount--
+
+        active_banner = get_active_banner()
+        if(active_banner !== 0){
+            prev_banner = active_banner.prev()
+            active_banner.removeClass('banner-active')
+            prev_banner.addClass('banner-active')
+
+        }
+
+        }
+
+
+
+    })
+
+    var interval;
+
+    function autoSlider(){
+        interval = setInterval(function () {
+            active_banner = get_active_banner()
+            if(active_banner !== 0 ){
+                next_banner = active_banner.next()
+                active_banner.removeClass('banner-active')
+                next_banner.addClass('banner-active')
+                activeBannerCount++
+
+            }
+
+            if(active_banner === 0){
+                bannerWrapper.find('.banner-active').removeClass('banner-active')
+                bannerWrapper.children().first().addClass('banner-active')
+                activeBannerCount = 1
+                console.log(activeBannerCount)
+
+            }
+
+
+
+
+
+
+
+    }, 4000)
+
+    }
+
+    function pauseSlider(){
+        clearInterval(interval)
+
+    }
+
+    bannerWrapper.on('mouseenter', pauseSlider).on('mouseleave', autoSlider)
+    $('#prev-banner-btn').on('mouseenter', pauseSlider).on('mouseleave', autoSlider)
+    $('#next-banner-btn').on('mouseenter', pauseSlider).on('mouseleave', autoSlider)
+
+    autoSlider()
+
+
+
+
+
+    // Start Scroll on keypress : Search Form
+    $( "#search-box-id" ).mousedown(function() {
+          $('html,body').animate({scrollTop:420}, 'slow')
           searchResultBox = $('.search-result')
           $(this).keyup(function (e) {
               searchResultBox.show()
@@ -319,7 +434,8 @@ $(document).ready(function(){
 
 
     $('.rental-button').each(function(){
-        $(this).click(function (e) {
+        $(this).click(function (event) {
+            event.preventDefault()
             $('.rental-popup-wrapper').removeClass('no-view')
             $('body').css('overflow', 'hidden');
             $('.main-content-wrapper').addClass('toggle-display-body')
@@ -490,30 +606,30 @@ $(document).ready(function(){
             let no_view_start = view_start - 3
 
             if(view_start !== scroll_range) {
-                each_book.eq(view_start).fadeIn(200, function () {
+                each_book.eq(view_start).fadeIn(300, function () {
                     $(this).removeClass('no-view').css('display','flex')
 
                 })
-                each_book.eq(view_start+1).fadeIn(200, function () {
+                each_book.eq(view_start+1).fadeIn(300, function () {
                     $(this).removeClass('no-view').css('display','flex')
 
                 })
-                each_book.eq(view_start+2).fadeIn(200, function () {
+                each_book.eq(view_start+2).fadeIn(300, function () {
                     $(this).removeClass('no-view').css('display','flex')
 
 
                 })
 
 
-                each_book.eq(no_view_start).fadeOut(200, function () {
+                each_book.eq(no_view_start).fadeOut(300, function () {
                     $(this).addClass('no-view')
 
                 })
-                each_book.eq(no_view_start+1).fadeOut(200, function () {
+                each_book.eq(no_view_start+1).fadeOut(300, function () {
                     $(this).addClass('no-view')
 
                 })
-                each_book.eq(no_view_start+2).fadeOut(200, function () {
+                each_book.eq(no_view_start+2).fadeOut(300, function () {
                     $(this).addClass('no-view')
                 })
             }
@@ -775,6 +891,78 @@ $(document).ready(function(){
 
 
 
+// ADD PRODUCT PURCHASE FORM
+
+cartProductWrapClone = $('#cart-product-wrapper-clone')
+let topCartDisplay =$('.top-cart-display')
+
+
+var loaded = false
+let cart_length = 0
+
+
+
+
+
+
+$('.add-product-btn-form').on('click', function (e) {
+    e.preventDefault()
+    let productAddBtn= $(this)
+    let productId = productAddBtn.attr('data-product-slug')
+    let endPoint = productAddBtn.attr('action')
+    let httpMethod = productAddBtn.attr('method')
+    let data = {
+        'productSlug': productId,
+    }
+
+    $.ajax({
+            headers: { "X-CSRFToken": $.cookie("csrftoken") },
+            url: endPoint,
+            method: httpMethod,
+            data: data,
+            mode: 'same-origin',
+            success: function(successData){
+
+                if(successData.book['cart_product_count'] > 0){
+                    $('.empty-cart').addClass('no-view')
+                    topCartDisplay.removeClass('no-view')
+
+
+                }
+                else{
+                    $('.empty-cart').removeClass('no-view')
+                    topCartDisplay.addClass('no-view')
+
+                }
+
+
+
+                let cartProductWrap =cartProductWrapClone.removeClass('no-view').clone()
+                cartProductWrapClone.addClass('no-view')
+
+                cartProductWrap.find('.book-title').text(successData.book['title'])
+                cartProductWrap.find('.book-author-name').text(successData.book['author_name'])
+                cartProductWrap.find('.cart-cost-display').text(successData.book['mrp_price'])
+                cartProductWrap.find('.book-image').attr('src', successData.book['book_image'] )
+                // imgSrc = successData.book['book_image']
+
+                topCartDisplay.append(cartProductWrap)
+
+                cart_length = topCartDisplay.children().length
+
+            },
+            error: function(errorData){
+                console.log("error")
+                console.log(errorData)
+                alert('fucked')
+            }
+        })
+
+
+
+
+})
+
 
 
 
@@ -821,39 +1009,20 @@ let side_bar = document.getElementById('side-bar-id');
 
 
 
-const user_profile = document.getElementById('user-profile-wrapper-id');
 
 const user_sign_in = document.getElementById('user-sign-in-wrapper-id');
 const user_sign_up = document.getElementById('user-sign-up-wrapper-id');
 
 
 
-const user_profile_button = document.getElementById('accounts-id');
-const user_profile_arrow_id = document.getElementById('arrow-id');
 
-const user_cart = document.getElementById('user-cart-wrapper-id');
-const user_cart_button = document.getElementById('cart-id');
-const user_cart_id = document.getElementById('arrow-cart-id');
 
 
 const register_btn = document.getElementById('user-register')
 const  user_register = document.getElementById('user-profile-register-wrapper-id')
 const  login_btn = document.getElementById('user-login')
 
-if(user_profile_button){
-user_profile_button.addEventListener('click', ()=>{
-    user_profile.classList.toggle('no-view');
-    user_profile_arrow_id.classList.toggle('no-view');
 
-
-    if(user_cart.classList.contains('no-view')){
-       
-    }
-    else{
-        user_cart.classList.add('no-view');
-        user_cart_id.classList.toggle('no-view')
-    }
-})}
 
 if(register_btn){
 register_btn.addEventListener('click', ()=>{
@@ -873,27 +1042,98 @@ login_btn.addEventListener('click', ()=>{
 
 
 
-if(user_cart_button){
-user_cart_button.addEventListener('click', ()=>{
-    user_cart.classList.toggle('no-view');
-    user_cart_id.classList.toggle('no-view');
+let user_cart = $('#user-cart-wrapper-id')
+let user_cart_button = $('#cart-id')
+let user_cart_id = $('#arrow-cart-id')
+let user_profile = $('#user-profile-wrapper-id')
+let user_profile_arrow_id = $('#arrow-id')
+let user_profile_button = $('#accounts-id')
+
+
+
+if(user_cart_button) {
+    user_cart_button.on('click', function () {
+        $('#user-cart-wrapper-id').toggleClass('no-view')
+        $('#arrow-cart-id').toggleClass('no-view')
+
+
+        if (user_profile.hasClass('no-view')) {
+        } else {
+            user_profile.addClass('no-view')
+            user_profile_arrow_id.toggleClass('no-view')
+        }
+
+        if(loaded === false){
+            $.ajax({
+            url: '/cart/display/',
+
+
+            success: function(response){
+                if(response.cart_obj === 0){
+                    $('.empty-cart').removeClass('no-view')
+                    topCartDisplay.addClass('no-view')
+                    loaded = true
+
+
+
+                }
+                else{
+                    loaded = true
+
+
+                    topCartDisplay.removeClass('no-view')
+                    $('.cart-submit-button').removeClass('no-view')
+                    $.each(response.data, function(key, value){
+
+                        let cartProductWrap =cartProductWrapClone.removeClass('no-view').clone()
+                        cartProductWrapClone.addClass('no-view')
+
+                        cartProductWrap.find('.book-title').text(value['title'])
+                        cartProductWrap.find('.book-author-name').text(value['author_name'])
+                        cartProductWrap.find('.cart-cost-display').text(value['mrp_price'])
+                        cartProductWrap.find('.book-image').attr('src', value['img_url'] )
+
+                        topCartDisplay.append(cartProductWrap)
+                    })
+
+                    cart_length = topCartDisplay.children().length
 
 
 
 
-    if(user_profile.classList.contains('no-view')){
-       
-    }
+                }
+
+            }
+
+
+
+
+
+
+        })
+
+        }
+
+
+
+    })
+}
+
+
+if(user_profile_button){
+user_profile_button.on('click', function () {
+    user_profile.toggleClass('no-view')
+    user_profile_arrow_id.toggleClass('no-view')
+
+    if(user_cart.hasClass('no-view')){}
     else{
-        user_profile.classList.add('no-view');
-        user_profile_arrow_id.classList.toggle('no-view')
+        user_cart.addClass('no-view')
+        user_cart_id.toggleClass('no-view')
+
     }
 
-   
 
 })}
-
-
 
 //ajax
 

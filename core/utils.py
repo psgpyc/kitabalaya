@@ -1,3 +1,4 @@
+from cart.models import Cart
 from corebookmodels.models import BookRatingModel
 from django.db.models import Avg, Q
 from django.utils.dateformat import DateFormat
@@ -41,3 +42,15 @@ def get_curr_url(a):
     b = a.split('/')
 
     return b
+
+
+def get_cart_count(request):
+    cart_id = request.session.get('cart_id', None)
+
+    if cart_id is not None:
+        cart = Cart.objects.filter(id=cart_id)
+        if cart.count() == 1:
+            cart = cart[0]
+            cart_obj_count = len(cart.products.all())
+
+            return cart_obj_count

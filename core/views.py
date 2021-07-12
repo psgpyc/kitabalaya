@@ -7,7 +7,7 @@ from coreaccounts.forms import UserLoginForm, RegistrationForm
 from corebookmodels.models import Book, Author, RentalCategory, BookRatingModel, Banner, BookBelongsTo, \
     BookMainCategory, BookCategory
 from django.db import connection
-from core.utils import get_obj_str, get_book_rating, get_date_formatted, get_my_rating, get_curr_url
+from core.utils import get_obj_str, get_book_rating, get_date_formatted, get_my_rating, get_curr_url, get_cart_count
 import json
 from django.core.paginator import Paginator
 from django.core import serializers
@@ -20,6 +20,8 @@ class Home(View):
     template_name = 'core/home.html'
 
     def get(self, request, *args, **kwargs):
+
+
         homepage_category = BookBelongsTo.objects.filter(slug='best-sellers').prefetch_related('homepagecategory').all()
         p = homepage_category[0].homepagecategory.select_related('author_name').all()
         bannerImg = Banner.objects.filter(is_active=True)
@@ -29,6 +31,10 @@ class Home(View):
             'registration_form': RegistrationForm(),
             'home_books_category': p,
             'banners': bannerImg,
+            'banner_first': bannerImg[0],
+            'banner_range': range(len(bannerImg)),
+
+
             # 'session_id': request.session.get('card_id', None)
         }
 
@@ -72,7 +78,7 @@ class SearchView(View):
         for book in search_qs:
             result.append(book.title)
 
-        print(result)
+        # print(result)
 
         if request.is_ajax():
             return JsonResponse({'data': result}, status=200)
@@ -136,14 +142,29 @@ class GetPriceEachBook(View):
 
             if button_type == 'rent-button':
                 get_book = Book.objects.filter(slug=book_slug).values_list('rental_price')
-                print(get_book[0][0])
+                # print(get_book[0][0])
                 return JsonResponse({'price': get_book[0][0]}, status=200)
             if button_type == 'buy-new':
                 get_book = Book.objects.filter(slug=book_slug).values_list('mrp_price','in_stock_buy')
-                print(get_book)
+                # print(get_book)
                 return JsonResponse({'price': get_book[0][0], 'in_stock_buy':1}, status=200)
 
         return render(request, template_name='core/test.html', context={})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

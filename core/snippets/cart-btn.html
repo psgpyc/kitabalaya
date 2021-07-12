@@ -1,0 +1,86 @@
+{% load tagLibrary %}
+
+
+{% csrf_token %}
+
+    {% if book.in_stock_buy == 0 and book.in_stock_rent == 0 %}
+        <div class="purchase-details">
+            <h2 class="out-of-stock">OUT OF STOCK</h2>
+            <div class="purchase-button">
+                <button type="button" class="restocked-button">GET RESTOCKED ALERT</button>
+            </div>
+        </div>
+    {% elif book.in_stock_buy == 0 and book.in_stock_rent != 0 %}
+        {#                                 rent   #}
+        <div class="purchase-details">
+
+            <div class="price-display">
+
+                <p style="margin-top: 10px;">Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int }}/day</p>
+
+
+            </div>
+
+            <div class="purchase-button">
+
+                <button style="margin-left: 0;" name="{{ book.slug }}" class="rental-button restocked-button"> RENT THE
+                    BOOK
+                </button>
+
+            </div>
+
+        </div>
+
+
+    {% elif book.in_stock_buy != 0 and book.in_stock_rent == 0 %}
+
+        <div class="purchase-details">
+
+            <div class="price-display">
+
+                <p style="margin-top: 10px;">Buy &nbsp:&nbsp रु. {{ book.mrp_price|to_int }}</p>
+
+
+            </div>
+
+            <div class="purchase-button">
+                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-product-slug="{{ book.slug }}">
+                    {% csrf_token %}
+                    <button type="submit" style="margin-left: 0;"  class="restocked-button"> BUY THE BOOK</button>
+                </form>
+            </div>
+
+        </div>
+
+
+
+
+
+    {% else %}
+
+        <div class="purchase-details">
+
+            <div class="price-display">
+
+                <p>Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int }}/day</p>
+                <p>Buy &nbsp&nbsp:&nbsp रु. {{ book.mrp_price|to_int }}</p>
+
+
+            </div>
+
+            <div class="purchase-button">
+                <button name="{{ book.title }}?{{ book.mrp_price }}?{{ book.rental_price }}" class="rental-button">
+                    RENT
+                </button>
+                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-product-slug="{{ book.slug }}">
+                    {% csrf_token %}
+                    <button type="submit"> BUY</button>
+                </form>
+
+            </div>
+
+        </div>
+
+
+    {% endif %}
+

@@ -66,6 +66,10 @@ urlpatterns = [
     path('categories/<slug:slug>/', Categories.as_view(), name='categories-main'),
     path('cart/', include('cart.urls'), name='cart'),
 
+    # API URLS
+
+    path('api/', include('coreaccounts.api.api-urls'), name='base-api-url')
+
 ]
 
 

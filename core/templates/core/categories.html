@@ -1,5 +1,7 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load tagLibrary %}
+
 
 
 {% block title %}
@@ -8,18 +10,57 @@
 
 
 {% block body %}
+
+    <div class="rental-popup-wrapper no-view">
+        <div class="close-btn">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
+
+        </div>
+
+        <div class="content-wrapper-rental-popup">
+
+            <h2 id="title-id" class="cat-style" >Kafka On The Shore</h2>
+
+
+
+            <h4 id="rental" class="mtop cat-style"> Rental Charge&nbsp:&nbsp Rs.15/day</h4>
+
+            <div class="dpflex">
+                <h4 id="depo" class="cat-style"> Refundable Security Deposit: Rs.800</h4>
+                <img class="faqbtn" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0xLjI1IDE3YzAgLjY5LS41NTkgMS4yNS0xLjI1IDEuMjUtLjY4OSAwLTEuMjUtLjU2LTEuMjUtMS4yNXMuNTYxLTEuMjUgMS4yNS0xLjI1Yy42OTEgMCAxLjI1LjU2IDEuMjUgMS4yNXptMS4zOTMtOS45OThjLS42MDgtLjYxNi0xLjUxNS0uOTU1LTIuNTUxLS45NTUtMi4xOCAwLTMuNTkgMS41NS0zLjU5IDMuOTVoMi4wMTFjMC0xLjQ4Ni44MjktMi4wMTMgMS41MzgtMi4wMTMuNjM0IDAgMS4zMDcuNDIxIDEuMzY0IDEuMjI2LjA2Mi44NDctLjM5IDEuMjc3LS45NjIgMS44MjEtMS40MTIgMS4zNDMtMS40MzggMS45OTMtMS40MzIgMy40NjhoMi4wMDVjLS4wMTMtLjY2NC4wMy0xLjIwMy45MzUtMi4xNzguNjc3LS43MyAxLjUxOS0xLjYzOCAxLjUzNi0zLjAyMi4wMTEtLjkyNC0uMjg0LTEuNzE5LS44NTQtMi4yOTd6Ii8+PC9zdmc+">
+            </div>
+
+            <p class="faqsp no-view">The Refundable Security Deposit is for the safety of the book.
+                The deposit will be returned to you once you return us the book.
+                <br>
+                In case you are renting multiple books without <span style="color: var(--default-color)">Membership Plan</span>, the final security deposit will be displayed at the time of checkout.
+
+            </p>
+            <div class="dpflex">
+                <h4 class="cat-style"> Minimum Rental Period: 7 Days</h4>
+                <img class="faqbtnone" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0xLjI1IDE3YzAgLjY5LS41NTkgMS4yNS0xLjI1IDEuMjUtLjY4OSAwLTEuMjUtLjU2LTEuMjUtMS4yNXMuNTYxLTEuMjUgMS4yNS0xLjI1Yy42OTEgMCAxLjI1LjU2IDEuMjUgMS4yNXptMS4zOTMtOS45OThjLS42MDgtLjYxNi0xLjUxNS0uOTU1LTIuNTUxLS45NTUtMi4xOCAwLTMuNTkgMS41NS0zLjU5IDMuOTVoMi4wMTFjMC0xLjQ4Ni44MjktMi4wMTMgMS41MzgtMi4wMTMuNjM0IDAgMS4zMDcuNDIxIDEuMzY0IDEuMjI2LjA2Mi44NDctLjM5IDEuMjc3LS45NjIgMS44MjEtMS40MTIgMS4zNDMtMS40MzggMS45OTMtMS40MzIgMy40NjhoMi4wMDVjLS4wMTMtLjY2NC4wMy0xLjIwMy45MzUtMi4xNzguNjc3LS43MyAxLjUxOS0xLjYzOCAxLjUzNi0zLjAyMi4wMTEtLjkyNC0uMjg0LTEuNzE5LS44NTQtMi4yOTd6Ii8+PC9zdmc+">
+
+            </div>
+
+            <p class="faqspone no-view">
+                When you rent from us, you will be charged for a <span style="color: var(--default-color)">minimum period of 7 days</span>. After a week,additionally, you will be charged on per day basis.
+                You can keep the book for a maximum period of 30 days.
+            </p>
+
+            <br>
+
+            <form action="{% url 'update-cart' %}" method="post">
+
+                <button class="addtocart" type="submit">ADD TO CART</button>
+
+            </form>
+        </div>
+    </div>
+
+
     <div class="category-wrapper">
 
-{#        <div class="breadcrumb-wrapper">#}
-{#            <ul>#}
-{#                <li>Home</li>#}
-{#                <li>Categories</li>#}
-{#                <li>Fiction & Literature</li>#}
-{#            </ul>#}
-{#        </div>#}
-
-
-        <h2 class="title-header-category"></h2>
+{#        <h2 class="title-header-category"></h2>#}
         <div class="featured-category">
 
             <div class="arrow-left-next arrow-select arrow-transform ">
@@ -31,8 +72,10 @@
 
 
 
+
+
             {% for featured_book in banner_books %}
-                 <div class="featured-category-each">
+                <div class="featured-category-each">
                         <div class="featured-title-img">
                             {% if featured_book.book_image %}
                                <img src="{{ featured_book.book_image.url }}" alt="">
@@ -42,10 +85,7 @@
                         </div>
                         <div class="featured-title-details">
                             <h2 class="cat-style">{{ featured_book.title| truncatechars:20 }}</h2>
-
-
                             <small class="cat-style">by <span class="author-name">{{ featured_book.author_name.name }}</span></small>
-
                              <div class="rating-wrapper">
                                 <button type="button" class="fa fa-star each-fa checked"></button>
                                 <button type="button" class="fa fa-star each-fa checked"></button>
@@ -53,72 +93,92 @@
                                 <button type="button" class="fa fa-star each-fa"></button>
                                 <button type="button" class="fa fa-star each-fa"></button>
                              </div>
-
                             <p class="featured-genre-details">
-                                {{ featured_book.summary| truncatechars:100 }}
+                                {{ featured_book.summary| truncatechars:70 }}
                             </p>
-
-
-
-                            <div class="purchase-details">
-                                {% if featured_book.in_stock_buy == 0 and featured_book.in_stock_rent == 0 %}
+                            {%  if featured_book.in_stock_buy == 0 and featured_book.in_stock_rent == 0 %}
+                                <div class="purchase-details">
                                     <h2 class="out-of-stock">OUT OF STOCK</h2>
                                     <div class="purchase-button">
                                         <button type="button" class="restocked-button">GET RESTOCKED ALERT</button>
+                                    </div>
+                                </div>
+                            {% elif featured_book.in_stock_buy == 0 and featured_book.in_stock_rent != 0 %}
+{#                                 rent   #}
+                                 <div class="purchase-details">
+
+                                    <div class="price-display">
+
+                                        <p style="margin-top: 10px;">Rent &nbsp:&nbsp रु. {{ featured_book.rental_price|to_int  }}/day</p>
+
 
                                     </div>
 
-                                {% elif featured_book.in_stock_buy == 0 %}
-                                    <h2 class="cat-style">RS. {{ featured_book.rental_price }}/day</h2>
+                                    <div class="purchase-button">
 
-                                    <div class="purchase-button ">
-                                        <button type="button">ADD TO CART</button>
-                                            <div class="dropdown">
-                                                <button value={{ featured_book.slug }} name="rent-button" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Used)</small></button>
+                                        <button style="margin-left: 0;" name="{{ featured_book.slug }}" class="rental-button restocked-button"> RENT THE BOOK </button>
 
-                                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+">
+                                    </div>
 
-                                                <div class="buy-rent-dropdown no-view">
-                                                    <button  value={{ featured_book.slug }} class="rent-buy-card" name="buy-new"  type="button">BUY<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                    <button value={{ featured_book.slug }} name="rent-new" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                </div>
 
 
-                                {% elif featured_book.in_stock_rent == 0 %}
-                                    <h2 class="cat-style">RS. {{ featured_book.mrp_price }}</h2>
+                            {% elif featured_book.in_stock_buy != 0 and featured_book.in_stock_rent == 0 %}
 
-                                     <div class="purchase-button ">
-                                        <button type="button">ADD TO CART</button>
-                                        <div class="dropdown">
+                                 <div class="purchase-details">
 
-                                            <button  value={{ featured_book.slug }} class="rent-buy-card" name="buy-new"  type="button">BUY<small style="color: var(--default-color)">(Brand New)</small></button>
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+">
+                                    <div class="price-display">
 
-                                            <div class="buy-rent-dropdown no-view">
-                                                <button value={{ featured_book.slug }} name="rent-new" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                <button value={{ featured_book.slug }} name="rent-button" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Used)</small></button>
-                                            </div>
-                                        </div>
-                                     </div>
+                                        <p style="margin-top: 10px;">Buy &nbsp:&nbsp रु. {{ featured_book.mrp_price|to_int  }}</p>
+
+
+                                    </div>
+
+                                    <div class="purchase-button">
+
+                                        <button style="margin-left: 0;" name="{{ featured_book.slug }}" class="restocked-button"> BUY THE BOOK </button>
+
+                                    </div>
+
+                                </div>
 
 
 
 
 
-                                {% endif %}
+                            {% else %}
+
+                                <div class="purchase-details">
+
+                                    <div class="price-display">
+
+                                        <p>Rent &nbsp:&nbsp रु. {{ featured_book.rental_price|to_int  }}/day</p>
+                                        <p>Buy  &nbsp&nbsp:&nbsp रु. {{ featured_book.mrp_price|to_int  }}</p>
 
 
-                            </div>
+                                    </div>
+
+                                    <div class="purchase-button">
+                                        <button name="{{ featured_book.title }}?{{ featured_book.mrp_price }}?{{ featured_book.rental_price }}" class="rental-button"> RENT </button>
+                                        <button name="{{ featured_book.slug }}">  BUY </button>
+
+                                    </div>
+
+                                </div>
+
+
+                            {% endif %}
+
+
                         </div>
                     </div>
 
 
 
+
             {% endfor %}
 
-            <div class="arrow-right-next arrow-select">
+            <div class="absolute-left-arr arrow-right-next arrow-select">
 
                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0yIDEybC00LjUgNC41IDEuNTI3IDEuNSA1Ljk3My02LTUuOTczLTYtMS41MjcgMS41IDQuNSA0LjV6Ii8+PC9zdmc+">
 
