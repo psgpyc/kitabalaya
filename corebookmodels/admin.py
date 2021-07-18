@@ -9,7 +9,6 @@ from corebookmodels.models import (
     RentalCategory,
     BookMainCategory,
     BookCategory,
-    BookRatingModel,
     Banner,
     BookBelongsTo
     )
@@ -23,6 +22,5 @@ admin.site.register(Nationality)
 admin.site.register(RentalCategory)
 admin.site.register(BookMainCategory)
 admin.site.register(BookCategory)
-admin.site.register(BookRatingModel)
 admin.site.register(Banner)
 admin.site.register(BookBelongsTo)

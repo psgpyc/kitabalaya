@@ -4,10 +4,10 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView, View, DetailView
 from coreaccounts.forms import UserLoginForm, RegistrationForm
-from corebookmodels.models import Book, Author, RentalCategory, BookRatingModel, Banner, BookBelongsTo, \
+from corebookmodels.models import Book, Author, RentalCategory, Banner, BookBelongsTo, \
     BookMainCategory, BookCategory
 from django.db import connection
-from core.utils import get_obj_str, get_book_rating, get_date_formatted, get_my_rating, get_curr_url, get_cart_count
+from core.utils import get_obj_str, get_date_formatted, get_curr_url, get_cart_count
 import json
 from django.core.paginator import Paginator
 from django.core import serializers

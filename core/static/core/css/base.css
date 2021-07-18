@@ -70,6 +70,32 @@ body{
     color: red;
     margin-top: 25px;
 }
+
+.cart-added-display{
+    position: fixed;
+    top: 90%;
+    box-shadow: 6px 6px 6px 6px rgb(32 33 36 / 28%);
+    border: none;
+    background-color: #504949;
+    border-radius: 10px;
+    padding: 10px;
+    left: 40%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s linear;
+    z-index: 300;
+
+}
+
+.cart-added-display p{
+    color: white;
+}
+
+.cart-added-display-show{
+    visibility: visible;
+    opacity: 1;
+}
+
                                                                             /*          NAVIGATION MENU DESKTOP VIEW        */
 
 nav{
@@ -278,6 +304,7 @@ nav .right-menu{
     height: 70px;
     align-items: center;
     justify-content: flex-end;
+    text-align: center;
 }
 
 nav .right-menu div{
@@ -312,7 +339,12 @@ nav .right-menu .shopping-cart{
     background: white;
 }
 
+#cart-item-count{
+    margin-left: -5px;
+    color: #1b6d85;
+    font-family: HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+}
 
 .nav-desktop-view{
     display: flex;
@@ -399,7 +431,7 @@ nav .right-menu .shopping-cart{
 
 .each-banner{
     width: 0;
-        transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
 
 
 }
@@ -923,8 +955,15 @@ nav .right-menu .shopping-cart{
 
 }
 
+.user-cart-wrapper .cart-product-wrapper .cart-product-details .book-author-name{
+    color: #438398;
+}
+
 .user-cart-wrapper .cart-product-wrapper .cart-product-details h3, h5{
     font-family: Raleway,"Roboto","Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    color: #3A3A3A;
+    margin: 2px 0;
 }
 
 .user-cart-wrapper .cart-product-wrapper .cart-product-details h5{
@@ -937,11 +976,13 @@ nav .right-menu .shopping-cart{
 .user-cart-wrapper .cart-product-wrapper .cart-product-details h3{
     font-size: 14px;
     margin: 0;
+    text-align: left;
 }
 
 .user-cart-wrapper .cart-product-wrapper .cart-product-details .cart-cost-display{
     font-size: 13px;
     margin-top: 5px;
+    font-family: Roboto, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .user-cart-wrapper .cart-product-wrapper .cart-item-remove{
@@ -1557,13 +1598,23 @@ nav .right-menu .shopping-cart{
     /*color: #2a9d8f;*/
 }
 
+.remove-btn-cart{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
 
+.remove-btn-cart:hover{
+    background-color: white;
+}
 
 
 
 .purchase-details .purchase-button{
     position: absolute;
     display: flex;
+    justify-content: center;
+
     top: 80%;
     left: 13%;
 }

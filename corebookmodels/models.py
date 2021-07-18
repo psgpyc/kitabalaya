@@ -228,16 +228,16 @@ class Book(TimeStampModel):
         return self.title
 
 
-class BookRatingModel(TimeStampModel):
-    rating = models.DecimalField(max_digits=2, decimal_places=1)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Book Rating'
-        verbose_name_plural = 'Book Ratings'
-
-    def __str__(self):
-        return '{}-{}/{}'.format(self.book, self.created_by,self.rating)
+# class BookRatingModel(TimeStampModel):
+#     rating = models.DecimalField(max_digits=2, decimal_places=1)
+#     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+#
+#     class Meta:
+#         verbose_name = 'Book Rating'
+#         verbose_name_plural = 'Book Ratings'
+#
+#     def __str__(self):
+#         return '{}-{}/{}'.format(self.book, self.created_by,self.rating)
 
 
 class Nationality(TimeStampModel):

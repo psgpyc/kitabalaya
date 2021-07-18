@@ -46,7 +46,8 @@
             <div class="purchase-button">
                 <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-product-slug="{{ book.slug }}">
                     {% csrf_token %}
-                    <button type="submit" style="margin-left: 0;"  class="restocked-button"> BUY THE BOOK</button>
+                    <button type="submit" style="margin-left: 0;"  class="restocked-button no-view"> BUY THE BOOK</button>
+                    <button type="submit" style="margin-left: 0;"  class="restocked-button"> VIEW IN CART</button>
                 </form>
             </div>
 
@@ -74,7 +75,13 @@
                 </button>
                 <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-product-slug="{{ book.slug }}">
                     {% csrf_token %}
-                    <button type="submit"> BUY</button>
+{#                    {% if book not in cart_items %}#}
+                        <button class="buy-btn" type="submit"> BUY </button>
+
+
+{#                    {% endif %}#}
+
+
                 </form>
 
             </div>

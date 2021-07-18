@@ -1,4 +1,4 @@
-from core.utils import get_cart_count
+from core.utils import get_cart_count, get_cart_items
 from corebookmodels.models import BookMainCategory
 
 
@@ -7,6 +7,7 @@ def get_categories(request):
     cart_product_count = get_cart_count(request)
     ctx = {
         'categories': qs,
-        'cart_product_count': cart_product_count
+        'cart_product_count': cart_product_count,
+        # 'cart_items': get_cart_items(request),
     }
     return ctx

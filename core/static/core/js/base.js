@@ -5,6 +5,10 @@ $(document).ready(function(){
 
 
     $('body').show()
+
+
+
+
     let profileWrapper = $('#user-profile-wrapper-id');
     let profileArrowId = $('#arrow-id');
     let loginForm = $('#login-form-id');
@@ -16,6 +20,28 @@ $(document).ready(function(){
 
 
     let successModal = $('#user-registered-success-modal-id')
+
+
+    $('.rental-button').each(function(){
+        if($(this).next().children().length === 1){
+            $(this).css({
+                width: '14vw',
+
+                transform: 'translateX(25%)',
+
+
+            })
+
+            $(this).text('RENT THE BOOK')
+
+
+
+        }
+
+
+
+    })
+
 
     $('.book-modal-ajax-initial').hide()
 
@@ -246,7 +272,7 @@ $(document).ready(function(){
 
 
     // Start Scroll on keypress : Search Form
-    $( "#search-box-id" ).mousedown(function() {
+    $( "#search-box-id" ).focus(function() {
           $('html,body').animate({scrollTop:420}, 'slow')
           searchResultBox = $('.search-result')
           $(this).keyup(function (e) {
@@ -904,7 +930,6 @@ let cart_length = 0
 
 
 
-
 $('.add-product-btn-form').on('click', function (e) {
     e.preventDefault()
     let productAddBtn= $(this)
@@ -914,6 +939,11 @@ $('.add-product-btn-form').on('click', function (e) {
     let data = {
         'productSlug': productId,
     }
+    let btnSelect = $(this)
+
+
+
+
 
     $.ajax({
             headers: { "X-CSRFToken": $.cookie("csrftoken") },
@@ -921,34 +951,90 @@ $('.add-product-btn-form').on('click', function (e) {
             method: httpMethod,
             data: data,
             mode: 'same-origin',
+
+
+            beforeSend: function() {
+                btnSelect.find('.buy-btn').text('Adding to Cart.')
+
+
+            },
+
+
+
             success: function(successData){
+                if(successData.created){
+                    if(successData.created === 'true'){
+                        if(successData.book['cart_product_count'] > 0){
+                            $('.empty-cart').addClass('no-view')
+                            topCartDisplay.removeClass('no-view')
+                            $('#cart-item-count').text('('+ successData.book['cart_product_count']+')')
 
-                if(successData.book['cart_product_count'] > 0){
-                    $('.empty-cart').addClass('no-view')
-                    topCartDisplay.removeClass('no-view')
+                             let cartProductWrap =cartProductWrapClone.clone()
 
+                            cartProductWrap.find('.book-title').text(successData.book['title'])
+                            cartProductWrap.find('.book-author-name').text(successData.book['author_name'])
+                            cartProductWrap.find('.cart-cost-display').text('रु. '+ successData.book['mrp_price'] + ' *  ' + successData.book['quantity'])
+                            cartProductWrap.find('.book-image').attr('src', successData.book['book_image'] )
+                            cartProductWrap.attr('id', successData.book['book_slug'])
+                            // imgSrc = successData.book['book_image']
+
+                            topCartDisplay.append(cartProductWrap.removeClass('no-view'))
+
+
+                            $('.cart-added-display').addClass('cart-added-display-show')
+
+                            setTimeout(function() {
+                                $('.cart-added-display').removeClass('cart-added-display-show')
+
+
+                            }, 1000); // <-- time in milliseconds
+
+
+
+
+                        }
+                        if(successData.book['cart_product_count'] === 0){
+                            $('.empty-cart').removeClass('no-view')
+                            topCartDisplay.addClass('no-view')
+
+                        }
 
                 }
-                else{
-                    $('.empty-cart').removeClass('no-view')
-                    topCartDisplay.addClass('no-view')
-
                 }
 
+                if(successData.created === 'false'){
+                    let book_slug = successData.cart_item['slug']
+                    let book_quantity = successData.cart_item['quantity']
+                    $('#cart-item-count').text('('+ successData.cart_item['cart_product_count']+')')
+
+                    $('#'+book_slug).find('.cart-cost-display').text('रु. '+ successData.cart_item['mrp_price'] + ' *  ' + book_quantity)
+
+                    $('.cart-added-display').addClass('cart-added-display-show')
+
+                            setTimeout(function() {
+                                $('.cart-added-display').removeClass('cart-added-display-show')
 
 
-                let cartProductWrap =cartProductWrapClone.removeClass('no-view').clone()
-                cartProductWrapClone.addClass('no-view')
+                            }, 500); // <-- time in milliseconds
+                }
 
-                cartProductWrap.find('.book-title').text(successData.book['title'])
-                cartProductWrap.find('.book-author-name').text(successData.book['author_name'])
-                cartProductWrap.find('.cart-cost-display').text(successData.book['mrp_price'])
-                cartProductWrap.find('.book-image').attr('src', successData.book['book_image'] )
-                // imgSrc = successData.book['book_image']
+                btnSelect.find('.buy-btn').text('BUY')
 
-                topCartDisplay.append(cartProductWrap)
+
+
+
+
+
+
+
 
                 cart_length = topCartDisplay.children().length
+
+
+
+
+
+
 
             },
             error: function(errorData){
@@ -963,6 +1049,55 @@ $('.add-product-btn-form').on('click', function (e) {
 
 })
 
+// REMOVE CART ITEM
+
+
+
+$(document).on('click', '.cart-item-remove', function (event) {
+    event.preventDefault()
+    let cart_item = $(this).parent()
+    let book_slug = cart_item.attr('id')
+    let endPoint = $(this).attr('action')
+    let httpMethod = $(this).attr('method')
+
+    let data = {
+        'book_slug': book_slug
+    }
+
+    $.ajax({
+        headers: { "X-CSRFToken": $.cookie("csrftoken") },
+        url: endPoint ,
+        method: httpMethod,
+        data: data,
+        mode: 'same-origin',
+
+        success: function(successData){
+
+            if(successData['data'] === 'success'){
+                cart_item.remove()
+                 $('#cart-item-count').text('('+successData['cart_product_count']+')')
+
+            }
+
+            if(topCartDisplay.children().length === 1){
+                $('.empty-cart').removeClass('no-view')
+                topCartDisplay.addClass('no-view')
+                $('.cart-submit-button').addClass('no-view')
+                $('#cart-item-count').text('('+0+')')
+
+
+            }
+
+
+        }
+
+
+
+
+    })
+
+
+})
 
 
 
@@ -1048,6 +1183,7 @@ let user_cart_id = $('#arrow-cart-id')
 let user_profile = $('#user-profile-wrapper-id')
 let user_profile_arrow_id = $('#arrow-id')
 let user_profile_button = $('#accounts-id')
+var empty_cart = $('.empty-cart')
 
 
 
@@ -1063,15 +1199,20 @@ if(user_cart_button) {
             user_profile_arrow_id.toggleClass('no-view')
         }
 
+
+
+
         if(loaded === false){
             $.ajax({
             url: '/cart/display/',
+
 
 
             success: function(response){
                 if(response.cart_obj === 0){
                     $('.empty-cart').removeClass('no-view')
                     topCartDisplay.addClass('no-view')
+
                     loaded = true
 
 
@@ -1080,20 +1221,22 @@ if(user_cart_button) {
                 else{
                     loaded = true
 
-
                     topCartDisplay.removeClass('no-view')
                     $('.cart-submit-button').removeClass('no-view')
+
+                    topCartDisplay.children('.cart-product-wrapper:not(:first-child)').remove()
+
                     $.each(response.data, function(key, value){
 
-                        let cartProductWrap =cartProductWrapClone.removeClass('no-view').clone()
-                        cartProductWrapClone.addClass('no-view')
+                        let cartProductWrap =cartProductWrapClone.clone()
 
                         cartProductWrap.find('.book-title').text(value['title'])
                         cartProductWrap.find('.book-author-name').text(value['author_name'])
-                        cartProductWrap.find('.cart-cost-display').text(value['mrp_price'])
+                        cartProductWrap.find('.cart-cost-display').text('रु. '+ value['mrp_price'] + ' *  ' + value['quantity'])
                         cartProductWrap.find('.book-image').attr('src', value['img_url'] )
+                        cartProductWrap.attr('id', value['slug'])
 
-                        topCartDisplay.append(cartProductWrap)
+                        topCartDisplay.append(cartProductWrap.removeClass('no-view'))
                     })
 
                     cart_length = topCartDisplay.children().length
