@@ -22,26 +22,6 @@ $(document).ready(function(){
     let successModal = $('#user-registered-success-modal-id')
 
 
-    $('.rental-button').each(function(){
-        if($(this).next().children().length === 1){
-            $(this).css({
-                width: '14vw',
-
-                transform: 'translateX(25%)',
-
-
-            })
-
-            $(this).text('RENT THE BOOK')
-
-
-
-        }
-
-
-
-    })
-
 
     $('.book-modal-ajax-initial').hide()
 
@@ -459,42 +439,52 @@ $(document).ready(function(){
     // BOOK CArd Rental Button
 
 
-    $('.rental-button').each(function(){
-        $(this).click(function (event) {
-            event.preventDefault()
-            $('.rental-popup-wrapper').removeClass('no-view')
-            $('body').css('overflow', 'hidden');
-            $('.main-content-wrapper').addClass('toggle-display-body')
-            $('.newsletter').addClass('toggle-display-body')
-            $('.banner-wrapper').addClass('toggle-display-body')
-
-
-            let slugBook = $(this).attr('name')
-
-            let title = slugBook.split('?')[0]
-            let rental = slugBook.split('?')[1].split('.')[0]
-            let deposit = slugBook.split('?')[2].split('.')[0]
-
-            $('#title-id').text(title)
-            $('#rental').text('Rental Charge:   रु.' + deposit+'/day')
-            $('#depo').text('Refundable Security Deposit:  रु.' + rental )
-
-
-
-
-
-
-
-
-        })
-    })
+    // $('.rental-button').each(function(){
+    //     $(this).click(function (event) {
+    //         event.preventDefault()
+    //         $('.rental-popup-wrapper').removeClass('no-view')
+    //         $('body').css('overflow', 'hidden');
+    //         $('.main-content-wrapper').addClass('toggle-display-body')
+    //         $('.newsletter').addClass('toggle-display-body')
+    //         $('.banner-wrapper').addClass('toggle-display-body')
+    //
+    //
+    //         let slugBook = $(this).attr('name')
+    //
+    //         let title = slugBook.split('?')[0]
+    //         let rental = slugBook.split('?')[1].split('.')[0]
+    //         let deposit = slugBook.split('?')[2].split('.')[0]
+    //
+    //         $('#title-id').text(title)
+    //         $('#rental').text('Rental Charge:   रु.' + deposit+'/day')
+    //         $('#depo').text('Refundable Security Deposit:  रु.' + rental )
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //     })
+    // })
 
 
 
     //Close Rent Pop Up
 
+    $('.rental-button').each(function () {
+        $(this).click(function () {
+            $(this).parent().parent().prev('.rental-popup-wrapper').removeClass('no-view')
+            $('body').css('overflow', 'hidden');
+
+        })
+
+    })
+
+
     $('.close-btn > img').click(function(){
-        $('.rental-popup-wrapper').toggleClass('no-view')
+        $(this).parent().parent().addClass('no-view')
             $('body').css('overflow', 'auto');
             $('.main-content-wrapper').removeClass('toggle-display-body')
             $('.newsletter').removeClass('toggle-display-body')
@@ -934,10 +924,12 @@ $('.add-product-btn-form').on('click', function (e) {
     e.preventDefault()
     let productAddBtn= $(this)
     let productId = productAddBtn.attr('data-product-slug')
+    let orderType = productAddBtn.attr('data-order-type')
     let endPoint = productAddBtn.attr('action')
     let httpMethod = productAddBtn.attr('method')
     let data = {
         'productSlug': productId,
+        'orderType': orderType,
     }
     let btnSelect = $(this)
 
@@ -975,7 +967,19 @@ $('.add-product-btn-form').on('click', function (e) {
                             cartProductWrap.find('.book-author-name').text(successData.book['author_name'])
                             cartProductWrap.find('.cart-cost-display').text('रु. '+ successData.book['mrp_price'] + ' *  ' + successData.book['quantity'])
                             cartProductWrap.find('.book-image').attr('src', successData.book['book_image'] )
-                            cartProductWrap.attr('id', successData.book['book_slug'])
+
+                            cartProductWrap.find('.cart-item-remove').attr('data-order-type',successData.book['rent_or_buy'])
+                            cartProductWrap.find('.cart-item-remove').attr('data-order-slug',successData.book['book_slug'])
+
+                            if(successData.book['rent_or_buy'] === 'RNT') {
+                                cartProductWrap.find('.rent-buy-option').text('for RENT')
+
+                            }else{
+                                cartProductWrap.find('.rent-buy-option').text('for PURCHASE')
+
+
+                            }
+                            cartProductWrap.attr('id', successData.book['book_slug'] +'-'+successData.book['rent_or_buy'])
                             // imgSrc = successData.book['book_image']
 
                             topCartDisplay.append(cartProductWrap.removeClass('no-view'))
@@ -1005,9 +1009,10 @@ $('.add-product-btn-form').on('click', function (e) {
                 if(successData.created === 'false'){
                     let book_slug = successData.cart_item['slug']
                     let book_quantity = successData.cart_item['quantity']
+                    let order_type = successData.cart_item['rent_or_buy']
                     $('#cart-item-count').text('('+ successData.cart_item['cart_product_count']+')')
 
-                    $('#'+book_slug).find('.cart-cost-display').text('रु. '+ successData.cart_item['mrp_price'] + ' *  ' + book_quantity)
+                    $('#'+book_slug+'-'+order_type ).find('.cart-cost-display').text('रु. '+ successData.cart_item['mrp_price'] + ' *  ' + book_quantity)
 
                     $('.cart-added-display').addClass('cart-added-display-show')
 
@@ -1016,6 +1021,10 @@ $('.add-product-btn-form').on('click', function (e) {
 
 
                             }, 500); // <-- time in milliseconds
+                }
+
+                if(successData.created === 'Rent False'){
+                    alert('You can only rent a single copy of a book')
                 }
 
                 btnSelect.find('.buy-btn').text('BUY')
@@ -1056,12 +1065,14 @@ $('.add-product-btn-form').on('click', function (e) {
 $(document).on('click', '.cart-item-remove', function (event) {
     event.preventDefault()
     let cart_item = $(this).parent()
-    let book_slug = cart_item.attr('id')
+    let orderType = $(this).attr('data-order-type')
+    let book_slug = $(this).attr('data-order-slug')
     let endPoint = $(this).attr('action')
     let httpMethod = $(this).attr('method')
 
     let data = {
-        'book_slug': book_slug
+        'book_slug': book_slug,
+        'orderType': orderType,
     }
 
     $.ajax({
@@ -1072,6 +1083,7 @@ $(document).on('click', '.cart-item-remove', function (event) {
         mode: 'same-origin',
 
         success: function(successData){
+
 
             if(successData['data'] === 'success'){
                 cart_item.remove()
@@ -1089,7 +1101,12 @@ $(document).on('click', '.cart-item-remove', function (event) {
             }
 
 
-        }
+        },
+        error: function(errorData){
+                console.log("error")
+                console.log(errorData)
+                alert('fucked')
+            }
 
 
 
@@ -1224,7 +1241,8 @@ if(user_cart_button) {
                     topCartDisplay.removeClass('no-view')
                     $('.cart-submit-button').removeClass('no-view')
 
-                    topCartDisplay.children('.cart-product-wrapper:not(:first-child)').remove()
+                    topCartDisplay.children('.cart-product' +
+                        '-wrapper:not(:first-child)').remove()
 
                     $.each(response.data, function(key, value){
 
@@ -1234,7 +1252,20 @@ if(user_cart_button) {
                         cartProductWrap.find('.book-author-name').text(value['author_name'])
                         cartProductWrap.find('.cart-cost-display').text('रु. '+ value['mrp_price'] + ' *  ' + value['quantity'])
                         cartProductWrap.find('.book-image').attr('src', value['img_url'] )
-                        cartProductWrap.attr('id', value['slug'])
+                        cartProductWrap.attr('id', value['slug'] +'-'+value['rent_or_buy'])
+
+                        cartProductWrap.find('.cart-item-remove').attr('data-order-type',value['rent_or_buy'])
+                        cartProductWrap.find('.cart-item-remove').attr('data-order-slug',value['slug'])
+
+
+                         if(value['rent_or_buy'] === 'RNT') {
+                                cartProductWrap.find('.rent-buy-option').text('for RENT')
+
+                            }else{
+                                cartProductWrap.find('.rent-buy-option').text('for PURCHASE')
+
+
+                            }
 
                         topCartDisplay.append(cartProductWrap.removeClass('no-view'))
                     })

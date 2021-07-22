@@ -63,29 +63,18 @@
 {#        <h2 class="title-header-category"></h2>#}
         <div class="featured-category">
 
-            <div class="arrow-left-next arrow-select arrow-transform ">
-
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0yIDEybC00LjUgNC41IDEuNTI3IDEuNSA1Ljk3My02LTUuOTczLTYtMS41MjcgMS41IDQuNSA0LjV6Ii8+PC9zdmc+">
-
-
-            </div>
-
-
-
-
-
-            {% for featured_book in banner_books %}
+            {% for book in banner_books %}
                 <div class="featured-category-each">
                         <div class="featured-title-img">
-                            {% if featured_book.book_image %}
-                               <img src="{{ featured_book.book_image.url }}" alt="">
+                            {% if book.book_image %}
+                               <img src="{{ book.book_image.url }}" alt="">
 
                             {% endif %}
 
                         </div>
                         <div class="featured-title-details">
-                            <h2 class="cat-style">{{ featured_book.title| truncatechars:20 }}</h2>
-                            <small class="cat-style">by <span class="author-name">{{ featured_book.author_name.name }}</span></small>
+                            <h2 class="cat-style">{{ book.title| truncatechars:20 }}</h2>
+                            <small class="cat-style">by <span class="author-name">{{ book.author_name.name }}</span></small>
                              <div class="rating-wrapper">
                                 <button type="button" class="fa fa-star each-fa checked"></button>
                                 <button type="button" class="fa fa-star each-fa checked"></button>
@@ -94,80 +83,9 @@
                                 <button type="button" class="fa fa-star each-fa"></button>
                              </div>
                             <p class="featured-genre-details">
-                                {{ featured_book.summary| truncatechars:70 }}
+                                {{ book.summary| truncatechars:70 }}
                             </p>
-                            {%  if featured_book.in_stock_buy == 0 and featured_book.in_stock_rent == 0 %}
-                                <div class="purchase-details">
-                                    <h2 class="out-of-stock">OUT OF STOCK</h2>
-                                    <div class="purchase-button">
-                                        <button type="button" class="restocked-button">GET RESTOCKED ALERT</button>
-                                    </div>
-                                </div>
-                            {% elif featured_book.in_stock_buy == 0 and featured_book.in_stock_rent != 0 %}
-{#                                 rent   #}
-                                 <div class="purchase-details">
-
-                                    <div class="price-display">
-
-                                        <p style="margin-top: 10px;">Rent &nbsp:&nbsp रु. {{ featured_book.rental_price|to_int  }}/day</p>
-
-
-                                    </div>
-
-                                    <div class="purchase-button">
-
-                                        <button style="margin-left: 0;" name="{{ featured_book.slug }}" class="rental-button restocked-button"> RENT THE BOOK </button>
-
-                                    </div>
-
-                                </div>
-
-
-                            {% elif featured_book.in_stock_buy != 0 and featured_book.in_stock_rent == 0 %}
-
-                                 <div class="purchase-details">
-
-                                    <div class="price-display">
-
-                                        <p style="margin-top: 10px;">Buy &nbsp:&nbsp रु. {{ featured_book.mrp_price|to_int  }}</p>
-
-
-                                    </div>
-
-                                    <div class="purchase-button">
-
-                                        <button style="margin-left: 0;" name="{{ featured_book.slug }}" class="restocked-button"> BUY THE BOOK </button>
-
-                                    </div>
-
-                                </div>
-
-
-
-
-
-                            {% else %}
-
-                                <div class="purchase-details">
-
-                                    <div class="price-display">
-
-                                        <p>Rent &nbsp:&nbsp रु. {{ featured_book.rental_price|to_int  }}/day</p>
-                                        <p>Buy  &nbsp&nbsp:&nbsp रु. {{ featured_book.mrp_price|to_int  }}</p>
-
-
-                                    </div>
-
-                                    <div class="purchase-button">
-                                        <button name="{{ featured_book.title }}?{{ featured_book.mrp_price }}?{{ featured_book.rental_price }}" class="rental-button"> RENT </button>
-                                        <button name="{{ featured_book.slug }}">  BUY </button>
-
-                                    </div>
-
-                                </div>
-
-
-                            {% endif %}
+                            {% include 'core/snippets/cart-btn.html' %}
 
 
                         </div>
@@ -177,17 +95,6 @@
 
 
             {% endfor %}
-
-            <div class="absolute-left-arr arrow-right-next arrow-select">
-
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0yIDEybC00LjUgNC41IDEuNTI3IDEuNSA1Ljk3My02LTUuOTczLTYtMS41MjcgMS41IDQuNSA0LjV6Ii8+PC9zdmc+">
-
-
-            </div>
-
-
-
-
 
         </div>
 
@@ -199,7 +106,7 @@
 {#               <h2 class="title-header-category">Books in Fiction & Literature</h2>#}
 
                <ul>
-                   <li class="title-header-category selected-category">All</li>
+                   <li class="title-header-category title-header-border-btm">All</li>
 
 
                    {% for genre in genre_in %}

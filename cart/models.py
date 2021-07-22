@@ -47,6 +47,7 @@ class Cart(models.Model):
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     sub_total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    refundable = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
 
     is_active = models.BooleanField(default=True)
     created_on = models.DateTimeField(auto_now_add=True, null=True, blank=True)
@@ -61,7 +62,9 @@ class Cart(models.Model):
 class CartItemManager(models.Manager):
     def create_get(self, product, belongs_to, rent_or_buy):
         created = False
-        cart_product = self.get_queryset().filter(belongs_to=belongs_to,product=product).select_related('product__author_name')
+        if rent_or_buy is None:
+            rent_or_buy = 'BUY'
+        cart_product = self.get_queryset().filter(belongs_to=belongs_to,product=product, rent_or_buy=rent_or_buy).select_related('product__author_name')
         if len(cart_product) == 1:
             created = False
             return cart_product, created
@@ -70,10 +73,11 @@ class CartItemManager(models.Manager):
             created = True
             return self.create(belongs_to=belongs_to, product=product, rent_or_buy=rent_or_buy), created
 
-    def cart_item_remove(self, product, belongs_to):
+    def cart_item_remove(self, product, belongs_to, rent_or_buy):
         deleted = False
-        cart_item = self.filter(product=product, belongs_to=belongs_to)
+        cart_item = self.filter(product=product, belongs_to=belongs_to, rent_or_buy=rent_or_buy)
         if cart_item.exists() and len(cart_item) == 1:
+            print('coming in')
             cart_item.delete()
             deleted = True
 

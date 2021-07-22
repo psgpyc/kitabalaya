@@ -9,9 +9,9 @@
         <h5 class="book-author-name">By Haruki Murakami</h5>
 
         <h3 class="cart-cost-display">Rent: Rs.1000</h3>
-{#        <h5>Refundable Deposit: Rs.800</h5>#}
+        <h5 class="rent-buy-option">for Rent</h5>
     </div>
-    <form class="cart-item-remove" action="{% url 'display-cart' %}" method="post">
+    <form class="cart-item-remove" data-order-type="rent_or_buy" data-order-slug=""  action="{% url 'display-cart' %}" method="post">
         {% csrf_token %}
         <button class="remove-btn-cart" type="submit">
             <svg  xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#3A3A3A">

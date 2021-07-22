@@ -28,21 +28,25 @@ class UpdateCart(View):
 
         if request.is_ajax:
             product_slug = request.POST.get('productSlug', None)
+            order_type = request.POST.get('orderType', None)
             if product_slug:
                 product = Book.objects.get_book(slug=product_slug)
                 if len(product) == 1:
-                    cart_item, created = CartItem.objects.create_get(belongs_to=cart_id, product=product[0], rent_or_buy='RNT')
+                    cart_item, created = CartItem.objects.create_get(belongs_to=cart_id, product=product[0], rent_or_buy=order_type)
                     print(f'connection:{len(connection.queries)}')
 
                     if created is False and cart_item.exists():
                         cart_item = cart_item.first()
+                        if cart_item.rent_or_buy == 'RNT':
+                            return JsonResponse({'created': 'Rent False'}, status=200)
                         cart_item.quantity += 1
                         cart_item.save()
 
                         cart_item = {
                             'slug': cart_item.product.slug,
+                            'rent_or_buy': cart_item.rent_or_buy,
                             'quantity': cart_item.quantity,
-                            'mrp_price': cart_item.product.mrp_price,
+                            'mrp_price': int(cart_item.product.mrp_price),
                             'cart_product_count': get_cart_count(request),
 
                         }
@@ -55,10 +59,12 @@ class UpdateCart(View):
                             'title': cart_item.product.title,
                             'author_name': cart_item.product.author_name.name,
                             'book_image': cart_item.product.book_image.url,
-                            'mrp_price': cart_item.product.mrp_price,
+                            'mrp_price': int(cart_item.product.mrp_price),
                             'book_slug': cart_item.product.slug,
                             'cart_product_count': get_cart_count(request),
+                            'rent_or_buy': cart_item.rent_or_buy,
                             'quantity': cart_item.quantity,
+
 
                         }
                         print(f'connection:{len(connection.queries)}')
@@ -87,12 +93,14 @@ class DisplayCart(View):
     def post(self, request, *args, **kwargs):
         book_slug = request.POST.get('book_slug', None)
         cart_id = request.session.get('cart_id', None)
+        order_type = request.POST.get('orderType', None)
+        print(book_slug, cart_id, order_type)
         if book_slug is not None and cart_id is not None:
             if request.is_ajax:
                 book_obj = Book.objects.get(slug=book_slug)
                 cart_obj = Cart.objects.get(id=cart_id)
 
-                deleted = CartItem.objects.cart_item_remove(product=book_obj, belongs_to=cart_obj)
+                deleted = CartItem.objects.cart_item_remove(product=book_obj, belongs_to=cart_obj, rent_or_buy=order_type)
 
                 if deleted is True:
                     return JsonResponse({'data':'success', 'cart_product_count': get_cart_count(request)}, status=200)

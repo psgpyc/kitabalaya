@@ -3,6 +3,61 @@
 
 {% csrf_token %}
 
+     <div class="rental-popup-wrapper no-view">
+        <div class="close-btn">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
+
+        </div>
+
+        <div class="content-wrapper-rental-popup">
+
+            <h2 id="title-id" class="cat-style" >{{ book.title }}</h2>
+
+
+
+            <h4 id="rental" class="mtop cat-style"> Rental Charge&nbsp:&nbsp रु.{{ book.rental_price|to_int }}/day</h4>
+
+            <div class="dpflex">
+                <h4 id="depo" class="cat-style"> Refundable Security Deposit: रु.{{ book.mrp_price|to_int }}</h4>
+                <img class="faqbtn" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0xLjI1IDE3YzAgLjY5LS41NTkgMS4yNS0xLjI1IDEuMjUtLjY4OSAwLTEuMjUtLjU2LTEuMjUtMS4yNXMuNTYxLTEuMjUgMS4yNS0xLjI1Yy42OTEgMCAxLjI1LjU2IDEuMjUgMS4yNXptMS4zOTMtOS45OThjLS42MDgtLjYxNi0xLjUxNS0uOTU1LTIuNTUxLS45NTUtMi4xOCAwLTMuNTkgMS41NS0zLjU5IDMuOTVoMi4wMTFjMC0xLjQ4Ni44MjktMi4wMTMgMS41MzgtMi4wMTMuNjM0IDAgMS4zMDcuNDIxIDEuMzY0IDEuMjI2LjA2Mi44NDctLjM5IDEuMjc3LS45NjIgMS44MjEtMS40MTIgMS4zNDMtMS40MzggMS45OTMtMS40MzIgMy40NjhoMi4wMDVjLS4wMTMtLjY2NC4wMy0xLjIwMy45MzUtMi4xNzguNjc3LS43MyAxLjUxOS0xLjYzOCAxLjUzNi0zLjAyMi4wMTEtLjkyNC0uMjg0LTEuNzE5LS44NTQtMi4yOTd6Ii8+PC9zdmc+">
+            </div>
+
+            <p class="faqsp no-view">
+                To rent a book, you have to keep in  security deposit. The deposit is refundable and will be returned to you at the time of pickup.
+                <br>
+                In case you are renting multiple books without <span style="color: var(--default-color)">Membership Plan</span>, the final security deposit will be displayed at the time of checkout.
+
+            </p>
+            <div class="dpflex">
+                <h4 class="cat-style"> Minimum Rental Period: 7 Days</h4>
+                <img class="faqbtnone" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0xLjI1IDE3YzAgLjY5LS41NTkgMS4yNS0xLjI1IDEuMjUtLjY4OSAwLTEuMjUtLjU2LTEuMjUtMS4yNXMuNTYxLTEuMjUgMS4yNS0xLjI1Yy42OTEgMCAxLjI1LjU2IDEuMjUgMS4yNXptMS4zOTMtOS45OThjLS42MDgtLjYxNi0xLjUxNS0uOTU1LTIuNTUxLS45NTUtMi4xOCAwLTMuNTkgMS41NS0zLjU5IDMuOTVoMi4wMTFjMC0xLjQ4Ni44MjktMi4wMTMgMS41MzgtMi4wMTMuNjM0IDAgMS4zMDcuNDIxIDEuMzY0IDEuMjI2LjA2Mi44NDctLjM5IDEuMjc3LS45NjIgMS44MjEtMS40MTIgMS4zNDMtMS40MzggMS45OTMtMS40MzIgMy40NjhoMi4wMDVjLS4wMTMtLjY2NC4wMy0xLjIwMy45MzUtMi4xNzguNjc3LS43MyAxLjUxOS0xLjYzOCAxLjUzNi0zLjAyMi4wMTEtLjkyNC0uMjg0LTEuNzE5LS44NTQtMi4yOTd6Ii8+PC9zdmc+">
+
+            </div>
+
+
+
+            <p class="faqspone no-view">
+                When you rent from us, you will be charged for a <span style="color: var(--default-color)">minimum period of 7 days</span>. After a week,additionally, you will be charged on per day basis.
+                You can keep the book for a maximum period of 30 days.
+            </p>
+
+             <div class="watch-a-video">
+                <p>How rental process works<a href=""> Watch a Video >>>></a></p>
+            </div>
+
+            <br>
+
+            <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="RNT" data-product-slug="{{ book.slug }}">
+                    {% csrf_token %}
+                    <button  class="addtocart"> ADD TO CART </button>
+           </form>
+        </div>
+    </div>
+
+
+
+
+
     {% if book.in_stock_buy == 0 and book.in_stock_rent == 0 %}
         <div class="purchase-details">
             <h2 class="out-of-stock">OUT OF STOCK</h2>
@@ -46,8 +101,7 @@
             <div class="purchase-button">
                 <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-product-slug="{{ book.slug }}">
                     {% csrf_token %}
-                    <button type="submit" style="margin-left: 0;"  class="restocked-button no-view"> BUY THE BOOK</button>
-                    <button type="submit" style="margin-left: 0;"  class="restocked-button"> VIEW IN CART</button>
+                    <button type="submit" style="margin-left: 0;"  class="restocked-button"> BUY THE BOOK</button>
                 </form>
             </div>
 
@@ -70,17 +124,15 @@
             </div>
 
             <div class="purchase-button">
-                <button name="{{ book.title }}?{{ book.mrp_price }}?{{ book.rental_price }}" class="rental-button">
-                    RENT
-                </button>
-                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-product-slug="{{ book.slug }}">
+{#                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="RNT" data-product-slug="{{ book.slug }}">#}
+{#                    {% csrf_token %}#}
+                    <button  class="rental-button"> RENT </button>
+
+
+{#                </form>#}
+                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="BUY" data-product-slug="{{ book.slug }}">
                     {% csrf_token %}
-{#                    {% if book not in cart_items %}#}
-                        <button class="buy-btn" type="submit"> BUY </button>
-
-
-{#                    {% endif %}#}
-
+                        <button  class="buy-btn" type="submit"> BUY </button>
 
                 </form>
 
