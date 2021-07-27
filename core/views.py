@@ -1,16 +1,22 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Prefetch, Q, Avg
+from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView, View, DetailView
 from coreaccounts.forms import UserLoginForm, RegistrationForm
 from corebookmodels.models import Book, Author, RentalCategory, Banner, BookBelongsTo, \
-    BookMainCategory, BookCategory
+    BookMainCategory, BookCategory, Genre, Language, BookBelongsTo
 from django.db import connection
-from core.utils import get_obj_str, get_date_formatted, get_curr_url, get_cart_count
+from core.utils import get_obj_str, get_date_formatted, get_curr_url, get_cart_count, get_breadcrumbs
 import json
 from django.core.paginator import Paginator
 from django.core import serializers
+from django.db.models import Q
+from functools import reduce
+import operator
+
+
 
 User = get_user_model()
 # BookMainCategory.objects.prefetch_related('main_category').all()
@@ -20,7 +26,6 @@ class Home(View):
     template_name = 'core/home.html'
 
     def get(self, request, *args, **kwargs):
-
 
         homepage_category = BookBelongsTo.objects.filter(slug='best-sellers').prefetch_related('homepagecategory').all()
         p = homepage_category[0].homepagecategory.select_related('author_name').all()
@@ -60,7 +65,7 @@ class BookDetails(View):
                     'quality_rating': book[0].quality_rating,
                     'slug': book[0].slug,
                     'book_genre': get_obj_str(book[0].book_genre.all()),
-                    'book_rating': get_book_rating(book[0]),
+                    # 'book_rating': get_book_rating(book[0]),
 
                 }
                 return JsonResponse({'book': book_data}, status=200)
@@ -86,73 +91,55 @@ class SearchView(View):
         return render(request, template_name='core/test.html', context={})
 
 
-# class UpdateBookRating(View):
-#     template_name = 'core/test.html'
-#
-#     def get(self, request, *args, **kwargs):
-#         if request.is_ajax:
-#             pass
-#
-#     def post(self, request, *args, **kwargs):
-#         slug_name = self.kwargs['slug']
-#         r_count = request.POST.get('rating_count')
-#         if request.is_ajax:
-#             user = str(request.user)
-#             b_user = User.objects.get(email=user)
-#             _book = Book.objects.get(slug=slug_name)
-#             try:
-#                 book_rating = BookRatingModel.objects.get(Q(created_by=b_user) & Q(book=_book))
-#                 book_rating.rating = r_count
-#                 book_rating.save()
-#
-#             except BookRatingModel.DoesNotExist:
-#                 book_rating = BookRatingModel.objects.create(created_by=b_user, rating=r_count, book=_book)
-#
-#             return JsonResponse({'book_rating': book_rating.rating})
-
-
 class Categories(View):
-
     template_name = 'core/categories.html'
 
     def get(self, request, *args, **kwargs):
+        category = kwargs.get('slug', None)
 
-        qs = BookMainCategory.objects.get(slug='biography-memoir').book_set.all().select_related('author_name')
-        featured_category = qs.filter(is_featured=True)
-        genre_in = BookCategory.objects.filter(belongs_to__slug='biography-memoir')
+        if category is not None:
+            category_title = BookMainCategory.objects.get(slug=category)
 
-        ctx = {
-            'title': 'Categories',
-            'banner_books': featured_category,
-            'all_books': qs,
-            'genre_in': genre_in,
+            qs = BookMainCategory.objects.get(slug=category).book_set.all().select_related('author_name')
+            language = Language.objects.all()
 
-        }
+            sort_category = BookBelongsTo.objects.all()
+            genre_in = Genre.objects.filter(belongs_to__slug=category)
 
-        return render(request, template_name=self.template_name, context=ctx)
+            ctx = {
+                'title': 'Categories',
+                'all_books': qs,
+                'genre_in': genre_in,
+                'category_title': category_title,
+                'languages': language,
+                'sort_category': sort_category,
+            }
+
+            return render(request, template_name=self.template_name, context=ctx)
 
 
-class GetPriceEachBook(View):
-
+class FilterCategoryAPI(View):
     def get(self, request, *args, **kwargs):
-        book_slug = request.GET.get('bookSlug', None)
-        button_type = request.GET.get('rent-type',None)
+
+        active_sub_genre = request.GET.get('genre')
+        active_price_filter = request.GET.get('price')
+        active_lang_filter = request.GET.get('lang')
+        active_sort_filter = request.GET.get('sort')
+
+        props = {
+            'book_genre__slug': active_sub_genre,
+            # 'mrp_price': active_price_filter,
+            'language__slug': active_lang_filter,
+            'homepage_category__slug': active_sort_filter,
+        }
 
         if request.is_ajax:
 
-            if button_type == 'rent-button':
-                get_book = Book.objects.filter(slug=book_slug).values_list('rental_price')
-                # print(get_book[0][0])
-                return JsonResponse({'price': get_book[0][0]}, status=200)
-            if button_type == 'buy-new':
-                get_book = Book.objects.filter(slug=book_slug).values_list('mrp_price','in_stock_buy')
-                # print(get_book)
-                return JsonResponse({'price': get_book[0][0], 'in_stock_buy':1}, status=200)
-
-        return render(request, template_name='core/test.html', context={})
+            qs = Book.objects.filter(**props)
+            print(qs)
 
 
-
+            return JsonResponse({'success': 'success'})
 
 
 

@@ -2,6 +2,7 @@ from cart.models import Cart
 from django.db.models import Avg, Q
 from django.utils.dateformat import DateFormat
 from django.utils.formats import get_format
+from django.urls import reverse_lazy
 
 
 def get_obj_str(obj):
@@ -10,6 +11,12 @@ def get_obj_str(obj):
         obj_str += str(i)+', '
     return obj_str
 
+
+def get_breadcrumbs(slug):
+    if slug is not None:
+        breadcrumbs = reverse_lazy('categories-main', args=[slug]).split('/')
+
+        return list(filter(None, breadcrumbs))
 
 # def get_book_rating(obj):
 #     rating = BookRatingModel.objects.filter(book=obj).aggregate(Avg('rating'))['rating__avg']

@@ -8,8 +8,14 @@
     {{ title }}  {{ block.super }}
 {% endblock %}
 
-
 {% block body %}
+    <div class="breadcrumbs">
+        <p><a href="{% url 'home' %}">Books</a> > <span class="current"> {{ category_title|lower }} </span></p>
+
+
+    </div>
+
+
 
     <div class="rental-popup-wrapper no-view">
         <div class="close-btn">
@@ -60,64 +66,90 @@
 
     <div class="category-wrapper">
 
-{#        <h2 class="title-header-category"></h2>#}
-        <div class="featured-category">
 
-            {% for book in banner_books %}
-                <div class="featured-category-each">
-                        <div class="featured-title-img">
-                            {% if book.book_image %}
-                               <img src="{{ book.book_image.url }}" alt="">
 
-                            {% endif %}
+        <div class="filter-category">
+                <div class="category-genre-wrap">
+                    <p class="filter-category-heading">Sort by Sub-Genre</p>
+                    {% for genre in genre_in %}
+                        <form method="GET" action="{% url 'get-filtered' %}"  class="each-category-genre">
+                            {% csrf_token %}
+                            <input value="{{ genre.slug }}" type="checkbox">
+                            <p>{{ genre }}</p>
+                        </form>
+                    {% endfor %}
 
+
+                </div>
+
+                <div class="category-lang-wrap">
+                    <p class="filter-category-heading">Sort by Language</p>
+                        {% for language in languages %}
+
+                            <form method="GET" action="{% url 'get-filtered' %}"  class="each-category-genre">
+                                {% csrf_token %}
+                                <input value="{{ language.slug }}" type="checkbox">
+                                <p>{{ language }}</p>
+                            </form>
+
+
+                        {% endfor %}
+
+
+
+
+                </div>
+
+                <div class="category-price-wrap">
+                    <p class="filter-category-heading">Sort by Price</p>
+
+
+
+                        <div class="each-category-genre">
+                            <input value="ltoh" type="checkbox">
+                            <p>From Low to High</p>
                         </div>
-                        <div class="featured-title-details">
-                            <h2 class="cat-style">{{ book.title| truncatechars:20 }}</h2>
-                            <small class="cat-style">by <span class="author-name">{{ book.author_name.name }}</span></small>
-                             <div class="rating-wrapper">
-                                <button type="button" class="fa fa-star each-fa checked"></button>
-                                <button type="button" class="fa fa-star each-fa checked"></button>
-                                 <button type="button" class="fa fa-star each-fa checked"></button>
-                                <button type="button" class="fa fa-star each-fa"></button>
-                                <button type="button" class="fa fa-star each-fa"></button>
-                             </div>
-                            <p class="featured-genre-details">
-                                {{ book.summary| truncatechars:70 }}
-                            </p>
-                            {% include 'core/snippets/cart-btn.html' %}
 
-
+                        <div class="each-category-genre">
+                            <input value="htol" type="checkbox">
+                            <p>From High to Low</p>
                         </div>
-                    </div>
 
 
 
 
-            {% endfor %}
+
+
+
+                </div>
+
+
+                 <div class="category-gen-sort-wrap">
+                    <p class="filter-category-heading">Sort by:</p>
+                     {% for sort_cat in sort_category %}
+                         <form method="GET" action="{% url 'get-filtered' %}"  class="each-category-genre">
+                                {% csrf_token %}
+                                <input value="{{ sort_cat.slug }}" type="checkbox">
+                                <p>{{ sort_cat }}</p>
+                         </form>
+
+
+
+                     {% endfor %}
+
+
+
+                </div>
+
+
+
+
+
+
+
+
 
         </div>
-
-
-       <div class="category-descendent">
-
-
-           <div class="descendents">
-{#               <h2 class="title-header-category">Books in Fiction & Literature</h2>#}
-
-               <ul>
-                   <li class="title-header-category title-header-border-btm">All</li>
-
-
-                   {% for genre in genre_in %}
-                       <li class="title-header-category">{{ genre }}</li>
-
-                   {% endfor %}
-
-               </ul>
-           </div>
-       </div>
-
 
         <div class="book-display-category">
             {% for allbook in all_books %}
@@ -130,17 +162,21 @@
 
 
                     <div class="featured-title-details">
-                        <h2 class="cat-style">{{ allbook.title| truncatechars:20  }}</h2>
+                        <h2 class="cat-style">{{ allbook.title| truncatechars:15  }}</h2>
                         <small class="cat-style">by <span class="author-name">{{ allbook.author_name.name }}</span></small>
+{#                        <div class="rating-wrapper">#}
+{#                            #}
+{#                                #}
+{#                            #}
+{#                            #}
+{#                                <svg class="rating-btn" xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="red"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>#}
+{#                                <svg class="rating-btn" xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>#}
+{#                                <svg class="rating-btn" xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>#}
+{#                                <svg class="rating-btn" xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>#}
+{#                                <svg class="rating-btn" xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 0 24 24" width="15px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>#}
+{#                        </div>#}
+{##}
 
-                         <div class="rating-wrapper">
-                            <button type="button" class="fa fa-star each-fa checked"></button>
-                            <button type="button" class="fa fa-star each-fa checked"></button>
-                            <button type="button" class="fa fa-star each-fa checked"></button>
-                            <button type="button" class="fa fa-star each-fa"></button>
-                            <button type="button" class="fa fa-star each-fa"></button>
-
-                         </div>
 
 
                         <p class="featured-genre-details">
@@ -148,58 +184,7 @@
                         </p>
 
 
-                         <div class="purchase-details">
-                                {% if allbook.in_stock_buy == 0 and allbook.in_stock_rent == 0 %}
-                                    <h2 class="out-of-stock">OUT OF STOCK</h2>
-                                    <div class="purchase-button">
-                                        <button type="button" class="restocked-button">GET RESTOCKED ALERT</button>
-
-                                    </div>
-
-                                {% elif allbook.in_stock_buy == 0 %}
-                                    <h2 class="cat-style">RS. {{ allbook.rental_price }}/day</h2>
-
-                                    <div class="purchase-button ">
-                                        <button type="button">ADD TO CART</button>
-                                            <div class="dropdown">
-                                                <button value={{ allbook.slug }} name="rent-button" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Used)</small></button>
-
-                                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+">
-
-                                                <div class="buy-rent-dropdown no-view">
-                                                    <button  value={{ allbook.slug }} class="rent-buy-card" name="buy-new"  type="button">BUY<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                    <button value={{ allbook.slug }} name="rent-new" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                {% elif allbook.in_stock_rent == 0 %}
-                                    <h2 class="cat-style">RS. {{ allbook.mrp_price }}</h2>
-
-                                     <div class="purchase-button ">
-                                        <button type="button">ADD TO CART</button>
-                                        <div class="dropdown">
-
-                                            <button  value={{ allbook.slug }} class="rent-buy-card" name="buy-new"  type="button">BUY<small style="color: var(--default-color)">(Brand New)</small></button>
-                                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+">
-
-                                            <div class="buy-rent-dropdown no-view">
-                                                <button value={{ allbook.slug }} name="rent-new" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Brand New)</small></button>
-                                                <button value={{allbook.slug }} name="rent-button" type="button" class="rent-buy-card">RENT<small style="color: var(--default-color)">(Used)</small></button>
-                                            </div>
-                                        </div>
-                                     </div>
-
-
-
-
-
-                                {% endif %}
-
-
-                            </div>
-
+                        {% include 'core/snippets/cart-btn.html' with book=allbook %}
 
 
 
@@ -213,10 +198,56 @@
         </div>
 
 
+{#        <div class="view-more-btn">#}
+{##}
+{#            <button  class="buy-btn" type="submit"> BUY </button>#}
+{##}
+{##}
+{#        </div>#}
+
+
     </div>
 
-
-
+{#    <h2 class="title-header-category"></h2>#}
+{#        <div class="featured-category">#}
+{##}
+{#            {% for book in banner_books %}#}
+{#                <div class="featured-category-each">#}
+{#                        <div class="featured-title-img">#}
+{#                            {% if book.book_image %}#}
+{#                               <img src="{{ book.book_image.url }}" alt="">#}
+{##}
+{#                            {% endif %}#}
+{##}
+{#                        </div>#}
+{#                        <div class="featured-title-details">#}
+{#                            <h2 class="cat-style">{{ book.title| truncatechars:20 }}</h2>#}
+{#                            <small class="cat-style">by <span class="author-name">{{ book.author_name.name }}</span></small>#}
+{#                             <div class="rating-wrapper">#}
+{#                                <button type="button" class="fa fa-star each-fa checked"></button>#}
+{#                                <button type="button" class="fa fa-star each-fa checked"></button>#}
+{#                                 <button type="button" class="fa fa-star each-fa checked"></button>#}
+{#                                <button type="button" class="fa fa-star each-fa"></button>#}
+{#                                <button type="button" class="fa fa-star each-fa"></button>#}
+{#                             </div>#}
+{#                            <p class="featured-genre-details">#}
+{#                                {{ book.summary| truncatechars:70 }}#}
+{#                            </p>#}
+{#                            {% include 'core/snippets/cart-btn.html' %}#}
+{##}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{##}
+{##}
+{##}
+{#            {% endfor %}#}
+{##}
+{#        </div>#}
+{##}
+{##}
+{##}
 
 
 

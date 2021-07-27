@@ -39,28 +39,22 @@ def get_sentinel_user():
     return user.objects.get_or_create(name='anonymous')[0]
 
 
-class Genre(TimeStampModel):
-    """Model representing a genre (e.g. Fiction, Non-Fiction, etc.)"""
-    name = models.CharField(max_length=100,
-                            unique=True,
-                            verbose_name='Name of the Genre',
-                            help_text='Enter a book genre')
-
-    def __str__(self):
-        """String for representing the Model object (in Admin site etc.)"""
-
-        return self.name
-
-
 class Language(TimeStampModel):
     """Model representing a Language (e.g. English, French, Japanese, etc.)"""
 
     name = models.CharField(max_length=200,
                             help_text="Enter the book's natural language (e.g. English, French, Japanese etc.)")
 
+    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=True,)
+
     def __str__(self):
         """String for representing the Model object (in Admin site etc.)"""
         return self.name
+
+    def save(self, *args, **kwargs):
+        """Initialising the slug for the slug field"""
+        self.slug = slugify(self.name)
+        super(Language, self).save(*args, **kwargs)
 
 
 class BookMainCategory(TimeStampModel):
@@ -129,6 +123,28 @@ class BookBelongsTo(TimeStampModel):
     class Meta:
         verbose_name = 'HomePage Category'
         verbose_name_plural = 'HomePage Categories'
+
+
+class Genre(TimeStampModel):
+    """Model representing a genre (e.g. Fiction, Non-Fiction, etc.)"""
+    name = models.CharField(max_length=100,
+                            unique=True,
+                            verbose_name='Name of the Genre',
+                            help_text='Enter a book genre')
+
+    belongs_to = models.ForeignKey(BookMainCategory, on_delete=models.CASCADE, null=True, blank=True)
+
+    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True, editable=True, )
+
+    def __str__(self):
+        """String for representing the Model object (in Admin site etc.)"""
+
+        return self.name
+
+    def save(self, *args, **kwargs):
+        """Initialising the slug for the slug field"""
+        self.slug = slugify(self.name)
+        super(Genre, self).save(*args, **kwargs)
 
 
 class BookManager(models.Manager):

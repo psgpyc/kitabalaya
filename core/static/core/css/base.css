@@ -23,8 +23,7 @@ a:hover{
 }
 
 p, h1, h2, h3{
-    text-align: justify;
-    text-justify: inter-character;
+
     color: #3a3a3a;
     -webkit-font-smoothing: antialiased;
 
@@ -404,7 +403,7 @@ nav .right-menu .shopping-cart{
 
 
 .body-wrapper{
-    width: 93%;
+    width: 95%;
     margin: 70px auto;
     height: auto;
 
@@ -1483,9 +1482,22 @@ nav .right-menu .shopping-cart{
 
 /* CATEGORY STYLE*/
 
+.breadcrumbs{
+    margin: 20px 0;
+    font-family: Raleway, "Roboto", "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+}
+
+.breadcrumbs .current{
+    color: #3A3A3A;
+}
+
+
+
 .category-wrapper{
-    margin-top: 100px;
-    width: auto;
+    display: flex;
+    margin-top: 30px;
+    width: 100%;
     height: auto;
 
 }
@@ -1531,7 +1543,7 @@ nav .right-menu .shopping-cart{
 
 .featured-category-each-cat{
     width: 30%;
-    margin: 20px;
+    margin: 0 20px 20px 0;
     display: flex;
     height: 300px;
     box-shadow: 0 1px 6px 0 rgba(32,33,36,.28);
@@ -1765,9 +1777,22 @@ button:hover{
 
 
 .category-descendent{
-
-    margin: 60px 0;
+    display: flex;
+    justify-content: center;
+    margin: 60px auto 20px auto;
     width: 100%;
+    /*text-align: center;*/
+}
+
+
+.filter-wrapper{
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.filter-wrapper .sorting-wrapper{
+    margin: 0 30px;
 }
 
 
@@ -1781,11 +1806,19 @@ button:hover{
 
 }
 
-.title-header-border-btm{
-    border-bottom: 2px solid #1b6d85;
-    
+.title-header-category:after{
+    display:block;
+    content: '';
+    border-bottom: solid 3px #019fb6;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+
 }
 
+.title-header-category.on-hover:after { transform: scaleX(1); }
+.title-header-category.on-click:after { transform: scaleX(1); }
+/*.title-header-category.fromRight:after{ transform-origin:100% 50%; }*/
+/*.title-header-category.fromLeft:after{  transform-origin:  0% 50%; }*/
 
 
 
@@ -1795,7 +1828,8 @@ button:hover{
 
 .category-descendent .descendents{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+
 }
 
 .category-descendent .descendents h2{
@@ -1815,17 +1849,97 @@ button:hover{
     cursor: pointer;
 }
 
+.category-descendent .sorting-wrapper{
+    /*position: relative;*/
+    /*left: 80%;*/
+    /*top: -27px;*/
+    height: 20px;
+}
+
+.sorting-container{
+    cursor: pointer;
+    /*box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);*/
+    border-bottom: 1px solid #cbe4f1;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    /*border-radius: 5px;*/
+    padding: 5px;
+    outline: none;
+
+
+}
+.filter-category{
+
+    width: 20%;
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.category-genre-wrap, .category-lang-wrap, .category-price-wrap, .category-gen-sort-wrap{
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    border-bottom: 1px solid #cbe4f1;
+    border-top: 1px solid #cbe4f1;
+    border-radius: 5px;
+    padding: 10px;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.filter-category-heading{
+    font-weight: 600;
+}
+
+.filter-category-heading::after{
+      content: '';
+      /*border-bottom: 1px solid #3a3a3a;*/
+      width: auto;
+      display: block;
+        margin: 10px 0;
+
+}
+
+
+
+
+.each-category-genre{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 10px 0;
+}
+
+
+.each-category-genre input{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 
 .book-display-category{
     display: flex;
-    width: 100%;
-    justify-content: center;
+    width: 80%;
+    /*padding-left: 60px;*/
+    justify-content: flex-end;
     /*overflow: hidden;*/
     flex-wrap: wrap;
     /*width: 90%;*/
-    margin: auto;
+    /*margin: auto;*/
 }
 
+.book-display-category .featured-category-each-cat{
+    margin-bottom: 60px;
+    margin-right: 20px;
+}
+
+.book-display-category .featured-category-each-cat .featured-title-img img{
+    height: 19vh;
+    width: 6vw;
+    object-fit: contain;
+}
 
 .book-each{
     height: 270px;
@@ -1847,4 +1961,50 @@ button:hover{
     width: 170px;
     padding: 5px;
     border-radius: 15px;
+}
+
+
+.book-display-category .purchase-details .purchase-button{
+    left: 8%;
+    top: 81%;
+
+}
+
+.purchase-details button{
+    height: 33px;
+    width: 8vw;
+
+
+}
+
+
+.rating-btn{
+    fill: #1b6d85;
+}
+
+
+.book-display-category .price-display{
+    margin-top: 15px;
+}
+
+.book-display-category .restocked-button{
+    width: 14vw;
+    transform: translateX(12%);
+}
+
+.book-display-category h2{
+    font-size: 17px;
+}
+
+.book-display-category small{
+    font-size: 11px;
+}
+
+.book-display-category .featured-genre-details{
+    font-size: 13px;
+}
+
+
+.book-display-category .price-display{
+    font-size: 15px;
 }

@@ -703,114 +703,61 @@ $(document).ready(function(){
         })
     })
 
-    $('.descendents > ul > li').each(function () {
-        $(this).click(function () {
-            $(this).prevAll('.title-header-category').removeClass('selected-category')
-            $(this).nextAll('.title-header-category').removeClass('selected-category')
-            $(this).addClass('selected-category')
+function getLangChecked(){
+        return  $('.category-lang-wrap form input:checked').val()
+
+    }
+
+// function getPriceFilterChecked(){
+//         return $('.category-price-wrap form input:checked').val()
+// }
+
+function getGenSortChecked(){
+        return $('.category-gen-sort-wrap form input:checked').val()
+}
+
+function getSubGenreChecked(){
+        return $('.category-genre-wrap form input:checked').val()
+
+}
+
+$('.category-genre-wrap  .each-category-genre').on('click', function () {
+    let genreVal = getSubGenreChecked()
+    let langVal = getLangChecked()
+    // let priceVal =  getPriceFilterChecked()
+    let sortVal =  getGenSortChecked()
 
 
-        })
+    $(this).prevAll().find('input:checkbox').prop('checked', false)
+    $(this).nextAll().find('input:checkbox').prop('checked', false)
+
+    let endPoint = $(this).attr('action')
+    let genreData = $(this).attr('data-genre-slug')
+    let httpMethod = $(this).attr('method')
+    let dataVal = {
+         'genre': genreVal,
+        'lang': langVal,
+        // 'price': priceVal,
+        'sort': sortVal,
+    }
 
 
-    })
 
 
+   $.ajax({
+       headers: { "X-CSRFToken": $.cookie("csrftoken") },
+       url: endPoint,
+       data : dataVal,
+       mode: 'same-origin',
 
-    //   $(".rent-link").each(function(){
-    //       $(this).click(function(e){
-    //           e.preventDefault();
-    //
-    //           let endPoint = $(this).attr('href')
-    //           console.log(endPoint)
-    //
-    //            $.ajax({
-    //                url: endPoint,
-    //                beforeSend: function() {
-    //                        $("#the-book-modal-id").fadeIn();
-    //                        $(".loading-div").show()
-    //
-    //                        $("#book-title-id").text("Loading...")
-    //                        $("#book-author-id").text("Loading...")
-    //                        $("#book-img-id").hide()
-    //                        $("#book-summary").text("Loading...")
-    //                        $("#book-condition-span-id").text("Loading...")
-    //                        $("#book-quality-rating-span-id").text("Loading...")
-    //                        $("#book-slug").text("Loading...")
-    //                        $("#published-date-id").text("Loading...")
-    //                        $("#page-count-id").text("Loading...")
-    //                        $('#book-genre-span-id').text("Loading...")
-    //                        $('#book-rating-id').text("Loading...")
-    //
-    //                },
-    //
-    //                success: function(data) {
-    //                    if(data.book){
-    //                        $("#the-book-modal-id").fadeIn();
-    //
-    //                        $("#book-title-id").text(data.book.title)
-    //                        $("#book-author-id").text(data.book.author)
-    //                        $(".loading-div").hide()
-    //                        $("#book-img-id").attr('src', data.book.image).show()
-    //                        $("#book-summary").text(data.book.summary)
-    //                        $("#book-condition-span-id").text(data.book.book_condition)
-    //                        $("#book-quality-rating-span-id").text(data.book.quality_rating)
-    //                        $("#book-slug").text(data.book.slug)
-    //                        $("#published-date-id").text(data.book.published_date)
-    //                        $("#page-count-id").text(data.book.page_count)
-    //                        $('#book-genre-span-id').text(data.book.book_genre)
-    //                        $('#book-rating-id').text(data.book.book_rating)
-    //                        let count = 0
-    //                        $(".fa").each(function (e) {
-    //
-    //                            if(count <= data.book.book_rating){
-    //                                $(this).addClass('clicked-checked')
-    //                                count++;
-    //
-    //                            }
-    //
-    //
-    //                        })
-    //
-    //
-    //                        $('body').css('overflow', 'hidden');
-    //
-    //
-    //
-    //
-    //
-    //
-    //                    }
-    //
-    //
-    //                }
-    //
-    //            }
-    //
-    //
-    //
-    //
-    //
-    //
-    //            )
-    //
-    //       });
-    // });
-    //
-    // $("#close-book-modal-id").click(function(e){
-    //
-    //     $('#the-book-modal-id').hide();
-    //     $('#book-img-id').attr('src','')
-    //     $('.fa').each(function (){
-    //         $(this).prevAll('.fa').removeClass('clicked-checked')
-    //         $(this).removeClass('clicked-checked')
-    //         $(this).nextAll('.fa').removeClass('clicked-checked')
-    //     })
-    //     $('body').css('overflow', 'auto');
-    //
-    //
-    //
-    // })
+       success: function(data){
+
+
+       }
+   })
+
+
+})
 
 
 
@@ -946,6 +893,7 @@ $('.add-product-btn-form').on('click', function (e) {
 
 
             beforeSend: function() {
+                alert(endPoint)
                 btnSelect.find('.buy-btn').text('Adding to Cart.')
 
 
