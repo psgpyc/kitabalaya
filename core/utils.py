@@ -78,3 +78,13 @@ def get_cart_count(request):
         return 0
 
 
+def get_filtered_book_serialized(qs):
+    serialized_list = []
+
+    for book in qs:
+        each_book = {'title': book.title, 'mrp_price': int(book.mrp_price), 'rental_price': int(book.rental_price),
+                     'img_url': book.book_image.url, 'author_name': book.author_name.name,
+                     'slug': book.slug, 'genre-details': book.summary, 'buy-stock': book.in_stock_buy, 'rent-stock': book.in_stock_rent }
+        serialized_list.append(each_book)
+    return serialized_list
+

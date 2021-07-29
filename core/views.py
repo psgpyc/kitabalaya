@@ -2,19 +2,22 @@ from django.contrib.auth import get_user_model
 from django.db.models import Prefetch, Q, Avg
 from django.urls import reverse_lazy
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View, DetailView
 from coreaccounts.forms import UserLoginForm, RegistrationForm
 from corebookmodels.models import Book, Author, RentalCategory, Banner, BookBelongsTo, \
     BookMainCategory, BookCategory, Genre, Language, BookBelongsTo
 from django.db import connection
-from core.utils import get_obj_str, get_date_formatted, get_curr_url, get_cart_count, get_breadcrumbs
+from core.utils import get_obj_str, get_date_formatted, get_curr_url, get_cart_count, get_breadcrumbs, \
+    get_filtered_book_serialized
 import json
 from django.core.paginator import Paginator
 from django.core import serializers
 from django.db.models import Q
 from functools import reduce
 import operator
+
+from cart.utils import get_serialized
 
 
 
@@ -111,8 +114,10 @@ class Categories(View):
                 'all_books': qs,
                 'genre_in': genre_in,
                 'category_title': category_title,
+                'category': category,
                 'languages': language,
                 'sort_category': sort_category,
+
             }
 
             return render(request, template_name=self.template_name, context=ctx)
@@ -125,26 +130,69 @@ class FilterCategoryAPI(View):
         active_price_filter = request.GET.get('price')
         active_lang_filter = request.GET.get('lang')
         active_sort_filter = request.GET.get('sort')
+        active_main_category = request.GET.get('mainCategory')
 
         props = {
+            'book_main_category__slug': active_main_category,
             'book_genre__slug': active_sub_genre,
-            # 'mrp_price': active_price_filter,
             'language__slug': active_lang_filter,
             'homepage_category__slug': active_sort_filter,
         }
 
+        print(props)
+        print(kwargs)
+        filtered = {k: v for k, v in props.items() if v is not None}
+        props.clear()
+        props.update(filtered)
+
         if request.is_ajax:
-
+            print(request.GET)
             qs = Book.objects.filter(**props)
-            print(qs)
+            if active_price_filter == 'ltoh':
+                qs = qs.order_by("mrp_price")
+            if active_price_filter == 'htol':
+                qs = qs.order_by("-mrp_price")
+
+            filtered_books = get_filtered_book_serialized(qs)
+
+            return JsonResponse({'filtered_books': filtered_books,'success': 'success'}, status=200)
 
 
-            return JsonResponse({'success': 'success'})
+class SubCategoryView(View):
+    def get(self, request, *args, **kwargs):
+        try:
+            cat_obj = BookMainCategory.objects.get(slug=kwargs['mainCategory'])
+            sub_cat_slug = kwargs['subCategory']
+            related_sub_genre = cat_obj.genre_set.all()
+            language = Language.objects.all()
+
+            sort_category = BookBelongsTo.objects.all()
+
+            qs = Book.objects.filter(book_main_category=cat_obj, book_genre__slug=sub_cat_slug).select_related('author_name')
+
+        except BookMainCategory.DoesNotExist:
+            return redirect('home')
+
+        if request.is_ajax():
+            filtered_books = get_filtered_book_serialized(qs)
+
+            return JsonResponse({'filtered_books': filtered_books,'success': 'success'}, status=200)
+
+        ctx = {
+            'related_genre': related_sub_genre,
+            'languages': language,
+            'sort_category': sort_category,
+            'main_category': cat_obj,
+            'sub_category': sub_cat_slug,
+            'qs': qs
 
 
+        }
 
+        return render(request, template_name='core/sub-category.html', context=ctx)
 
-
+    # def post(self, request, *argsm, **kwargs):
+    #     return render(request, template_name='core/test.html')
 
 
 

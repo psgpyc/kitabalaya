@@ -1,0 +1,23 @@
+<div class="featured-category-each-cat no-view" id="clone-category-div">
+    <div class="featured-title-img">
+        <img class="book-img" src="{{ allbook.book_image.url }}" alt="">
+
+    </div>
+
+
+    <div class="featured-title-details">
+        <h2 class="cat-style">{{ allbook.title| truncatechars:15 }}</h2>
+        <small class="cat-style">by <span class="author-name">{{ allbook.author_name.name }}</span></small>
+
+        <p class="featured-genre-details">
+            {{ allbook.summary| truncatechars:100 }}
+        </p>
+
+
+        {% include 'core/snippets/dynamic-cart-btn.html' with book=allbook %}
+
+
+    </div>
+
+</div>
+

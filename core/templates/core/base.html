@@ -108,10 +108,10 @@
 
                     </div>
                     <div class="side-bar-category-details-wrapper no-view">
-                        {% for related_category in category.main_category.all %}
+                        {% for related_category in category.genre_set.all %}
                             {% if related_category %}
                                 <div class="side-bar-category-details">
-                                    <a class="side-bar-category-each" href="#">{{ related_category }}</a>
+                                    <a class="side-bar-category-each" href="{% url 'sub-category' mainCategory=category.slug subCategory=related_category.slug %}">{{ related_category }}</a>
                                     <div class="under-line"></div>
                                 </div>
                             {% endif %}

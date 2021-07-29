@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 
-from core.views import Categories
+from core.views import Categories, SubCategoryView
 from coreaccounts.forms import UserPasswordResetForm,UserPasswordResetConfirmForm,UserLoginForm
 from coreaccounts.views import RegistrationView, UserLogoutView, AccountEmailActivate, UserLoginView
 from cart.views import InitCart
@@ -64,6 +64,8 @@ urlpatterns = [
     path('', include('comingsoon.urls'), name='base-coreaccounts'),
     path('home/', include('core.urls'), name='base-home'),
     path('categories/<slug:slug>/', Categories.as_view(), name='categories-main'),
+    path('categories/<slug:mainCategory>/<slug:subCategory>/', SubCategoryView.as_view(), name='sub-category'),
+
     path('cart/', include('cart.urls'), name='cart'),
 
     # API URLS

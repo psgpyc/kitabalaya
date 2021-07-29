@@ -1,0 +1,73 @@
+<div class="filter-category">
+                <div class="category-genre-wrap">
+                    <p class="filter-category-heading">Sort by Sub-Genre</p>
+                    {% for genre in genre_in %}
+                        <form method="GET" action="{% url 'get-filtered' %}" data-category-slug="{{ category }}"  class="each-category-genre">
+                            {% csrf_token %}
+
+                            <input value="{{ genre.slug }}" type="checkbox">
+                            <p>{{ genre }}</p>
+                        </form>
+                    {% endfor %}
+
+
+                </div>
+
+                <div class="category-lang-wrap">
+                    <p class="filter-category-heading">Sort by Language</p>
+                        {% for language in languages %}
+
+                            <form method="GET" action="{% url 'get-filtered' %}" data-category-slug="{{ category }}"  class="each-category-language">
+                                {% csrf_token %}
+                                <input value="{{ language.slug }}" type="checkbox">
+                                <p>{{ language }}</p>
+                            </form>
+
+
+                        {% endfor %}
+
+
+
+
+                </div>
+
+                <div class="category-price-wrap">
+                    <p class="filter-category-heading">Sort by Price</p>
+                        <form class="each-category-price" method="GET" action="{% url 'get-filtered' %}" data-category-slug="{{ category }}"  >
+                            <input value="ltoh" type="checkbox">
+                            <p>From Low to High</p>
+                        </form>
+
+                        <form class="each-category-price" method="GET" action="{% url 'get-filtered' %}" data-category-slug="{{ category }}"  >
+                            <input value="htol" type="checkbox">
+                            <p>From High to Low</p>
+                        </form>
+                </div>
+
+
+                 <div class="category-gen-sort-wrap">
+                    <p class="filter-category-heading">Sort by:</p>
+                     {% for sort_cat in sort_category %}
+                         <form class="each-category-sort" method="GET" action="{% url 'get-filtered' %}" data-category-slug="{{ category }}" >
+                                {% csrf_token %}
+                                <input value="{{ sort_cat.slug }}" type="checkbox">
+                                <p>{{ sort_cat }}</p>
+                         </form>
+
+
+
+                     {% endfor %}
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+        </div>

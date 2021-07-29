@@ -23,10 +23,11 @@ class InitCart(View):
 
 
 class UpdateCart(View):
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         cart_id, created = Cart.objects.create_or_get(request)
-
+        print('passed through')
         if request.is_ajax:
+
             product_slug = request.POST.get('productSlug', None)
             order_type = request.POST.get('orderType', None)
             if product_slug:

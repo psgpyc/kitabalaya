@@ -7,7 +7,7 @@
         <div class="close-btn">
             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuOTU0IDIxLjAzbC05LjE4NC05LjA5NSA5LjA5Mi05LjE3NC0yLjgzMi0yLjgwNy05LjA5IDkuMTc5LTkuMTc2LTkuMDg4LTIuODEgMi44MSA5LjE4NiA5LjEwNS05LjA5NSA5LjE4NCAyLjgxIDIuODEgOS4xMTItOS4xOTIgOS4xOCA5LjF6Ii8+PC9zdmc+">
 
-        </div>`
+        </div>
 
         <div class="content-wrapper-rental-popup">
 
@@ -57,49 +57,45 @@
 
 
 
-
-    {% if book.in_stock_buy == 0 and book.in_stock_rent == 0 %}
-        <div class="purchase-details get-restocked-wrap">
+{#        RESTOCKED BUTTON                                                                                              #}
+        <div class="purchase-details get-restocked-wrap no-view">
             <h2 class="out-of-stock">OUT OF STOCK</h2>
             <div class="purchase-button">
                 <button type="button" class="restocked-button">GET RESTOCKED ALERT</button>
             </div>
         </div>
-    {% elif book.in_stock_buy == 0 and book.in_stock_rent != 0 %}
-        {#                                 rent   #}
-        <div class="purchase-details get-rent-btn">
+{#                                      RENT ONLY                                                                                  #}
+        <div class="purchase-details get-rent-btn no-view">
 
             <div class="price-display">
-                <p style="margin-top: 10px;">Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int }}/day</p>
+                <p class="rent-para" style="margin-top: 10px;">Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int }}/day</p>
 
 
             </div>
 
             <div class="purchase-button">
 
-                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="RNT" data-product-slug="{{ book.slug }}">
+               <form class="add-product-btn-form rent-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="RNT" data-product-slug="{{ book.slug }}">
                     {% csrf_token %}
-                    <button  class="rental-button"> RENT </button>
-                </form>
-
+                    <button  class="addtocart restocked-button"> RENT </button>
+               </form>
 
             </div>
 
         </div>
 
 
-    {% elif book.in_stock_buy != 0 and book.in_stock_rent == 0 %}
-
-        <div class="purchase-details get-buy-btn">
+{#                                      PURCHASE ONLY                                                                                                                   #}
+        <div class="purchase-details get-buy-btn no-view">
 
             <div class="price-display">
-                <p style="margin-top: 10px;">Buy &nbsp:&nbsp रु. {{ book.mrp_price|to_int }}</p>
+                <p class="buy-para" style="margin-top: 10px;">Buy &nbsp:&nbsp रु. {{ book.mrp_price|to_int }}</p>
 
 
             </div>
 
             <div class="purchase-button">
-                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-product-slug="{{ book.slug }}">
+                <form class="add-product-btn-form buy-btn-form-wrap" method="POST" action="{% url 'update-cart' %}" data-product-slug="{{ book.slug }}">
                     {% csrf_token %}
                     <button type="submit" style="margin-left: 0;"  class="restocked-button"> BUY THE BOOK</button>
                 </form>
@@ -111,26 +107,25 @@
 
 
 
-    {% else %}
-
-        <div class="purchase-details get-rent-buy">
+{#                           RENT AND PURCHASE                                                                                                   #}
+        <div class="purchase-details get-rent-buy no-view">
 
             <div class="price-display">
 
-                <p>Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int }}/day</p>
-                <p>Buy &nbsp&nbsp:&nbsp रु. {{ book.mrp_price|to_int }}</p>
+                <p class="rent-para">Rent &nbsp:&nbsp रु. {{ book.rental_price|to_int }}/day</p>
+                <p class="buy-para">Buy &nbsp&nbsp:&nbsp रु. {{ book.mrp_price|to_int }}</p>
 
 
             </div>
 
             <div class="purchase-button">
-                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="RNT" data-product-slug="{{ book.slug }}">
+                <form class="add-product-btn-form rent-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="RNT" data-product-slug="{{ book.slug }}">
                     {% csrf_token %}
-                    <button  class="rental-button"> RENT </button>
+                    <button  class="addtocart"> RENT </button>
                 </form>
-                <form class="add-product-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="BUY" data-product-slug="{{ book.slug }}">
+                <form class="add-product-btn-form buy-btn-form" method="POST" action="{% url 'update-cart' %}" data-order-type="BUY" data-product-slug="{{ book.slug }}">
                     {% csrf_token %}
-                        <button  class="buy-btn" type="submit"> BUY </button>
+                    <button  class="buy-btn" type="submit"> BUY </button>
                 </form>
 
             </div>
@@ -138,5 +133,4 @@
         </div>
 
 
-    {% endif %}
 
