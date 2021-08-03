@@ -243,6 +243,9 @@ class Book(TimeStampModel):
         """String for representing the Model object."""
         return self.title
 
+    class Meta:
+        ordering = ['published_date']
+
 
 # class BookRatingModel(TimeStampModel):
 #     rating = models.DecimalField(max_digits=2, decimal_places=1)

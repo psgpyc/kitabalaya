@@ -18,7 +18,7 @@ from functools import reduce
 import operator
 
 from cart.utils import get_serialized
-
+from django.core.paginator import Paginator
 
 
 User = get_user_model()
@@ -104,6 +104,9 @@ class Categories(View):
             category_title = BookMainCategory.objects.get(slug=category)
 
             qs = BookMainCategory.objects.get(slug=category).book_set.all().select_related('author_name')
+            paginate_qs = Paginator(qs, 9)
+            page_number = request.GET.get('page')
+            page_obj = paginate_qs.get_page(page_number)
             language = Language.objects.all()
 
             sort_category = BookBelongsTo.objects.all()
@@ -111,12 +114,13 @@ class Categories(View):
 
             ctx = {
                 'title': 'Categories',
-                'all_books': qs,
+                'all_books': page_obj,
                 'genre_in': genre_in,
                 'category_title': category_title,
                 'category': category,
                 'languages': language,
                 'sort_category': sort_category,
+                'contain_genre_wrap': True,
 
             }
 
@@ -131,6 +135,10 @@ class FilterCategoryAPI(View):
         active_lang_filter = request.GET.get('lang')
         active_sort_filter = request.GET.get('sort')
         active_main_category = request.GET.get('mainCategory')
+        if active_sub_genre is None:
+            active_sub_genre = request.GET.get('activeSubCategory').strip()
+            if active_sub_genre == '':
+                active_sub_genre = None
 
         props = {
             'book_main_category__slug': active_main_category,
@@ -139,23 +147,33 @@ class FilterCategoryAPI(View):
             'homepage_category__slug': active_sort_filter,
         }
 
-        print(props)
-        print(kwargs)
         filtered = {k: v for k, v in props.items() if v is not None}
         props.clear()
         props.update(filtered)
 
         if request.is_ajax:
-            print(request.GET)
             qs = Book.objects.filter(**props)
             if active_price_filter == 'ltoh':
                 qs = qs.order_by("mrp_price")
             if active_price_filter == 'htol':
                 qs = qs.order_by("-mrp_price")
 
-            filtered_books = get_filtered_book_serialized(qs)
+            paginate_qs = Paginator(qs, 9)
+            page_number = request.GET.get('page_number')
+            page_obj = paginate_qs.get_page(page_number)
 
-            return JsonResponse({'filtered_books': filtered_books,'success': 'success'}, status=200)
+            filtered_books = get_filtered_book_serialized(page_obj)
+            next_page = None
+
+            if page_obj.has_next():
+                next_page = page_obj.next_page_number()
+            else:
+                next_page = 0
+            print('...................')
+            print(page_obj.has_next())
+            print(next_page)
+
+            return JsonResponse({'filtered_books': filtered_books,'next_page': next_page,'success': 'success'}, status=200)
 
 
 class SubCategoryView(View):
@@ -170,11 +188,15 @@ class SubCategoryView(View):
 
             qs = Book.objects.filter(book_main_category=cat_obj, book_genre__slug=sub_cat_slug).select_related('author_name')
 
+            paginate_qs = Paginator(qs, 9)
+            page_number = request.GET.get('page_number')
+            page_obj = paginate_qs.get_page(page_number)
+
         except BookMainCategory.DoesNotExist:
             return redirect('home')
 
         if request.is_ajax():
-            filtered_books = get_filtered_book_serialized(qs)
+            filtered_books = get_filtered_book_serialized(page_obj)
 
             return JsonResponse({'filtered_books': filtered_books,'success': 'success'}, status=200)
 
@@ -184,7 +206,8 @@ class SubCategoryView(View):
             'sort_category': sort_category,
             'main_category': cat_obj,
             'sub_category': sub_cat_slug,
-            'qs': qs
+            'qs': page_obj,
+            'category':kwargs['mainCategory'],
 
 
         }

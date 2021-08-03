@@ -1,18 +1,8 @@
 <div class="filter-category">
-                <div class="category-genre-wrap">
-                    <p class="filter-category-heading">Sort by Sub-Genre</p>
-                    {% for genre in genre_in %}
-                        <form method="GET" action="{% url 'get-filtered' %}" data-category-slug="{{ category }}"  class="each-category-genre">
-                            {% csrf_token %}
 
-                            <input value="{{ genre.slug }}" type="checkbox">
-                            <p>{{ genre }}</p>
-                        </form>
-                    {% endfor %}
-
-
-                </div>
-
+               {% if contain_genre_wrap %}
+                    {% include 'core/snippets/filtered-side-bar-genre.html' %}
+                {% endif %}
                 <div class="category-lang-wrap">
                     <p class="filter-category-heading">Sort by Language</p>
                         {% for language in languages %}
@@ -22,8 +12,6 @@
                                 <input value="{{ language.slug }}" type="checkbox">
                                 <p>{{ language }}</p>
                             </form>
-
-
                         {% endfor %}
 
 

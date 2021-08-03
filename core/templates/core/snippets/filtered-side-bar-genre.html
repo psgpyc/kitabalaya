@@ -1,0 +1,13 @@
+<div class="category-genre-wrap">
+                    <p class="filter-category-heading">Sort by Sub-Genre</p>
+                    {% for genre in genre_in %}
+                        <form method="GET" action="{% url 'get-filtered'%}" data-category-slug="{{ category }}"  class="each-category-genre">
+                            {% csrf_token %}
+
+                            <input class="inputGenre" value="{{ genre.slug }}" type="checkbox">
+                            <p>{{ genre }}</p>
+                        </form>
+                    {% endfor %}
+
+
+</div>

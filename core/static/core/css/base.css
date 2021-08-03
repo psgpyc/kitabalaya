@@ -70,6 +70,23 @@ body{
     margin-top: 25px;
 }
 
+.view-more-btn{
+    text-align: center;
+
+}
+
+
+.next-page-btn{
+    margin-left: 340px;
+    width: 9vw;
+    height: 33px;
+    background-color: white;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    border: none;
+    border-radius: 5px;
+}
+
 .main-content-wrapper .go-opacity{
     opacity: 1;
 }
@@ -1488,7 +1505,7 @@ nav .right-menu .shopping-cart{
     font-weight: 600;
 }
 
-.breadcrumbs .current{
+.breadcrumbs .current, .breadcrumbs .sub-current{
     color: #3A3A3A;
 }
 

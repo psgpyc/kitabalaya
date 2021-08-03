@@ -75,7 +75,6 @@ $(document).ready(function(){
     $("#hamburger-id").click(function (e) {
         $("#side-bar-id").removeClass('no-view')
         $("#close-side-bar-id").removeClass('no-view')
-        alert(e.target())
 
         $('body').css('overflow', 'hidden');
     })
@@ -726,10 +725,30 @@ function truncateString(str) {
      return str.length > length ? str.substring(0, 16) + '..' : str
   }
 
-function pushAjax(activeElement){
+function get_active_url(){
+        let pathname = window.location.pathname; // Returns path only (/path/example.html)
+        let currentSubGenre = pathname.split('/')[3]
+        let activeCheckBox =$('.filter-category').children('.category-genre-wrap').children('form').find('.inputGenre')
+        $.each(activeCheckBox, function () {
+            if($(this).attr('value') === currentSubGenre){
+                $(this).prop('checked', true)
 
-    activeElement.prevAll().find('input:checkbox').prop('checked', false)
-    activeElement.nextAll().find('input:checkbox').prop('checked', false)
+            }
+
+        })
+}
+
+get_active_url()
+
+
+
+
+
+$(document).on('click', '#view-more-pagination', function (e) {
+    e.preventDefault()
+    let page_number = $(this).attr('data-next-page-no')
+    let mainCategory = $(this).attr('data-category-slug')
+    let currentSubGenre = $('.breadcrumbs > p').find('.sub-current').text()
 
     let genreVal = getSubGenreChecked()
     let langVal = getLangChecked()
@@ -737,49 +756,34 @@ function pushAjax(activeElement){
     let sortVal =  getGenSortChecked()
 
 
-
-
-    let endPoint = activeElement.attr('action')
-    let genreData = activeElement.attr('data-genre-slug')
-    let mainCategory = activeElement.attr('data-category-slug')
-    let httpMethod = activeElement.attr('method')
-
-
     let dataVal = {
         'mainCategory': mainCategory,
+        'activeSubCategory': currentSubGenre,
         'genre': genreVal,
         'lang': langVal,
         'price': priceVal,
         'sort': sortVal,
+        'page_number': page_number,
     }
 
+    let endPoint = $(this).attr('action')
+    let httpMethod = $(this).attr('method')
 
-   $.ajax({
-       headers: { "X-CSRFToken": $.cookie("csrftoken") },
-       url: endPoint,
-       data : dataVal,
-       method: httpMethod,
-       mode: 'same-origin',
+    console.log(dataVal)
 
-
-       beforeSend: function(){
-           $('.book-display-category').addClass('no-view')
-           $('#before-send-ajax').removeClass('no-view')
-
-
-       },
-
-       success: function(res){
+    $.ajax({
+        headers: {"X-CSRFToken": $.cookie("csrftoken")},
+        url: endPoint,
+        data: dataVal,
+        method: httpMethod,
+        mode: 'same-origin',
 
 
-            console.log(res)
-           $('#before-send-ajax').addClass('no-view')
-           $('.book-display-category').removeClass('no-view').empty()
+
+        success: function(res){
 
             $.each(res.filtered_books, function(key, value){
-
                 let eachBookDiv = $('#clone-category-div').clone()
-                console.log(eachBookDiv)
                 eachBookDiv.find('.featured-title-img').find('.book-img').attr('src', value['img_url'])
 
                 eachBookDiv.find('.featured-title-details').find('h2').text(truncateString(value['title']))
@@ -789,7 +793,7 @@ function pushAjax(activeElement){
                     let rentBuyWrap = eachBookDiv.find('.featured-title-details').find('.get-rent-buy')
                     rentBuyWrap.removeClass('no-view')
                     rentBuyWrap.find('.price-display').find('.rent-para').text('Rent : रु.'+ value['rental_price'] +'/day')
-                    rentBuyWrap.find('.price-display').find('.buy-para').text( 'Buy'+': रु.'+ value['mrp_price'] +'/day')
+                    rentBuyWrap.find('.price-display').find('.buy-para').text( 'Buy'+': रु.'+ value['mrp_price'])
                     rentBuyWrap.find('.purchase-button').find('.buy-btn-form').attr('data-product-slug', value['slug'])
                     rentBuyWrap.find('.purchase-button').find('.rent-btn-form').attr('data-product-slug', value['slug'])
 
@@ -809,7 +813,7 @@ function pushAjax(activeElement){
                 if(value['buy-stock'] !== 0 && value['rent-stock'] === 0 ){
                     let buyWrap = eachBookDiv.find('.featured-title-details').find('.get-buy-btn')
                     buyWrap.removeClass('no-view')
-                    buyWrap.find('.price-display').find('.buy-para').text( 'Buy'+': रु.'+ value['mrp_price'] +'/day')
+                    buyWrap.find('.price-display').find('.buy-para').text( 'Buy'+': रु.'+ value['mrp_price'])
                     buyWrap.find('.purchase-button .buy-btn-form-wrap').attr('data-product-slug', value['slug'])
                 }
 
@@ -827,9 +831,166 @@ function pushAjax(activeElement){
 
 
 
+
+
                 $('.book-display-category').append(eachBookDiv.removeClass('no-view'))
 
             })
+
+            let nextBtn = $('.next-page-btn').parent()
+            if(res.next_page > 0){
+                if(nextBtn.hasClass('no-view')){
+                    nextBtn.removeClass('no-view')
+
+                }
+                nextBtn.attr('data-next-page-no', res.next_page)
+
+
+            }
+            else{
+                nextBtn.addClass('no-view')
+
+            }
+        }
+
+
+
+
+
+
+    })
+
+
+
+
+
+
+
+
+})
+
+function pushAjax(activeElement){
+
+    activeElement.prevAll().find('input:checkbox').prop('checked', false)
+    activeElement.nextAll().find('input:checkbox').prop('checked', false)
+
+    let genreVal = getSubGenreChecked()
+    let langVal = getLangChecked()
+    let priceVal =  getPriceFilterChecked()
+    let sortVal =  getGenSortChecked()
+
+
+
+
+    let endPoint = activeElement.attr('action')
+    let genreData = activeElement.attr('data-genre-slug')
+    let mainCategory = activeElement.attr('data-category-slug')
+    let httpMethod = activeElement.attr('method')
+    let currentSubGenre = $('.breadcrumbs > p').find('.sub-current').text()
+
+
+
+    let dataVal = {
+        'mainCategory': mainCategory,
+        'activeSubCategory': currentSubGenre,
+        'genre': genreVal,
+        'lang': langVal,
+        'price': priceVal,
+        'sort': sortVal,
+    }
+
+    console.log(dataVal)
+
+
+   $.ajax({
+       headers: { "X-CSRFToken": $.cookie("csrftoken") },
+       url: endPoint,
+       data : dataVal,
+       method: httpMethod,
+       mode: 'same-origin',
+
+
+       beforeSend: function(){
+           $('.book-display-category').addClass('no-view')
+           $('#before-send-ajax').removeClass('no-view')
+
+
+       },
+
+       success: function(res){
+           $('#before-send-ajax').addClass('no-view')
+           $('.book-display-category').removeClass('no-view').empty()
+
+            $.each(res.filtered_books, function(key, value){
+
+                let eachBookDiv = $('#clone-category-div').clone()
+                eachBookDiv.find('.featured-title-img').find('.book-img').attr('src', value['img_url'])
+
+                eachBookDiv.find('.featured-title-details').find('h2').text(truncateString(value['title']))
+                eachBookDiv.find('.featured-title-details').find('span').text(value['author_name'])
+                eachBookDiv.find('.featured-genre-details').text(value['genre-details'])
+                if(value['buy-stock'] !== 0 && value['rent-stock'] !== 0 ){
+                    let rentBuyWrap = eachBookDiv.find('.featured-title-details').find('.get-rent-buy')
+                    rentBuyWrap.removeClass('no-view')
+                    rentBuyWrap.find('.price-display').find('.rent-para').text('Rent : रु.'+ value['rental_price'] +'/day')
+                    rentBuyWrap.find('.price-display').find('.buy-para').text( 'Buy'+': रु.'+ value['mrp_price'])
+                    rentBuyWrap.find('.purchase-button').find('.buy-btn-form').attr('data-product-slug', value['slug'])
+                    rentBuyWrap.find('.purchase-button').find('.rent-btn-form').attr('data-product-slug', value['slug'])
+
+                }
+
+                if(value['buy-stock'] === 0 && value['rent-stock'] !== 0 ){
+                    let rentWrap = eachBookDiv.find('.featured-title-details').find('.get-rent-btn')
+                    rentWrap.removeClass('no-view')
+                    rentWrap.find('.price-display').find('.rent-para').text('Rent : रु. '+ value['rental_price'] +'/day')
+                    rentWrap.find('.purchase-button button').attr('name', value['slug'])
+                    rentWrap.find('.purchase-button').find('.rent-btn-form').attr('data-product-slug', value['slug'])
+
+
+                }
+
+
+                if(value['buy-stock'] !== 0 && value['rent-stock'] === 0 ){
+                    let buyWrap = eachBookDiv.find('.featured-title-details').find('.get-buy-btn')
+                    buyWrap.removeClass('no-view')
+                    buyWrap.find('.price-display').find('.buy-para').text( 'Buy'+': रु.'+ value['mrp_price'])
+                    buyWrap.find('.purchase-button .buy-btn-form-wrap').attr('data-product-slug', value['slug'])
+                }
+
+
+                if(value['buy-stock'] === 0 && value['rent-stock'] === 0 ){
+                    let restockedWrap = eachBookDiv.find('.featured-title-details').find('.get-restocked-wrap')
+                    restockedWrap.removeClass('no-view')
+                    restockedWrap.find('h2').text('OUT OF STOCK')
+
+
+
+                }
+
+
+
+
+
+
+
+                $('.book-display-category').append(eachBookDiv.removeClass('no-view'))
+
+            })
+
+           let next_page_button_form = $('.view-more-btn .pagination .step-links').find('form')
+
+            if(res.next_page !== 0){
+                if(next_page_button_form.hasClass('no-view')){
+                    next_page_button_form.removeClass('no-view')
+                    next_page_button_form.attr('data-next-page-no', res.next_page)
+                }
+
+
+            }
+            else{
+                next_page_button_form.addClass('no-view')
+
+            }
 
        }
    })
@@ -842,6 +1003,9 @@ $(document).on('click', '.category-genre-wrap  .each-category-genre',function ()
 
 
     pushAjax(activeElement = $(this))
+    get_active_url()
+
+
 
 })
 
@@ -998,7 +1162,6 @@ $(document).on('click','.add-product-btn-form', function (e) {
 
 
             beforeSend: function() {
-                alert(endPoint)
                 btnSelect.find('.buy-btn').text('Adding to Cart.')
 
 
@@ -1102,7 +1265,7 @@ $(document).on('click','.add-product-btn-form', function (e) {
             error: function(errorData){
                 console.log("error")
                 console.log(errorData)
-                alert('fucked')
+                alert('Oops! Somethings Happened, Please contact @ Contact@kitabalaya.info or reach us at INSTAGRAM')
             }
         })
 

@@ -7,7 +7,7 @@ urlpatterns = (
     path('ajax/search/', SearchView.as_view(), name='search-view'),
     path('book/<slug:slug>/', BookDetails.as_view(), name='book-details'),
     # path('rating/<slug:slug>/', UpdateBookRating.as_view(), name='update-book-rating')
-    path('ajax/get_filtered', FilterCategoryAPI.as_view(), name='get-filtered'),
+    path('ajax/get_filtered/', FilterCategoryAPI.as_view(), name='get-filtered'),
 
 
 )

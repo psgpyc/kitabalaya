@@ -1,0 +1,15 @@
+<div class="view-more-btn">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if all_books.has_next %}
+                        <form action='{% url 'get-filtered' %}' id="view-more-pagination" method="GET" data-category-slug="{{ category }}" data-next-page-no="{{ all_books.next_page_number }}">
+                            {% csrf_token %}
+                            <button class="next-page-btn" type="submit"> VIEW MORE</button>
+                        </form>
+                    {% endif %}
+                </span>
+            </div>
+
+
+
+    </div>
